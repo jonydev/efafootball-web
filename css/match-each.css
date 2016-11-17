@@ -1,0 +1,10 @@
+.team-results{position: relative;height: 52px;margin-top: 5px;margin-right: 5px;margin-left: 5px; background-color: #555555}
+.team-a{float: left;width: 41%;padding-left: 25px;padding-top: 7px;}
+.result{float: left;text-align: center;width: 18%;padding-top: 7px;}
+.result-a{height: 25px;font-size: 12pt;}
+.result-b{height: 13px;font-size: 1pt}
+.team-b{float: right;width: 41%;padding-right: 25px;padding-top: 7px;}
+.team-atxt{float: left;height: 38px;line-height: 38px;}
+.team-aimg{width: 38px;height: 38px;margin-right: 16px;float: right}
+.team-bimg{width: 38px;height: 38px;float: left;margin-left: 16px;}
+.team-btxt{height: 38px;line-height: 38px;float: right;}

@@ -1,0 +1,48 @@
+html, body {
+    position: relative;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+body{
+    font-family:Arial, 黑体 ;
+    font-weight:900;
+}
+.click-on{
+    color: black;
+}
+.click-cancel{
+    color: white;
+}
+.text-white{
+    color: white;
+}
+.text-black{
+    color: black;
+}
+.text-green{
+    color: #3bc83b;
+}
+.background-black{
+    background-color: black;
+}
+.background-white{
+    background-color: #FFFFFF;
+}
+.background-grey93{
+    background-color: #939999;
+}
+.background-green{
+    background-color:  #3bc83b;
+}
+.web-size{height: 100%; width:  100%;}
+.font20{font-size: 20px;}
+.font2pt{font-size: 2pt;}
+.font3pt{font-size: 3pt;}
+.light-white{background-color: #f2f5f6}
+.text-space{letter-spacing: 1px;}
+.first{width: 30%;background-color: #2a6496;float: left}
+.second{width: 40%;background-color: #3bc83b;float: left}
+.third{width: 30%;background-color: #2b542c;float: left;padding-right: 5px}
+.father{width: 100%}
+.hidden{display: none}
