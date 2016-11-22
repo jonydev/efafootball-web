@@ -5,8 +5,7 @@ html, body {
     padding: 0;
 }
 body{
-    font-family:Arial, 黑体 ;
-    font-weight:900;
+    font-family:"Arial", "黑体" ;
 }
 .click-on{
     color: black;
@@ -33,12 +32,15 @@ body{
     background-color: #939999;
 }
 .background-green{
-    background-color:  #3bc83b;
+    background-color: #2E992F;
 }
 .web-size{height: 100%; width:  100%;}
 .font20{font-size: 20px;}
 .font2pt{font-size: 2pt;}
 .font3pt{font-size: 3pt;}
+.font6pt{font-size: 6pt;}
+.font10pt{font-size: 10pt}
+.font15pt{font-size: 15pt;}
 .light-white{background-color: #f2f5f6}
 .text-space{letter-spacing: 1px;}
 .first{width: 30%;background-color: #2a6496;float: left}
@@ -46,3 +48,4 @@ body{
 .third{width: 30%;background-color: #2b542c;float: left;padding-right: 5px}
 .father{width: 100%}
 .hidden{display: none}
+.text-center{text-align: center;}

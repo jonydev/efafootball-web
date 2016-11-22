@@ -1,11 +1,11 @@
 ul{margin: 0;padding: 0;list-style: none;}
 a:link{color: black;}
 .title-container{position: relative;margin-top: 5px;margin-left: 5px;margin-right: 5px;height: 38px;}
+.introduce{width: 20%;float: left;padding-left: 25px;padding-top: 12px;}
 .team{width: 20%;float: left;padding-left: 25px;padding-top: 12px;}
 .schedule{width: 20%;float: left;padding-left: 25px;padding-top: 12px;padding-left: 25px;padding-top: 12px;}
 .points{width: 20%;float: left;padding-left: 25px;padding-top: 12px;}
-.shooter{width: 20%;float: left;padding-left: 25px;padding-top: 12px;}
-.red-yellow{width: 20%;float: left;padding-left: 25px;padding-top: 12px;}
+.billboard{width: 20%;float: left;padding-left: 25px;padding-top: 12px;}
 .all-schedule{margin-left: 5px;margin-right: 5px;}
 .round{background-color: #2e992e;height: 52px;padding-left: 40%}
 .round-num{font-size: 4pt;float: left;margin-top: 10px;}
@@ -18,6 +18,19 @@ a:link{color: black;}
 .result-b{height: 13px;font-size: 1pt}
 .team-b{float: right;width: 41%;padding-right: 25px;padding-top: 7px;}
 .team-atxt{float: left;height: 38px;line-height: 38px;}
-.team-aimg{width: 38px;height: 38px;margin-right: 16px;float: right}
-.team-bimg{width: 38px;height: 38px;float: left;margin-left: 16px;}
+.team-aimg{width: 35px;height: 35px;margin-right: 10px;float: right}
+.team-bimg{width: 35px;height: 35px;float: left;margin-left: 10px;}
 .team-btxt{height: 38px;line-height: 38px;float: right;}
+
+.all-billboard{margin: 5px 5px 0 5px;}
+.shooter-redyellow{background-color: #F1F5F6;height: 38px;position: relative;}
+.shooter{float: left;width: 50%;text-align: center;height: 100%;padding-top: 12px;font-size: 7pt;}
+.redyellow{float: right;width: 50%;text-align: center;height: 100%;padding-top: 12px;font-size: 7pt;}
+.player-statistic,.player-statistic table{width: 100%;position: relative;text-align: center}
+.player-statistic{margin-top: 5px;}
+.table-head{background-color: #12283D;color: white;height: 38px;}
+.rank{width: 15%;text-align: center}
+.player-name{width: 25%;text-align: center}
+.player-team{width: 25%;text-align: center}
+.main-goal{width: 20%;text-align: center}
+.main-penalty{width: 15%;text-align: center}
