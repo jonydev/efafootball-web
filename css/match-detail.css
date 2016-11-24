@@ -40,3 +40,13 @@ a:link{color: black;}
 .single-tr{height:38px; }
 .first-tr{height: 76px;background-color:#F1F5F6; }
 .first-shooter{width: 56px;height: 56px;}
+
+.all-points{margin: 5px 5px 0 5px;}
+.all-points table{width: 100%;position: relative;font-size: 6pt;text-align: center}
+.all-points table td{border-bottom: 1px solid #E3E3E3;background-color: white;}
+.all-points .single-tr{height: 38px;}
+.up-grade{background-color:#2e992e;width:10px;height: 30px;float: left }
+.stay-grade{background-color:#F9BF02;width:10px;height: 30px;float: left}
+.down-grade{background-color:#DF0000;width:10px;height: 30px;float: left}
+.up-img{width:11px;height: 5px;float: right; }
+.stay-img{width:6px;height: 6px;float: right;}
