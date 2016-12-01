@@ -13,59 +13,62 @@ $(document).ready(function (){
         autoplay: 2500,
         autoplayDisableOnInteraction: false
     });
+    SetSwiper();
     SetContent();
 });
-
+function SetSwiper() {
+    var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/bulletinData";
+    $.ajax({
+        url:url,
+        success:function (data) {
+            var myobject=eval(data);
+            var swipercontent=$(".swiper-wrapper");
+            swipercontent.empty();
+            //增加首页滑动页面
+            for (var i=0;i<myobject.length;i++){
+                var singleobj=myobject[i];
+                var content=
+                    '<div class="swiper-slide" value='+singleobj.url+'>'+
+                        '<img src='+singleobj.photo+' alt="" width="100%" height="100%">'+
+                    '</div>';
+                swipercontent.append(content);
+            }
+        }
+    })
+}
 function SetContent() {
+    debugger;
     //拉数据
-    var url="http:.....";
+    var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/newsData?id=1";
     $.ajax(
         {
             url: url,
             success: function (data) {
                 // 解析json
                 var obj = eval(data);
-                var addcontent=$(".swiper-container");
-                addcontent.empty();
-                //增加首页滑动页面
-                var swiper_content=
-                    '<div class="swiper-slide">'+
-                    '<img src='+image1+ 'alt="" width="100%" height="100%">'+
-                    '</div>'+
-                    '<div class="swiper-slide">'+
-                    '<img src='+image2+'alt="" width="100%" height="100%">'+
-                    '</div>'+
-                    '<div class="swiper-slide">'+
-                    '<img src='+image3+'alt="" width="100%" height="100%">'+
-                    '</div>';
-                addcontent.append(swiper_content);
-                var rows = obj.rows;
-                for (var i = 0; i < rows.length; i++) {
-                    var score = rows[i];
-                    var rank = i + 1;
-                    var name = score.team.name;
-                    var point = score.point;
-                    var match = score.won + "/" + score.even + "/" + score.beaten;
-                    var goal = score.goal;
-                    var lost = score.lost
-                    var red = score.red;
-                    var yellow = score.yellow;
-                    var plus = score.goal - score.lost;
+                console.log(data);
+                var addcontent=$(".news_ul").empty();
+                for (var i = 0; i < obj.length; i++) {
+                    var single=obj[i];
                     var newroll =
-                        "<tr>" +
-                        "<td class='c left'>" + rank + "</td>" +
-                        "<td>" + name + "</td>" +
-                        "<td class='c'>" + point + "</td>" +
-                        "<td class='c'>" + match + "</td>" +
-                        "<td class='c'>" + goal + '/' + lost + "</td>" +
-                        "<td class='c'>" +
-                        "<span style='color: #ff0000;'>" + red +"</span>" +
-                        "<span>/</span>" +
-                        "<span style='color: #ffaa00'>" + yellow + "</span>" +
-                        "</td>" +
-                        "<td class='c right'>" + plus + "</td>" +
-                        "</tr>>"
-                    table.append(newroll);
+                        '<li value='+single.id+'>'+
+                            '<div class="single_new background-white">'+
+                                '<div class="news_img">'+
+                                '<img  class="img-attr" src='+single.photo+' alt="" width="100%" height="100%">'+
+                                '</div>'+
+                                '<div class="news_info">'+
+                                '<div class="news_title text-space">'+single.title+'</div>'+
+                            '<div class="news_time">'+
+                                '<div class="time_icon">'+
+                                '<img src="images/notice_time.png" alt="">'+
+                                '</div>'+
+                                '<div class="real-time">9:00 11-03</div>'+
+                            '<div class="read_count">阅读 1559</div>'+
+                            '</div>'+
+                            '</div>'+
+                            '</div>'+
+                        '</li>'
+                    addcontent.append(newroll);
                 }
             }
         }
