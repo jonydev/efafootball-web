@@ -52,21 +52,21 @@ function ShowAllMatchs() {
                             '</div>'+
                             '<div class="match-info">'+
                             '<div class="city">'+
-                            '<img class="city-img" src="images/赛事列表_城市_标识.png" alt="">'+
+                            '<img class="city-img" src="images/match_city.png" alt="">'+
                             '<a class="city-txt font2pt" href="javascript:;">武汉</a>'+
                             '</div>'+
                             '<div class="round">'+
-                            '<img class="round-img" src="images/赛事列表_进程_将开始（报名结束）_标识.png" alt="">'+
+                            '<img class="round-img" src="images/round.png" alt="">'+
                             '<a  class="round-txt font2pt" href="javascript:;">第'+round+'轮</a>'+
                             '</div>'+
                             '<div class="team-num">'+
-                            '<img class="team-numimg" src="images/赛事列表_参赛球队_标识.png" alt="">'+
+                            '<img class="team-numimg" src="images/match_team.png" alt="">'+
                             '<a class="team-numtxt font2pt" href="javascript:;">'+team_num+'</a>'+
                             '</div>'+
                             '</div>'+
                             '</div>'+
                             '<div class="match-detail-img">'+
-                                '<img src="images/内容_球队_前往.png" alt="" width="100%" height="100%">'+
+                                '<img src="images/goto_team.png" alt="" width="100%" height="100%">'+
                             '</div>'+
                         '</div>'+
                     '</li>';

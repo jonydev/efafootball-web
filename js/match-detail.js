@@ -8,19 +8,19 @@ $(document).ready(function () {
     match_id=Request["id"];
     $(".introduce a").addClass("text-green").removeClass("text-black");
     $(".introduce").find(".triangle-container").addClass("shift-triangle");
-    AddBillboardContent();
+    AddIntroduceContent();
 });
 $(document).on("click",".spreed",function () {
     $(this).closest("li").find(".match-date").toggleClass("hidden");
     $(this).closest("li").find("ul").toggleClass("hidden");
     if($(this).closest("li").find("ul").hasClass("hidden")){
-        $(this).attr("src","images/赛事_比赛详情_展开赛事栏_图标.png");
+        $(this).attr("src","images/spreed.png");
     }else {
-        $(this).attr("src","images/赛事_比赛详情_收起赛事栏_图标.png");
+        $(this).attr("src","images/respreed.png");
     }
 });
 $(document).on("click",".all-matchs li",function () {
-    window.location.href="http://localhost/efafootball-web/match-each.html?"
+    window.location.href="http://120.76.206.174:8080/efafootball-web/match-each.html?"
 })
 $(document).on("click",".shooter",function () {
     $(this).addClass(" background-green text-white");
@@ -37,7 +37,8 @@ $(".introduce a").click(function () {
     $(".title-container div").find(".triangle-container").removeClass("shift-triangle");
     $(this).addClass("text-green").removeClass("text-black");
     $(".introduce").find(".triangle-container").addClass("shift-triangle");
-    //AddIntroduceContent();
+    $(".all-profile").removeClass("hidden");
+    AddIntroduceContent();
 });
 $(".team a").click(function () {
     $(".title-container").find(".text-green").removeClass("text-green").addClass("text-black");
@@ -68,7 +69,11 @@ $(".billboard a").click(function () {
     AddBillboardContent();
 });
 function AddIntroduceContent() {
-    var allcontents=$(".all-contents").empty();
+    $(".all-profile").removeClass("hidden");
+    $(".all-points").addClass("hidden");
+    $(".all-billboard").addClass("hidden");
+    $(".all-schedule").addClass("hidden");
+    var allcontents=$(".all-profile").empty();
     var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/officeViewData?id="+match_id;
     $.ajax({
         type:"GET",
@@ -77,38 +82,49 @@ function AddIntroduceContent() {
         success:function (data) {
             console.log(data);
             var newroll=
-                '<div class="all-points">'+
-                '<div>'+
-                '<table>'+
-                '<tr class="table-head">'+
-                '<th style="width: 10%;text-align: center">排名</th>'+
-                '<th style="width: 20%;text-align: center">球队</th>'+
-                '<th style="width: 11%;text-align: center">场次</th>'+
-                '<th style="width: 6%;text-align: center">胜</th>'+
-                '<th style="width: 6%;text-align: center">平</th>'+
-                '<th style="width: 6%;text-align: center">负</th>'+
-                '<th style="width: 6%;text-align: center">进</th>'+
-                '<th style="width: 6%;text-align: center">失</th>'+
-                '<th style="width: 6%;text-align: center">净</th>'+
-                '<th style="width: 11%;text-align: center">积分</th>'+
-                '<th style="width: 6%;text-align: center">红</th>'+
-                '<th style="width: 6%;text-align: center">黄</th>'+
-                '</tr>'+
-                '<tr class="single-tr">'+
-                '<td><div class="up-grade"></div>'+
-                '<a style="float: left;margin-left: 2px;color: black;padding: 6px 0;" href="">1</a> <div style="float: right;padding: 12px 0;"><img class="up-img" src="images/积分榜_上升.png" alt="" width="100%" height="100%"></div>'+
-                '</td><td style="font-weight: 700">剑桥</td><td>23</td><td>11</td>'+
-                '<td>4</td><td>5</td><td>6</td><td>3</td><td>6</td><td style="font-weight: 800">56</td><td>4</td><td>5</td>'+
-                '</tr>'+
-                '<tr class="single-tr Sperate-line">'+
-                '<td ><div class="up-grade"></div>'+
-                '<a style="float: left;margin-left: 2px;color: black;padding: 6px 0;" href="">1</a> <div style="float: right;padding: 12px 0;"><img class="up-img" src="images/积分榜_上升.png" alt="" width="100%" height="100%"></div>'+
-                '</td ><td  style="font-weight: 700">剑桥</td><td>23</td><td>11</td>'+
-                '<td>4</td><td>5</td><td>6</td><td>3</td><td>6</td><td style="font-weight: 800">56</td><td>4</td><td>5</td>'+
-                '</tr>'+
-                '</table>'+
+            '<div class="all-profile ">'+
+                '<div class="profile-img">'+
+                '<img src="images/swiper2.jpg"  alt="" width="100%" height="100%">'+
                 '</div>'+
-                '</div>';
+                '<div class="match-profile-container">'+
+                '<div class="match-profile font3pt">赛事简介</div>'+
+                '<div style="background-color: white"><div class="match-introduce font2pt">光谷业余啊额are热热额阿尔而非二 热额</div></div>'+
+            '</div>'+
+            '<div class="match-rule-container">'+
+                '<div class="match-profile font3pt">规则简介</div>'+
+                '<div style="background-color: white"><div class="match-introduce font2pt">光谷业余啊额are热热额阿尔而非二 热额</div></div>'+
+            '</div>'+
+            '<div class="match-referee-container">'+
+                '<div class="match-profile font3pt">裁判简介</div>'+
+                '<div style="background-color: white"><div class="match-introduce font2pt">光谷业余啊额are热热额阿尔而非二 热额</div></div>'+
+            '</div>'+
+            '<div class="preview">'+
+                '<div class="preview-title font3pt">往期回顾</div>'+
+                '<ul>'+
+                '<li class="each-round">'+
+                '<div class="preview-roud font3pt">第一届</div>'+
+                '<div class="preview-rank font2pt"> <span style="color: #AEB2B3">冠军</span> 强势表达 / <span style="color: #AEB2B3"> 亚军</span> MIP / <span style="color: #AEB2B3"> 季军</span> 强势表达 </div>'+
+                '</li>'+
+                '<li class="each-round">'+
+                '<div class="preview-roud font3pt">第二届</div>'+
+                '<div class="preview-rank font2pt"> <span style="color: #AEB2B3">冠军</span> 强势表达 / <span style="color: #AEB2B3"> 亚军</span> MIP / <span style="color: #AEB2B3"> 季军</span> 强势表达 </div>'+
+                '</li>'+
+                '</ul>'+
+                '</div>'+
+                '<div class="famous-people">'+
+                '<div class="famous-people-title font3pt">名人堂</div>'+
+                '<ul>'+
+                '<li class="each-round">'+
+                '<div class="preview-roud font3pt">第一届</div>'+
+                '<div class="preview-rank font2pt"> <span style="color: #AEB2B3">最佳射手</span> 陈帅 强势表达 / <span style="color: #AEB2B3"> 最佳球员</span> 邓建坤 MIP </div>'+
+            '</li>'+
+            '<li class="each-round">'+
+                '<div class="preview-roud font3pt">第二届</div>'+
+                '<div class="preview-rank font2pt"> <span style="color: #AEB2B3">最佳射手</span> 陈帅 强势表达 / <span style="color: #AEB2B3"> 最佳球员</span> 邓建坤 MIP </div>'+
+            '</li>'+
+            '</ul>'+
+            '</div>'+
+            '</div>';
             allcontents.append(newroll);
         }
     });
@@ -165,6 +181,7 @@ function AddMatchContent() {
     $(".all-schedule").removeClass("hidden");
     $(".all-points").addClass("hidden");
     $(".all-billboard").addClass("hidden");
+    $(".all-profile").addClass("hidden");
     var allcontents=$(".all-schedule ul").empty();
     var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/getSchedule?officeId="+match_id;
     $.ajax({
@@ -180,7 +197,7 @@ function AddMatchContent() {
                     '<li value="">'+
                         '<div class="round">'+
                         '<p class="round-num">第'+rank+'轮</p>'+
-                        '<img class="spreed" src="images/赛事_比赛详情_收起赛事栏_图标.png" alt="" width="100%" height="100%">'+
+                        '<img class="spreed" src="images/respreed.png" alt="" width="100%" height="100%">'+
                         '</div>'+
                         '<div class="match-date">'+
                         '<p class="font3pt">11月2日 星期六</p>'+
@@ -193,14 +210,14 @@ function AddMatchContent() {
                                 '<div class="team-results">'+
                                 '<div class="team-a">'+
                                 '<a class="team-atxt text-black" href="">红郡FC</a>'+
-                                '<img class="team-aimg" src="images/赛事列表_参赛球队_标识.png" alt="" width="100%" height="100%" >'+
+                                '<img class="team-aimg" src="images/match_choose.png" alt="" width="100%" height="100%" >'+
                                 '</div>'+
                                 '<div class="result">'+
                                 '<span class="result-a background-grey93">10:10</span><br/>'+
                                 '<span class="result-b ">已结束</span>'+
                                 '</div>'+
                                 '<div class="team-b">'+
-                                '<img class="team-bimg" src="images/赛事列表_标识_EFA.png" alt="" width="100%" height="100%">'+
+                                '<img class="team-bimg" src="images/match_choose.png" alt="" width="100%" height="100%">'+
                                 '<a class="team-btxt text-black" href="">MIP</a>'+
                                 '</div>'+
                                 '</div>'+
@@ -221,6 +238,7 @@ function AddPointsContent(){
     $(".all-points").removeClass("hidden");
     $(".all-billboard").addClass("hidden");
     $(".all-schedule").addClass("hidden");
+    $(".all-profile").addClass("hidden");
     var allcontents=$("table").empty();
     var tablehead=
         '<tr class="table-head">'+
@@ -280,6 +298,7 @@ function AddBillboardContent() {
     $(".all-billboard").removeClass("hidden");
     $(".all-points").addClass("hidden");
     $(".all-schedule").addClass("hidden");
+    $(".all-profile").addClass("hidden");
     var allcontents=$("table").empty();
     var tablehead=
         '<tr>'+
@@ -306,7 +325,7 @@ function AddBillboardContent() {
                         '<tr class="first-tr">'+
                             '<td>'+rank+'</td>'+
                             '<td colspan="2">'+
-                            '<img style="float: left;margin-left: 10px;" class="first-shooter" src="images/赛事_比赛进程_首发_默认头像_图标.png" alt="" width="100%" height="100%">'+
+                            '<img style="float: left;margin-left: 10px;" class="first-shooter" src="images/default_head.png" alt="" width="100%" height="100%">'+
                             '<div style="margin-left: 10px;float: left;margin-top: 22px;text-align: left">'+
                             '<div>'+single.name+'</div>'+
                             '<div style="color: #BBBEBD">'+single.teamName+'</div>'+
