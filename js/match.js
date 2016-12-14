@@ -12,6 +12,13 @@ $(document).on("click",".single-match",function () {
 $(".search-div").click(function () {
     $(".search-top").addClass("hidden");
 });
+$(".introduce a").click(function () {
+    $(".title-container").find(".text-green").removeClass("text-green").addClass("text-black");
+    $(".title-container div").find(".triangle-container").removeClass("shift-triangle");
+    $(this).addClass("text-green").removeClass("text-black");
+    $(".introduce").find(".triangle-container").addClass("shift-triangle");
+    //AddIntroduceContent();
+});
 
 function searchTeambyName() {
     //添加商品搜索处理

@@ -114,3 +114,4 @@ ul{margin: 0;padding: 0;list-style: none;margin-bottom: 0;}
 .direction-r img{width: 17px;height: 17px;float: left;margin-left: 20px;}
 .direction-r-name{float: left;margin-left: 20px;font-size: 6pt;text-align: left;}
 .direction-r-time{float: right;margin-right: 20px;font-size: 6pt;}
+.shift-triangle{position: absolute;left: 35px;bottom:0;width: 0;  height: 0;  border-left: 4px solid transparent;  border-right: 4px solid transparent;  border-bottom: 6px solid #2e992e; }
