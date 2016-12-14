@@ -1,4 +1,4 @@
-ul{margin: 0;padding: 0;list-style: none;}
+ ul{margin: 0;padding: 0;list-style: none;}
 .title-container{position: relative;margin-top: 5px;margin-left: 5px;margin-right: 5px;height: 38px;}
 .introduce{width: 20%;float: left;padding-left: 20px;padding-top: 12px;position: relative}
 .team{width: 20%;float: left;padding-left: 20px;padding-top: 12px;position: relative}
@@ -12,9 +12,9 @@ ul{margin: 0;padding: 0;list-style: none;}
 .match-date{text-align: center;background-color: #12283c;color: white;height: 25px;padding-top:5px; font-size: 18px;}
 .team-results{position: relative;width: 100%;background-color: white;height: 52px;border-bottom: 1px solid #f2f5f6;}
 .team-a{float: left;width: 41%;padding-left: 25px;padding-top: 7px;}
-.result{float: left;text-align: center;width: 18%;padding-top: 7px;}
-.result-a{height: 25px;font-size: 16px;}
-.result-b{height: 13px;font-size: 6px;}
+.result{float: left;text-align: center;width: 18%;}
+.result-a{height: 25px;font-size: 22px;}
+.result-b{height: 13px;font-size: 2px;}
 .team-b{float: right;width: 41%;padding-right: 25px;padding-top: 7px;}
 .team-atxt{float: left;height: 38px;line-height: 38px;}
 .team-aimg{width: 35px;height: 35px;margin-right: 10px;float: right}
@@ -50,3 +50,16 @@ ul{margin: 0;padding: 0;list-style: none;}
 .up-img{width:11px;height: 5px;float: right; }
 .stay-img{width:6px;height: 6px;float: right;}
 .Sperate-line{border-bottom: 2px solid #2e992e;}
+
+.profile-img{margin: 5px 5px 0px 5px;height:203px; }
+.match-profile-container{margin: 5px 5px 0px 5px;}
+.match-profile{height: 38px;background-color:#2e992e;text-align: center;line-height: 38px; color: white;}
+.match-introduce{padding:13px 19px 13px 19px;color: black}
+.match-rule-container{margin: 5px 5px 0px 5px;}
+.match-referee-container{margin: 5px 5px 0px 5px;}
+.preview{margin: 5px 5px 0px 5px; }
+.preview-roud{background-color:white;height: 38px;text-align: center;line-height: 38px;margin-bottom: 5px;}
+.preview-rank{padding:13px 19px 13px 19px;color: black;background-color: white;text-align: center;}
+.each-round{margin-bottom: 5px;}
+.preview-title,.famous-people-title{height: 38px;line-height: 38px;background-color: #3D85CD;text-align: center;}
+.famous-people{margin: 0px 5px 0px 5px;}

@@ -3,19 +3,12 @@
  */
 
 $(document).ready(function (){
-    var swiper = new Swiper('.swiper-container', {
-        pagination: '.swiper-pagination',
-        nextButton: '.swiper-button-next',
-        prevButton: '.swiper-button-prev',
-        paginationClickable: true,
-        spaceBetween: 30,
-        centeredSlides: true,
-        autoplay: 2500,
-        autoplayDisableOnInteraction: false
-    });
     SetSwiper();
     SetContent();
 });
+$(document).on("click",".swiper-slide",function () {
+    window.location.href=$(this).attr("value");
+})
 function SetSwiper() {
     var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/bulletinData";
     $.ajax({
@@ -24,22 +17,32 @@ function SetSwiper() {
             var myobject=eval(data);
             var swipercontent=$(".swiper-wrapper");
             swipercontent.empty();
+            var content='';
             //增加首页滑动页面
             for (var i=0;i<myobject.length;i++){
                 var singleobj=myobject[i];
-                var content=
-                    '<div class="swiper-slide" value='+singleobj.url+'>'+
+                content+=
+                    '<div class="swiper-slide" id="swiper" value='+singleobj.url+'>'+
                         '<img src='+singleobj.photo+' alt="" width="100%" height="100%">'+
                     '</div>';
-                swipercontent.append(content);
             }
+            swipercontent.append(content);
+            var swiper = new Swiper('.swiper-container', {
+                pagination: '.swiper-pagination',
+                nextButton: '.swiper-button-next',
+                prevButton: '.swiper-button-prev',
+                paginationClickable: true,
+                spaceBetween: 30,
+                centeredSlides: true,
+                autoplay: 2500,
+                autoplayDisableOnInteraction: false
+            });
         }
     })
 }
 function SetContent() {
-    debugger;
     //拉数据
-    var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/newsData?id=1";
+    var url="http://120.76.123.140/index.php?s=/mob/weibo/news";
     $.ajax(
         {
             url: url,
@@ -54,16 +57,16 @@ function SetContent() {
                         '<li value='+single.id+'>'+
                             '<div class="single_new background-white">'+
                                 '<div class="news_img">'+
-                                '<img  class="img-attr" src='+single.photo+' alt="" width="100%" height="100%">'+
+                                '<img  class="img-attr" src='+single.pic+' alt="" width="100%" height="100%">'+
                                 '</div>'+
                                 '<div class="news_info">'+
-                                '<div class="news_title text-space">'+single.title+'</div>'+
+                                '<div class="news_title text-space">'+single.profile+'</div>'+
                             '<div class="news_time">'+
                                 '<div class="time_icon">'+
                                 '<img src="images/notice_time.png" alt="">'+
                                 '</div>'+
-                                '<div class="real-time">9:00 11-03</div>'+
-                            '<div class="read_count">阅读 1559</div>'+
+                                '<div class="real-time">'+single.date+'</div>'+
+                            '<div class="read_count">阅读 '+single.view_count+'</div>'+
                             '</div>'+
                             '</div>'+
                             '</div>'+
