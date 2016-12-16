@@ -3,7 +3,7 @@
 .choose-matchImg{width: 25px;height: 24px;float: left;margin-left: 25%;margin-top: 6px}
 .create-team{width: 50%;float: left;height: 100%}
 .create-teamImg{width: 25px;height:24px;float: left;margin-left: 25%;margin-top: 6px;}
-.choose-matchTxt{display: block; float: left;height: 38px;line-height: 38px;margin-left: 19px;font-size: 3pt}
+.choose-matchTxt{display: block; float: left;height: 38px;line-height: 38px;margin-left: 19px;font-size: 18px}
 .create-teamTxt{float: left;height: 38px;line-height: 38px;margin-left: 19px;font-size: 3pt}
 input::-webkit-input-placeholder{text-align: center;}
 .search-div{padding-top: 5px;padding-left: 5px;padding-right: 5px}
@@ -16,4 +16,4 @@ ul{margin: 0;padding: 0;list-style: none;}
 .team-num{float: right;font-size: 3pt;margin-top: 26px;margin-right: 40px;height: 25px;line-height: 25px;}
 .search-top{position: absolute;z-index: 999999;margin-left: 45%;margin-top: 18px;}
 .search-icon{width: 25px;height: 25px;}
-.search-text{color: #cacccb;font-size: 3pt}
+.search-text{color: #cacccb;font-size: 18px}
