@@ -1,0 +1,19 @@
+ul{margin: 0;padding: 0;list-style: none;}
+.login-container{  position: relative;  height: 38px;  margin-top: 5px;  margin-left: 5px;  margin-right: 5px;  }
+.login{  width: 50%;  height: 100%;  float: left;  }
+.login-Img{  width: 25px;  height: 24px;  float: left;  padding-left: 22%;  margin-top: 6px;  }
+.login-Txt{  display:block;    height:38px;  line-height:38px;    font-size: 18px; text-align: center }
+.sign-apply{  width: 50%;  float: left;  }
+.sign-Img{  width: 25px;  height: 24px;  float: left;  padding-left: 22%;  margin-top: 6px;  }
+.sign-Txt{  display:block;    height:38px;  line-height:38px;    font-size: 18px; text-align: center }
+.player-img{position: relative;height: 203px;padding-bottom: 33px;padding-top: 33px; background-color: #f2f5f6;margin: 5px 5px 0px 5px;text-align: center;}
+.player-head{width: 145px;height: 145px; border-radius:145px; }
+.team-guide,.person-guide{margin: 5px 5px 0px 5px; }
+.team-guide-title,.person-title{height: 25px;line-height: 25px;background-color: #12283D;text-align: center;color: white}
+.each-item{margin-bottom: 5px;background-color: white;height: 38px;line-height: 38px;}
+.attr-name{margin-left: 14px;}
+.attr-txt{margin-left:10px;}
+.own-team-img{width: 57px;height: 57px;text-align: center;margin-bottom: 20px;}
+.own-match-img{width: 57px;height: 57px;text-align: center;margin-bottom: 20px;}
+.team-item{margin-bottom: 5px;background-color: white;height: 77px;line-height: 77px;}
+.goto-img{width:20px;height: 20px;text-align: center;margin-right: 20px;float: right }
