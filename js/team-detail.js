@@ -32,3 +32,11 @@ $(".schedule a").click(function () {
     $(".all-profile").addClass("hidden");
     $(".all-player").addClass("hidden");
 });
+
+function checkFile(){
+    var file = document.getElementById("loadfile").value;
+    console.log(file);
+    if(file){
+        document.getElementById("profile-img").src=file;
+    }
+}

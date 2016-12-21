@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+
+    <link rel="stylesheet" href="css/mine-sign.css">
+    <link rel="stylesheet" href="css/global.css">
+    <link href="//cdn.bootcss.com/tether/1.3.6/css/tether.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body class="background-grey93 web-size">
+    <div class="sign_up font2pt">
+        <div class="player-img">
+            <img src="images/default_head.png" alt="" class="player-head" id="profile-img" width="100%" height="100%">
+            <input type="file" id="loadfile" onchange="checkFile()" style="position: absolute;filter:alpha(opacity=0);opacity:0;width:170px;height:145px;top: 33px;left: 26%;" >
+        </div>
+        <div class="team-guide">
+            <div class="team-guide-title font3pt">所属球队</div>
+            <ul>
+                <li class="team-item">
+                    <table width="100%">
+                        <tr class="font2pt">
+                            <td width="30%"><div class="attr-name own-team-img"><img src="images/default_team.png"  alt="" width="100%" height="100%"></div></td>
+                            <td width="70%"><div class="attr-txt ">-</div></td>
+                        </tr>
+                    </table>
+                </li>
+            </ul>
+        </div>
+        <div class="person-guide">
+            <div class="person-title font3pt">个人</div>
+            <ul>
+                <li class="each-item">
+                    <table width="100%">
+                        <tr class="font2pt">
+                            <td width="30%"><div class="attr-name">姓名</div></td>
+                            <td width="70%"><div class="attr-txt"><input type="text" style="height: 30px;line-height: 30px;border: none;width: 100%;" placeholder="请填写真实姓名"></div></td>
+                        </tr>
+                    </table>
+                </li>
+                <li class="each-item">
+                    <table width="100%">
+                        <tr class="font2pt">
+                            <td width="30%"><div class="attr-name">证件号码</div></td>
+                            <td width="70%"><div class="attr-txt"><input type="text" style="height: 30px;line-height: 30px;border: none;width: 100%;" placeholder="身份证/护照"></div></td>
+                        </tr>
+                    </table>
+                </li>
+                <li class="each-item">
+                    <table width="100%">
+                        <tr class="font2pt">
+                            <td width="30%"><div class="attr-name">性别</div></td>
+                            <td width="70%"><div class="attr-txt "><input type="text" style="height: 30px;line-height: 30px;border: none;width: 100%;" placeholder="请选择" onfocus="choose_sex()" id="sex"></div></td>
+                        </tr>
+                    </table>
+                </li>
+                <li class="each-item ">
+                    <table width="100%">
+                        <tr class="font2pt">
+                            <td width="30%"><div class="attr-name">场上位置 </div></td>
+                            <td width="70%"><div class="attr-txt "><input type="text" style="height: 30px;line-height: 30px;border: none;width: 100%;" placeholder="请选择" onfocus="choose_position()" id="position"></div></td>
+                        </tr>
+                    </table>
+                </li>
+                <li class="each-item">
+                    <table width="100%">
+                        <tr class="font2pt">
+                            <td width="30%"><div class="attr-name">地区</div></td>
+                            <td width="70%"><div class="attr-txt"><input type="text" style="height: 30px;line-height: 30px;border: none;width: 100%;" placeholder="请选择" onfocus="choose_city()"></div></td>
+                        </tr>
+                    </table>
+                </li>
+                <li class="each-item">
+                    <table width="100%">
+                        <tr class="font2pt">
+                            <td width="30%"><div class="attr-name">修改密码</div></td>
+                            <td width="70%"><div class="attr-txt "><img src="images/goto_player.png" alt="" class="goto-img" width="100%" height="100%"></div></td>
+                        </tr>
+                    </table>
+                </li>
+
+            </ul>
+        </div>
+        <div class="person-guide">
+            <div class="person-title font3pt">赛季成绩</div>
+            <ul>
+                <li class="team-item">
+                    <table width="100%">
+                        <tr class="font2pt">
+                            <td width="25%"><div class="attr-name own-match-img"><img src="images/default_team.png"  alt="" width="100%" height="100%"></div></td>
+                            <td width="75%"><div class=" " style="font-size: 15px;" >-</div></td>
+                        </tr>
+                    </table>
+                </li>
+                <li class="each-item">
+                    <table width="100%">
+                        <tr class="font2pt">
+                            <td width="30%"><div class="attr-name">出场时间</div></td>
+                            <td width="70%"><div class="attr-txt ">0/分钟</div></td>
+                        </tr>
+                    </table>
+                </li>
+                <li class="each-item">
+                    <table width="100%">
+                        <tr class="font2pt">
+                            <td width="30%"><div class="attr-name"></div></td>
+                            <td width="70%"><div class="attr-txt ">首发 /0  替补 /0 缺勤 /0</div></td>
+                        </tr>
+                    </table>
+                </li>
+                <li class="each-item ">
+                    <table width="100%">
+                        <tr class="font2pt">
+                            <td width="30%"><div class="attr-name"></div></td>
+                            <td width="70%"><div class="attr-txt ">进球 /0  黄牌 /0 红牌 /0</div></td>
+                        </tr>
+                    </table>
+                </li>
+                <li class="each-item">
+                    <table width="100%">
+                        <tr class="font2pt">
+                            <td width="30%"><div class="attr-name">我的赛程</div></td>
+                            <td width="70%"><div class="attr-txt "><img src="images/goto_player.png" alt="" class="goto-img" width="100%" height="100%"></div></td>
+                            <!--<td width="70%"><div class="attr-txt "><input type="text" style="height: 30px;line-height: 30px;border: none;margin-left: 10px;" placeholder="请填写真实姓名"></div></td>-->
+                        </tr>
+                    </table>
+                </li>
+            </ul>
+        </div>
+        <div class="person-guide">
+            <div class="person-title font3pt">关于我们</div>
+            <ul>
+                <li class="each-item">
+                    <table width="100%">
+                        <tr class="font2pt">
+                            <td width="30%"><div class="attr-name">意见反馈</div></td>
+                            <td width="70%"><div class="attr-txt "><img src="images/goto_player.png" alt="" class="goto-img" width="100%" height="100%"></div></td>
+                            <!--<td width="70%"><div class="attr-txt "><input type="text" style="height: 30px;line-height: 30px;border: none;margin-left: 10px;" placeholder="请填写真实姓名"></div></td>-->
+                        </tr>
+                    </table>
+                </li>
+                <li class="each-item">
+                    <table width="100%">
+                        <tr class="font2pt">
+                            <td width="30%"><div class="attr-name">联系我们</div></td>
+                            <td width="70%"><div class="attr-txt "><img src="images/goto_player.png" alt="" class="goto-img" width="100%" height="100%"></div></td>
+                        </tr>
+                    </table>
+                </li>
+                <li class="each-item">
+                    <table width="100%">
+                        <tr class="font2pt">
+                            <td width="30%"><div class="attr-name">版本信息</div></td>
+                            <td width="70%"><div class="attr-txt ">V1.1</div></td>
+                        </tr>
+                    </table>
+                </li>
+                <li class="each-item ">
+                    <table width="100%">
+                        <tr class="font2pt">
+                            <td width="30%"><div class="attr-name">清除缓存 </div></td>
+                            <td width="70%"><div class="attr-txt ">500MB</div></td>
+                        </tr>
+                    </table>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</div>
+    <div class="top-div background-grey93 hidden">
+        <ul class="position-ul hidden">
+            <li class="sex-item">
+            <table width="100%">
+                <tr class="font2pt">
+                    <td width="30%"><div class="">GK / 守门员</div></td>
+                </tr>
+            </table>
+        </li>
+            <li class="sex-item">
+                <table width="100%">
+                    <tr class="font2pt">
+                        <td width="30%"><div class="">DC / 中后卫</div></td>
+                    </tr>
+                </table>
+            </li>
+            <li class="sex-item">
+                <table width="100%">
+                    <tr class="font2pt">
+                        <td width="30%"><div class="">DL / 左后卫</div></td>
+                    </tr>
+                </table>
+            </li>
+            <li class="sex-item">
+                <table width="100%">
+                    <tr class="font2pt">
+                        <td width="30%"><div class="">DR / 右后卫</div></td>
+                    </tr>
+                </table>
+            </li>
+            <li class="sex-item">
+                <table width="100%">
+                    <tr class="font2pt">
+                        <td width="30%"><div class="">DMC / 防守型中场</div></td>
+                    </tr>
+                </table>
+            </li>
+            <li class="sex-item">
+                <table width="100%">
+                    <tr class="font2pt">
+                        <td width="30%"><div class="">MC / 中场</div></td>
+                    </tr>
+                </table>
+            </li>
+            <li class="sex-item">
+                <table width="100%">
+                    <tr class="font2pt">
+                        <td width="30%"><div class="">MR / 右前卫</div></td>
+                    </tr>
+                </table>
+            </li>
+            <li class="sex-item">
+                <table width="100%">
+                    <tr class="font2pt">
+                        <td width="30%"><div class="">ML / 左前卫</div></td>
+                    </tr>
+                </table>
+            </li>
+            <li class="sex-item">
+                <table width="100%">
+                    <tr class="font2pt">
+                        <td width="30%"><div class="">AMC / 攻击型中场</div></td>
+                    </tr>
+                </table>
+            </li>
+            <li class="sex-item">
+                <table width="100%">
+                    <tr class="font2pt">
+                        <td width="30%"><div class="">FWL / 左边锋</div></td>
+                    </tr>
+                </table>
+            </li>
+            <li class="sex-item">
+                <table width="100%">
+                    <tr class="font2pt">
+                        <td width="30%"><div class="">FWR / 右边锋</div></td>
+                    </tr>
+                </table>
+            </li>
+            <li class="sex-item">
+                <table width="100%">
+                    <tr class="font2pt">
+                        <td width="30%"><div class="">CF / 前锋</div></td>
+                    </tr>
+                </table>
+            </li>
+        </ul>
+        <ul class="sex-ul hidden">
+            <li class="sex-item">
+                <table width="100%">
+                    <tr class="font2pt">
+                        <td width="30%"><div class="">男</div></td>
+                    </tr>
+                </table>
+            </li>
+            <li class="sex-item">
+                <table width="100%">
+                    <tr class="font2pt">
+                        <td width="30%"><div class="">女</div></td>
+                    </tr>
+                </table>
+            </li>
+        </ul>
+        <ul class="save-cancel ">
+            <li class="save-item">
+                <table width="100%">
+                    <tr class="font2pt">
+                        <td width="30%"><div class="">保存</div></td>
+                    </tr>
+                </table>
+            </li>
+            <li class="cancel-item">
+                <table width="100%">
+                    <tr class="font2pt">
+                        <td width="30%"><div class="">取消</div></td>
+                    </tr>
+                </table>
+            </li>
+        </ul>
+    </div>
+    <script src="//cdn.bootcss.com/tether/1.3.6/js/tether.min.js"></script>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script  type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script  type="text/javascript" src="js/global.js"></script>
+    <script  type="text/javascript" src="js/mine.js"></script>
+</body>
+</html>

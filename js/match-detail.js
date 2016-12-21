@@ -45,7 +45,7 @@ $(".team a").click(function () {
     $(".title-container div").find(".triangle-container").removeClass("shift-triangle");
     $(this).addClass("text-green").removeClass("text-black");
     $(".team").find(".triangle-container").addClass("shift-triangle");
-    //AddTeamContent();
+    AddTeamContent();
 });
 $(".schedule a").click(function () {
     $(".title-container").find(".text-green").removeClass("text-green").addClass("text-black");
@@ -73,13 +73,14 @@ function AddIntroduceContent() {
     $(".all-points").addClass("hidden");
     $(".all-billboard").addClass("hidden");
     $(".all-schedule").addClass("hidden");
-    var allcontents=$(".all-profile").empty();
+    $(".all-team").addClass("hidden");
     var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/officeViewData?id="+match_id;
     $.ajax({
         type:"GET",
         url:url,
         dataType:"json",
         success:function (data) {
+            var allcontents=$(".all-profile").empty();
             console.log(data);
             var newroll=
             '<div class="all-profile ">'+
@@ -131,45 +132,58 @@ function AddIntroduceContent() {
 }
 
 function AddTeamContent() {
-    var allcontents=$(".all-contents").empty();
+    $(".all-team").removeClass("hidden");
+    $(".all-points").addClass("hidden");
+    $(".all-billboard").addClass("hidden");
+    $(".all-schedule").addClass("hidden");
+    $(".all-profile").addClass("hidden");
     var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/officeViewData?id="+match_id;
     $.ajax({
         type:"GET",
         url:url,
         dataType:"json",
         success:function (data) {
+            var allcontents=$(".all-team").empty();
             console.log(data);
             var newroll=
-                '<div class="all-points">'+
+            '<div class="all-team">'+
                 '<div>'+
-                '<table>'+
-                '<tr class="table-head">'+
-                '<th style="width: 10%;text-align: center">排名</th>'+
-                '<th style="width: 20%;text-align: center">球队</th>'+
-                '<th style="width: 11%;text-align: center">场次</th>'+
-                '<th style="width: 6%;text-align: center">胜</th>'+
-                '<th style="width: 6%;text-align: center">平</th>'+
-                '<th style="width: 6%;text-align: center">负</th>'+
-                '<th style="width: 6%;text-align: center">进</th>'+
-                '<th style="width: 6%;text-align: center">失</th>'+
-                '<th style="width: 6%;text-align: center">净</th>'+
-                '<th style="width: 11%;text-align: center">积分</th>'+
-                '<th style="width: 6%;text-align: center">红</th>'+
-                '<th style="width: 6%;text-align: center">黄</th>'+
-                '</tr>'+
-                '<tr class="single-tr">'+
-                '<td><div class="up-grade"></div>'+
-                '<a style="float: left;margin-left: 2px;color: black;padding: 6px 0;" href="">1</a> <div style="float: right;padding: 12px 0;"><img class="up-img" src="images/积分榜_上升.png" alt="" width="100%" height="100%"></div>'+
-                '</td><td style="font-weight: 700">剑桥</td><td>23</td><td>11</td>'+
-                '<td>4</td><td>5</td><td>6</td><td>3</td><td>6</td><td style="font-weight: 800">56</td><td>4</td><td>5</td>'+
-                '</tr>'+
-                '<tr class="single-tr Sperate-line">'+
-                '<td ><div class="up-grade"></div>'+
-                '<a style="float: left;margin-left: 2px;color: black;padding: 6px 0;" href="">1</a> <div style="float: right;padding: 12px 0;"><img class="up-img" src="images/积分榜_上升.png" alt="" width="100%" height="100%"></div>'+
-                '</td ><td  style="font-weight: 700">剑桥</td><td>23</td><td>11</td>'+
-                '<td>4</td><td>5</td><td>6</td><td>3</td><td>6</td><td style="font-weight: 800">56</td><td>4</td><td>5</td>'+
-                '</tr>'+
-                '</table>'+
+                '<div class="choose-create-container hidden">'+
+                '<div class="choose-match background-green ">'+
+                '<div class="choose-matchImg">'+
+                '<img src="images/join_team.png" alt="" height="100%" width="100%">'+
+                '</div>'+
+                '<span  class="choose-matchTxt text-white">选择赛事</span>'+
+                '</div>'+
+                '<div class="create-team light-white">'+
+                '<div class="create-teamImg">'+
+                '<img src="images/tab_button_profile_sel.png" alt="" width="100%" height="100%">'+
+                '</div>'+
+                '<span  class="create-teamTxt text-green">创建球队</span>'+
+                '</div>'+
+                '</div>'+
+                '<div class="search-top">'+
+                '<img class="search-icon" src="images/team_search.png" alt="" width="100%" height="100%">'+
+                '<span class="search-text">搜索</span>'+
+                '</div>'+
+                '<div class="search-div">'+
+                '<form class="bs-example bs-example-form" role="form">'+
+                '<div class=" input-group-lg search-input">'+
+                '<input type="text" onchange="hidden_icon()" class="form-control " placeholder="" value="" id="search">'+
+                '</div>'+
+                '</form>'+
+                '</div>'+
+                '<div>'+
+                '<ul class="team-ul">'+
+                '<li class="single-team background-white" id="2999">'+
+                '<img class="team-Img" src="images/join_team.png" alt="" width="100%" height="100%">'+
+                '<a class="team-name" href="javascript:;">华中科技大学队</a>'+
+                '<img class="team-detail" src="images/goto_team.png" alt="" width="100%" height="100%">'+
+                '<a class="team-num" href="javascript:;">34</a>'+
+                '<img class="team-num-img" src="images/player_number.png" alt="" width="100%" height="100%">'+
+                '</li>'+
+                '</ul>'+
+                '</div>'+
                 '</div>'+
                 '</div>';
             allcontents.append(newroll);
@@ -182,13 +196,14 @@ function AddMatchContent() {
     $(".all-points").addClass("hidden");
     $(".all-billboard").addClass("hidden");
     $(".all-profile").addClass("hidden");
-    var allcontents=$(".all-schedule ul").empty();
-    var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/getSchedule?officeId="+match_id;
+    $(".all-team").addClass("hidden");
+    var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/getScheduleByTitle?officeId="+match_id;
     $.ajax({
         type:"GET",
         url:url,
         dataType:"json",
         success:function (data) {
+            var allcontents=$(".all-schedule ul").empty();
             console.log(data);
             var single=eval(data.rows);
             for(var i=0;i<5;i++){
@@ -239,6 +254,7 @@ function AddPointsContent(){
     $(".all-billboard").addClass("hidden");
     $(".all-schedule").addClass("hidden");
     $(".all-profile").addClass("hidden");
+    $(".all-team").addClass("hidden");
     var allcontents=$("table").empty();
     var tablehead=
         '<tr class="table-head">'+
@@ -274,7 +290,7 @@ function AddPointsContent(){
                  newroll=
                      '<tr class="single-tr Sperate-line">'+
                          '<td ><div class="up-grade"></div>'+
-                         '<a style="float: left;margin-left: 2px;color: black;padding: 6px 0;" href="">'+rank+'</a> <div style="float: right;padding: 12px 0;"><img class="up-img" src="images/积分榜_上升.png" alt="" width="100%" height="100%"></div>'+
+                         '<a style="float: left;margin-left: 2px;color: black;padding: 6px 0;" href="">'+rank+'</a> <div style="float: right;padding: 12px 0;"><img class="up-img" src="images/points_up.png" alt="" width="100%" height="100%"></div>'+
                          '</td ><td  style="font-weight: 700 overflow:hidden">'+single.team.name+'</td><td>'+total+'</td><td>'+single.won+'</td>'+
                          '<td>'+single.even+'</td><td>'+single.beaten+'</td><td>'+single.goal+'</td><td>'+single.lost+'</td><td>'+realball+'</td><td style="font-weight: 800">'+single.point+'</td><td>'+single.red+'</td><td>'+single.yellow+'</td>'+
                      '</tr>';
@@ -283,7 +299,7 @@ function AddPointsContent(){
                     newroll=
                         '<tr class="single-tr ">'+
                         '<td ><div class="up-grade"></div>'+
-                        '<a style="float: left;margin-left: 2px;color: black;padding: 6px 0;" href="">'+rank+'</a> <div style="float: right;padding: 12px 0;"><img class="up-img" src="images/积分榜_上升.png" alt="" width="100%" height="100%"></div>'+
+                        '<a style="float: left;margin-left: 2px;color: black;padding: 6px 0;" href="">'+rank+'</a> <div style="float: right;padding: 12px 0;"><img class="up-img" src="images/points_up.png" alt="" width="100%" height="100%"></div>'+
                         '</td ><td  style="font-weight: 700">'+single.team.name+'</td><td>'+total+'</td><td>'+single.won+'</td>'+
                         '<td>'+single.even+'</td><td>'+single.beaten+'</td><td>'+single.goal+'</td><td>'+single.lost+'</td><td>'+realball+'</td><td style="font-weight: 800">'+single.point+'</td><td>'+single.red+'</td><td>'+single.yellow+'</td>'+
                         '</tr>';
@@ -299,6 +315,7 @@ function AddBillboardContent() {
     $(".all-points").addClass("hidden");
     $(".all-schedule").addClass("hidden");
     $(".all-profile").addClass("hidden");
+    $(".all-team").addClass("hidden");
     var allcontents=$("table").empty();
     var tablehead=
         '<tr>'+
@@ -381,4 +398,7 @@ function AddRedyellowContent() {
 }
 function SpreedMatch() {
     $()
+}
+function hidden_icon() {
+    $(".search-top").addClass("hidden");
 }

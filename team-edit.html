@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>编辑球队</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+
+    <link rel="stylesheet" href="css/team-detail.css">
+    <link rel="stylesheet" href="css/global.css">
+    <link href="//cdn.bootcss.com/tether/1.3.6/css/tether.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body class="background-grey93 web-size">
+<div class="all-profile">
+    <div class="join-container ">
+        <div class="join-team light-white ">
+            <span  class="join-teamTxt text-green">申请加入</span>
+        </div>
+        <div class="match-apply background-green">
+            <span  class="match-applyTxt text-white">编辑球队</span>
+        </div>
+    </div>
+    <div class="team-img " style="position: relative;text-align: center">
+        <img src="images/default_team.png" alt="" style="width: 136px;height: 136px;" width="100%" height="100%">
+        <input type="file" id="loadfile" onchange="checkFile()" style="position: absolute;filter:alpha(opacity=0);opacity:0;width:170px;height:145px;top: 33px;left: 26%;" >
+    </div>
+    <div class="team-guide">
+        <div class="guide-title font3pt">球队概况</div>
+        <ul>
+            <li class="each-item">
+                <table width="100%">
+                    <tr class="font6pt">
+                        <td width="30%"><div class="attr-name">中文全称</div></td>
+                        <td width="70%"><div class="attr-txt "><input type="text" style="height: 30px;line-height: 30px;border: none;width: 100%;" placeholder="未填写" value="红郡俱乐部"></div></td>
+                    </tr>
+                </table>
+            </li>
+            <li class="each-item">
+                <table width="100%">
+                    <tr class="font6pt">
+                        <td width="30%"><div class="attr-name">英文全称</div></td>
+                        <td width="70%"><div class="attr-txt "><input type="text" style="height: 30px;line-height: 30px;border: none;width: 100%;" placeholder="未填写" value="红郡俱乐部"></div></td>
+                    </tr>
+                </table>
+            </li>
+            <li class="each-item">
+                <table width="100%">
+                    <tr class="font6pt">
+                        <td width="30%"><div class="attr-name">简称  </div></td>
+                        <td width="70%"><div class="attr-txt "><input type="text" style="height: 30px;line-height: 30px;border: none;width: 100%;" placeholder="未填写（限5字以内）" value="红郡俱乐部"></div></td>
+                    </tr>
+                </table>
+            </li>
+            <li class="each-item ">
+                <table width="100%">
+                    <tr class="font6pt">
+                        <td width="30%"><div class="attr-name">赞助商 </div></td>
+                        <td width="70%"><div class="attr-txt "><input type="text" style="height: 30px;line-height: 30px;border: none;width: 100%;" placeholder="未填写" value="红郡俱乐部"></div></td>
+                    </tr>
+                </table>
+            </li>
+            <li class="each-item">
+                <table width="100%">
+                    <tr class="font6pt">
+                        <td width="30%"><div class="cloth-name">秋衣色彩</div></td>
+                        <td width="70%"><div class="cloth-txt "> <span class="home">主场</span> <div class="home-color" style="width: 23px;height: 23px;background: red;-moz-border-radius: 11px;-webkit-border-radius: 11px;border-radius: 11px;"></div> </div>
+                            <span class="rehome">客场</span> <div class="rehome-color" style="width: 23px;height: 23px;background: black;-moz-border-radius: 11px;-webkit-border-radius: 11px;border-radius: 11px;"></td>
+                    </tr>
+                </table>
+            </li>
+            <li class="each-item">
+                <table width="100%">
+                    <tr class="font6pt">
+                        <td width="30%"><div class="attr-name">平均年龄</div></td>
+                        <td width="70%"><div class="attr-txt ">30</div></td>
+                    </tr>
+                </table>
+            </li>
+
+        </ul>
+    </div>
+    <div class="best-shooter">
+        <div class="shooter-title font3pt">本赛季最佳射手</div>
+        <div class="shooter-info">
+            <div class="shooter-num">
+                <a href="javascript:;" style="color: black" >22</a>
+            </div>
+            <div class="shooter-head">
+                <img src="images/default_head.png"  alt="" width="100%" height="100%">
+            </div>
+            <div class="shooter-other">
+                <div class="name-goto"><a href="javascript:;" style="color: black" class="shooter-name">李鹏飞</a> <img src="images/goto_player.png" class="goto_player" alt="" width="100%" height="100%"></div>
+                <div class="shooter-score"><span>进球</span> 2 <span>点球</span> 2 <span>首发</span> 2 <span>替补</span> 0</div>
+            </div>
+        </div>
+    </div>
+    <div class="team-profile">
+        <div class="team-profile-title font3pt">球队简介</div>
+        <div class="team-profile-img">
+            <img src="images/swiper2.jpg" alt="" width="100%" height="100%">
+        </div>
+        <div style="background-color: white"><div class="team-introduce font2pt">光谷业余啊额are热热额阿尔而非二 热额光谷业余啊额are热热额阿尔而非二 热额光谷业余啊
+            额are热热额阿尔而非二 热额</div></div>
+        <!--<div style="background-color: white"><div class="team-introduce font6pt"><textarea type="text" onpropertychange= "this.style.posHeight=this.scrollHeight" style=";width:100%;line-height: 30px;border: none;overflow-y:visible ">"光谷业余啊额are热热额阿尔而非二 热额光谷业余啊额are热热额阿尔而非二 热额光谷业余啊额are热热额阿尔而非二 热额"</textarea></div></div>-->
+    </div>
+    <div class="history-achieve">
+        <div class="history-achieve-title font3pt">赛事历史战绩</div>
+        <ul class="font6pt">
+            <li class="each-item">
+                <table width="100%">
+                    <tr class="font6pt">
+                        <td width="15%"><div class="attr-name">2013</div></td>
+                        <td width="85%"><div  style="font-size: 12px;" class="attr-txt ">红郡足球俱乐部</div></td>
+                    </tr>
+                </table>
+            </li>
+            <li class="each-item">
+                <table width="100%">
+                    <tr class="font6pt">
+                        <td width="15%"><div class="attr-name">2014</div></td>
+                        <td width="85%"><div style="font-size: 12px;" class="attr-txt ">春季赛  冠军   夏季赛 冠军 季前赛 亚军</div></td>
+                    </tr>
+                </table>
+            </li>
+        </ul>
+    </div>
+</div>
+<script src="//cdn.bootcss.com/tether/1.3.6/js/tether.min.js"></script>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script  type="text/javascript" src="js/bootstrap.min.js"></script>
+<script  type="text/javascript" src="js/global.js"></script>
+<script  type="text/javascript" src="js/team-detail.js"></script>
+</body>
+</html>
