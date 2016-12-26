@@ -4,7 +4,7 @@
 var current_choose; //标记当前所设置的属性，0 表示设置性别 1表示设置位置
 $(document).ready(function (){
     $('#search').bind('input propertychange', function() {searchTeambyName();});
-    //ShowAllMatchs();
+    SetContent();
 });
 $(".login").click(function () {
     $(this).addClass("background-green ").removeClass("light-white");
@@ -70,4 +70,128 @@ function choose_position() {
 
 function choose_city() {
     //to do
+}
+
+function SetContent() {
+    //拉数据
+    var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/viewMember?loginId=ee49460c350d4b67a0de82c3146183f6";
+    $.ajax(
+        {
+            url: url,
+            success: function (data) {
+                // 解析json
+                var obj = eval(data.rows[0]);
+                console.log(obj);
+                var addcontent=$(".edit_profile").empty();
+                var photo="images/default_head.png";
+                // if(obj.photo!="") photo=obj.photo;
+                var newroll =
+                '<div class="player-img"> <img src='+photo+' alt="" class="player-head" width="100%" height="100%"> </div>'+
+                    '<div class="team-guide">'+
+                    '<div class="team-guide-title font3pt">所属球队</div>'+
+                    '<ul>'+
+                    '<li class="team-item">'+
+                    '<table width="100%">'+
+                    '<tr class="font2pt">'+
+                    '<td width="30%"><div class="attr-name own-team-img"><img src="images/default_team.png"  alt="" width="100%" height="100%"></div></td>'+
+                    '<td width="70%"><div class="attr-txt ">红郡足球俱乐部</div></td>'+
+                    '</tr>'+
+                    '</table>'+
+                    '</li>'+
+                    '</ul>'+
+                    '</div>'+
+                    '<div class="person-guide">'+
+                    '<div class="person-title font3pt">个人</div>'+
+                    '<ul>'+
+                    '<li class="each-item">'+
+                    '<table width="100%">'+
+                    '<tr class="font2pt">'+
+                    '<td width="30%"><div class="attr-name">姓名</div></td>'+
+                    '<td width="70%"><div class="attr-txt ">'+name+'</div></td>'+
+                    '</tr>'+
+                    '</table>'+
+                    '</li>'+
+                    '<li class="each-item">'+
+                    '<table width="100%">'+
+                    '<tr class="font2pt">'+
+                    '<td width="30%"><div class="attr-name">年龄</div></td>'+
+                    '<td width="70%"><div class="attr-txt ">32</div></td>'+
+                    '</tr>'+
+                    '</table>'+
+                    '</li>'+
+                    '<li class="each-item">'+
+                    '<table width="100%">'+
+                    '<tr class="font2pt">'+
+                    '<td width="30%"><div class="attr-name">性别</div></td>'+
+                    '<td width="70%"><div class="attr-txt ">男</div></td>'+
+                    '</tr>'+
+                    '</table>'+
+                    '</li>'+
+                    '<li class="each-item ">'+
+                    '<table width="100%">'+
+                    '<tr class="font2pt">'+
+                    '<td width="30%"><div class="attr-name">场上位置 </div></td>'+
+                    '<td width="70%"><div class="attr-txt ">MC</div></td>'+
+                    '</tr>'+
+                    '</table>'+
+                    '</li>'+
+                    '<li class="each-item">'+
+                    '<table width="100%">'+
+                    '<tr class="font2pt">'+
+                    '<td width="30%"><div class="attr-name">地区</div></td>'+
+                    '<td width="70%"><div class="attr-txt ">湖北 武汉</div></td>'+
+                '</tr>'+
+                '</table>'+
+                '</li>'+
+                '<li class="each-item">'+
+                    '<table width="100%">'+
+                    '<tr class="font2pt">'+
+                    '<td width="30%"><div class="attr-name">修改密码</div></td>'+
+                    '<td width="70%"><div class="attr-txt "><img src="images/goto_player.png" alt="" class="goto-img" width="100%" height="100%"></div></td>'+
+                    '</tr>'+
+                    '</table>'+
+                    '</li>'+
+                    '</ul>'+
+                    '</div>'+
+                    '<div class="person-guide">'+
+                    '<div class="person-title font3pt">关于我们</div>'+
+                    '<ul>'+
+                    '<li class="each-item">'+
+                    '<table width="100%">'+
+                    '<tr class="font2pt">'+
+                    '<td width="30%"><div class="attr-name">意见反馈</div></td>'+
+                    '<td width="70%"><div class="attr-txt "><img src="images/goto_player.png" alt="" class="goto-img" width="100%" height="100%"></div></td>'+
+                    '</tr>'+
+                    '</table>'+
+                    '</li>'+
+                    '<li class="each-item">'+
+                    '<table width="100%">'+
+                    '<tr class="font2pt">'+
+                    '<td width="30%"><div class="attr-name">联系我们</div></td>'+
+                    '<td width="70%"><div class="attr-txt "><img src="images/goto_player.png" alt="" class="goto-img" width="100%" height="100%"></div></td>'+
+                    '</tr>'+
+                    '</table>'+
+                    '</li>'+
+                    '<li class="each-item">'+
+                    '<table width="100%">'+
+                    '<tr class="font2pt">'+
+                    '<td width="30%"><div class="attr-name">版本信息</div></td>'+
+                    '<td width="70%"><div class="attr-txt ">V1.1</div></td>'+
+                '</tr>'+
+                '</table>'+
+                '</li>'+
+                '<li class="each-item ">'+
+                    '<table width="100%">'+
+                    '<tr class="font2pt">'+
+                    '<td width="30%"><div class="attr-name">清除缓存 </div></td>'+
+                    '<td width="70%"><div class="attr-txt ">500MB</div></td>'+
+                '</tr>'+
+                '</table>'+
+                '</li>'+
+                '</ul>'+
+                '</div>';
+                addcontent.append(newroll);
+            }
+        }
+    );
 }

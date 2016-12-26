@@ -15,3 +15,13 @@ function GetRequest() {
     }
     return theRequest;
 }
+
+//根据日期计算星期几
+function GetWeekday(time_str) {
+    var arys1= new Array();
+    arys1=time_str.split('-');     //日期为输入日期，格式为 2013-3-10
+    var ssdate=new Date(arys1[0],parseInt(arys1[1]-1),arys1[2]);
+    var weekArray = new Array("星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六");
+    var week = weekArray[ssdate.getDay()];// 这个就是你想要的结果吧
+    return  week; //就是你要的星期几
+}

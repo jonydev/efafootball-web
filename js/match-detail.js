@@ -2,10 +2,11 @@
  * Created by cnm on 2016/11/12.
  */
 var match_id;
+var g_team;
 $(document).ready(function () {
     var Request=new Object();
     Request=GetRequest();
-    match_id=Request["id"];
+    match_id=Request["match_id"];
     $(".introduce a").addClass("text-green").removeClass("text-black");
     $(".introduce").find(".triangle-container").addClass("shift-triangle");
     AddIntroduceContent();
@@ -68,6 +69,21 @@ $(".billboard a").click(function () {
     $(".billboard").find(".triangle-container").addClass("shift-triangle");
     AddBillboardContent();
 });
+function searchTeambyName() {
+    //添加商品搜索处理
+    var search_content=$(".form-control").val();
+    if(search_content==""){
+        $(".search-top").removeClass("hidden");
+    }else{
+        $(".search-top").addClass("hidden");
+    }
+    Search_Team(search_content);
+}
+function reset_icon() {
+    if($(".form-control").val()==""){
+        $(".search-top").removeClass("hidden");
+    }
+}
 function AddIntroduceContent() {
     $(".all-profile").removeClass("hidden");
     $(".all-points").addClass("hidden");
@@ -81,25 +97,25 @@ function AddIntroduceContent() {
         dataType:"json",
         success:function (data) {
             var allcontents=$(".all-profile").empty();
-            console.log(data);
+            var obj=data[0];
             var newroll=
             '<div class="all-profile ">'+
                 '<div class="profile-img">'+
-                '<img src="images/swiper2.jpg"  alt="" width="100%" height="100%">'+
+                '<img src='+obj.photo+'  alt="" width="100%" height="100%">'+
                 '</div>'+
                 '<div class="match-profile-container">'+
                 '<div class="match-profile font3pt">赛事简介</div>'+
-                '<div style="background-color: white"><div class="match-introduce font2pt">光谷业余啊额are热热额阿尔而非二 热额</div></div>'+
+                '<div style="background-color: white"><div class="match-introduce font2pt">'+obj.caption+'</div></div>'+
             '</div>'+
             '<div class="match-rule-container">'+
                 '<div class="match-profile font3pt">规则简介</div>'+
-                '<div style="background-color: white"><div class="match-introduce font2pt">光谷业余啊额are热热额阿尔而非二 热额</div></div>'+
+                '<div style="background-color: white"><div class="match-introduce font2pt">'+obj.rule+'</div></div>'+
             '</div>'+
             '<div class="match-referee-container">'+
                 '<div class="match-profile font3pt">裁判简介</div>'+
-                '<div style="background-color: white"><div class="match-introduce font2pt">光谷业余啊额are热热额阿尔而非二 热额</div></div>'+
+                '<div style="background-color: white"><div class="match-introduce font2pt">'+obj.referee+'</div></div>'+
             '</div>'+
-            '<div class="preview">'+
+            '<div class="preview hidden">'+
                 '<div class="preview-title font3pt">往期回顾</div>'+
                 '<ul>'+
                 '<li class="each-round">'+
@@ -112,7 +128,7 @@ function AddIntroduceContent() {
                 '</li>'+
                 '</ul>'+
                 '</div>'+
-                '<div class="famous-people">'+
+            '<div class="famous-people hidden">'+
                 '<div class="famous-people-title font3pt">名人堂</div>'+
                 '<ul>'+
                 '<li class="each-round">'+
@@ -137,56 +153,31 @@ function AddTeamContent() {
     $(".all-billboard").addClass("hidden");
     $(".all-schedule").addClass("hidden");
     $(".all-profile").addClass("hidden");
-    var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/officeViewData?id="+match_id;
+    var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/allTeamByOffice?officeId="+match_id;
     $.ajax({
         type:"GET",
         url:url,
         dataType:"json",
         success:function (data) {
-            var allcontents=$(".all-team").empty();
-            console.log(data);
-            var newroll=
-            '<div class="all-team">'+
-                '<div>'+
-                '<div class="choose-create-container hidden">'+
-                '<div class="choose-match background-green ">'+
-                '<div class="choose-matchImg">'+
-                '<img src="images/join_team.png" alt="" height="100%" width="100%">'+
-                '</div>'+
-                '<span  class="choose-matchTxt text-white">选择赛事</span>'+
-                '</div>'+
-                '<div class="create-team light-white">'+
-                '<div class="create-teamImg">'+
-                '<img src="images/tab_button_profile_sel.png" alt="" width="100%" height="100%">'+
-                '</div>'+
-                '<span  class="create-teamTxt text-green">创建球队</span>'+
-                '</div>'+
-                '</div>'+
-                '<div class="search-top">'+
-                '<img class="search-icon" src="images/team_search.png" alt="" width="100%" height="100%">'+
-                '<span class="search-text">搜索</span>'+
-                '</div>'+
-                '<div class="search-div">'+
-                '<form class="bs-example bs-example-form" role="form">'+
-                '<div class=" input-group-lg search-input">'+
-                '<input type="text" onchange="hidden_icon()" class="form-control " placeholder="" value="" id="search">'+
-                '</div>'+
-                '</form>'+
-                '</div>'+
-                '<div>'+
-                '<ul class="team-ul">'+
-                '<li class="single-team background-white" id="2999">'+
-                '<img class="team-Img" src="images/join_team.png" alt="" width="100%" height="100%">'+
-                '<a class="team-name" href="javascript:;">华中科技大学队</a>'+
-                '<img class="team-detail" src="images/goto_team.png" alt="" width="100%" height="100%">'+
-                '<a class="team-num" href="javascript:;">34</a>'+
-                '<img class="team-num-img" src="images/player_number.png" alt="" width="100%" height="100%">'+
-                '</li>'+
-                '</ul>'+
-                '</div>'+
-                '</div>'+
-                '</div>';
-            allcontents.append(newroll);
+            var allcontents=$(".team-ul").empty();
+            var obj=eval(data.rows);
+            g_team=eval(data.rows);
+            for (var i=0;i<obj.length;i++){
+                var single=obj[i];
+                var photo="images/default_team.png";
+                if(single.photo!=""){
+                    photo=single.photo;
+                }
+                var newroll=
+                    '<li class="single-team background-white" id='+single.id+'>'+
+                    '<img class="team-Img" src='+photo+' alt="" width="100%" height="100%">'+
+                    '<a class="team-name" href="javascript:;">'+single.name+'</a>'+
+                    '<img class="team-detail" src="images/goto_team.png"  alt="" width="100%" height="100%">'+
+                    '<a class="team-num" href="javascript:;">'+single.num+'</a>'+
+                    '<img class="team-num-img" src="images/player_number.png" alt="" width="100%" height="100%">'+
+                    '</li>';
+                allcontents.append(newroll);
+            }
         }
     });
 }
@@ -197,43 +188,51 @@ function AddMatchContent() {
     $(".all-billboard").addClass("hidden");
     $(".all-profile").addClass("hidden");
     $(".all-team").addClass("hidden");
-    var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/getScheduleByTitle?officeId="+match_id;
+    var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/getScheduleByTurn?officeId="+match_id;
     $.ajax({
         type:"GET",
         url:url,
         dataType:"json",
         success:function (data) {
             var allcontents=$(".all-schedule ul").empty();
-            console.log(data);
-            var single=eval(data.rows);
-            for(var i=0;i<5;i++){
-                var rank=i+1;
+            var obj=eval(data);
+            console.log((obj));
+            for(var key in obj){
+                var each_round=obj[key];
                 var newroll=
                     '<li value="">'+
                         '<div class="round">'+
-                        '<p class="round-num">第'+rank+'轮</p>'+
+                        '<p class="round-num">第'+key+'轮</p>'+
                         '<img class="spreed" src="images/respreed.png" alt="" width="100%" height="100%">'+
                         '</div>'+
                         '<div class="match-date">'+
-                        '<p class="font3pt">11月2日 星期六</p>'+
+                        '<p class="font3pt">'+each_round[0].datetime+'</p>'+
                         '</div>'+
                         '<div>'+
                         '<ul class="all-matchs">';
-                        for(var j=0;j<5;j++){
+                        for(var j=0;j<each_round.length;j++){
+                            var single=each_round[j];
+                            var homephoto="images/default_team.png";
+                            if(single.homeTeamPhoto!="") homephoto=single.homeTeamPhoto;
+                            var awayphoto="images/default_team.png";
+                            if(single.awayTeamPhoto!="") awayphoto=single.awayTeamPhoto;
+                            var state;
+                            if(single.flag==1) state="已结束";
+                            else if(single.flag==0) state="未开始";
                             var child=
-                                '<li value="54">'+
+                                '<li value='+single.id+'>'+
                                 '<div class="team-results">'+
                                 '<div class="team-a">'+
-                                '<a class="team-atxt text-black" href="">红郡FC</a>'+
-                                '<img class="team-aimg" src="images/match_choose.png" alt="" width="100%" height="100%" >'+
+                                '<a class="team-atxt text-black" href="">'+single.homeTeamName+'</a>'+
+                                '<img class="team-aimg" src='+homephoto+'  alt="" width="100%" height="100%" >'+
                                 '</div>'+
                                 '<div class="result">'+
-                                '<span class="result-a background-grey93">10:10</span><br/>'+
-                                '<span class="result-b ">已结束</span>'+
+                                '<span class="result-a background-grey93">'+single.homescore+':'+single.awayscore+'</span><br/>'+
+                                '<span class="result-b ">'+state+'</span>'+
                                 '</div>'+
                                 '<div class="team-b">'+
-                                '<img class="team-bimg" src="images/match_choose.png" alt="" width="100%" height="100%">'+
-                                '<a class="team-btxt text-black" href="">MIP</a>'+
+                                '<img class="team-bimg" src='+awayphoto+' alt="" width="100%" height="100%">'+
+                                '<a class="team-btxt text-black" href="">'+single.awayTeamName+'</a>'+
                                 '</div>'+
                                 '</div>'+
                                 '</li>';
@@ -288,9 +287,11 @@ function AddPointsContent(){
                 var newroll="";
                 if(i==5){
                  newroll=
-                     '<tr class="single-tr Sperate-line">'+
-                         '<td ><div class="up-grade"></div>'+
-                         '<a style="float: left;margin-left: 2px;color: black;padding: 6px 0;" href="">'+rank+'</a> <div style="float: right;padding: 12px 0;"><img class="up-img" src="images/points_up.png" alt="" width="100%" height="100%"></div>'+
+                     // '<tr class="single-tr Sperate-line">'+
+                     '<tr class="single-tr ">'+
+                         // '<td ><div class="up-grade"></div>'+
+                     '<td >'+
+                         '<a style="text-align:center; color: black;padding: 6px 0;" href="">'+rank+'</a>'+
                          '</td ><td  style="font-weight: 700 overflow:hidden">'+single.team.name+'</td><td>'+total+'</td><td>'+single.won+'</td>'+
                          '<td>'+single.even+'</td><td>'+single.beaten+'</td><td>'+single.goal+'</td><td>'+single.lost+'</td><td>'+realball+'</td><td style="font-weight: 800">'+single.point+'</td><td>'+single.red+'</td><td>'+single.yellow+'</td>'+
                      '</tr>';
@@ -298,8 +299,9 @@ function AddPointsContent(){
                 else{
                     newroll=
                         '<tr class="single-tr ">'+
-                        '<td ><div class="up-grade"></div>'+
-                        '<a style="float: left;margin-left: 2px;color: black;padding: 6px 0;" href="">'+rank+'</a> <div style="float: right;padding: 12px 0;"><img class="up-img" src="images/points_up.png" alt="" width="100%" height="100%"></div>'+
+                        // '<td ><div class="up-grade"></div>'+
+                        '<td >'+
+                        '<a style="text-align:center; color: black;padding: 6px 0;" href="">'+rank+'</a>'+
                         '</td ><td  style="font-weight: 700">'+single.team.name+'</td><td>'+total+'</td><td>'+single.won+'</td>'+
                         '<td>'+single.even+'</td><td>'+single.beaten+'</td><td>'+single.goal+'</td><td>'+single.lost+'</td><td>'+realball+'</td><td style="font-weight: 800">'+single.point+'</td><td>'+single.red+'</td><td>'+single.yellow+'</td>'+
                         '</tr>';
@@ -337,12 +339,14 @@ function AddBillboardContent() {
             for(var i=0;i<obj.length;i++){
                 var rank=i+1;
                 var single=obj[i];
+                var photo="images/default_head.png";
+                if(single.photo!="") photo=single.photo;
                 if(i==0){
                     var newroll=
                         '<tr class="first-tr">'+
                             '<td>'+rank+'</td>'+
                             '<td colspan="2">'+
-                            '<img style="float: left;margin-left: 10px;" class="first-shooter" src="images/default_head.png" alt="" width="100%" height="100%">'+
+                            '<img style="float: left;margin-left: 10px;" class="first-shooter" src='+photo+' alt="" width="100%" height="100%">'+
                             '<div style="margin-left: 10px;float: left;margin-top: 22px;text-align: left">'+
                             '<div>'+single.name+'</div>'+
                             '<div style="color: #BBBEBD">'+single.teamName+'</div>'+
@@ -395,6 +399,28 @@ function AddRedyellowContent() {
             }
         }
     });
+}
+function Search_Team(search_content) {
+   var allcontents=$(".team-ul").empty();
+    for (var i=0;i<g_team.length;i++){
+        var single=g_team[i];
+        if(single.name.indexOf(search_content)!=-1){
+            var single=g_team[i];
+            var photo="images/default_team.png";
+            if(single.photo!=""){
+                photo=single.photo;
+            }
+            var newroll=
+                '<li class="single-team background-white" id='+single.id+'>'+
+                '<img class="team-Img" src='+photo+' alt="" width="100%" height="100%">'+
+                '<a class="team-name" href="javascript:;">'+single.name+'</a>'+
+                '<img class="team-detail" src="images/goto_team.png"  alt="" width="100%" height="100%">'+
+                '<a class="team-num" href="javascript:;">'+single.num+'</a>'+
+                '<img class="team-num-img" src="images/player_number.png" alt="" width="100%" height="100%">'+
+                '</li>';
+            allcontents.append(newroll);
+        }
+    }
 }
 function SpreedMatch() {
     $()

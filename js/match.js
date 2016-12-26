@@ -1,6 +1,7 @@
 /**
  * Created by cnm on 2016/11/7.
  */
+var g_matchs;
 $(document).ready(function (){
     $('#search').bind('input propertychange', function() {searchTeambyName();});
     ShowAllMatchs();
@@ -8,9 +9,10 @@ $(document).ready(function (){
 $(document).on("click",".single-match",function () {
     var match_id=$(this).attr("value");
     window.location.href="http://120.76.206.174:8080/efafootball-web/match-detail.html?id="+match_id;
-})
+});
 $(".search-div").click(function () {
-    $(".search-top").addClass("hidden");
+    // $(".search-top").addClass("hidden");
+    //searchTeambyName();
 });
 $(".introduce a").click(function () {
     $(".title-container").find(".text-green").removeClass("text-green").addClass("text-black");
@@ -22,7 +24,59 @@ $(".introduce a").click(function () {
 
 function searchTeambyName() {
     //添加商品搜索处理
-    alert("点击自动搜索商品");
+    var search_content=$(".form-control").val();
+    if(search_content==""){
+        $(".search-top").removeClass("hidden");
+    }else{
+        $(".search-top").addClass("hidden");
+    }
+    //添加列表
+    var match_list=$(".match-ul");
+    match_list.empty();
+    for (var i = 0; i < g_matchs.length; i++) {
+        var singlematch = g_matchs[i];
+        var name = singlematch.name;
+        if(name.indexOf(search_content)!=-1){
+            var match_id=singlematch.id;
+            var imgsrc=singlematch.photo;
+            var newroll =
+                '<li class="single-match background-white" value='+match_id+'>'+
+                '<div>'+
+                '<div class="match-img">'+
+                '<img src='+imgsrc+' alt="" width="100%" height="100%">'+
+                '</div>'+
+                '<div class="match-detail">'+
+                '<div class="match-title">'+
+                '<div class="match-txt ">'+name+'</div>'+
+                '</div>'+
+                '<div class="match-info">'+
+                '<div class="city">'+
+                '<img class="city-img" src="images/match_city.png" alt="">'+
+                '<a class="city-txt font2pt" href="javascript:;">'+'武汉光谷'+'</a>'+
+                '</div>'+
+                '<div class="round">'+
+                '<img class="round-img" src="images/round.png" alt="">'+
+                '<a  class="round-txt font2pt" href="javascript:;">'+'第二轮'+'</a>'+
+                '</div>'+
+                '<div class="team-num">'+
+                '<img class="team-numimg" src="images/match_team.png" alt="">'+
+                '<a class="team-numtxt font2pt" href="javascript:;">'+'30'+'</a>'+
+                '</div>'+
+                '</div>'+
+                '</div>'+
+                '<div class="match-detail-img">'+
+                '<img src="images/goto_team.png" alt="" width="100%" height="100%">'+
+                '</div>'+
+                '</div>'+
+                '</li>';
+            match_list.append(newroll);
+        }
+    }
+}
+function reset_icon() {
+    if($(".form-control").val()==""){
+        $(".search-top").removeClass("hidden");
+    }
 }
 function ShowAllMatchs() {
     var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/officeData ";
@@ -30,45 +84,43 @@ function ShowAllMatchs() {
         url:url,
         success:function (data) {
             var matchs=eval(data);
-            console.log(matchs);
+            g_matchs=matchs;
             var match_list=$(".match-ul");
             match_list.empty();
             for (var i = 0; i < matchs.length; i++) {
                 var singlematch = matchs[i];
                 var name = singlematch.name;
                 var match_id=singlematch.id;
-                var team_num=singlematch.sort;
                 var imgsrc=singlematch.photo;
-                var round=singlematch.type;
                 var newroll =
                     '<li class="single-match background-white" value='+match_id+'>'+
-                        '<div>'+
-                            '<div class="match-img">'+
-                                '<img src='+imgsrc+' alt="" width="100%" height="100%">'+
-                            '</div>'+
-                            '<div class="match-detail">'+
-                            '<div class="match-title">'+
-                            '<div class="match-txt ">'+name+'</div>'+
-                            '</div>'+
-                            '<div class="match-info">'+
-                            '<div class="city">'+
-                            '<img class="city-img" src="images/match_city.png" alt="">'+
-                            '<a class="city-txt font2pt" href="javascript:;">武汉</a>'+
-                            '</div>'+
-                            '<div class="round">'+
-                            '<img class="round-img" src="images/round.png" alt="">'+
-                            '<a  class="round-txt font2pt" href="javascript:;">第'+round+'轮</a>'+
-                            '</div>'+
-                            '<div class="team-num">'+
-                            '<img class="team-numimg" src="images/match_team.png" alt="">'+
-                            '<a class="team-numtxt font2pt" href="javascript:;">'+team_num+'</a>'+
-                            '</div>'+
-                            '</div>'+
-                            '</div>'+
-                            '<div class="match-detail-img">'+
-                                '<img src="images/goto_team.png" alt="" width="100%" height="100%">'+
-                            '</div>'+
-                        '</div>'+
+                    '<div>'+
+                    '<div class="match-img">'+
+                    '<img src='+imgsrc+' alt="" width="100%" height="100%">'+
+                    '</div>'+
+                    '<div class="match-detail">'+
+                    '<div class="match-title">'+
+                    '<div class="match-txt ">'+name+'</div>'+
+                    '</div>'+
+                    '<div class="match-info">'+
+                    '<div class="city">'+
+                    '<img class="city-img" src="images/match_city.png" alt="">'+
+                    '<a class="city-txt font2pt" href="javascript:;">'+singlematch.areaName+'</a>'+
+                    '</div>'+
+                    '<div class="round">'+
+                    '<img class="round-img" src="images/round.png" alt="">'+
+                    '<a  class="round-txt font2pt" href="javascript:;">'+singlematch.turn+'</a>'+
+                    '</div>'+
+                    '<div class="team-num">'+
+                    '<img class="team-numimg" src="images/match_team.png" alt="">'+
+                    '<a class="team-numtxt font2pt" href="javascript:;">'+singlematch.teamNum+'</a>'+
+                    '</div>'+
+                    '</div>'+
+                    '</div>'+
+                    '<div class="match-detail-img">'+
+                    '<img src="images/goto_team.png" alt="" width="100%" height="100%">'+
+                    '</div>'+
+                    '</div>'+
                     '</li>';
                 match_list.append(newroll);
             }

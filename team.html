@@ -32,20 +32,13 @@
     <div class="search-div">
         <form class="bs-example bs-example-form" role="form">
             <div class=" input-group-lg search-input">
-                <input type="text" class="form-control " placeholder="" value="" id="search">
+                <input oninput="searchTeambyName()" onblur="reset_icon()" type="text" class="form-control " placeholder="" value="" id="search">
             </div>
         </form>
     </div>
     <div>
         <ul class="team-ul">
-            <li class="single-team background-white" id="2999">
-                <img class="team-Img" src="images/join_team.png" alt="" width="100%" height="100%">
-                <a class="team-name" href="javascript:;">华中科技大学队</a>
-                <img class="team-detail" src="images/goto_team.png" alt="" width="100%" height="100%">
-                <a class="team-num" href="javascript:;">34</a>
-                <img class="team-num-img" src="images/player_number.png" alt="" width="100%" height="100%">
-            </li>
-            <li class="single-team background-white" id="=299">
+            <li class="single-team background-white hidden" id="2999">
                 <img class="team-Img" src="images/join_team.png" alt="" width="100%" height="100%">
                 <a class="team-name" href="javascript:;">华中科技大学队</a>
                 <img class="team-detail" src="images/goto_team.png" alt="" width="100%" height="100%">

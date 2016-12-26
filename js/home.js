@@ -8,7 +8,16 @@ $(document).ready(function (){
 });
 $(document).on("click",".swiper-slide",function () {
     window.location.href=$(this).attr("value");
-})
+});
+$(document).on("click",".news_ul li",function () {
+    window.location.href="http://120.76.123.140/index.php?s=/mob/weibo/weibodetail/id/"+$(this).attr("value");
+});
+$(".join-team").click(function () {
+   android.JoinTeam();
+});
+$(".match-apply").click(function () {
+    android.JoinTeam();
+});
 function SetSwiper() {
     var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/bulletinData";
     $.ajax({
@@ -49,7 +58,6 @@ function SetContent() {
             success: function (data) {
                 // 解析json
                 var obj = eval(data);
-                console.log(data);
                 var addcontent=$(".news_ul").empty();
                 for (var i = 0; i < obj.length; i++) {
                     var single=obj[i];
