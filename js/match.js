@@ -8,7 +8,7 @@ $(document).ready(function (){
 });
 $(document).on("click",".single-match",function () {
     var match_id=$(this).attr("value");
-    window.location.href="http://120.76.206.174:8080/efafootball-web/match-detail.html?id="+match_id;
+    window.location.href="http://120.76.206.174:8080/efafootball-web/match-detail.html?match_id="+match_id;
 });
 $(".search-div").click(function () {
     // $(".search-top").addClass("hidden");

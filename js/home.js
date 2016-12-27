@@ -16,7 +16,7 @@ $(".join-team").click(function () {
    android.JoinTeam();
 });
 $(".match-apply").click(function () {
-    android.JoinTeam();
+    android.MatchSignUp();
 });
 function SetSwiper() {
     var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/bulletinData";

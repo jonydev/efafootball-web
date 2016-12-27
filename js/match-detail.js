@@ -21,7 +21,9 @@ $(document).on("click",".spreed",function () {
     }
 });
 $(document).on("click",".all-matchs li",function () {
-    window.location.href="http://120.76.206.174:8080/efafootball-web/match-each.html?"
+    var game_id=$(this).attr("value");
+    var flag=$(this).find(".flag").attr("value");
+    window.location.href="http://120.76.206.174:8080/efafootball-web/match-each.html?match_id="+match_id+"&game_id="+game_id+"&flag="+flag;
 })
 $(document).on("click",".shooter",function () {
     $(this).addClass(" background-green text-white");
@@ -220,19 +222,19 @@ function AddMatchContent() {
                             if(single.flag==1) state="已结束";
                             else if(single.flag==0) state="未开始";
                             var child=
-                                '<li value='+single.id+'>'+
+                                '<li value='+single.id+' >'+
                                 '<div class="team-results">'+
                                 '<div class="team-a">'+
-                                '<a class="team-atxt text-black" href="">'+single.homeTeamName+'</a>'+
+                                '<a class="team-atxt text-black" href="javascript:;">'+single.homeTeamName+'</a>'+
                                 '<img class="team-aimg" src='+homephoto+'  alt="" width="100%" height="100%" >'+
                                 '</div>'+
                                 '<div class="result">'+
                                 '<span class="result-a background-grey93">'+single.homescore+':'+single.awayscore+'</span><br/>'+
-                                '<span class="result-b ">'+state+'</span>'+
+                                '<span class="result-b flag" value='+single.flag+'>'+state+'</span>'+
                                 '</div>'+
                                 '<div class="team-b">'+
                                 '<img class="team-bimg" src='+awayphoto+' alt="" width="100%" height="100%">'+
-                                '<a class="team-btxt text-black" href="">'+single.awayTeamName+'</a>'+
+                                '<a class="team-btxt text-black" href="javascript:;">'+single.awayTeamName+'</a>'+
                                 '</div>'+
                                 '</div>'+
                                 '</li>';

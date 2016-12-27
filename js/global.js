@@ -25,3 +25,22 @@ function GetWeekday(time_str) {
     var week = weekArray[ssdate.getDay()];// 这个就是你想要的结果吧
     return  week; //就是你要的星期几
 }
+
+//弹出提示框
+function ShowTip(Tip_Info) {
+    var layer=document.createElement("div");
+    layer.id="layer";
+    var style=
+        {
+
+        }
+    for(var i in style)
+        layer.style[i]=style[i]
+    layer.innerHTML=Tip_Info;
+    if(document.getElementById("layer")==null)
+    {
+        document.body.appendChild(layer);
+        //setTimeout("document.body.removeChild(layer)",2000)
+    }
+
+}
