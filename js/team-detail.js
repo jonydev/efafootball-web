@@ -1,7 +1,7 @@
 /**
  * Created by 晴识明月 on 2016/12/16.
  */
-var team_id;
+var team_id,login_id;
 $(document).ready(function (){
     var Request=new Object();
     Request=GetRequest();
@@ -40,6 +40,29 @@ $(".schedule a").click(function () {
 });
 $(document).on("click",".edit-team",function () {
     window.location.href="http://120.76.206.174:8080/efafootball-web/team-edit.html?team_id="+team_id;
+});
+$(document).on("click",".join-team",function () {
+    //根据localStorage缓存看是否登录
+    var have_logined=localStorage.getItem("have_logined");
+    if(have_logined==1){
+        login_id=localStorage.getItem("loginId");
+        var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/joinTeam ?teamId ="+team_id+"&loginId ="+login_id;
+        $.ajax({
+            url:url,
+            success:function (data) {
+                console.log(data);
+                var result=data.result;
+                if(result=="fail"){
+                    $(".Tip").removeClass("hidden");
+                    $(".Tip span").text(data.message);
+                    setTimeout('$(".Tip").addClass("hidden")',1500);
+                }
+            }
+        })
+    }else{
+        $(".Tip").removeClass("hidden");
+        setTimeout('$(".Tip").addClass("hidden")',1500);
+    }
 });
 function checkFile(){
     var file = document.getElementById("loadfile").value;
