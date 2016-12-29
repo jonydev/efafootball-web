@@ -30,6 +30,7 @@ $(".real-schedule").click(function () {
     $(".tab-real-schedule").removeClass("hidden");
     $(".tab-start-first").addClass("hidden");
     $(".tab-statistic").addClass("hidden");
+    $(".tab-shape").addClass("hidden");
     //AddIntroduceContent();
 });
 $(".start-first").click(function () {
@@ -40,6 +41,7 @@ $(".start-first").click(function () {
     $(".tab-start-first").removeClass("hidden");
     $(".tab-real-schedule").addClass("hidden");
     $(".tab-statistic").addClass("hidden");
+    $(".tab-shape").addClass("hidden");
     //AddIntroduceContent();
 });
 $(".statistic").click(function () {
@@ -50,6 +52,7 @@ $(".statistic").click(function () {
     $(".tab-statistic").removeClass("hidden");
     $(".tab-real-schedule").addClass("hidden");
     $(".tab-start-first").addClass("hidden");
+    $(".tab-shape").addClass("hidden");
     //AddIntroduceContent();
 });
 $(".shape").click(function () {
@@ -57,6 +60,10 @@ $(".shape").click(function () {
     $(".match-info-tab").find(".triangle-container").removeClass("shift-triangle");
     $(this).addClass("text-green");
     $(".shape").find(".triangle-container").addClass("shift-triangle");
+    $(".tab-statistic").addClass("hidden");
+    $(".tab-real-schedule").addClass("hidden");
+    $(".tab-start-first").addClass("hidden");
+    $(".tab-shape").removeClass("hidden");
     //AddIntroduceContent();
 });
 $(document).on("click",".signup",function () {

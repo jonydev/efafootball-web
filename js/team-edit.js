@@ -2,6 +2,7 @@
  * Created by 晴识明月 on 2016/12/26.
  */
 var team_id;
+var current_choose; //标记当前所设置的属性，0 表示设置性别 1表示设置位置
 $(document).ready(function (){
     var Request=new Object();
     Request=GetRequest();
@@ -10,10 +11,84 @@ $(document).ready(function (){
 });
 $(document).on("click",".save-edit",function () {
     //发送保存修改的信息
+    var name=$("#team_name").val();
+    var content=$(".team-introduce").val();
+    var photo="";
     if(confirm("是否保存修改？")==true){
-        alert("成功修改");
+        var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/updateTeam?id="+team_id+"&name="+name+"&photo="+photo+"&content="+content;
+        $.ajax({
+            url:url,
+            success:function (data) {
+                var result=data.result;
+                if(result=="success"){
+                    $(".Tip span").text(data.message);
+                    $(".Tip").removeClass("hidden");
+                    setTimeout('$(".Tip").addClass("hidden")',1500);
+                }
+            }
+        })
     }
 });
+$(document).on("click",".home-color",function () {
+    choose_color();
+    current_choose=0;
+});
+$(document).on("click",".rehome-color",function () {
+    choose_color();
+    current_choose=1;
+})
+$(".position-ul li").click(function () {
+    $(".position-ul").find(".text-green").removeClass("text-green");
+    $(this).addClass("text-green");
+});
+$(".sex-ul li").click(function () {
+    $(".sex-ul").find(".text-green").removeClass("text-green");
+    $(this).addClass("text-green");
+});
+$(".color-ul li").click(function () {
+    $(".sex-ul").find(".text-green").removeClass("text-green");
+    $(this).addClass("text-green");
+});
+$(".save-item").click(function () {
+    var getcolor=$("#color").css("backgroundColor");
+    if(current_choose==0){
+        $(".home-color").css({"backgroundColor":getcolor});
+        $(".choose-color").addClass("hidden");
+    }else if(current_choose==1){
+        $(".rehome-color").css({"backgroundColor":getcolor});
+        $(".choose-color").addClass("hidden");
+    }
+});
+$(".cancel-item").click(function () {
+    $(".choose-color").addClass("hidden");
+    current_choose=-1;
+});
+function checkFile(){
+    var file = document.getElementById("loadfile").value;
+    console.log(file);
+    if(file){
+        document.getElementById("profile-img").src=file;
+    }
+}
+
+function choose_sex() {
+    $(".top-div").removeClass("hidden");
+    $(".sex-ul").removeClass("hidden");
+    current_choose=0;
+}
+
+function choose_position() {
+    $(".top-div").removeClass("hidden");
+    $(".position-ul").removeClass("hidden");
+    current_choose=1;
+}
+function choose_color() {
+    $(".choose-color").removeClass("hidden");
+}
+
+function choose_city() {
+    //to do
+}
 function AddAllProfile() {
     var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/viewTeam?teamId="+team_id;
     $.ajax({
@@ -48,7 +123,7 @@ function AddAllProfile() {
                 '<table width="100%">'+
                 '<tr class="font2pt">'+
                 '<td width="30%"><div class="attr-name">球队名称</div></td>'+
-                '<td width="70%"><div class="attr-txt "><input type="text" style="height: 30px;line-height: 30px;border: none;width: 100%;" placeholder="未填写" value='+obj.name+'></div></td>'+
+                '<td width="70%"><div class="attr-txt "><input type="text" style="height: 30px;line-height: 30px;border: none;width: 100%;" placeholder="未填写" id="team_name" value='+obj.name+' ></div></td>'+
                 '</tr>'+
                 '</table>'+
                 '</li>'+
@@ -56,7 +131,7 @@ function AddAllProfile() {
                 '<table width="100%">'+
                 '<tr class="font2pt">'+
                 '<td width="30%"><div class="attr-name">简称  </div></td>'+
-                '<td width="70%"><div class="attr-txt "><input type="text" style="height: 30px;line-height: 30px;border: none;width: 100%;" placeholder="未填写" value=""></div></td>'+
+                '<td width="70%"><div class="attr-txt "><input type="text" style="height: 30px;line-height: 30px;border: none;width: 100%;" placeholder="未填写" id="short_name" value=""></div></td>'+
                 '</tr>'+
                 '</table>'+
                 '</li>'+
@@ -64,7 +139,7 @@ function AddAllProfile() {
                 '<table width="100%">'+
                 '<tr class="font2pt">'+
                 '<td width="30%"><div class="attr-name">赞助商 </div></td>'+
-                '<td width="70%"><div class="attr-txt "><input type="text" style="height: 30px;line-height: 30px;border: none;width: 100%;" placeholder="未填写" value=""></div></td>'+
+                '<td width="70%"><div class="attr-txt "><input type="text" style="height: 30px;line-height: 30px;border: none;width: 100%;" placeholder="未填写" id="sponsor-name" value=""></div></td>'+
                 '</tr>'+
                 '</table>'+
                 '</li>'+
@@ -92,7 +167,7 @@ function AddAllProfile() {
                 '<div class="team-profile-img hidden">'+
                 '<img src="images/swiper2.jpg" alt="" width="100%" height="100%">'+
                 '</div>'+
-                '<div style="background-color: white"><div class="team-introduce font2pt">---</div></div>'+
+                '<div style="background-color: white"><textarea class="team-introduce font2pt">'+obj.content+'</textarea></div>'+
                 '</div>';
             allcontents.append(newroll);
         }
