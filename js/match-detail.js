@@ -35,6 +35,10 @@ $(document).on("click",".redyellow",function () {
     $(".shooter").addClass("text-green").removeClass("background-green text-white");
     AddRedyellowContent();
 });
+$(document).on("click",".team-ul li",function () {
+    var team_id=$(this).attr("id");
+    window.location.href="http://120.76.206.174:8080/efafootball-web/team-detail.html?team_id="+team_id;
+});
 $(".introduce a").click(function () {
     $(".title-container").find(".text-green").removeClass("text-green").addClass("text-black");
     $(".title-container div").find(".triangle-container").removeClass("shift-triangle");
@@ -218,9 +222,16 @@ function AddMatchContent() {
                             if(single.homeTeamPhoto!="") homephoto=single.homeTeamPhoto;
                             var awayphoto="images/default_team.png";
                             if(single.awayTeamPhoto!="") awayphoto=single.awayTeamPhoto;
-                            var state;
-                            if(single.flag==1) state="已结束";
-                            else if(single.flag==0) state="未开始";
+                            var state,score;
+                            if(single.flag==1)
+                            {
+                                state="已结束";
+                                score=single.homescore+':'+single.awayscore;
+                            }
+                            else if(single.flag==0) {
+                                state="未开始";
+                                score=single.time.substr(0,5); //未开始的显示开始时间
+                            }
                             var child=
                                 '<li value='+single.id+' >'+
                                 '<div class="team-results">'+
@@ -229,7 +240,7 @@ function AddMatchContent() {
                                 '<img class="team-aimg" src='+homephoto+'  alt="" width="100%" height="100%" >'+
                                 '</div>'+
                                 '<div class="result">'+
-                                '<span class="result-a background-grey93">'+single.homescore+':'+single.awayscore+'</span><br/>'+
+                                '<span class="result-a background-grey93">'+score+'</span><br/>'+
                                 '<span class="result-b flag" value='+single.flag+'>'+state+'</span>'+
                                 '</div>'+
                                 '<div class="team-b">'+

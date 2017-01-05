@@ -42,7 +42,7 @@ $(".start-first").click(function () {
     $(".tab-real-schedule").addClass("hidden");
     $(".tab-statistic").addClass("hidden");
     $(".tab-shape").addClass("hidden");
-    //AddIntroduceContent();
+    AddStartFirstContent();
 });
 $(".statistic").click(function () {
     $(".match-info-tab").find(".text-green").removeClass("text-green");
@@ -110,6 +110,16 @@ function SetContentNoStarted() {
             $(".team-btxt").text(single.awayTeamName);
             $(".result-going").text(single.time);
             $(".match-place").text(single.place);
+        }
+    })
+}
+function AddStartFirstContent() {
+    var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/getScheduleByMember?teamId=b59e8aa6-6ded-11e6-ba4f-00163e000c51&scheduleId=129";
+    $.ajax({
+        url:url,
+        success:function (data) {
+            console.log(data.rows);
+
         }
     })
 }

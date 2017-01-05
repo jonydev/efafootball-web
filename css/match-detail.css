@@ -1,10 +1,10 @@
  ul{margin: 0;padding: 0;list-style: none;}
 .title-container{position: relative;margin-top: 5px;margin-left: 5px;margin-right: 5px;height: 38px;}
-.introduce{width: 20%;float: left;padding-left: 20px;padding-top: 12px;position: relative}
-.team{width: 20%;float: left;padding-left: 20px;padding-top: 12px;position: relative}
-.schedule{width: 20%;float: left;padding-left: 20px;padding-top: 12px;position: relative}
-.points{width: 20%;float: left;padding-left: 20px;padding-top: 12px;position: relative}
-.billboard{width: 20%;float: left;padding-left: 20px;padding-top: 12px;position: relative}
+.introduce{width: 20%;float: left;padding-left: 20px;padding-top: 10px;position: relative}
+.team{width: 20%;float: left;padding-left: 20px;padding-top: 10px;position: relative}
+.schedule{width: 20%;float: left;padding-left: 20px;padding-top: 10px;position: relative}
+.points{width: 20%;float: left;padding-left: 20px;padding-top: 10px;position: relative}
+.billboard{width: 20%;float: left;padding-left: 20px;padding-top: 10px;position: relative}
 .all-schedule{margin-left: 5px;margin-right: 5px;}
 .round{background-color: #2e992e;height: 52px;padding-left: 42%}
 .round-num{font-size: 19px;float: left;margin-top: 10px;}

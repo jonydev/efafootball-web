@@ -41,6 +41,14 @@ $(".schedule a").click(function () {
 $(document).on("click",".edit-team",function () {
     window.location.href="http://120.76.206.174:8080/efafootball-web/team-edit.html?team_id="+team_id;
 });
+$(document).on("click",".teammatch_ul li",function () {
+    var game_id=$(this).attr("value");
+    window.location.href="http://120.76.206.174:8080/efafootball-web/match-each.html?match_id="+match_id+"&game_id="+game_id+"&flag=1";
+});
+$(document).on("click",".upgoing-game li",function () {
+    var game_id=$(this).attr("value");
+    window.location.href="http://120.76.206.174:8080/efafootball-web/match-each.html?match_id="+match_id+"&game_id="+game_id+"&flag=0";
+});
 $(document).on("click",".join-team",function () {
     //根据localStorage缓存看是否登录
     var have_logined=localStorage.getItem("have_logined");
@@ -176,14 +184,14 @@ function AddMatchContent() {
                     '<div class="upgoing-game-title">第'+single.turn+'轮 '+single.datetime+' '+weekday+'</div>'+
                     '<div>'+
                     '<ul>'+
-                    '<li>'+
+                    '<li value='+single.id+'>'+
                     '<div class="team-results">'+
                         '<div class="team-a">'+
                         '<a class="team-atxt text-black" href="javascript:;">'+single.homeTeamName+'</a>'+
                         '<img class="team-aimg" src='+homeTeamPhoto+'  alt="" width="100%" height="100%">'+
                         '</div>'+
                         '<div class="result">'+
-                        '<span class="result-a">'+single.time+'</span>'+
+                        '<span class="result-a">'+single.time.substr(0,5)+'</span>'+
                     '</div>'+
                     '<div class="team-b">'+
                         '<img class="team-bimg" src='+awayTeamPhoto+' alt="" width="100%" height="100%">'+
@@ -197,7 +205,7 @@ function AddMatchContent() {
                 }
                 else{
                     var newroll=
-                        '<li class="">'+
+                        '<li class="" value='+single.id+'>'+
                         '<div class="history-game">'+
                         '<div class="history-game-title">第'+single.turn+'轮 '+single.datetime+' '+weekday+'</div>'+
                         '<div>'+

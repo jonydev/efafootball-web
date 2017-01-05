@@ -12,20 +12,20 @@
     <link rel="stylesheet" href="css/farbtastic.css" type="text/css" />
 </head>
 <body class="background-grey93 web-size">
+    <div class="join-container ">
+        <div class="join-team light-white ">
+            <span  class="join-teamTxt text-green">申请加入</span>
+        </div>
+        <div class="match-apply background-green ">
+            <span  class="match-applyTxt text-white">保存修改</span>
+        </div>
+    </div>
+    <div class="team-img " style="position: relative;text-align: center" id="loadfile-container">
+        <img src="images/default_team.png" alt="" style="width: 136px;height: 136px;" id="team-img" width="100%" height="100%">
+        <input type="file" id="loadfile" onchange="" style="position: absolute;filter:alpha(opacity=0);opacity:0;width:170px;height:145px;top: 33px;left: 26%;" >
+    </div>
     <div class="all-profile">
     <div class="hidden">
-        <div class="join-container ">
-            <div class="join-team light-white ">
-                <span  class="join-teamTxt text-green">申请加入</span>
-            </div>
-            <div class="match-apply background-green ">
-                <span  class="match-applyTxt text-white">保存修改</span>
-            </div>
-        </div>
-        <div class="team-img " style="position: relative;text-align: center">
-            <img src="images/default_team.png" alt="" style="width: 136px;height: 136px;" width="100%" height="100%">
-            <input type="file" id="loadfile" onchange="checkFile()" style="position: absolute;filter:alpha(opacity=0);opacity:0;width:170px;height:145px;top: 33px;left: 26%;" >
-        </div>
         <div class="team-guide">
             <div class="guide-title font3pt">球队概况</div>
             <ul>
@@ -288,12 +288,16 @@
     <div class="Tip hidden" style="background:#ea8282;position:absolute;z-Index:10;width:300px;height:40px;line-height:40px;left:50%;margin-Left:-150px;text-align:center;top:200px;;font-size:18px;">
         <span style="color: white;">登录失败,用户名或者密码错误!</span>
     </div>
-<script src="//cdn.bootcss.com/tether/1.3.6/js/tether.min.js"></script>
-<script type="text/javascript" src="js/jquery.min.js"></script>
-<script  type="text/javascript" src="js/bootstrap.min.js"></script>
-<script type="text/javascript" src="js/farbtastic.js"></script>
-<script  type="text/javascript" src="js/global.js"></script>
-<script  type="text/javascript" src="js/team-edit.js"></script>
+    <script src="//cdn.bootcss.com/tether/1.3.6/js/tether.min.js"></script>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/qiniu.js"></script>
+    <script type="text/javascript" src="js/qiniu.min.js"></script>
+    <script type="text/javascript" src="js/plupload-2.1.3/js/plupload.full.min.js"></script>
+    <script type="text/javascript" src="js/plupload-2.1.3/js/i18n/zh_CN.js"></script>
+    <script  type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/farbtastic.js"></script>
+    <script  type="text/javascript" src="js/global.js"></script>
+    <script  type="text/javascript" src="js/team-edit.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
             $('#colorpicker').farbtastic('#color');
