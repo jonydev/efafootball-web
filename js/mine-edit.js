@@ -1,9 +1,19 @@
 /**
- * Created by 晴识明月 on 2016/12/27.
+ * Created by 晴识明月 on 2017/1/5.
  */
 var current_choose; //标记当前所设置的属性，0 表示设置性别 1表示设置位置
-var token;
+var token,loginId,id;
 $(document).ready(function (){
+    //根据localStorage缓存看是否登录
+    var have_logined=localStorage.getItem("have_logined");
+    if(have_logined==1){
+        var mine_info=localStorage.getItem("mine_info");
+        loginId=localStorage.getItem("loginId");
+        console.log(mine_info);
+        SetContent(JSON.parse(mine_info));
+    }else{
+        window.location.href="http://120.76.206.174:8080/efafootball-web/mine-login.html";
+    }
     //从服务器获取domain和token
     $.ajax({
         url:"http://120.76.206.174:8080/efaleague-web/appPath/appData/getImageByToken",
@@ -79,23 +89,6 @@ $(document).ready(function (){
         }
     });
 });
-$(".sign-btn").click(function () {
-    var loginName=$("#loginName").val();
-    var password=$("#password").val();
-    if(loginName==""||password==""){
-        $(".Tip").removeClass("hidden");
-        $(".Tip span").html("用户名和密码不能为空!")
-        setTimeout('$(".Tip").addClass("hidden")',1500);
-        return;
-    }
-    var Name=$("#Name").val();
-    var ID_Number=$("#ID_Number").val();
-    var sex=$("#sex").val();
-    var position=$("#position").val();
-    var city=$("#City").val();
-    var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/createUser?loginName="+loginName+"&password="+password+"&name="+name+"&userType=1";
-    Sign_Up(url);
-});
 $(".position-ul li").click(function () {
     $(".position-ul").find(".text-green").removeClass("text-green");
     $(this).addClass("text-green");
@@ -122,36 +115,55 @@ $(".cancel-item").click(function () {
     $(".position-ul").addClass("hidden");
     current_choose=-1;
 });
-function Sign_Up(url) {
+$(".save-edit").click(function () {
+    var name=$("#Name").val(); //球员名称
+    var number=$("#cloth_number").val(); // 球衣号码
+    if(isNaN(number)&&number!=""){
+        TIP_ERROR("秋衣号码必须为数字");
+        return;
+    }
+    var position=$("#position").val(); //场上位置 门将 GK 后卫 CB 中场CM 前锋 CF
+    if(position.indexOf("CF")!=-1) position="CF";
+    else if(position.indexOf("CM")!=-1) position="CM";
+    if(position.indexOf("CB")!=-1) position="CB";
+    if(position.indexOf("GK")!=-1) position="GK";
+    var cards=$("#ID_Number").val(); //身份证
+    var photo=$("#profile-img").attr("src"); //照片 上传七牛服务器返回图片名称传达给服务器
+    var telephone=$("#phone").val();//电话号码
+    if(isNaN(telephone)&&telephone!=""){
+        TIP_ERROR("电话号码格式不对");r
+        return;
+    }
+    var sex=0;//'性别 1男 0 女',
+    if($("#sex").val()=="男") sex=1;
+    var age=$("#age").val();//'年级',
+    var city=$("#city").val();//'地区',
+    var height=$("#height").val();//'身高',
+    if(isNaN(height)&&height!=""){
+        TIP_ERROR("身高必须为数字");
+        return;
+    }
+    var weight=$("#weight").val();//'体重',
+    if(isNaN(weight)&&weight!=""){
+        TIP_ERROR("体重必须为数字");
+        return;
+    }
+    var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/updateMember?id="+id+"&name="+name+"&loginId="+loginId+"&city="+city+
+        "&number="+number+"&position="+position+"&cards="+cards+"&photo="+photo+"&telephone="+telephone+"&sex="+sex+"&age="+age+"&height="+height+"&weight="+weight;
+    console.log(url);
     $.ajax({
         url:url,
+        type:"post",
         success:function (data) {
-            var result=(data.result);
-            console.log(data);
-            if(result=="repeat"){
-                $(".Tip").removeClass("hidden");
-                $(".Tip span").html("注册失败,该用户名已经存在!")
-                setTimeout('$(".Tip").addClass("hidden")',1500);
-            }else if(result=="fail"){
-                $(".Tip").removeClass("hidden");
-                $(".Tip span").html("注册失败!")
-                setTimeout('$(".Tip").addClass("hidden")',1500);
-            }else if(result=="success"){
-                localStorage.setItem("have_logined",1);
-                //把json数据转换成字符串格式存储
-                localStorage.setItem("loginId",data.message);
-                window.location.href="http://120.76.206.174:8080/efafootball-web/mine.html";
-            }
+             TIP_ERROR(data.message);
+             if(data.result=="success"){
+                 window.history.go(-1);
+                 window.location.reload();
+             }
         }
+
     })
-}
-function checkFile(){
-    var file = document.getElementById("loadfile").value;
-    //console.log(file);
-    if(file){
-        document.getElementById("profile-img").src=file;
-    }
-}
+});
 
 function choose_sex() {
     $(".top-div").removeClass("hidden");
@@ -167,4 +179,25 @@ function choose_position() {
 
 function choose_city() {
     //to do
+}
+function TIP_ERROR(error_message) {
+    $(".Tip").removeClass("hidden");
+    $(".Tip span").html(error_message);
+    setTimeout('$(".Tip").addClass("hidden")',1500);
+    return;
+}
+function SetContent(mine_info) {
+    console.log(mine_info);
+    id=mine_info.id;
+    if(mine_info.photo!="") $("#profile-img").attr("src",mine_info.photo);
+    if(mine_info.name!="") $("#Name").val(mine_info.name);
+    if(mine_info.cards!="") $("#ID_Number").val(mine_info.cards);
+    $("#age").val(mine_info.age);
+    $("#cloth_number").val(mine_info.number);
+    if(mine_info.sex!="") $("#sex").val(mine_info.sex);
+    $("#height").val(mine_info.height);
+    $("#weight").val(mine_info.weight);
+    if(mine_info.position!="") $("#position").val(mine_info.position);
+    if(mine_info.post!="") $("#city").val(mine_info.post);
+    if(mine_info.telephone!="")$("#phone").val(mine_info.telephone);
 }

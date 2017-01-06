@@ -5,6 +5,8 @@ $(document).ready(function (){
 
 });
 $(".login-btn").click(function () {
+    $(this).addClass("background-green text-white");
+    $(".sign-btn").removeClass("background-green text-white").addClass("background-greyf2");
     var loginName=$("#loginName").val();
     var password=$("#password").val();
     var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/checkLogin?loginName="+loginName+"&password="+password;
@@ -26,5 +28,7 @@ $(".login-btn").click(function () {
     })
 });
 $(".sign-btn").click(function () {
+    $(this).addClass("background-green text-white");
+    $(".login-btn").removeClass("background-green text-white").addClass("background-greyf2");
     window.location.href="http://120.76.206.174:8080/efafootball-web/mine-sign.html";
-})
+});
