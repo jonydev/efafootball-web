@@ -1,0 +1,10 @@
+ul{margin: 0;padding: 0;list-style: none;}
+.team-guide,.person-guide{margin: 5px 5px 0px 5px; }
+.team-guide-title,.person-title{height: 40px;line-height: 40px;background-color: green;text-align: center;color: white}
+.each-item{margin-bottom: 5px;background-color: white;height: 40px;line-height: 40px;}
+.attr-name{margin-left: 14px;}
+.attr-txt{margin-left:10px;}
+.own-team-img{width: 57px;height: 57px;text-align: center;margin-bottom: 20px;}
+.own-match-img{width: 57px;height: 57px;text-align: center;margin-bottom: 20px;}
+.team-item{margin-bottom: 5px;background-color: white;height: 77px;line-height: 77px;}
+.accept-apply{text-align: center;margin-right: 20px;float: right }

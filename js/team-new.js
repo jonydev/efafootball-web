@@ -1,14 +1,16 @@
 /**
- * Created by 晴识明月 on 2016/12/26.
+ * Created by 晴识明月 on 2017/1/8.
  */
-var team_id,token,upper,lower;
-var current_choose,officeid; //标记当前所设置的属性，0 表示设置性别 1表示设置位置
+var token,loginId,upper="#3bc83b",lower="#000000";
+var current_choose; //标记当前所设置的属性，0 表示设置性别 1表示设置位置
 $(document).ready(function (){
-    var Request=new Object();
-    Request=GetRequest();
-    team_id=Request["team_id"];
-
-    AddAllProfile();
+    //根据localStorage缓存看是否登录
+    var have_logined=localStorage.getItem("have_logined");
+    if(have_logined==1){
+        loginId=localStorage.getItem("loginId");
+    }else{
+        window.location.href="http://120.76.206.174:8080/efafootball-web/mine-login.html";
+    }
     //从服务器获取domain和token
     $.ajax({
         url:"http://120.76.206.174:8080/efaleague-web/appPath/appData/getImageByToken",
@@ -88,24 +90,28 @@ $(".save-edit").click(function () {
     //发送保存修改的信息
     $(this).addClass("background-green text-white").removeClass("light-white text-green");
     $(".show-team").removeClass("background-green text-white").addClass("light-white text-green");
-    var name=$("#team_name").val();
+    var name=$("#CH-Name").val();
+    if(name=="") {
+        TIP_ERROR("球队名称不能为空！");
+        return;
+    }
     var content=$(".team-introduce").val();
     var photo=$("#team-img").attr("src");
     if(photo=="images/default_team.png") photo="";
     var home=$("#home").val();
     var captain=$("#captain").val();
     if(confirm("是否保存修改？")==true){
-        var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/updateTeam?id="+team_id+"&name="+name+"&photo="+photo+"&content="+content+"&home="+home+"&upper="+upper+"&lower="+lower+"&captain="+captain;
+        var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/createTeam?leader="+loginId+"&companyId=1&name="+name+"&photo="+photo+"&content="+content+"&home="+home+"&upper="+upper+"&lower="+lower+"&captain="+captain;
         $.ajax({
             url:url,
             success:function (data) {
+                console.log(data);
                 var result=data.result;
                 $(".Tip span").text(data.message);
                 $(".Tip").removeClass("hidden");
                 setTimeout('$(".Tip").addClass("hidden")',1500);
                 if(result=="success"){
                     window.history.go(-1);
-                    window.location.reload();
                 }
             }
         })
@@ -114,7 +120,7 @@ $(".save-edit").click(function () {
 $(".show-team").click(function () {
     $(this).addClass("background-green text-white").removeClass("light-white text-green");
     $(".save-edit").removeClass("background-green text-white").addClass("light-white text-green");
-    if(confirm("是否放弃修改？")==true){
+    if(confirm("是否放弃新建球队？")==true){
         window.history.go(-1);
     }
 });
@@ -169,99 +175,9 @@ function choose_color() {
     $(".choose-color").removeClass("hidden");
 }
 
-function choose_city() {
-    //to do
-}
-function AddAllProfile() {
-    var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/viewTeam?teamId="+team_id;
-    $.ajax({
-        type:"GET",
-        url:url,
-        dataType:"json",
-        success:function (data) {
-            var allcontents=$(".all-profile").empty();
-            console.log(data.rows[0]);
-            var obj=eval(data.rows[0]);
-            if(obj.office!=undefined) officeid=obj.office.id;
-            var team_img="images/default_team.png";
-            if(obj.photo!=""){
-                team_img=obj.photo;
-            }
-            var newroll=
-                '<div class="team-guide">'+
-                '<div class="guide-title font3pt">球队概况</div>'+
-                '<ul>'+
-                '<li class="each-item">'+
-                '<table width="100%">'+
-                '<tr class="font2pt">'+
-                '<td width="30%"><div class="attr-name">球队名称</div></td>'+
-                '<td width="70%"><div class="attr-txt "><input type="text" style="height: 30px;line-height: 30px;border: none;width: 100%;" placeholder="未填写" id="team_name" value='+obj.name+' ></div></td>'+
-                '</tr>'+
-                '</table>'+
-                '</li>'+
-                '<li class="each-item">'+
-                '<table width="100%">'+
-                '<tr class="font2pt">'+
-                '<td width="30%"><div class="attr-name">简称  </div></td>'+
-                '<td width="70%"><div class="attr-txt "><input type="text" style="height: 30px;line-height: 30px;border: none;width: 100%;" placeholder="未填写" id="short_name" value=""></div></td>'+
-                '</tr>'+
-                '</table>'+
-                '</li>'+
-                '<li class="each-item">'+
-                '<table width="100%">'+
-                '<tr class="font2pt">'+
-                '<td width="30%"><div class="attr-name">队长 </div></td>'+
-                '<td width="70%"><div class="attr-txt "><input type="text" style="height: 30px;line-height: 30px;border: none;width: 100%;" placeholder="未填写" id="captain" value='+obj.captain+'></div></td>'+
-                '</tr>'+
-                '</table>'+
-                '</li>'+
-                '<li class="each-item ">'+
-                '<table width="100%">'+
-                '<tr class="font2pt">'+
-                '<td width="30%"><div class="attr-name">赞助商 </div></td>'+
-                '<td width="70%"><div class="attr-txt "><input type="text" style="height: 30px;line-height: 30px;border: none;width: 100%;" placeholder="未填写" id="sponsor-name" value=""></div></td>'+
-                '</tr>'+
-                '</table>'+
-                '</li>'+
-                '<li class="each-item">'+
-                '<table width="100%">'+
-                '<tr class="font2pt">'+
-                '<td width="30%"><div class="cloth-name">秋衣色彩</div></td>'+
-                '<td width="70%"><div class="cloth-txt "> <span class="home">秋衣</span> <div class="home-color" style="width: 23px;height: 23px;background-color: red;-moz-border-radius: 11px;-webkit-border-radius: 11px;border-radius: 11px;" id="upper"></div> </div>'+
-                '<span class="rehome">球裤</span> <div class="rehome-color" style="width: 23px;height: 23px;background-color: black;-moz-border-radius: 11px;-webkit-border-radius: 11px;border-radius: 11px;" id="lower"></td>'+
-                '</tr>'+
-                '</table>'+
-                '</li>'+
-                '<li class="each-item">'+
-                '<table width="100%">'+
-                '<tr class="font2pt">'+
-                '<td width="30%"><div class="attr-name">球员数量</div></td>'+
-                '<td width="70%"><div class="attr-txt ">'+obj.num+'</div></td>'+
-                '</tr>'+
-                '</table>'+
-                '</li>'+
-                '<li class="each-item">'+
-                '<table width="100%">'+
-                '<tr class="font2pt">'+
-                '<td width="30%"><div class="attr-name">球队常住地</div></td>'+
-                '<td width="70%"><div class="attr-txt "><input type="text" style="height: 30px;line-height: 30px;border: none;width: 100%;" placeholder="未填写" id="home" value='+obj.home+'></div></td>'+
-                '</tr>'+
-                '</table>'+
-                '</li>'+
-                '</ul>'+
-                '</div>'+
-                '<div class="team-profile">'+
-                '<div class="team-profile-title font3pt">球队简介</div>'+
-                '<div class="team-profile-img hidden">'+
-                '<img src="images/swiper2.jpg" alt="" width="100%" height="100%">'+
-                '</div>'+
-                '<div style="background-color: white"><textarea class="team-introduce font2pt">'+obj.content+'</textarea></div>'+
-                '</div>';
-            allcontents.append(newroll);
-            $(".home-color").css("backgroundColor",obj.upper);
-            $(".rehome-color").css("backgroundColor",obj.lower);
-            upper=obj.upper;
-            lower=obj.lower;
-        }
-    });
+function TIP_ERROR(error_message) {
+    $(".Tip").removeClass("hidden");
+    $(".Tip span").html(error_message);
+    setTimeout('$(".Tip").addClass("hidden")',1500);
+    return;
 }

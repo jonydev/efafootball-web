@@ -88,11 +88,19 @@ $(".sign-btn").click(function () {
         setTimeout('$(".Tip").addClass("hidden")',1500);
         return;
     }
+    var reg=/^[a-zA-Z0-9]+$/;
+    if(!reg.test(loginName)){
+        $(".Tip").removeClass("hidden");
+        $(".Tip span").html("用户名必须为数字字母的组合!")
+        setTimeout('$(".Tip").addClass("hidden")',1500);
+        return;
+    }
     var Name=$("#Name").val();
     var ID_Number=$("#ID_Number").val();
     var sex=$("#sex").val();
     var position=$("#position").val();
     var city=$("#City").val();
+    debugger;
     var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/createUser?loginName="+loginName+"&password="+password+"&name="+name+"&userType=1";
     Sign_Up(url);
 });
@@ -110,10 +118,10 @@ $(".save-item").click(function () {
     $(".position-ul").addClass("hidden");
     if(current_choose==0){
         var choose_content=$(".sex-ul").find(".text-green table tr td div").text();
-        $("#sex").val(choose_content);
+        $("#sex").text(choose_content);
     }else if(current_choose==1){
         var choose_content=$(".position-ul").find(".text-green table tr td div").text();
-        $("#position").val(choose_content);
+        $("#position").text(choose_content);
     }
 });
 $(".cancel-item").click(function () {

@@ -128,10 +128,15 @@ $(".save-edit").click(function () {
     if(position.indexOf("CB")!=-1) position="CB";
     if(position.indexOf("GK")!=-1) position="GK";
     var cards=$("#ID_Number").val(); //身份证
+    var reg=/^[1-9]{1}[0-9]{14}$|^[1-9]{1}[0-9]{16}([0-9]|[xX])$/;
+    if(!reg.test(cards)){
+        TIP_ERROR("身份证号码格式不对");
+        return;
+    }
     var photo=$("#profile-img").attr("src"); //照片 上传七牛服务器返回图片名称传达给服务器
     var telephone=$("#phone").val();//电话号码
     if(isNaN(telephone)&&telephone!=""){
-        TIP_ERROR("电话号码格式不对");r
+        TIP_ERROR("电话号码格式不对");
         return;
     }
     var sex=0;//'性别 1男 0 女',
@@ -151,18 +156,20 @@ $(".save-edit").click(function () {
     var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/updateMember?id="+id+"&name="+name+"&loginId="+loginId+"&city="+city+
         "&number="+number+"&position="+position+"&cards="+cards+"&photo="+photo+"&telephone="+telephone+"&sex="+sex+"&age="+age+"&height="+height+"&weight="+weight;
     console.log(url);
-    $.ajax({
-        url:url,
-        type:"post",
-        success:function (data) {
-             TIP_ERROR(data.message);
-             if(data.result=="success"){
-                 window.history.go(-1);
-                 window.location.reload();
-             }
-        }
-
-    })
+    if(confirm("是否保存修改？")==true){{
+        $.ajax({
+            url:url,
+            type:"post",
+            success:function (data) {
+                TIP_ERROR(data.message);
+                if(data.result=="success"){
+                    window.history.go(-1);
+                    window.location.reload();
+                }
+            }
+        })
+    }
+    }
 });
 
 function choose_sex() {

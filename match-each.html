@@ -93,8 +93,8 @@
         </div>
         <div class="tab-start-first hidden">
             <div class="team-first">
-                <div class="team-a-first col-xs-6 font15pt background-green2e text-white" id="home-team"> 红郡FC</div>
-                <div class="team-b-first col-xs-6 font15pt text-green26" id="away-team">MIP</div>
+                <div class="team-a-first col-xs-6 font15pt background-green2e text-white" id="home-team"> </div>
+                <div class="team-b-first col-xs-6 font15pt text-green26" id="away-team"></div>
             </div>
             <div >
                 <ul class="member-ul">
@@ -163,7 +163,7 @@
                             <a class="percent-b font2pt" href="javascript:;">0</a>
                         </div>
                     </li>
-                    <li class="single-statistic" id="point-kick">
+                    <li class="single-statistic" id="penalty">
                         <div class="team-a-statistic" style="float: left">
                             <div class="total-value-a">
                                 <div class="real-value-a"></div>
@@ -178,7 +178,7 @@
                             <a class="percent-b font2pt" href="javascript:;">0</a>
                         </div>
                     </li>
-                    <li class="single-statistic" id="free-kick">
+                    <li class="single-statistic" id="kick">
                         <div class="team-a-statistic" style="float: left" >
                             <div class="total-value-a">
                                 <div class="real-value-a"></div>
@@ -193,7 +193,7 @@
                             <a class="percent-b font2pt" href="javascript:;">0</a>
                         </div>
                     </li>
-                    <li class="single-statistic" id="cornor-kick">
+                    <li class="single-statistic" id="cornor">
                         <div class="team-a-statistic" style="float: left">
                             <div class="total-value-a">
                                 <div class="real-value-a"></div>
@@ -208,7 +208,7 @@
                             <a class="percent-b font2pt" href="javascript:;">0</a>
                         </div>
                     </li>
-                    <li class="single-statistic" id="break-rules">
+                    <li class="single-statistic" id="foul">
                         <div class="team-a-statistic" style="float: left">
                             <div class="total-value-a">
                                 <div class="real-value-a"></div>
@@ -333,11 +333,11 @@
         </div>
         <div class="tab-shape hidden">
             <div class="shape-team">
-                <div class="shape-team-a col-xs-6 font15pt background-green2e text-white"> 红郡FC</div>
-                <div class="shape-team-b col-xs-6 font15pt text-green26">MIP</div>
+                <div class="shape-team-a col-xs-6 font15pt background-green2e text-white" id="home-team-shape"> </div>
+                <div class="shape-team-b col-xs-6 font15pt text-green26" id="away-team-shape"></div>
             </div>
             <div class="shape-content">
-
+                <img class="shape-img" src="images/global_shape.png" alt="" width="90%" height="90%">
             </div>
         </div>
     </div>
@@ -372,7 +372,7 @@
                     <table width="100%">
                         <tr class="font2pt">
                             <td width="30%"><div class="attr-name">比赛场地</div></td>
-                            <td width="70%"><div class="attr-txt match-place ">红郡足球俱乐部</div></td>
+                            <td width="70%"><div class="attr-txt match-place "></div></td>
                         </tr>
                     </table>
                 </li>
@@ -401,7 +401,7 @@
             <ul>
                 <li class="each-position">
                     <div class=" font2pt text-green26 position-title">守门员</div>
-                    <ul>
+                    <ul class="hidden">
                         <li class="each-person">
                             <a class="number text-black" href="">1</a>
                             <div class="member-info">
@@ -427,7 +427,7 @@
         </div>
         <div class="leave-member">
             <div class="leave-member-title" >请假球员</div>
-            <ul>
+            <ul class="hidden">
                 <li class="each-person">
                     <a class="number text-black" href="">1</a>
                     <div class="member-info">

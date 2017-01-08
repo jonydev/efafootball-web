@@ -2,7 +2,11 @@
  * Created by 晴识明月 on 2016/12/3.
  */
 var match_id,hometeamid,awayteamid;
-var game_id;
+var game_id,match_info;
+var event_photo=["images/real_goal.png","images/real_support.png","images/real_yellow.png","images/real_red.png",
+"images/real_shoot.png","images/real_corner.png","images/real_free.png","images/real_breakrule.png","images/real_point.png",
+    "images/real_over.png","images/real_change.png","images/real_change.png","images/real_start.png","images/real_half_end.png",
+    "images/real_half_sart.png","images/real_end.png"];
 $(document).ready(function () {
     var Request=new Object();
     Request=GetRequest();
@@ -64,7 +68,7 @@ $(".shape").click(function () {
     $(".tab-real-schedule").addClass("hidden");
     $(".tab-start-first").addClass("hidden");
     $(".tab-shape").removeClass("hidden");
-    //AddIntroduceContent();
+    AddShapeContent();
 });
 $("#home-team").click(function () {
     $(this).addClass("background-green2e text-white").removeClass("text-green26");
@@ -74,6 +78,16 @@ $("#home-team").click(function () {
 $("#away-team").click(function () {
     $(this).addClass("background-green2e text-white").removeClass("text-green26");
     $("#home-team").removeClass("background-green2e text-white").addClass("text-green26");
+    AddShapeContent(awayteamid);
+});
+$("#home-team-shape").click(function () {
+    $(this).addClass("background-green2e text-white").removeClass("text-green26");
+    $("#away-team-shape").removeClass("background-green2e text-white").addClass("text-green26");
+    AddShapeContent(hometeamid);
+});
+$("#away-team-shape").click(function () {
+    $(this).addClass("background-green2e text-white").removeClass("text-green26");
+    $("#home-team-shape").removeClass("background-green2e text-white").addClass("text-green26");
     AddStartFirstContent(awayteamid);
 });
 $(document).on("click",".signup",function () {
@@ -92,53 +106,98 @@ function AddRealScheduleContent() {
     var a_abstractcontent=$(".a-abstract_ul").empty();
     var b_abstractcontent=$(".b-abstract_ul").empty();
     var realctcontent=$(".real-ul").empty();
+    var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/getScheduleToProcess?id="+game_id+"&homeId="+hometeamid+"&awayId="+awayteamid;
+    $.ajax({
+        url:url,
+        success:function (data) {
+            console.log(data);
+            var obj=JSON.parse(data);
+            for (var key in obj){
+                var single_ul=obj[key];
+                for (var i=0;i<single_ul.length;i++){
+                    var single=single_ul[i];
+                    var photo=event_photo[eval(single.eventType)-1];
+                    if(key==hometeamid){
+                        var newroll=
+                            '<li class="single-li">'+
+                            '<img class="action-a-img" src='+photo+' alt="" width="100%" height="100%">'+
+                            '<span class="action-a-time"></span>'+
+                            '<span class="action-a-who">'+single.number+'号'+single.name+single.eventName+'</span>'+
+                            '</li>';
+                        a_abstractcontent.append(newroll);
+                    }else if(key==awayteamid){
+                        var newroll=
+                            '<li class="single-li">'+
+                            '<img class="action-b-img" src='+photo+' alt="" width="100%" height="100%">'+
+                            '<span class="action-b-who">'+single.number+'号'+single.name+single.eventName+'</span>'+
+                            '<span class="action-b-time"></span>'+
+                            '</li>';
+                        b_abstractcontent.append(newroll);
+                    }
+                }
+            }
+        }
+    });
     var newroll=
-        '<li class="single-li">'+
-            '<img class="action-a-img" src="images/real_goal.png" alt="" width="100%" height="100%">'+
-            '<span class="action-a-time">8</span>'+
-        '<span class="action-a-who">未命名</span>'+
+        '<li>'+
+        '<div class="direction-l">'+
+        '<img class="flag-img" src="images/real_start.png" alt="" width="100%" height="100%">'+
+        '</div>'+
+        '<div class="my_circle"></div>'+
+        '<div class="direction-r">'+
+        '<span class="direction-l-time">0</span>'+
+        '</div>'+
         '</li>';
-    a_abstractcontent.append(newroll);
-    var newroll=
-        '<li class="single-li">'+
-                '<img class="action-b-img" src="images/real_goal.png" alt="" width="100%" height="100%">'+
-                '<span class="action-b-who">hhha</span>'+
-                '<span class="action-b-time">6</span>'+
-            '</li>';
-    b_abstractcontent.append(newroll);
-    var newroll=
-        '<li>'+
-            '<div class="direction-l">'+
-                '<img class="flag-img" src="images/real_goal.png" alt="" width="100%" height="100%">'+
-                '</div>'+
-                '<div class="my_circle"></div>'+
-                '<div class="direction-r">'+
-                '<span class="direction-l-time">87</span>'+
-            '</div>'+
-            '</li>';
-    var a=
-        '<li>'+
-            '<div class="direction-l">'+
-                '<img class="flag-img" src="images/real_goal.png" alt="" width="100%" height="100%">'+
-                '<span  class="direction-l-name"> 20号 蔡勤学</span>'+
-            '</div>'+
-            '<div class="my_circle"></div>'+
-                '<div class="direction-r">'+
-                '<span class="direction-l-time">87</span>'+
-            '</div>'+
-            '</li>';
-    var b=
-        '<li>'+
-            '<div class="direction-r">'+
-                '<img class="flag-img" src="images/real_goal.png" alt="" width="100%" height="100%">'+
-                '<span  class="direction-r-name"> 20号 蔡勤学</span>'+
-            '</div>'+
-            '<div class="my_circle"></div>'+
-                '<div class="direction-l">'+
-                '<span class="direction-r-time">87</span>'+
-            '</div>'+
-            '</li>';
-    realctcontent.append(newroll).append(a).append(b);
+    realctcontent.append(newroll);
+    var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/getInformation?id="+game_id+"&homeId="+hometeamid+"&awayId="+awayteamid;
+    $.ajax({
+        url:url,
+        success:function (data) {
+            console.log(data);
+            var obj=eval(data);
+            for (var i=0;i< obj.length;i++){
+                var single=obj[i];
+                var photo=event_photo[eval(single.eventType)];
+                if(single.team_id==""){
+                    var newroll=
+                        '<li>'+
+                        '<div class="direction-l">'+
+                        '<img class="flag-img" src='+photo+' alt="" width="100%" height="100%">'+
+                        '</div>'+
+                        '<div class="my_circle"></div>'+
+                        '<div class="direction-r">'+
+                        '<span class="direction-l-time">'+single.time+'</span>'+
+                        '</div>'+
+                        '</li>';
+                }else if(single.team_id==hometeamid){
+                    var newroll=
+                        '<li>'+
+                        '<div class="direction-l">'+
+                        '<img class="flag-img" src='+photo+' alt="" width="100%" height="100%">'+
+                        '<span  class="direction-l-name"> '+single.eventName+'</span>'+
+                        '</div>'+
+                        '<div class="my_circle"></div>'+
+                        '<div class="direction-r">'+
+                        '<span class="direction-l-time">'+single.time+'</span>'+
+                        '</div>'+
+                        '</li>';
+                }else if(single.team_id==awayteamid){
+                    var newroll=
+                        '<li>'+
+                        '<div class="direction-r">'+
+                        '<img class="flag-img" src='+photo+' alt="" width="100%" height="100%">'+
+                        '<span  class="direction-r-name"> '+single.eventName+'</span>'+
+                        '</div>'+
+                        '<div class="my_circle"></div>'+
+                        '<div class="direction-l">'+
+                        '<span class="direction-r-time">'+single.time+'</span>'+
+                        '</div>'+
+                        '</li>';
+                }
+                realctcontent.append(newroll);
+            }
+        }
+    });
 }
 function SetContentStarted() {
     var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/getScheduleById?officeId="+match_id+"&id="+game_id;
@@ -146,6 +205,7 @@ function SetContentStarted() {
         url:url,
         success:function (data) {
         console.log(data.rows);
+        match_info=(data.rows)[0];
         var single=(data.rows)[0];
         hometeamid=single.homeTeamId;
         awayteamid=single.awayTeamId;
@@ -156,9 +216,9 @@ function SetContentStarted() {
         $(".team-atxt").text(single.homeTeamName);
         $(".team-btxt").text(single.awayTeamName);
         $(".score-result").text(single.homescore+':'+single.awayscore);
+        AddRealScheduleContent();
         }
-    })
-    AddRealScheduleContent();
+    });
 }
 function SetContentNoStarted() {
     var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/getScheduleById?officeId="+match_id+"&id="+game_id;
@@ -179,6 +239,8 @@ function SetContentNoStarted() {
     })
 }
 function AddStartFirstContent(teamId) {
+    $("#home-team").text(match_info.homeTeamName);
+    $("#away-team").text(match_info.awayTeamName);
     var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/getScheduleByMember?teamId="+teamId+"&scheduleId="+game_id;
     $.ajax({
         url:url,
@@ -222,25 +284,42 @@ function AddStartFirstContent(teamId) {
     });
 }
 function AddStatisticContent() {
-    $("#shoot").find(".percent-a").html(3);
-    $("#shoot").find(".percent-b").html(4);
-    $("#shoot").find(".real-value-a").css("width","39%");
-    $("#shoot").find(".real-value-b").css("width","24%");
-    $("#point-kick").find(".percent-a").html(3);
-    $("#point-kick").find(".percent-b").html(4);
-    $("#point-kick").find(".real-value-a").css("width","39%");
-    $("#point-kick").find(".real-value-b").css("width","24%");
-    $("#free-kick").find(".percent-a").html(3);
-    $("#free-kick").find(".percent-b").html(4);
-    $("#free-kick").find(".real-value-a").css("width","39%");
-    $("#free-kick").find(".real-value-b").css("width","24%");
-    $("#cornor-kick").find(".percent-a").html(3);
-    $("#cornor-kick").find(".percent-b").html(4);
-    $("#cornor-kick").find(".real-value-a").css("width","39%");
-    $("#cornor-kick").find(".real-value-b").css("width","24%");
-    $("#break-rules").find(".percent-a").html(3);
-    $("#break-rules").find(".percent-b").html(4);
-    $("#break-rules").find(".real-value-a").css("width","39%");
-    $("#break-rules").find(".real-value-b").css("width","24%");
-
+    var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/getStatistical?id=9"+game_id+"&homeId="+hometeamid+"&awayId="+awayteamid;
+    var statisticcontent=$(".statistic-info").empty();
+    $.ajax({
+        url:url,
+        success:function (data) {
+            console.log(data);
+            var obj=JSON.parse(data);
+            var hometeam=obj[hometeamid];
+            var awayteam=obj[awayteamid];
+            for (var i=0;i<awayteam.length;i++){
+                var single_a=hometeam[i];
+                var single_b=awayteam[i];
+                var newroll=
+                    '<li class="single-statistic" id="shoot">'+
+                    '<div class="team-a-statistic" style="float: left">'+
+                    '<div class="total-value-a">'+
+                    '<div class="real-value-a" style="width: '+single_a.percentage+'"></div>'+
+                    '</div>'+
+                    '<a class="percent-a font2pt" href="javascript:;">'+single_a.num+'</a>'+
+                    '</div>'+
+                    '<div class="statistic-name  font2pt" style="float: left">'+single_a.typeName+'</div>'+
+                    '<div class="team-b-statistic " style="float: left">'+
+                    '<div class="total-value-b">'+
+                    '<div class="real-value-b" style="width: '+single_b.percentage+'"></div>'+
+                    '</div>'+
+                    '<a class="percent-b font2pt" href="javascript:;">'+single_b.num+'</a>'+
+                    '</div>'+
+                    '</li>';
+                $("#shoot").find(".real-value-a").css("width",single_a.percentage);
+                $("#shoot").find(".real-value-b").css("width",single_b.percentage);
+                statisticcontent.append(newroll);
+            }
+        }
+    });
+}
+function AddShapeContent(team_id) {
+    $("#home-team-shape").text(match_info.homeTeamName);
+    $("#away-team-shape").text(match_info.awayTeamName);
 }

@@ -8,6 +8,25 @@ $(document).ready(function (){
 $(".search-div").click(function () {
         $(".search-top").addClass("hidden");
 });
+$("#choose-team").click(function () {
+    $(this).addClass("background-green text-white").removeClass("text-green light-white");
+    $("#create-team").removeClass("background-green text-white").addClass("text-green light-white");
+});
+$("#create-team").click(function () {
+    $(this).addClass("background-green text-white").removeClass("text-green light-white");
+    $("#choose-team").removeClass("background-green text-white").addClass("text-green light-white");
+    //根据localStorage缓存看是否登录
+    var have_logined=localStorage.getItem("have_logined");
+    if(have_logined==1) {
+        var mine_info = JSON.parse(localStorage.getItem("mine_info"));
+        if(mine_info.team!=""){
+            TIP_ERROR("你已经加入了球队，不能新建球队！")
+            window.location.href="http://120.76.206.174:8080/efafootball-web/team-edit.html?team_id="+mine_info.team.id;
+            return;
+        }
+    }
+    window.location.href="http://120.76.206.174:8080/efafootball-web/team-new.html?";
+});
 $(document).on("click",".team-ul li",function () {
     var team_id=$(this).attr("id");
     window.location.href="http://120.76.206.174:8080/efafootball-web/team-detail.html?team_id="+team_id;
@@ -24,9 +43,11 @@ function searchTeambyName() {
     for (var i = 0; i < g_team.length; i++) {
             var single = g_team[i];
             if (single.name.indexOf(search_content) != -1) {
+            var photo="images/default_team.png";
+            if(single.photo!="") photo=single.photo;
             var newroll =
                 '<li class="single-team background-white" id=' + single.id + '>' +
-                '<img class="team-Img" src="images/join_team.png" alt="" width="100%" height="100%">' +
+                '<img class="team-Img" src='+photo+' alt="" width="100%" height="100%">' +
                 '<a class="team-name" href="javascript:;">' + single.name + '</a>' +
                 '<img class="team-detail" src="images/goto_team.png" alt="" width="100%" height="100%">' +
                 '<a class="team-num" href="javascript:;">' + single.num + '</a>' +
@@ -70,4 +91,10 @@ function SetContent() {
             }
         }
     );
+}
+function TIP_ERROR(error_message) {
+    $(".Tip").removeClass("hidden");
+    $(".Tip span").html(error_message);
+    setTimeout('$(".Tip").addClass("hidden")',1500);
+    return;
 }

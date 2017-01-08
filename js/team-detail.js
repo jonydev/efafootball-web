@@ -1,7 +1,7 @@
 /**
  * Created by 晴识明月 on 2016/12/16.
  */
-var team_id,login_id;
+var team_id,login_id,match_id;
 $(document).ready(function (){
     var Request=new Object();
     Request=GetRequest();
@@ -39,6 +39,7 @@ $(".schedule a").click(function () {
     AddMatchContent();
 });
 $(document).on("click",".edit-team",function () {
+    if(!CheckLeader()==true) return;
     window.location.href="http://120.76.206.174:8080/efafootball-web/team-edit.html?team_id="+team_id;
 });
 $(document).on("click",".teammatch_ul li",function () {
@@ -49,12 +50,22 @@ $(document).on("click",".upgoing-game li",function () {
     var game_id=$(this).attr("value");
     window.location.href="http://120.76.206.174:8080/efafootball-web/match-each.html?match_id="+match_id+"&game_id="+game_id+"&flag=0";
 });
+$(document).on("click","#team-notify",function () {
+    if(!CheckLeader()==true) return;
+    window.location.href="http://localhost:63342/efafootball-web/team-notify.html";
+});
 $(document).on("click",".join-team",function () {
     //根据localStorage缓存看是否登录
     var have_logined=localStorage.getItem("have_logined");
     if(have_logined==1){
         login_id=localStorage.getItem("loginId");
-        var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/joinTeam ?teamId ="+team_id+"&loginId ="+login_id;
+        var mine_info=localStorage.getItem("mine_info");
+        if(mine_info.team!=""){
+            TIP_ERROR("你已经加入了球队，不能重复加入！")
+            return;
+        }
+        var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/joinTeam ?teamId="+team_id+"&loginId="+login_id;
+        debugger;
         $.ajax({
             url:url,
             success:function (data) {
@@ -89,6 +100,7 @@ function AddAllProfile() {
             var allcontents=$(".all-profile").empty();
             console.log(data.rows[0]);
             var obj=eval(data.rows[0]);
+            if(obj.office!=undefined) match_id=obj.office.id;
             var team_img="images/default_team.png" ;
             if(obj.photo!="") team_img=obj.photo;
             var newroll=
@@ -147,6 +159,14 @@ function AddAllProfile() {
                 '</tr>'+
                 '</table>'+
                 '</li>'+
+                '<li class="each-item" id="team-notify">'+
+                '<table width="100%">'+
+                '<tr class="font2pt">'+
+                '<td width="30%"><div class="attr-name">球队消息</div></td>'+
+                '<td width="70%"><div class="attr-txt "><img src="images/goto_player.png" alt="" class="goto-img" width="100%" height="100%"></div></td>'+
+                '</tr>'+
+                '</table>'+
+                '</li>'+
                 '</ul>'+
                 '</div>'+
                 '<div class="team-profile">'+
@@ -157,11 +177,13 @@ function AddAllProfile() {
                 '<div style="background-color: white"><div class="team-introduce font2pt">'+obj.content+'</div></div>'+
             '</div>';
             allcontents.append(newroll);
+            $(".home-color").css("backgroundColor",obj.upper);
+            $(".rehome-color").css("backgroundColor",obj.lower);
         }
     });
 }
 function AddMatchContent() {
-    var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/getScheduleByFlag?officeId=17981239632246c18e0404785da78e8c&team_id="+team_id;
+    var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/getScheduleByFlag?officeId="+match_id+"&team_id="+team_id;
     $.ajax({
         type:"GET",
         url:url,
@@ -285,4 +307,36 @@ function AddMemberContent() {
             }
         }
     });
+}
+function CheckLeader() {
+    //根据localStorage缓存看是否登录
+    var have_logined=localStorage.getItem("have_logined");
+    if(have_logined==1){
+        login_id=localStorage.getItem("loginId");
+        var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/checkLeader?teamId="+team_id+"&loginId="+login_id;
+        $.ajax({
+            url:url,
+            success:function (data) {
+                var result=data.result;
+                if(result=="fail"){
+                    $(".Tip").removeClass("hidden");
+                    $(".Tip span").text(data.message);
+                    setTimeout('$(".Tip").addClass("hidden")',1500);
+                    return false;
+                }else if(result=="success"){
+                    return true;
+                }
+            }
+        });
+    }else{
+        $(".Tip").removeClass("hidden");
+        setTimeout('$(".Tip").addClass("hidden")',1500);
+        return false;
+    }
+}
+function TIP_ERROR(error_message) {
+    $(".Tip").removeClass("hidden");
+    $(".Tip span").html(error_message);
+    setTimeout('$(".Tip").addClass("hidden")',1500);
+    return;
 }

@@ -4,7 +4,8 @@
 
 $(document).ready(function (){
     SetSwiper();
-    SetContent();
+    // SetContent();
+    SetContentOld();
 });
 $(document).on("click",".swiper-slide",function () {
     window.location.href=$(this).attr("value");
@@ -52,12 +53,13 @@ function SetSwiper() {
 function SetContent() {
     //拉数据
     var url="http://120.76.123.140/index.php?s=/mob/weibo/news";
+    // var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/newsData?id=1";
     $.ajax(
         {
             url: url,
             success: function (data) {
                 // 解析json
-                var obj = eval(data);
+                var obj = (data);
                 var addcontent=$(".news_ul").empty();
                 for (var i = 0; i < obj.length; i++) {
                     var single=obj[i];
@@ -78,6 +80,44 @@ function SetContent() {
                             '</div>'+
                             '</div>'+
                             '</div>'+
+                        '</li>'
+                    addcontent.append(newroll);
+                }
+            }
+        }
+    )
+}
+function SetContentOld() {
+    //拉数据
+    // var url="http://120.76.123.140/index.php?s=/mob/weibo/news";
+    var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/newsData?id=1";
+    $.ajax(
+        {
+            url: url,
+            success: function (data) {
+                // 解析json
+                var obj = (data);
+                debugger;
+                var addcontent=$(".news_ul").empty();
+                for (var i = 0; i < obj.length; i++) {
+                    var single=obj[i];
+                    var newroll =
+                        '<li value='+single.id+'>'+
+                        '<div class="single_new background-white">'+
+                        '<div class="news_img">'+
+                        '<img  class="img-attr" src='+single.photo+' alt="" width="100%" height="100%">'+
+                        '</div>'+
+                        '<div class="news_info">'+
+                        '<div class="news_title text-space">'+single.title+'</div>'+
+                        '<div class="news_time">'+
+                        '<div class="time_icon">'+
+                        '<img src="images/notice_time.png" alt="">'+
+                        '</div>'+
+                        '<div class="real-time">12:00</div>'+
+                        '<div class="read_count">阅读 '+0+'</div>'+
+                        '</div>'+
+                        '</div>'+
+                        '</div>'+
                         '</li>'
                     addcontent.append(newroll);
                 }

@@ -50,7 +50,7 @@
  .team-aimg{width: 35px;height: 35px;margin-right: 10px;float: right}
  .team-bimg{width: 35px;height: 35px;float: left;margin-left: 10px;}
  .team-btxt{height: 38px;line-height: 38px;float: right;width: 55%;overflow: hidden;text-align:right;}
-
+ .goto-img{width:20px;height: 20px;text-align: center;margin-right: 20px;float: right }
  /*颜色选择器*/
 .choose-color{position: absolute;z-index: 5;top: 60%;margin-top:-25%;width: 100%;text-align: center;background-color: #999999}
  .color-pick{position: relative;height: 200px;background-color: #2E992F;margin: 5px 5px 0px 5px;}
