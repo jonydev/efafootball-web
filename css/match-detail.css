@@ -1,10 +1,10 @@
  ul{margin: 0;padding: 0;list-style: none;}
-.title-container{position: relative;margin-top: 5px;margin-left: 5px;margin-right: 5px;height: 38px;}
-.introduce{width: 20%;float: left;padding-left: 20px;padding-top: 10px;position: relative}
-.team{width: 20%;float: left;padding-left: 20px;padding-top: 10px;position: relative}
-.schedule{width: 20%;float: left;padding-left: 20px;padding-top: 10px;position: relative}
-.points{width: 20%;float: left;padding-left: 20px;padding-top: 10px;position: relative}
-.billboard{width: 20%;float: left;padding-left: 20px;padding-top: 10px;position: relative}
+.title-container{position: relative;margin-top: 5px;margin-left: 5px;margin-right: 5px;height: 50px;}
+.introduce{width: 20%;float: left;padding-left: 20px;height: 50px;line-height:50px;position: relative}
+.team{width: 20%;float: left;padding-left: 20px;height: 50px;line-height:50px;position: relative}
+.schedule{width: 20%;float: left;padding-left: 20px;height: 50px;line-height:50px;position: relative}
+.points{width: 20%;float: left;padding-left: 20px;height: 50px;line-height:50px;position: relative}
+.billboard{width: 20%;float: left;padding-left: 20px;height: 50px;line-height:50px;position: relative}
 .all-schedule{margin-left: 5px;margin-right: 5px;}
 .round{background-color: #2e992e;height: 52px;padding-left: 42%}
 .round-num{font-size: 19px;float: left;margin-top: 10px;}
@@ -20,7 +20,7 @@
 .team-aimg{width: 35px;height: 35px;margin-right: 10px;float: right}
 .team-bimg{width: 35px;height: 35px;float: left;margin-left: 10px;}
 .team-btxt{height: 38px;line-height: 38px;float: right;width: 55%;overflow: hidden;text-align:right;}
-.shift-triangle{position: absolute;left: 35px;bottom:0;width: 0;  height: 0;  border-left: 4px solid transparent;  border-right: 4px solid transparent;  border-bottom: 6px solid #2e992e; }
+.shift-triangle{position: absolute;left: 38px;bottom:0;width: 0;  height: 0;  border-left: 8px solid transparent;  border-right: 8px solid transparent;  border-bottom: 12px solid #2e992e; }
 .all-billboard{margin: 5px 5px 0 5px;}
 .shooter-redyellow{background-color: #F1F5F6;height: 38px;position: relative;}
 .shooter{float: left;width: 50%;text-align: center;height: 100%;padding-top: 7px;font-size: 18px;}
@@ -28,7 +28,7 @@
  .player-statistic,.player-statistic table{width: 100%;position: relative;text-align: center}
 .player-redyellow,.player-redyellow table{width: 100%;position: relative;text-align: center}
 .player-statistic ,.player-redyellow{margin-top: 5px;}
-.table-head{background-color: #12283D;color: white;height: 38px;}
+.table-head{background-color: #12283D;color: white;height: 45px;font-size: 18px}
 .rank{width: 15%;text-align: center}
 .player-name{width: 25%;text-align: center}
 .player-team{width: 25%;text-align: center;}

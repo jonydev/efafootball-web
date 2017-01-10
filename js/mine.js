@@ -63,7 +63,7 @@ function SetContent(loginId) {
                     '<ul>'+
                     '<li class="team-item">'+
                     '<table width="100%">'+
-                    '<tr class="font2pt">'+
+                    '<tr class="font6pt">'+
                     '<td width="30%"><div class="attr-name own-team-img"><img src="images/default_team.png"  alt="" width="100%" height="100%"></div></td>'+
                     '<td width="70%"><div class="attr-txt ">'+team_name+'</div></td>'+
                     '</tr>'+
@@ -76,7 +76,7 @@ function SetContent(loginId) {
                     '<ul>'+
                     '<li class="each-item">'+
                     '<table width="100%">'+
-                    '<tr class="font2pt">'+
+                    '<tr class="font6pt">'+
                     '<td width="30%"><div class="attr-name">姓名</div></td>'+
                     '<td width="70%"><div class="attr-txt ">'+obj.name+'</div></td>'+
                     '</tr>'+
@@ -84,7 +84,7 @@ function SetContent(loginId) {
                     '</li>'+
                     '<li class="each-item">'+
                     '<table width="100%">'+
-                    '<tr class="font2pt">'+
+                    '<tr class="font6pt">'+
                     '<td width="30%"><div class="attr-name">身份证</div></td>'+
                     '<td width="70%"><div class="attr-txt ">'+obj.cards+'</div></td>'+
                     '</tr>'+
@@ -92,7 +92,7 @@ function SetContent(loginId) {
                     '</li>'+
                     '<li class="each-item">'+
                     '<table width="100%">'+
-                    '<tr class="font2pt">'+
+                    '<tr class="font6pt">'+
                     '<td width="30%"><div class="attr-name">年龄</div></td>'+
                     '<td width="70%"><div class="attr-txt ">'+obj.age+'</div></td>'+
                     '</tr>'+
@@ -100,7 +100,7 @@ function SetContent(loginId) {
                     '</li>'+
                     '<li class="each-item">'+
                     '<table width="100%">'+
-                    '<tr class="font2pt">'+
+                    '<tr class="font6pt">'+
                     '<td width="30%"><div class="attr-name">球衣号码</div></td>'+
                     '<td width="70%"><div class="attr-txt ">'+obj.number+'</div></td>'+
                     '</tr>'+
@@ -108,7 +108,7 @@ function SetContent(loginId) {
                     '</li>'+
                     '<li class="each-item">'+
                     '<table width="100%">'+
-                    '<tr class="font2pt">'+
+                    '<tr class="font6pt">'+
                     '<td width="30%"><div class="attr-name">性别</div></td>'+
                     '<td width="70%"><div class="attr-txt ">'+obj.sex+'</div></td>'+
                     '</tr>'+
@@ -117,7 +117,7 @@ function SetContent(loginId) {
                     '</li>'+
                     '<li class="each-item">'+
                     '<table width="100%">'+
-                    '<tr class="font2pt">'+
+                    '<tr class="font6pt">'+
                     '<td width="30%"><div class="attr-name">身高</div></td>'+
                     '<td width="70%"><div class="attr-txt ">'+obj.height+'</div></td>'+
                     '</tr>'+
@@ -126,7 +126,7 @@ function SetContent(loginId) {
                     '</li>'+
                     '<li class="each-item">'+
                     '<table width="100%">'+
-                    '<tr class="font2pt">'+
+                    '<tr class="font6pt">'+
                     '<td width="30%"><div class="attr-name">体重</div></td>'+
                     '<td width="70%"><div class="attr-txt ">'+obj.weight+'</div></td>'+
                     '</tr>'+
@@ -134,7 +134,7 @@ function SetContent(loginId) {
                     '</li>'+
                     '<li class="each-item ">'+
                     '<table width="100%">'+
-                    '<tr class="font2pt">'+
+                    '<tr class="font6pt">'+
                     '<td width="30%"><div class="attr-name">场上位置 </div></td>'+
                     '<td width="70%"><div class="attr-txt ">'+obj.position+'</div></td>'+
                     '</tr>'+
@@ -142,7 +142,7 @@ function SetContent(loginId) {
                     '</li>'+
                     '<li class="each-item">'+
                     '<table width="100%">'+
-                    '<tr class="font2pt">'+
+                    '<tr class="font6pt">'+
                     '<td width="30%"><div class="attr-name">地区</div></td>'+
                     '<td width="70%"><div class="attr-txt ">'+obj.city+'</div></td>'+
                     '</tr>'+
@@ -151,7 +151,7 @@ function SetContent(loginId) {
                     '</li>'+
                     '<li class="each-item">'+
                     '<table width="100%">'+
-                    '<tr class="font2pt">'+
+                    '<tr class="font6pt">'+
                     '<td width="30%"><div class="attr-name">手机号</div></td>'+
                     '<td width="70%"><div class="attr-txt ">'+obj.telephone+'</div></td>'+
                     '</tr>'+
@@ -159,7 +159,7 @@ function SetContent(loginId) {
                     '</li>'+
                 '<li class="each-item edit_info">'+
                 '<table width="100%">'+
-                '<tr class="font2pt">'+
+                '<tr class="font6pt">'+
                 '<td width="100%"><div class="" style="text-align: center">修改信息</div></td>'+
                 '</tr>'+
                 '</table>'+
@@ -171,7 +171,7 @@ function SetContent(loginId) {
                     '<ul>'+
                     '<li class="each-item">'+
                     '<table width="100%">'+
-                    '<tr class="font2pt">'+
+                    '<tr class="font6pt">'+
                     '<td width="30%"><div class="attr-name">意见反馈</div></td>'+
                     '<td width="70%"><div class="attr-txt "><img src="images/goto_player.png" alt="" class="goto-img" width="100%" height="100%"></div></td>'+
                     '</tr>'+
@@ -179,7 +179,7 @@ function SetContent(loginId) {
                     '</li>'+
                     '<li class="each-item">'+
                     '<table width="100%">'+
-                    '<tr class="font2pt">'+
+                    '<tr class="font6pt">'+
                     '<td width="30%"><div class="attr-name">联系我们</div></td>'+
                     '<td width="70%"><div class="attr-txt "><img src="images/goto_player.png" alt="" class="goto-img" width="100%" height="100%"></div></td>'+
                     '</tr>'+
@@ -187,7 +187,7 @@ function SetContent(loginId) {
                     '</li>'+
                     '<li class="each-item">'+
                     '<table width="100%">'+
-                    '<tr class="font2pt">'+
+                    '<tr class="font6pt">'+
                     '<td width="30%"><div class="attr-name">版本信息</div></td>'+
                     '<td width="70%"><div class="attr-txt ">V1.1</div></td>'+
                 '</tr>'+
@@ -195,7 +195,7 @@ function SetContent(loginId) {
                 '</li>'+
                 '<li class="each-item ">'+
                     '<table width="100%">'+
-                    '<tr class="font2pt">'+
+                    '<tr class="font6pt">'+
                     '<td width="30%"><div class="attr-name">清除缓存 </div></td>'+
                     '<td width="70%"><div class="attr-txt ">5MB</div></td>'+
                 '</tr>'+
@@ -203,7 +203,7 @@ function SetContent(loginId) {
                 '</li>'+
                 '<li class="each-item logout">'+
                     '<table width="100%">'+
-                    '<tr class="font2pt">'+
+                    '<tr class="font6pt">'+
                     '<td width="100%"><div class="" style="text-align: center">退出登录</div></td>'+
                     '</tr>'+
                     '</table>'+
@@ -236,7 +236,7 @@ function newSetContent(mine_info) {
                     '<ul>'+
                     '<li class="team-item">'+
                     '<table width="100%">'+
-                    '<tr class="font2pt">'+
+                    '<tr class="font6pt">'+
                     '<td width="30%"><div class="attr-name own-team-img"><img src="images/default_team.png"  alt="" width="100%" height="100%"></div></td>'+
                     '<td width="70%"><div class="attr-txt ">红郡足球俱乐部</div></td>'+
                     '</tr>'+
@@ -249,7 +249,7 @@ function newSetContent(mine_info) {
                     '<ul>'+
                     '<li class="each-item">'+
                     '<table width="100%">'+
-                    '<tr class="font2pt">'+
+                    '<tr class="font6pt">'+
                     '<td width="30%"><div class="attr-name">姓名</div></td>'+
                     '<td width="70%"><div class="attr-txt ">'+name+'</div></td>'+
                     '</tr>'+
@@ -257,7 +257,7 @@ function newSetContent(mine_info) {
                     '</li>'+
                     '<li class="each-item">'+
                     '<table width="100%">'+
-                    '<tr class="font2pt">'+
+                    '<tr class="font6pt">'+
                     '<td width="30%"><div class="attr-name">年龄</div></td>'+
                     '<td width="70%"><div class="attr-txt ">32</div></td>'+
                     '</tr>'+
@@ -265,7 +265,7 @@ function newSetContent(mine_info) {
                     '</li>'+
                     '<li class="each-item">'+
                     '<table width="100%">'+
-                    '<tr class="font2pt">'+
+                    '<tr class="font6pt">'+
                     '<td width="30%"><div class="attr-name">性别</div></td>'+
                     '<td width="70%"><div class="attr-txt ">男</div></td>'+
                     '</tr>'+
@@ -273,7 +273,7 @@ function newSetContent(mine_info) {
                     '</li>'+
                     '<li class="each-item ">'+
                     '<table width="100%">'+
-                    '<tr class="font2pt">'+
+                    '<tr class="font6pt">'+
                     '<td width="30%"><div class="attr-name">场上位置 </div></td>'+
                     '<td width="70%"><div class="attr-txt ">MC</div></td>'+
                     '</tr>'+
@@ -281,7 +281,7 @@ function newSetContent(mine_info) {
                     '</li>'+
                     '<li class="each-item">'+
                     '<table width="100%">'+
-                    '<tr class="font2pt">'+
+                    '<tr class="font6pt">'+
                     '<td width="30%"><div class="attr-name">地区</div></td>'+
                     '<td width="70%"><div class="attr-txt ">湖北 武汉</div></td>'+
                     '</tr>'+
@@ -289,7 +289,7 @@ function newSetContent(mine_info) {
                     '</li>'+
                     '<li class="each-item">'+
                     '<table width="100%">'+
-                    '<tr class="font2pt">'+
+                    '<tr class="font6pt">'+
                     '<td width="30%"><div class="attr-name">修改密码</div></td>'+
                     '<td width="70%"><div class="attr-txt "><img src="images/goto_player.png" alt="" class="goto-img" width="100%" height="100%"></div></td>'+
                     '</tr>'+
@@ -302,7 +302,7 @@ function newSetContent(mine_info) {
                     '<ul>'+
                     '<li class="each-item">'+
                     '<table width="100%">'+
-                    '<tr class="font2pt">'+
+                    '<tr class="font6pt">'+
                     '<td width="30%"><div class="attr-name">意见反馈</div></td>'+
                     '<td width="70%"><div class="attr-txt "><img src="images/goto_player.png" alt="" class="goto-img" width="100%" height="100%"></div></td>'+
                     '</tr>'+
@@ -310,7 +310,7 @@ function newSetContent(mine_info) {
                     '</li>'+
                     '<li class="each-item">'+
                     '<table width="100%">'+
-                    '<tr class="font2pt">'+
+                    '<tr class="font6pt">'+
                     '<td width="30%"><div class="attr-name">联系我们</div></td>'+
                     '<td width="70%"><div class="attr-txt "><img src="images/goto_player.png" alt="" class="goto-img" width="100%" height="100%"></div></td>'+
                     '</tr>'+
@@ -318,7 +318,7 @@ function newSetContent(mine_info) {
                     '</li>'+
                     '<li class="each-item">'+
                     '<table width="100%">'+
-                    '<tr class="font2pt">'+
+                    '<tr class="font6pt">'+
                     '<td width="30%"><div class="attr-name">版本信息</div></td>'+
                     '<td width="70%"><div class="attr-txt ">V1.1</div></td>'+
                     '</tr>'+
@@ -326,7 +326,7 @@ function newSetContent(mine_info) {
                     '</li>'+
                     '<li class="each-item ">'+
                     '<table width="100%">'+
-                    '<tr class="font2pt">'+
+                    '<tr class="font6pt">'+
                     '<td width="30%"><div class="attr-name">清除缓存 </div></td>'+
                     '<td width="70%"><div class="attr-txt ">500MB</div></td>'+
                     '</tr>'+

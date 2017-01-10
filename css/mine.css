@@ -12,7 +12,7 @@ input::-webkit-input-placeholder{text-align: center;}
 .player-head{width: 145px;height: 145px; border-radius:145px; }
 .team-guide,.person-guide{margin: 5px 5px 0px 5px; }
 .team-guide-title,.person-title{height: 25px;line-height: 25px;background-color: #12283D;text-align: center;color: white}
-.each-item{margin-bottom: 5px;background-color: white;height: 30px;line-height: 30px;}
+.each-item{margin-bottom: 5px;background-color: white;height: 45px;line-height: 45px;}
 .attr-name{margin-left: 14px;}
 .attr-txt{margin-left:10px;}
 .own-team-img{width: 57px;height: 57px;text-align: center;margin-bottom: 20px;}
@@ -25,12 +25,12 @@ input::-webkit-input-placeholder{text-align: center;}
 
 .login-btn{height: 38px;margin: 5px 5px 0 5px;line-height: 38px;text-align: center}
 .sign-btn{height: 38px;margin: 5px 5px 0 5px;line-height: 38px;text-align: center}
-.user-input,.password-input{height: 38px;margin: 5px 5px 0 5px;line-height: 38px;position: relative}
+.user-input,.password-input{height: 50px;margin: 5px 5px 0 5px;line-height: 50px;position: relative;font-size: 18px}
 .forget-passeord{margin-right: 20px;float: right}
 .forget-btn{height: 30px;line-height: 30px;margin: 5px 5px 0 5px;}
 
 /*浮动层*/
-.top-div{width: 100%;height: 100%;z-index: 5;position: absolute;top: 0;left: 0;padding-left: 5px;padding-top: 5px;padding-right: 5px;}
+.top-div{width: 80%;height: 60%;z-index: 5;position: absolute;top: 20%;left: 50%;margin-left:-40%;padding-left: 5px;padding-top: 5px;padding-right: 5px;background-color: #4bc74d}
 .sex-ul{width: 100%}
 .sex-item{margin-bottom: 5px;background-color: white;height: 35px;line-height: 35px;text-align: center}
 .save-item{margin-bottom: 5px;background-color: white;height: 35px;line-height: 35px;text-align: center;margin-top: 80px;}

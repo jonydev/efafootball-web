@@ -65,7 +65,6 @@ $(document).on("click",".join-team",function () {
             return;
         }
         var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/joinTeam ?teamId="+team_id+"&loginId="+login_id;
-        debugger;
         $.ajax({
             url:url,
             success:function (data) {
@@ -79,8 +78,7 @@ $(document).on("click",".join-team",function () {
             }
         })
     }else{
-        $(".Tip").removeClass("hidden");
-        setTimeout('$(".Tip").addClass("hidden")',1500);
+        TIP_ERROR("未登陆,不能加入球队");
     }
 });
 function checkFile(){
@@ -113,14 +111,14 @@ function AddAllProfile() {
                 '</div>'+
                 '</div>'+
                 '<div class="team-img">'+
-                '<img  src= '+team_img+' alt="" width="100%" height="100%">'+
+                '<img  src= '+team_img+' alt="" width="145px" height="145px">'+
                 '</div>'+
                 '<div class="team-guide">'+
                 '<div class="guide-title font3pt">球队概况</div>'+
                 '<ul>'+
                 '<li class="each-item">'+
                 '<table width="100%">'+
-                '<tr class="font2pt">'+
+                '<tr class="font6pt">'+
                 '<td width="30%"><div class="attr-name">球队全称</div></td>'+
                 '<td width="70%"><div class="attr-txt ">'+obj.name+'</div></td>'+
                 '</tr>'+
@@ -128,7 +126,7 @@ function AddAllProfile() {
                 '</li>'+
                 '<li class="each-item">'+
                 '<table width="100%">'+
-                '<tr class="font2pt">'+
+                '<tr class="font6pt">'+
                 '<td width="30%"><div class="attr-name">简称  </div></td>'+
                 '<td width="70%"><div class="attr-txt ">---</div></td>'+
                 '</tr>'+
@@ -136,7 +134,7 @@ function AddAllProfile() {
                 '</li>'+
                 '<li class="each-item ">'+
                 '<table width="100%">'+
-                '<tr class="font2pt">'+
+                '<tr class="font6pt">'+
                 '<td width="30%"><div class="attr-name">赞助商 </div></td>'+
                 '<td width="70%"><div class="attr-txt ">---</div></td>'+
                 '</tr>'+
@@ -144,7 +142,7 @@ function AddAllProfile() {
                 '</li>'+
                 '<li class="each-item">'+
                 '<table width="100%">'+
-                '<tr class="font2pt">'+
+                '<tr class="font6pt">'+
                 '<td width="30%"><div class="cloth-name">秋衣色彩</div></td>'+
                 '<td width="70%"><div class="cloth-txt "> <span class="home">主场</span> <div class="home-color" style="width: 23px;height: 23px;background: red;-moz-border-radius: 11px;-webkit-border-radius: 11px;border-radius: 11px;"></div> </div>'+
                 '<span class="rehome">客场</span> <div class="rehome-color" style="width: 23px;height: 23px;background: black;-moz-border-radius: 11px;-webkit-border-radius: 11px;border-radius: 11px;"></td>'+
@@ -153,7 +151,7 @@ function AddAllProfile() {
                 '</li>'+
                 '<li class="each-item">'+
                 '<table width="100%">'+
-                '<tr class="font2pt">'+
+                '<tr class="font6pt">'+
                 '<td width="30%"><div class="attr-name">球员数量</div></td>'+
                 '<td width="70%"><div class="attr-txt ">'+obj.num+'</div></td>'+
                 '</tr>'+
@@ -161,7 +159,7 @@ function AddAllProfile() {
                 '</li>'+
                 '<li class="each-item" id="team-notify">'+
                 '<table width="100%">'+
-                '<tr class="font2pt">'+
+                '<tr class="font6pt">'+
                 '<td width="30%"><div class="attr-name">球队消息</div></td>'+
                 '<td width="70%"><div class="attr-txt "><img src="images/goto_player.png" alt="" class="goto-img" width="100%" height="100%"></div></td>'+
                 '</tr>'+
@@ -174,7 +172,7 @@ function AddAllProfile() {
                 '<div class="team-profile-img hidden">'+
                 '<img src="images/swiper2.jpg" alt="" width="100%" height="100%">'+
                 '</div>'+
-                '<div style="background-color: white"><div class="team-introduce font2pt">'+obj.content+'</div></div>'+
+                '<div style="background-color: white"><div class="team-introduce font6pt">'+obj.content+'</div></div>'+
             '</div>';
             allcontents.append(newroll);
             $(".home-color").css("backgroundColor",obj.upper);
@@ -329,8 +327,7 @@ function CheckLeader() {
             }
         });
     }else{
-        $(".Tip").removeClass("hidden");
-        setTimeout('$(".Tip").addClass("hidden")',1500);
+        TIP_ERROR("未登陆,无法操作");
         return false;
     }
 }

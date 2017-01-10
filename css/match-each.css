@@ -87,7 +87,7 @@ ul{margin: 0;padding: 0;list-style: none;margin-bottom: 0;}
 .direction-r img{width: 17px;height: 17px;float: left;margin-left: 20px;}
 .direction-r-name{float: left;margin-left: 20px;font-size: 6pt;text-align: left;}
 .direction-r-time{float: right;margin-right: 20px;font-size: 6pt;}
-.shift-triangle{position: absolute;left: 48%;bottom:0;width: 0;  height: 0;  border-left: 4px solid transparent;  border-right: 4px solid transparent;  border-bottom: 6px solid #2e992e; }
+.shift-triangle{position: absolute;left: 46%;bottom:0;width: 0;  height: 0;  border-left: 6px solid transparent;  border-right: 6px solid transparent;  border-bottom: 10px solid #2e992e; }
 .shape-team{height: 40px;margin-top: 5px;margin-left: 5px;margin-right: 5px;background-color:#F1F5F6; }
 .shape-team-a{text-align: center;height: 40px;line-height: 40px; }
 .shape-team-b{text-align: center;height: 40px;line-height: 40px;}
@@ -103,7 +103,7 @@ ul{margin: 0;padding: 0;list-style: none;margin-bottom: 0;}
 .leave-Txt{  display:block;    height:38px;  line-height:38px;    font-size: 18px; text-align: center }
 .team-guide{margin: 5px 5px 0px 5px; }
 .guide-title{height: 38px;line-height: 38px;background-color: #12283D;text-align: center;color: white}
-.each-item{margin-bottom: 5px;background-color: white;height: 38px;line-height: 38px;}
+.each-item{margin-bottom: 5px;background-color: white;height: 45px;line-height: 45px;}
 .attr-name{margin-left: 14px;}
 .attr-txt{margin-left:30px;}
 .cloth-name{margin-left: 14px;}
@@ -114,4 +114,4 @@ ul{margin: 0;padding: 0;list-style: none;margin-bottom: 0;}
 .rehome-color{float: left;margin-left: 12px;margin-top: 7px;}
 .position-title{height: 20px;line-height: 20px;text-align: center;}
 .leave-member,.leave-member{margin-left: 5px;margin-top: 5px;margin-right: 5px;background-color:white;padding-bottom: 5px;}
-.signup-member-title,.leave-member-title{height: 25px;line-height: 25px;text-align: center;background-color:#2e992e;color: white;font-size: 14px; }
+.signup-member-title,.leave-member-title{height: 45px;line-height: 45px;text-align: center;background-color:#2e992e;color: white;font-size: 18px; }

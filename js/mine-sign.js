@@ -97,10 +97,9 @@ $(".sign-btn").click(function () {
     }
     var Name=$("#Name").val();
     var ID_Number=$("#ID_Number").val();
-    var sex=$("#sex").val();
-    var position=$("#position").val();
+    var sex=$("#sex").text();
+    var position=$("#position").text();
     var city=$("#City").val();
-    debugger;
     var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/createUser?loginName="+loginName+"&password="+password+"&name="+name+"&userType=1";
     Sign_Up(url);
 });
@@ -113,16 +112,24 @@ $(".sex-ul li").click(function () {
     $(this).addClass("text-green");
 });
 $(".save-item").click(function () {
-    $(".top-div").addClass("hidden");
-    $(".sex-ul").addClass("hidden");
-    $(".position-ul").addClass("hidden");
     if(current_choose==0){
         var choose_content=$(".sex-ul").find(".text-green table tr td div").text();
+        if(choose_content=="") {
+            TIP_ERROR("请选择性别");
+            return;
+        }
         $("#sex").text(choose_content);
     }else if(current_choose==1){
         var choose_content=$(".position-ul").find(".text-green table tr td div").text();
         $("#position").text(choose_content);
+        if(choose_content=="") {
+            TIP_ERROR("请选择位置");
+            return;
+        }
     }
+    $(".top-div").addClass("hidden");
+    $(".sex-ul").addClass("hidden");
+    $(".position-ul").addClass("hidden");
 });
 $(".cancel-item").click(function () {
     $(".top-div").addClass("hidden");

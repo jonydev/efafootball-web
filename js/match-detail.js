@@ -111,26 +111,26 @@ function AddIntroduceContent() {
                 '</div>'+
                 '<div class="match-profile-container">'+
                 '<div class="match-profile font3pt">赛事简介</div>'+
-                '<div style="background-color: white"><div class="match-introduce font2pt">'+obj.caption+'</div></div>'+
+                '<div style="background-color: white"><div class="match-introduce font6pt">'+obj.caption+'</div></div>'+
             '</div>'+
             '<div class="match-rule-container">'+
                 '<div class="match-profile font3pt">规则简介</div>'+
-                '<div style="background-color: white"><div class="match-introduce font2pt">'+obj.rule+'</div></div>'+
+                '<div style="background-color: white"><div class="match-introduce font6pt">'+obj.rule+'</div></div>'+
             '</div>'+
             '<div class="match-referee-container">'+
                 '<div class="match-profile font3pt">裁判简介</div>'+
-                '<div style="background-color: white"><div class="match-introduce font2pt">'+obj.referee+'</div></div>'+
+                '<div style="background-color: white"><div class="match-introduce font6pt">'+obj.referee+'</div></div>'+
             '</div>'+
             '<div class="preview hidden">'+
                 '<div class="preview-title font3pt">往期回顾</div>'+
                 '<ul>'+
                 '<li class="each-round">'+
                 '<div class="preview-roud font3pt">第一届</div>'+
-                '<div class="preview-rank font2pt"> <span style="color: #AEB2B3">冠军</span> 强势表达 / <span style="color: #AEB2B3"> 亚军</span> MIP / <span style="color: #AEB2B3"> 季军</span> 强势表达 </div>'+
+                '<div class="preview-rank font6pt"> <span style="color: #AEB2B3">冠军</span> 强势表达 / <span style="color: #AEB2B3"> 亚军</span> MIP / <span style="color: #AEB2B3"> 季军</span> 强势表达 </div>'+
                 '</li>'+
                 '<li class="each-round">'+
                 '<div class="preview-roud font3pt">第二届</div>'+
-                '<div class="preview-rank font2pt"> <span style="color: #AEB2B3">冠军</span> 强势表达 / <span style="color: #AEB2B3"> 亚军</span> MIP / <span style="color: #AEB2B3"> 季军</span> 强势表达 </div>'+
+                '<div class="preview-rank font6pt"> <span style="color: #AEB2B3">冠军</span> 强势表达 / <span style="color: #AEB2B3"> 亚军</span> MIP / <span style="color: #AEB2B3"> 季军</span> 强势表达 </div>'+
                 '</li>'+
                 '</ul>'+
                 '</div>'+
@@ -139,11 +139,11 @@ function AddIntroduceContent() {
                 '<ul>'+
                 '<li class="each-round">'+
                 '<div class="preview-roud font3pt">第一届</div>'+
-                '<div class="preview-rank font2pt"> <span style="color: #AEB2B3">最佳射手</span> 陈帅 强势表达 / <span style="color: #AEB2B3"> 最佳球员</span> 邓建坤 MIP </div>'+
+                '<div class="preview-rank font6pt"> <span style="color: #AEB2B3">最佳射手</span> 陈帅 强势表达 / <span style="color: #AEB2B3"> 最佳球员</span> 邓建坤 MIP </div>'+
             '</li>'+
             '<li class="each-round">'+
                 '<div class="preview-roud font3pt">第二届</div>'+
-                '<div class="preview-rank font2pt"> <span style="color: #AEB2B3">最佳射手</span> 陈帅 强势表达 / <span style="color: #AEB2B3"> 最佳球员</span> 邓建坤 MIP </div>'+
+                '<div class="preview-rank font6pt"> <span style="color: #AEB2B3">最佳射手</span> 陈帅 强势表达 / <span style="color: #AEB2B3"> 最佳球员</span> 邓建坤 MIP </div>'+
             '</li>'+
             '</ul>'+
             '</div>'+
@@ -333,7 +333,7 @@ function AddBillboardContent() {
     $(".all-team").addClass("hidden");
     var allcontents=$("table").empty();
     var tablehead=
-        '<tr>'+
+        '<tr class="table-head">'+
             '<th class="rank ">排名</th>'+
             '<th class="player-name ">球员</th>'+
             '<th class="player-team ">球队</th>'+
@@ -362,7 +362,7 @@ function AddBillboardContent() {
                             '<img style="float: left;margin-left: 10px;" class="first-shooter" src='+photo+' alt="" width="100%" height="100%">'+
                             '<div style="margin-left: 10px;float: left;margin-top: 22px;text-align: left">'+
                             '<div>'+single.name+'</div>'+
-                            '<div style="color: #BBBEBD">'+single.teamName+'</div>'+
+                            '<div >'+single.teamName+'</div>'+
                             '</div>'+
                             '</td>'+
                             '<td>'+single.num+'</td>'+
@@ -372,7 +372,7 @@ function AddBillboardContent() {
                 else{
                     var newroll=
                         '<tr class="single-tr">'+
-                            '<td>'+rank+'</td><td>'+single.name+'</td><td style="color: #BBBEBD">'+single.teamName+'</td><td>'+single.num+'</td><td>'+single.number+'</td>'+
+                            '<td>'+rank+'</td><td>'+single.name+'</td><td ">'+single.teamName+'</td><td>'+single.num+'</td><td>'+single.number+'</td>'+
                         '</tr>';
                 }
                 allcontents.append(newroll);

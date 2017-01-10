@@ -98,16 +98,24 @@ $(".sex-ul li").click(function () {
     $(this).addClass("text-green");
 });
 $(".save-item").click(function () {
+    if(current_choose==0){
+        var choose_content=$(".sex-ul").find(".text-green table tr td div").text();
+        if(choose_content=="") {
+            TIP_ERROR("请选择性别");
+            return;
+        }
+        $("#sex").text(choose_content);
+    }else if(current_choose==1){
+        var choose_content=$(".position-ul").find(".text-green table tr td div").text();
+        $("#position").text(choose_content);
+        if(choose_content=="") {
+            TIP_ERROR("请选择位置");
+            return;
+        }
+    }
     $(".top-div").addClass("hidden");
     $(".sex-ul").addClass("hidden");
     $(".position-ul").addClass("hidden");
-    if(current_choose==0){
-        var choose_content=$(".sex-ul").find(".text-green table tr td div").text();
-        $("#sex").val(choose_content);
-    }else if(current_choose==1){
-        var choose_content=$(".position-ul").find(".text-green table tr td div").text();
-        $("#position").val(choose_content);
-    }
 });
 $(".cancel-item").click(function () {
     $(".top-div").addClass("hidden");
@@ -122,7 +130,7 @@ $(".save-edit").click(function () {
         TIP_ERROR("秋衣号码必须为数字");
         return;
     }
-    var position=$("#position").val(); //场上位置 门将 GK 后卫 CB 中场CM 前锋 CF
+    var position=$("#position").text(); //场上位置 门将 GK 后卫 CB 中场CM 前锋 CF
     if(position.indexOf("CF")!=-1) position="CF";
     else if(position.indexOf("CM")!=-1) position="CM";
     if(position.indexOf("CB")!=-1) position="CB";
@@ -139,8 +147,8 @@ $(".save-edit").click(function () {
         TIP_ERROR("电话号码格式不对");
         return;
     }
-    var sex=0;//'性别 1男 0 女',
-    if($("#sex").val()=="男") sex=1;
+    var sex=0;//'性别 0男 1 女',
+    if($("#sex").text()=="女") sex=1;
     var age=$("#age").val();//'年级',
     var city=$("#city").val();//'地区',
     var height=$("#height").val();//'身高',
@@ -155,7 +163,6 @@ $(".save-edit").click(function () {
     }
     var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/updateMember?id="+id+"&name="+name+"&loginId="+loginId+"&city="+city+
         "&number="+number+"&position="+position+"&cards="+cards+"&photo="+photo+"&telephone="+telephone+"&sex="+sex+"&age="+age+"&height="+height+"&weight="+weight;
-    console.log(url);
     if(confirm("是否保存修改？")==true){{
         $.ajax({
             url:url,
@@ -163,7 +170,7 @@ $(".save-edit").click(function () {
             success:function (data) {
                 TIP_ERROR(data.message);
                 if(data.result=="success"){
-                    window.history.go(-1);
+                    window.history.back();
                     window.location.reload();
                 }
             }
@@ -201,10 +208,10 @@ function SetContent(mine_info) {
     if(mine_info.cards!="") $("#ID_Number").val(mine_info.cards);
     $("#age").val(mine_info.age);
     $("#cloth_number").val(mine_info.number);
-    if(mine_info.sex!="") $("#sex").val(mine_info.sex);
+    if(mine_info.sex!="") $("#sex").text(mine_info.sex);
     $("#height").val(mine_info.height);
     $("#weight").val(mine_info.weight);
-    if(mine_info.position!="") $("#position").val(mine_info.position);
-    if(mine_info.post!="") $("#city").val(mine_info.post);
+    if(mine_info.position!="") $("#position").text(mine_info.position);
+    if(mine_info.post!="") $("#city").val(mine_info.city);
     if(mine_info.telephone!="")$("#phone").val(mine_info.telephone);
 }

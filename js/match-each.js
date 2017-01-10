@@ -103,9 +103,16 @@ $(document).on("click",".leave",function () {
     $(".signup").find(".signup-Txt").removeClass("text-white").addClass("text-green");
 });
 function AddRealScheduleContent() {
-    var a_abstractcontent=$(".a-abstract_ul").empty();
-    var b_abstractcontent=$(".b-abstract_ul").empty();
+    var a_abstractcontent=$(".a-abstract_ul");
+    var b_abstractcontent=$(".b-abstract_ul");
     var realctcontent=$(".real-ul").empty();
+    var local_a_abstract_number=localStorage.getItem("local_a_abstract_number");    //获取本地缓存
+    var local_b_abstract_number=localStorage.getItem("local_b_abstract_number");    //获取本地缓存
+    var local_real_number=localStorage.getItem("local_real_number");  //获取本地缓存
+    if(local_a_abstract_number==null) local_a_abstract_number=0;
+    if(local_b_abstract_number==null) local_b_abstract_number=0;
+    if(local_real_number==null) local_real_number=0;
+
     var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/getScheduleToProcess?id="+game_id+"&homeId="+hometeamid+"&awayId="+awayteamid;
     $.ajax({
         url:url,
@@ -117,15 +124,17 @@ function AddRealScheduleContent() {
                 for (var i=0;i<single_ul.length;i++){
                     var single=single_ul[i];
                     var photo=event_photo[eval(single.eventType)-1];
-                    if(key==hometeamid){
+                    if(key==hometeamid &&i>=local_a_abstract_number){
+                        localStorage.setItem("local_a_abstract_number",single_ul.length);
                         var newroll=
                             '<li class="single-li">'+
                             '<img class="action-a-img" src='+photo+' alt="" width="100%" height="100%">'+
                             '<span class="action-a-time"></span>'+
-                            '<span class="action-a-who">'+single.number+'号'+single.name+single.eventName+'</span>'+
+                            '<span class="action-a-who">'+single.number+'号'+single.eventName+single.eventName+'</span>'+
                             '</li>';
                         a_abstractcontent.append(newroll);
-                    }else if(key==awayteamid){
+                    }else if(key==awayteamid&&i>=local_b_abstract_number){
+                        localStorage.setItem("local_b_abstract_number",single_ul.length);
                         var newroll=
                             '<li class="single-li">'+
                             '<img class="action-b-img" src='+photo+' alt="" width="100%" height="100%">'+
@@ -157,7 +166,9 @@ function AddRealScheduleContent() {
             var obj=eval(data);
             for (var i=0;i< obj.length;i++){
                 var single=obj[i];
+                localStorage.setItem("local_real_number",obj.length);
                 var photo=event_photo[eval(single.eventType)];
+                if(i<local_real_number) break;
                 if(single.team_id==""){
                     var newroll=
                         '<li>'+
@@ -199,6 +210,7 @@ function AddRealScheduleContent() {
         }
     });
 }
+setInterval("AddRealScheduleContent()",10000);
 function SetContentStarted() {
     var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/getScheduleById?officeId="+match_id+"&id="+game_id;
     $.ajax({
@@ -302,14 +314,14 @@ function AddStatisticContent() {
                     '<div class="total-value-a">'+
                     '<div class="real-value-a" style="width: '+single_a.percentage+'"></div>'+
                     '</div>'+
-                    '<a class="percent-a font2pt" href="javascript:;">'+single_a.num+'</a>'+
+                    '<a class="percent-a font6pt" href="javascript:;">'+single_a.num+'</a>'+
                     '</div>'+
-                    '<div class="statistic-name  font2pt" style="float: left">'+single_a.typeName+'</div>'+
+                    '<div class="statistic-name  font6pt" style="float: left">'+single_a.typeName+'</div>'+
                     '<div class="team-b-statistic " style="float: left">'+
                     '<div class="total-value-b">'+
                     '<div class="real-value-b" style="width: '+single_b.percentage+'"></div>'+
                     '</div>'+
-                    '<a class="percent-b font2pt" href="javascript:;">'+single_b.num+'</a>'+
+                    '<a class="percent-b font6pt" href="javascript:;">'+single_b.num+'</a>'+
                     '</div>'+
                     '</li>';
                 $("#shoot").find(".real-value-a").css("width",single_a.percentage);
@@ -322,4 +334,9 @@ function AddStatisticContent() {
 function AddShapeContent(team_id) {
     $("#home-team-shape").text(match_info.homeTeamName);
     $("#away-team-shape").text(match_info.awayTeamName);
+}
+function clear_localstorage(){
+    localStorage.removeItem("local_a_abstract_number");
+    localStorage.removeItem("local_b_abstract_number");
+    localStorage.removeItem("local_real_number");
 }

@@ -97,7 +97,6 @@ function SetContentOld() {
             success: function (data) {
                 // 解析json
                 var obj = (data);
-                debugger;
                 var addcontent=$(".news_ul").empty();
                 for (var i = 0; i < obj.length; i++) {
                     var single=obj[i];
