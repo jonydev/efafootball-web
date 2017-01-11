@@ -78,7 +78,7 @@ $("#home-team").click(function () {
 $("#away-team").click(function () {
     $(this).addClass("background-green2e text-white").removeClass("text-green26");
     $("#home-team").removeClass("background-green2e text-white").addClass("text-green26");
-    AddShapeContent(awayteamid);
+    AddStartFirstContent(awayteamid);
 });
 $("#home-team-shape").click(function () {
     $(this).addClass("background-green2e text-white").removeClass("text-green26");
@@ -88,7 +88,7 @@ $("#home-team-shape").click(function () {
 $("#away-team-shape").click(function () {
     $(this).addClass("background-green2e text-white").removeClass("text-green26");
     $("#home-team-shape").removeClass("background-green2e text-white").addClass("text-green26");
-    AddStartFirstContent(awayteamid);
+    AddShapeContent(awayteamid);
 });
 $(document).on("click",".signup",function () {
     $(this).addClass("background-green").removeClass("light-white");
@@ -117,7 +117,6 @@ function AddRealScheduleContent() {
     $.ajax({
         url:url,
         success:function (data) {
-            console.log(data);
             var obj=JSON.parse(data);
             for (var key in obj){
                 var single_ul=obj[key];
@@ -162,7 +161,6 @@ function AddRealScheduleContent() {
     $.ajax({
         url:url,
         success:function (data) {
-            console.log(data);
             var obj=eval(data);
             for (var i=0;i< obj.length;i++){
                 var single=obj[i];
@@ -245,7 +243,7 @@ function SetContentNoStarted() {
             }
             $(".team-atxt").text(single.homeTeamName);
             $(".team-btxt").text(single.awayTeamName);
-            $(".result-going").text(single.time);
+            $(".result-going").text(single.time.substr(0,5));
             $(".match-place").text(single.place);
         }
     })

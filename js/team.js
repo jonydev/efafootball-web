@@ -16,16 +16,17 @@ $("#create-team").click(function () {
     $(this).addClass("background-green text-white").removeClass("text-green light-white");
     $("#choose-team").removeClass("background-green text-white").addClass("text-green light-white");
     //根据localStorage缓存看是否登录
+    debugger
     var have_logined=localStorage.getItem("have_logined");
     if(have_logined==1) {
         var mine_info = JSON.parse(localStorage.getItem("mine_info"));
-        if(mine_info.team!=""){
-            TIP_ERROR("你已经加入了球队，不能新建球队！")
+        if(mine_info.team.id!=""){
+            // TIP_ERROR("你已经加入了球队，不能新建球队！")
             window.location.href="http://120.76.206.174:8080/efafootball-web/team-edit.html?team_id="+mine_info.team.id;
             return;
         }
-    }
-    window.location.href="http://120.76.206.174:8080/efafootball-web/team-new.html?";
+        else window.location.href="http://120.76.206.174:8080/efafootball-web/team-new.html?";
+    }else TIP_ERROR("未登陆，请先登陆");
 });
 $(document).on("click",".team-ul li",function () {
     var team_id=$(this).attr("id");

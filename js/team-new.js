@@ -9,7 +9,7 @@ $(document).ready(function (){
     if(have_logined==1){
         loginId=localStorage.getItem("loginId");
     }else{
-        window.location.href="http://120.76.206.174:8080/efafootball-web/mine-login.html";
+        TIP_ERROR("未登陆，请先到个人中心登陆");
     }
     //从服务器获取domain和token
     $.ajax({

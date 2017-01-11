@@ -52,7 +52,7 @@ $(document).on("click",".upgoing-game li",function () {
 });
 $(document).on("click","#team-notify",function () {
     if(!CheckLeader()==true) return;
-    window.location.href="http://localhost:63342/efafootball-web/team-notify.html";
+    window.location.href="http://120.76.206.174:8080/efafootball-web/team-notify.html";
 });
 $(document).on("click",".join-team",function () {
     //根据localStorage缓存看是否登录
@@ -143,7 +143,7 @@ function AddAllProfile() {
                 '<li class="each-item">'+
                 '<table width="100%">'+
                 '<tr class="font6pt">'+
-                '<td width="30%"><div class="cloth-name">秋衣色彩</div></td>'+
+                '<td width="30%"><div class="cloth-name">球衣色彩</div></td>'+
                 '<td width="70%"><div class="cloth-txt "> <span class="home">主场</span> <div class="home-color" style="width: 23px;height: 23px;background: red;-moz-border-radius: 11px;-webkit-border-radius: 11px;border-radius: 11px;"></div> </div>'+
                 '<span class="rehome">客场</span> <div class="rehome-color" style="width: 23px;height: 23px;background: black;-moz-border-radius: 11px;-webkit-border-radius: 11px;border-radius: 11px;"></td>'+
                 '</tr>'+
