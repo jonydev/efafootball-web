@@ -7,6 +7,7 @@
 
     <link rel="stylesheet" href="css/mine.css">
     <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/location.css">
     <link href="//cdn.bootcss.com/tether/1.3.6/css/tether.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
@@ -104,8 +105,21 @@
                 <li class="each-item">
                     <table width="100%">
                         <tr class="font6pt">
-                            <td width="30%"><div class="attr-name">地区</div></td>
-                            <td width="70%"><div class="attr-txt "><input type="text" style="height: 30px;line-height: 30px;border: none;width: 100%;" placeholder="未填写" id="city" value="" ></div></td>
+                            <td width="30%">
+                                <ul id="list1">
+                                    <li id="summary-stock">
+                                        <div class="dt attr-name">城市</div>
+                                        <div class="dd">
+                                            <div id="store-selector">
+                                                <div class="text"><div></div><b></b></div>
+                                                <div onclick="$('#store-selector').removeClass('hover')" class="close"></div>
+                                            </div><!--store-selector end-->
+                                            <div id="store-prompt"><strong></strong></div><!--store-prompt end--->
+                                        </div>
+                                    </li>
+                                </ul>
+                            </td>
+                            <td width="70%"><div class="attr-txt " id="City" cityid="" provinceid=""></div></td>
                         </tr>
                     </table>
                 </li>
@@ -375,14 +389,15 @@
     <div class="Tip hidden" style="background:#ea8282;position:absolute;z-Index:10;width:300px;height:40px;line-height:40px;left:50%;margin-Left:-150px;text-align:center;top:200px;;font-size:18px;">
         <span style="color: white;"></span>
     </div>
-<script src="//cdn.bootcss.com/tether/1.3.6/js/tether.min.js"></script>
-<script type="text/javascript" src="js/jquery.min.js"></script>
-<script  type="text/javascript" src="js/bootstrap.min.js"></script>
-<script type="text/javascript" src="js/qiniu.js"></script>
-<script type="text/javascript" src="js/qiniu.min.js"></script>
-<script type="text/javascript" src="js/plupload-2.1.3/js/plupload.full.min.js"></script>
-<script type="text/javascript" src="js/plupload-2.1.3/js/i18n/zh_CN.js"></script>
-<script  type="text/javascript" src="js/global.js"></script>
-<script  type="text/javascript" src="js/mine-edit.js"></script>
+    <script src="//cdn.bootcss.com/tether/1.3.6/js/tether.min.js"></script>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script  type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/qiniu.js"></script>
+    <script type="text/javascript" src="js/qiniu.min.js"></script>
+    <script type="text/javascript" src="js/plupload-2.1.3/js/plupload.full.min.js"></script>
+    <script type="text/javascript" src="js/plupload-2.1.3/js/i18n/zh_CN.js"></script>
+    <script  type="text/javascript" src="js/global.js"></script>
+    <script  type="text/javascript" src="js/location.js"></script>
+    <script  type="text/javascript" src="js/mine-edit.js"></script>
 </body>
 </html>

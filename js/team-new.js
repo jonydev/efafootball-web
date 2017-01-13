@@ -98,7 +98,7 @@ $(".save-edit").click(function () {
     var content=$(".team-introduce").val();
     var photo=$("#team-img").attr("src");
     if(photo=="images/default_team.png") photo="";
-    var home=$("#home").val();
+    var home=$("#City").text();
     var captain=$("#captain").val();
     if(confirm("是否保存修改？")==true){
         var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/createTeam?leader="+loginId+"&companyId=1&name="+name+"&photo="+photo+"&content="+content+"&home="+home+"&upper="+upper+"&lower="+lower+"&captain="+captain;

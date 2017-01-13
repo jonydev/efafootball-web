@@ -150,7 +150,7 @@ $(".save-edit").click(function () {
     var sex=0;//'性别 0男 1 女',
     if($("#sex").text()=="女") sex=1;
     var age=$("#age").val();//'年级',
-    var city=$("#city").val();//'地区',
+    var city=$("#City").text();//'地区',
     var height=$("#height").val();//'身高',
     if(isNaN(height)&&height!=""){
         TIP_ERROR("身高必须为数字");
@@ -212,6 +212,6 @@ function SetContent(mine_info) {
     $("#height").val(mine_info.height);
     $("#weight").val(mine_info.weight);
     if(mine_info.position!="") $("#position").text(mine_info.position);
-    if(mine_info.post!="") $("#city").val(mine_info.city);
+    if(mine_info.city!="") $("#City").html(mine_info.city);
     if(mine_info.telephone!="")$("#phone").val(mine_info.telephone);
 }

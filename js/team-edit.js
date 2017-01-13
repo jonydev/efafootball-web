@@ -243,9 +243,24 @@ function AddAllProfile() {
                 '<li class="each-item">'+
                 '<table width="100%">'+
                 '<tr class="font6pt">'+
-                '<td width="30%"><div class="attr-name">球队常住地</div></td>'+
-                '<td width="70%"><div class="attr-txt "><input type="text" style="height: 30px;line-height: 30px;border: none;width: 100%;" placeholder="未填写" id="home" value='+obj.home+'></div></td>'+
-                '</tr>'+
+                '<td width="30%">'+
+                    '<ul id="list1">'+
+                    '<li id="summary-stock">'+
+                    '<div class="dt attr-name">城市</div>'+
+                    '<div class="dd">'+
+                    '<div id="store-selector">'+
+                    '<div class="text"><div></div><b></b></div>'+
+                    '<div onclick="'+
+                '$("#store-selector").removeClass("hover")'+
+                'class="close"></div>'+
+                    '</div><!--store-selector end-->'+
+                    '<div id="store-prompt"><strong></strong></div>'+
+                    '</div>'+
+                    '</li>'+
+                    '</ul>'+
+                '</td>'+
+                '<td width="70%"><div class="attr-txt " id="City" cityid="" provinceid=""></div></td> '+
+                 '</tr>'+
                 '</table>'+
                 '</li>'+
                 '</ul>'+
@@ -260,6 +275,7 @@ function AddAllProfile() {
             allcontents.append(newroll);
             $(".home-color").css("backgroundColor",obj.upper);
             $(".rehome-color").css("backgroundColor",obj.lower);
+            $("#city").text(obj.city);
             upper=obj.upper;
             lower=obj.lower;
         }

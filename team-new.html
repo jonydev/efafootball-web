@@ -7,6 +7,7 @@
 
     <link rel="stylesheet" href="css/team-detail.css">
     <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/location.css">
     <link href="//cdn.bootcss.com/tether/1.3.6/css/tether.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/farbtastic.css" type="text/css" />
@@ -81,8 +82,21 @@
                 <li class="each-item">
                     <table width="100%">
                         <tr class="font6pt">
-                            <td width="30%"><div class="attr-name">球队常住地</div></td>
-                            <td width="70%"><div class="attr-txt "><input type="text" style="height: 30px;line-height: 30px;border: none;width: 100%;" placeholder="未填写" value="" id="home"></div></td>
+                            <td width="30%">
+                                <ul id="list1">
+                                    <li id="summary-stock">
+                                        <div class="dt attr-name">城市</div>
+                                        <div class="dd">
+                                            <div id="store-selector">
+                                                <div class="text"><div></div><b></b></div>
+                                                <div onclick="$('#store-selector').removeClass('hover')" class="close"></div>
+                                            </div><!--store-selector end-->
+                                            <div id="store-prompt"><strong></strong></div><!--store-prompt end--->
+                                        </div>
+                                    </li>
+                                </ul>
+                            </td>
+                            <td width="70%"><div class="attr-txt " id="City" cityid="" provinceid=""></div></td>
                         </tr>
                     </table>
                 </li>
@@ -305,6 +319,7 @@
 <script  type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/farbtastic.js"></script>
 <script  type="text/javascript" src="js/global.js"></script>
+<script  type="text/javascript" src="js/location.js"></script>
 <script  type="text/javascript" src="js/team-new.js"></script>
 <script type="text/javascript">
     $(document).ready(function() {

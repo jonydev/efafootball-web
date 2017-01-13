@@ -99,7 +99,7 @@ $(".sign-btn").click(function () {
     var ID_Number=$("#ID_Number").val();
     var sex=$("#sex").text();
     var position=$("#position").text();
-    var city=$("#City").val();
+    var city=$("#City").text();
     var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/createUser?loginName="+loginName+"&password="+password+"&name="+name+"&userType=1";
     Sign_Up(url);
 });
