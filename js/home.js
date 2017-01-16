@@ -15,9 +15,11 @@ $(document).on("click",".news_ul li",function () {
 });
 $(".join-team").click(function () {
    android.JoinTeam();
+   window.webkit.messageHandlers.JoinTeam.postMessage();
 });
 $(".match-apply").click(function () {
     android.MatchSignUp();
+    window.webkit.messageHandlers.MatchSignUp.postMessage();
 });
 function SetSwiper() {
     var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/bulletinData";
