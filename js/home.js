@@ -14,10 +14,8 @@ $(document).on("click",".news_ul li",function () {
     window.location.href="http://120.76.123.140/index.php?s=/mob/weibo/weibodetail/id/"+$(this).attr("value");
 });
 $(".join-team").click(function () {
-   console.log(navigator.userAgent);
-   debugger
     if (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)) {
-        window.webkit.messageHandlers.JoinTeam.postMessage();
+        webkit.messageHandlers.callbackHandler.postMessage({functionToRun: "joinTeam"});
     } else if (/(Android)/i.test(navigator.userAgent)) {
         android.JoinTeam();
     } else {
@@ -26,7 +24,7 @@ $(".join-team").click(function () {
 });
 $(".match-apply").click(function () {
     if (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)) {
-        window.webkit.messageHandlers.MatchSignUp.postMessage();
+        webkit.messageHandlers.callbackHandler.postMessage({functionToRun: "matchSignUp"});
     } else if (/(Android)/i.test(navigator.userAgent)) {
         android.MatchSignUp();
     } else {
