@@ -14,12 +14,24 @@ $(document).on("click",".news_ul li",function () {
     window.location.href="http://120.76.123.140/index.php?s=/mob/weibo/weibodetail/id/"+$(this).attr("value");
 });
 $(".join-team").click(function () {
-   android.JoinTeam();
-   window.webkit.messageHandlers.JoinTeam.postMessage();
+   console.log(navigator.userAgent);
+   debugger
+    if (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)) {
+        window.webkit.messageHandlers.JoinTeam.postMessage();
+    } else if (/(Android)/i.test(navigator.userAgent)) {
+        android.JoinTeam();
+    } else {
+        //window.location.href ="pc.html";
+    };
 });
 $(".match-apply").click(function () {
-    android.MatchSignUp();
-    window.webkit.messageHandlers.MatchSignUp.postMessage();
+    if (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)) {
+        window.webkit.messageHandlers.MatchSignUp.postMessage();
+    } else if (/(Android)/i.test(navigator.userAgent)) {
+        android.MatchSignUp();
+    } else {
+        //window.location.href ="pc.html";
+    };
 });
 function SetSwiper() {
     var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/bulletinData";
