@@ -18,6 +18,6 @@ input::-webkit-input-placeholder{text-align: center;}
 .team-num{float: left; margin-left: 0;width: 20%}
 .team-numimg{width: 15px;height: 15px;}
 .team-numtxt{margin-left: 0px;color: #cacccb;overflow: hidden}
-.search-top{position: absolute;z-index: 999999;margin-left: 45%;margin-top: 18px;}
+.search-top{position: absolute;z-index: 999999;margin-left: 45%;margin-top: 13px;}
 .search-icon{width: 25px;height: 25px;}
 .search-text{color: #cacccb;font-size: 18px}
