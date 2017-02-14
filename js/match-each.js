@@ -2,18 +2,18 @@
  * Created by 晴识明月 on 2016/12/3.
  */
 var match_id,hometeamid,awayteamid;
-var game_id,match_info;
+var game_id,match_info,addstart=0;
 var event_photo=["images/real_goal.png","images/real_support.png","images/real_yellow.png","images/real_red.png",
-"images/real_shoot.png","images/real_corner.png","images/real_free.png","images/real_breakrule.png","images/real_point.png",
+"images/real_shoot.png","images/real_corner.png","images/real_free.png","images/real_breakrule.png","images/real_point_get.png",
     "images/real_over.png","images/real_change.png","images/real_change.png","images/real_start.png","images/real_half_end.png",
-    "images/real_half_sart.png","images/real_end.png"];
+    "images/real_half_end.png","images/real_end.png","images/real_own_goal.png"];
 $(document).ready(function () {
     var Request=new Object();
     Request=GetRequest();
     game_id=Request["game_id"];
     match_id=Request["match_id"];
     var flag=Request["flag"];
-    if(flag==1){//展示已经结束的比赛
+    if(flag!=0){//展示已经结束的比赛
         $(".had_started").removeClass("hidden");
         $(".no_started").addClass("hidden");
         SetContentStarted();
@@ -24,6 +24,7 @@ $(document).ready(function () {
     }
     $(".real-schedule ").addClass("text-green").removeClass("text-black");
     $(".real-schedule").find(".triangle-container").addClass("shift-triangle");
+    $('#match-detail').scrollTop( $('#match-detail').height());
 
 });
 $(".real-schedule").click(function () {
@@ -105,7 +106,7 @@ $(document).on("click",".leave",function () {
 function AddRealScheduleContent() {
     var a_abstractcontent=$(".a-abstract_ul");
     var b_abstractcontent=$(".b-abstract_ul");
-    var realctcontent=$(".real-ul").empty();
+    var realctcontent=$(".real-ul");
     var local_a_abstract_number=localStorage.getItem("local_a_abstract_number");    //获取本地缓存
     var local_b_abstract_number=localStorage.getItem("local_b_abstract_number");    //获取本地缓存
     var local_real_number=localStorage.getItem("local_real_number");  //获取本地缓存
@@ -146,28 +147,32 @@ function AddRealScheduleContent() {
             }
         }
     });
-    var newroll=
-        '<li>'+
-        '<div class="direction-l">'+
-        '<img class="flag-img" src="images/real_start.png" alt="" width="100%" height="100%">'+
-        '</div>'+
-        '<div class="my_circle"></div>'+
-        '<div class="direction-r">'+
-        '<span class="direction-l-time">0</span>'+
-        '</div>'+
-        '</li>';
-    realctcontent.append(newroll);
+    if (addstart==0){
+        var newroll=
+            '<li>'+
+            '<div class="direction-l">'+
+            '<img class="flag-img" src="images/real_start.png" alt="" width="100%" height="100%">'+
+            '</div>'+
+            '<div class="my_circle"></div>'+
+            '<div class="direction-r">'+
+            '<span class="direction-l-time">0</span>'+
+            '</div>'+
+            '</li>';
+        realctcontent.append(newroll);
+        addstart++;
+    }
     var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/getInformation?id="+game_id+"&homeId="+hometeamid+"&awayId="+awayteamid;
     $.ajax({
         url:url,
         success:function (data) {
-            var obj=eval(data);
+            var obj=eval(data.rows);
+            console.log(obj);
             for (var i=0;i< obj.length;i++){
                 var single=obj[i];
                 localStorage.setItem("local_real_number",obj.length);
-                var photo=event_photo[eval(single.eventType)];
+                var photo=event_photo[eval(single.type)-1];
                 if(i<local_real_number) break;
-                if(single.team_id==""){
+                if(single.teamId==""){
                     var newroll=
                         '<li>'+
                         '<div class="direction-l">'+
@@ -178,24 +183,24 @@ function AddRealScheduleContent() {
                         '<span class="direction-l-time">'+single.time+'</span>'+
                         '</div>'+
                         '</li>';
-                }else if(single.team_id==hometeamid){
+                }else if(single.teamId==hometeamid){
                     var newroll=
                         '<li>'+
                         '<div class="direction-l">'+
                         '<img class="flag-img" src='+photo+' alt="" width="100%" height="100%">'+
-                        '<span  class="direction-l-name"> '+single.eventName+'</span>'+
+                        '<span  class="direction-l-name"> '+single.content+'</span>'+
                         '</div>'+
                         '<div class="my_circle"></div>'+
                         '<div class="direction-r">'+
                         '<span class="direction-l-time">'+single.time+'</span>'+
                         '</div>'+
                         '</li>';
-                }else if(single.team_id==awayteamid){
+                }else if(single.teamId==awayteamid){
                     var newroll=
                         '<li>'+
                         '<div class="direction-r">'+
                         '<img class="flag-img" src='+photo+' alt="" width="100%" height="100%">'+
-                        '<span  class="direction-r-name"> '+single.eventName+'</span>'+
+                        '<span  class="direction-r-name"> '+single.content+'</span>'+
                         '</div>'+
                         '<div class="my_circle"></div>'+
                         '<div class="direction-l">'+
@@ -207,6 +212,7 @@ function AddRealScheduleContent() {
             }
         }
     });
+    $('#match-detail').scrollTop=$('#match-detail').scrollHeight;
 }
 setInterval("AddRealScheduleContent()",10000);
 function SetContentStarted() {

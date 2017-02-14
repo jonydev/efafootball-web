@@ -3,6 +3,7 @@
  */
 var match_id;
 var g_team;
+var all_states=["未开始","上半场","下半场","已结束"];
 $(document).ready(function () {
     var Request=new Object();
     Request=GetRequest();
@@ -223,13 +224,12 @@ function AddMatchContent() {
                             var awayphoto="images/default_team.png";
                             if(single.awayTeamPhoto!="") awayphoto=single.awayTeamPhoto;
                             var state,score;
-                            if(single.flag==1)
+                            state=all_states[single.flag];
+                            if(single.flag!=0)
                             {
-                                state="已结束";
                                 score=single.homescore+':'+single.awayscore;
                             }
                             else if(single.flag==0) {
-                                state="未开始";
                                 score=single.time.substr(0,5); //未开始的显示开始时间
                             }
                             var child=

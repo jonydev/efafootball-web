@@ -11,7 +11,8 @@ $(document).on("click",".swiper-slide",function () {
     window.location.href=$(this).attr("value");
 });
 $(document).on("click",".news_ul li",function () {
-    window.location.href="http://120.76.123.140/index.php?s=/mob/weibo/weibodetail/id/"+$(this).attr("value");
+    console.log($(this).attr("url"));
+    window.location.href=$(this).attr("url");
 });
 $(".join-team").click(function () {
     if (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)) {
@@ -113,7 +114,7 @@ function SetContentOld() {
                 for (var i = 0; i < obj.length; i++) {
                     var single=obj[i];
                     var newroll =
-                        '<li value='+single.id+'>'+
+                        '<li value='+single.id+' url='+single.url+'>'+
                         '<div class="single_new background-white">'+
                         '<div class="news_img">'+
                         '<img  class="img-attr" src='+single.photo+' alt="" width="100%" height="100%">'+
@@ -125,7 +126,7 @@ function SetContentOld() {
                         '<img src="images/notice_time.png" alt="">'+
                         '</div>'+
                         '<div class="real-time">12:00</div>'+
-                        '<div class="read_count">阅读 '+0+'</div>'+
+                        '<div class="read_count">阅读 '+3000+i+'</div>'+
                         '</div>'+
                         '</div>'+
                         '</div>'+
