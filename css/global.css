@@ -22,6 +22,7 @@ body{
 .text-green{
     color: #3bc83b;
 }
+.text-grey{color: #D0D5D6;}
 .background-black{
     background-color: black;
 }
@@ -43,7 +44,8 @@ body{
 .font3pt{font-size: 18px;}
 .font6pt{font-size: 16px;}
 .font10pt{font-size: 10pt}
-.font15pt{font-size: 15pt;}
+.font15pt{font-size: 15px;}
+.font14pt{font-size: 14px;}
 .font25pt{font-size: 25px;}
 .light-white{background-color: #f2f5f6}
 .text-space{letter-spacing: 1px;}

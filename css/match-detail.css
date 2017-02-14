@@ -1,34 +1,34 @@
  ul{margin: 0;padding: 0;list-style: none;}
-.title-container{position: relative;margin-top: 5px;margin-left: 5px;margin-right: 5px;height: 50px;}
-.introduce{width: 20%;float: left;padding-left: 20px;height: 50px;line-height:50px;position: relative}
-.team{width: 20%;float: left;padding-left: 20px;height: 50px;line-height:50px;position: relative}
-.schedule{width: 20%;float: left;padding-left: 20px;height: 50px;line-height:50px;position: relative}
-.points{width: 20%;float: left;padding-left: 20px;height: 50px;line-height:50px;position: relative}
-.billboard{width: 20%;float: left;padding-left: 20px;height: 50px;line-height:50px;position: relative}
+.title-container{position: relative;margin-top: 5px;margin-left: 5px;margin-right: 5px;height: 35px;}
+.introduce{width: 20%;float: left;text-align: center;height: 35px;line-height:35px;position: relative}
+.team{width: 20%;float: left;text-align: center;height: 35px;line-height:35px;position: relative}
+.schedule{width: 20%;float: left;text-align: center;height: 35px;line-height:35px;position: relative}
+.points{width: 20%;float: left;text-align: center;height: 35px;line-height:35px;position: relative}
+.billboard{width: 20%;float: left;text-align: center;height: 35px;line-height:35px;position: relative}
 .all-schedule{margin-left: 5px;margin-right: 5px;}
-.round{background-color: #2e992e;height: 52px;padding-left: 42%}
-.round-num{font-size: 19px;float: left;margin-top: 10px;}
+.round{background-color: #2e992e;height: 45px;}
+.round-num{font-size: 15px;position: absolute;height: 45px;line-height: 45px;width: 100%;left: 50%;margin-left: -50%;text-align: center;}
 .spreed{width: 26px;height: 26px;float: right;margin-right: 25px;margin-top: 10px;}
-.match-date{text-align: center;background-color: #12283c;color: white;height: 25px;padding-top:5px; font-size: 18px;}
+.match-date{text-align: center;background-color: #12283c;color: white;height: 25px;line-height: 25px; font-size: 18px;}
 .team-results{position: relative;width: 100%;background-color: white;height: 52px;border-bottom: 1px solid #f2f5f6;}
 .team-a{float: left;width: 41%;padding-left: 15px;padding-top: 7px;}
-.result{float: left;text-align: center;width: 18%;}
-.result-a{height: 25px;font-size: 22px;}
-.result-b{height: 13px;font-size: 2px;}
+.result{float: left;text-align: center;width: 18%;padding-top: 7px;}
+.result-a{height: 25px;font-size: 17px;line-height: 25px;}
+.result-b{height: 13px;font-size: 13px;line-height: 13px;margin-top: 3px;}
 .team-b{float: right;width: 41%;padding-right: 15px;padding-top: 7px;}
 .team-atxt{float: left;height: 38px;line-height: 38px;width: 55%;overflow: hidden;text-align:left;}
 .team-aimg{width: 35px;height: 35px;margin-right: 10px;float: right}
 .team-bimg{width: 35px;height: 35px;float: left;margin-left: 10px;}
 .team-btxt{height: 38px;line-height: 38px;float: right;width: 55%;overflow: hidden;text-align:right;}
-.shift-triangle{position: absolute;left: 34px;bottom:0;width: 0;  height: 0;  border-left: 6px solid transparent;  border-right: 6px solid transparent;  border-bottom: 10px solid #2e992e; }
+.shift-triangle{position: absolute;left: 50%;margin-left:-6%;bottom:0;width: 0;  height: 0;  border-left: 5px solid transparent;  border-right: 5px solid transparent;  border-bottom: 8px solid #2e992e; }
 .all-billboard{margin: 5px 5px 0 5px;}
 .shooter-redyellow{background-color: #F1F5F6;height: 38px;position: relative;}
-.shooter{float: left;width: 50%;text-align: center;height: 100%;padding-top: 7px;font-size: 18px;}
-.redyellow{float: right;width: 50%;text-align: center;height: 100%;padding-top: 7px;font-size: 18px;}
+.shooter{float: left;width: 50%;text-align: center;height: 100%;padding-top: 7px;font-size: 15px;}
+.redyellow{float: right;width: 50%;text-align: center;height: 100%;padding-top: 7px;font-size: 15px;}
  .player-statistic,.player-statistic table{width: 100%;position: relative;text-align: center}
 .player-redyellow,.player-redyellow table{width: 100%;position: relative;text-align: center}
 .player-statistic ,.player-redyellow{margin-top: 5px;}
-.table-head{background-color: #12283D;color: white;height: 45px;font-size: 16px}
+.table-head{background-color: #12283D;color: white;height: 45px;font-size: 14px}
 .rank{width: 15%;text-align: center}
 .player-name{width: 25%;text-align: center}
 .player-team{width: 25%;text-align: center;}
@@ -51,7 +51,7 @@
 .stay-img{width:6px;height: 6px;float: right;}
 .Sperate-line{border-bottom: 2px solid #2e992e;}
 
-.profile-img{margin: 5px 5px 0px 5px;height:203px; }
+.profile-img{margin: 5px 5px 0px 5px;height:170px; }
 .match-profile-container{margin: 5px 5px 0px 5px;}
 .match-profile{height: 38px;background-color:#2e992e;text-align: center;line-height: 38px; color: white;}
 .match-introduce{padding:13px 19px 13px 19px;color: black}
@@ -76,10 +76,10 @@
  ul{margin: 0;padding: 0;list-style: none;}
  .single-team{margin-left: 5px;margin-top: 5px;margin-right: 5px; height: 77px;}
  .team-Img{float:left;width: 57px;height: 57px;margin-top: 10px;margin-left: 10px;}
- .team-name{float: left;font-size: 14px;margin-left: 10px;margin-top: 26px;height: 25px;line-height: 25px;color: black;width: 40%;overflow: hidden}
+ .team-name{float: left;font-size: 15px;margin-left: 10px;margin-top: 26px;height: 25px;line-height: 25px;color: black;width: 40%;overflow: hidden}
  .team-num-img{float: right;width: 25px;height: 25px;margin-top: 26px;margin-right: 10px;}
  .team-detail{float: right;width: 25px;height: 25px;margin-right: 15px;margin-top:26px; }
- .team-num{float: right;font-size: 3pt;margin-top: 26px;margin-right: 15px;height: 25px;line-height: 25px;color: black}
- .search-top{position: absolute;z-index: 999999;margin-left: 45%;margin-top: 18px;}
- .search-icon{width: 25px;height: 25px;}
- .search-text{color: #cacccb;font-size: 18px}
+ .team-num{float: right;font-size: 15px;margin-top: 26px;margin-right: 15px;height: 25px;line-height: 25px;color: black}
+ .search-top{position: absolute;z-index: 999999;margin-left: 45%;margin-top: 17px;}
+ .search-icon{width: 20px;height: 20px;}
+ .search-text{color: #cacccb;font-size: 15px}

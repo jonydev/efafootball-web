@@ -24,7 +24,7 @@ $(document).ready(function () {
     }
     $(".real-schedule ").addClass("text-green").removeClass("text-black");
     $(".real-schedule").find(".triangle-container").addClass("shift-triangle");
-    $('#match-detail').scrollTop( $('#match-detail').height());
+    $('#match-detail')[0].scrollTop=$('#match-detail').height();
 
 });
 $(".real-schedule").click(function () {
@@ -212,7 +212,7 @@ function AddRealScheduleContent() {
             }
         }
     });
-    $('#match-detail').scrollTop=$('#match-detail').scrollHeight;
+    $('#match-detail')[0].scrollTop=$('#match-detail').height();
 }
 setInterval("AddRealScheduleContent()",10000);
 function SetContentStarted() {

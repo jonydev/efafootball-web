@@ -6,18 +6,18 @@ input::-webkit-input-placeholder{text-align: center;}
 .single-match{margin-left: 5px;margin-right: 5px;margin-top:5px;height: 77px}
 .match-title{float: left; padding-top: 15px;overflow:hidden}
 .match-detail-img{float: right;width: 25px;height: 25px;margin-top: 26px;margin-right: 15px;}
-.match-txt{float:left;font-size: 18px;width: auto;overflow: hidden;height: 35px;line-height: 35px;}
+.match-txt{float:left;font-size: 15px;width: auto;overflow: hidden;height: 35px;line-height: 35px;}
 .match-info{margin-top:50px;height: 15px; }
 .match-detail{float: left;padding-left: 10px;width: 62%;margin-bottom: 10px;}
 .city{float: left;width: 40%;height:20px;line-height:20px; overflow: hidden}
 .city-img{width: 15px;height: 15px;}
-.city-txt{margin-left: 0px;color: #cacccb;}
+.city-txt{margin-left: 5px;color: #cacccb;}
 .round{float: left;margin-left: 0;width: 40%;height:20px;line-height:20px; overflow: hidden}
 .round-img{width: 15px;height: 15px;}
-.round-txt{margin-left: 0px;color: #cacccb;overflow: hidden}
+.round-txt{margin-left: 5px;color: #cacccb;overflow: hidden}
 .team-num{float: left; margin-left: 0;width: 20%}
 .team-numimg{width: 15px;height: 15px;}
-.team-numtxt{margin-left: 0px;color: #cacccb;overflow: hidden}
-.search-top{position: absolute;z-index: 999999;margin-left: 45%;margin-top: 13px;}
-.search-icon{width: 25px;height: 25px;}
-.search-text{color: #cacccb;font-size: 18px}
+.team-numtxt{margin-left: 5px;color: #cacccb;overflow: hidden}
+.search-top{position: absolute;z-index: 999999;margin-left: 45%;margin-top: 17px;}
+.search-icon{width: 20px;height: 20px;}
+.search-text{color: #cacccb;font-size: 15px}

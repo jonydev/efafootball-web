@@ -189,11 +189,11 @@ function AddAllProfile() {
             }
             var newroll=
                 '<div class="team-guide">'+
-                '<div class="guide-title font3pt">球队概况</div>'+
+                '<div class="guide-title font15pt">球队概况</div>'+
                 '<ul>'+
                 '<li class="each-item">'+
                 '<table width="100%">'+
-                '<tr class="font6pt">'+
+                '<tr class="font15pt">'+
                 '<td width="30%"><div class="attr-name">球队名称</div></td>'+
                 '<td width="70%"><div class="attr-txt "><input type="text" style="height: 30px;line-height: 30px;border: none;width: 100%;" placeholder="未填写" id="team_name" value='+obj.name+' ></div></td>'+
                 '</tr>'+
@@ -201,7 +201,7 @@ function AddAllProfile() {
                 '</li>'+
                 '<li class="each-item">'+
                 '<table width="100%">'+
-                '<tr class="font6pt">'+
+                '<tr class="font15pt">'+
                 '<td width="30%"><div class="attr-name">简称  </div></td>'+
                 '<td width="70%"><div class="attr-txt "><input type="text" style="height: 30px;line-height: 30px;border: none;width: 100%;" placeholder="未填写" id="short_name" value=""></div></td>'+
                 '</tr>'+
@@ -209,7 +209,7 @@ function AddAllProfile() {
                 '</li>'+
                 '<li class="each-item">'+
                 '<table width="100%">'+
-                '<tr class="font6pt">'+
+                '<tr class="font15pt">'+
                 '<td width="30%"><div class="attr-name">队长 </div></td>'+
                 '<td width="70%"><div class="attr-txt "><input type="text" style="height: 30px;line-height: 30px;border: none;width: 100%;" placeholder="未填写" id="captain" value='+obj.captain+'></div></td>'+
                 '</tr>'+
@@ -217,7 +217,7 @@ function AddAllProfile() {
                 '</li>'+
                 '<li class="each-item ">'+
                 '<table width="100%">'+
-                '<tr class="font6pt">'+
+                '<tr class="font15pt">'+
                 '<td width="30%"><div class="attr-name">赞助商 </div></td>'+
                 '<td width="70%"><div class="attr-txt "><input type="text" style="height: 30px;line-height: 30px;border: none;width: 100%;" placeholder="未填写" id="sponsor-name" value=""></div></td>'+
                 '</tr>'+
@@ -225,7 +225,7 @@ function AddAllProfile() {
                 '</li>'+
                 '<li class="each-item">'+
                 '<table width="100%">'+
-                '<tr class="font6pt">'+
+                '<tr class="font15pt">'+
                 '<td width="30%"><div class="cloth-name">秋衣色彩</div></td>'+
                 '<td width="70%"><div class="cloth-txt "> <span class="home">秋衣</span> <div class="home-color" style="width: 23px;height: 23px;background-color: red;-moz-border-radius: 11px;-webkit-border-radius: 11px;border-radius: 11px;" id="upper"></div> </div>'+
                 '<span class="rehome">球裤</span> <div class="rehome-color" style="width: 23px;height: 23px;background-color: black;-moz-border-radius: 11px;-webkit-border-radius: 11px;border-radius: 11px;" id="lower"></td>'+
@@ -234,7 +234,7 @@ function AddAllProfile() {
                 '</li>'+
                 '<li class="each-item">'+
                 '<table width="100%">'+
-                '<tr class="font6pt">'+
+                '<tr class="font15pt">'+
                 '<td width="30%"><div class="attr-name">球员数量</div></td>'+
                 '<td width="70%"><div class="attr-txt ">'+obj.num+'</div></td>'+
                 '</tr>'+
@@ -242,7 +242,7 @@ function AddAllProfile() {
                 '</li>'+
                 '<li class="each-item">'+
                 '<table width="100%">'+
-                '<tr class="font6pt">'+
+                '<tr class="font15pt">'+
                 '<td width="30%">'+
                     '<ul id="list1">'+
                     '<li id="summary-stock">'+
@@ -266,11 +266,11 @@ function AddAllProfile() {
                 '</ul>'+
                 '</div>'+
                 '<div class="team-profile">'+
-                '<div class="team-profile-title font3pt">球队简介</div>'+
+                '<div class="team-profile-title font15pt">球队简介</div>'+
                 '<div class="team-profile-img hidden">'+
                 '<img src="images/swiper2.jpg" alt="" width="100%" height="100%">'+
                 '</div>'+
-                '<div style="background-color: white"><textarea class="team-introduce font6pt">'+obj.content+'</textarea></div>'+
+                '<div style="background-color: white"><textarea class="team-introduce font15pt">'+obj.content+'</textarea></div>'+
                 '</div>';
             allcontents.append(newroll);
             $(".home-color").css("backgroundColor",obj.upper);

@@ -125,7 +125,7 @@ function SetContentOld() {
                         '<div class="time_icon">'+
                         '<img src="images/notice_time.png" alt="">'+
                         '</div>'+
-                        '<div class="real-time">12:00</div>'+
+                        '<div class="real-time">2017.12.24 12:00</div>'+
                         '<div class="read_count">阅读 '+3000+i+'</div>'+
                         '</div>'+
                         '</div>'+

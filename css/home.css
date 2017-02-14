@@ -1,8 +1,8 @@
 ul{margin: 0;padding: 0;list-style: none;}
-.swiper-container {  height: 203px;  margin-left: 5px;  margin-right: 5px;  margin-top: 5px;  }
+.swiper-container {  height: 170px;  margin-left: 5px;  margin-right: 5px;  margin-top: 5px;  }
 .swiper-slide {
     text-align: center;
-    font-size: 18px;
+    font-size: 15px;
     background: #ffffff;
 
     /* Center slide text vertically */
@@ -24,7 +24,7 @@ ul{margin: 0;padding: 0;list-style: none;}
 }
 .join-container{
     position: relative;
-    height: 38px;
+    height: 36px;
     margin-top: 5px;
     margin-left: 5px;
     margin-right: 5px;
@@ -36,7 +36,7 @@ ul{margin: 0;padding: 0;list-style: none;}
     float: left;
 }
 .join-teamImg{
-    width: 25px;
+    width: 23px;
     height: 24px;
     float: left;
     padding-left: 22%;
@@ -45,17 +45,17 @@ ul{margin: 0;padding: 0;list-style: none;}
 .join-teamTxt{
     display:block;
     float:left;
-    height:38px;
-    line-height:38px;
+    height:36px;
+    line-height:36px;
     margin-left: 12px;
-    font-size: 18px;
+    font-size: 15px;
 }
 .match-apply{
     width: 50%;
     float: left;
 }
 .match-applyImg{
-    width: 25px;
+    width: 23px;
     height: 24px;
     float: left;
     padding-left: 22%;
@@ -64,10 +64,10 @@ ul{margin: 0;padding: 0;list-style: none;}
 .match-applyTxt{
     display:block;
     float:left;
-    height:38px;
-    line-height:38px;
+    height:36px;
+    line-height:36px;
     margin-left: 12px;
-    font-size: 18px;
+    font-size: 15px;
 }
 .single_new{margin-left: 5px;margin-right: 5px;margin-top:5px;height: 107px;position: relative}
 .news_img{float: left;width:36%;height: 92px;vertical-align:middle;display: inline-block;}

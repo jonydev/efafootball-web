@@ -4,11 +4,13 @@
 var match_id;
 var g_team;
 var all_states=["未开始","上半场","下半场","已结束"];
+var rounds=["零","一","二","三","四","五","六","七","八","九","十","十一","十二","十三","十四","十五","十六","十七","十八","十九","二十",
+    "二十一","二十二","二十三","二十四","二十五","二十六","二十七","二十八","二十九","三十","三十一","三十二","三十三","三十四","三十五","三十六","三十七","三十八","三十九","四十"];
 $(document).ready(function () {
     var Request=new Object();
     Request=GetRequest();
     match_id=Request["match_id"];
-    $(".introduce a").addClass("text-green").removeClass("text-black");
+    $(".introduce a").addClass("text-green").removeClass("text-grey");
     $(".introduce").find(".triangle-container").addClass("shift-triangle");
     AddIntroduceContent();
 });
@@ -41,38 +43,38 @@ $(document).on("click",".team-ul li",function () {
     window.location.href="http://120.76.206.174:8080/efafootball-web/team-detail.html?team_id="+team_id;
 });
 $(".introduce a").click(function () {
-    $(".title-container").find(".text-green").removeClass("text-green").addClass("text-black");
+    $(".title-container").find(".text-green").removeClass("text-green").addClass("text-grey");
     $(".title-container div").find(".triangle-container").removeClass("shift-triangle");
-    $(this).addClass("text-green").removeClass("text-black");
+    $(this).addClass("text-green").removeClass("text-grey");
     $(".introduce").find(".triangle-container").addClass("shift-triangle");
     $(".all-profile").removeClass("hidden");
     AddIntroduceContent();
 });
 $(".team a").click(function () {
-    $(".title-container").find(".text-green").removeClass("text-green").addClass("text-black");
+    $(".title-container").find(".text-green").removeClass("text-green").addClass("text-grey");
     $(".title-container div").find(".triangle-container").removeClass("shift-triangle");
-    $(this).addClass("text-green").removeClass("text-black");
+    $(this).addClass("text-green").removeClass("text-grey");
     $(".team").find(".triangle-container").addClass("shift-triangle");
     AddTeamContent();
 });
 $(".schedule a").click(function () {
-    $(".title-container").find(".text-green").removeClass("text-green").addClass("text-black");
+    $(".title-container").find(".text-green").removeClass("text-green").addClass("text-grey");
     $(".title-container div").find(".triangle-container").removeClass("shift-triangle");
-    $(this).addClass("text-green").removeClass("text-black");
+    $(this).addClass("text-green").removeClass("text-grey");
     $(".schedule").find(".triangle-container").addClass("shift-triangle");
    AddMatchContent();
 });
 $(".points a").click(function () {
-    $(".title-container").find(".text-green").removeClass("text-green").addClass("text-black");
+    $(".title-container").find(".text-green").removeClass("text-green").addClass("text-grey");
     $(".title-container div").find(".triangle-container").removeClass("shift-triangle");
-    $(this).addClass("text-green").removeClass("text-black");
+    $(this).addClass("text-green").removeClass("text-grey");
     $(".points").find(".triangle-container").addClass("shift-triangle");
     AddPointsContent();
 });
 $(".billboard a").click(function () {
-    $(".title-container").find(".text-green").removeClass("text-green").addClass("text-black");
+    $(".title-container").find(".text-green").removeClass("text-green").addClass("text-grey");
     $(".title-container div").find(".triangle-container").removeClass("shift-triangle");
-    $(this).addClass("text-green").removeClass("text-black");
+    $(this).addClass("text-green").removeClass("text-grey");
     $(".billboard").find(".triangle-container").addClass("shift-triangle");
     AddBillboardContent();
 });
@@ -111,40 +113,40 @@ function AddIntroduceContent() {
                 '<img src='+obj.photo+'  alt="" width="100%" height="100%">'+
                 '</div>'+
                 '<div class="match-profile-container">'+
-                '<div class="match-profile font3pt">赛事简介</div>'+
-                '<div style="background-color: white"><div class="match-introduce font6pt">'+obj.caption+'</div></div>'+
+                '<div class="match-profile font15pt">赛事简介</div>'+
+                '<div style="background-color: white"><div class="match-introduce font14pt">'+obj.caption+'</div></div>'+
             '</div>'+
             '<div class="match-rule-container">'+
-                '<div class="match-profile font3pt">规则简介</div>'+
-                '<div style="background-color: white"><div class="match-introduce font6pt">'+obj.rule+'</div></div>'+
+                '<div class="match-profile font15pt">规则简介</div>'+
+                '<div style="background-color: white"><div class="match-introduce font14pt">'+obj.rule+'</div></div>'+
             '</div>'+
             '<div class="match-referee-container">'+
-                '<div class="match-profile font3pt">裁判简介</div>'+
-                '<div style="background-color: white"><div class="match-introduce font6pt">'+obj.referee+'</div></div>'+
+                '<div class="match-profile font15pt">裁判简介</div>'+
+                '<div style="background-color: white"><div class="match-introduce font14pt">'+obj.referee+'</div></div>'+
             '</div>'+
             '<div class="preview hidden">'+
-                '<div class="preview-title font3pt">往期回顾</div>'+
+                '<div class="preview-title font15pt">往期回顾</div>'+
                 '<ul>'+
                 '<li class="each-round">'+
-                '<div class="preview-roud font3pt">第一届</div>'+
-                '<div class="preview-rank font6pt"> <span style="color: #AEB2B3">冠军</span> 强势表达 / <span style="color: #AEB2B3"> 亚军</span> MIP / <span style="color: #AEB2B3"> 季军</span> 强势表达 </div>'+
+                '<div class="preview-roud font15pt">第一届</div>'+
+                '<div class="preview-rank font15pt"> <span style="color: #AEB2B3">冠军</span> 强势表达 / <span style="color: #AEB2B3"> 亚军</span> MIP / <span style="color: #AEB2B3"> 季军</span> 强势表达 </div>'+
                 '</li>'+
                 '<li class="each-round">'+
-                '<div class="preview-roud font3pt">第二届</div>'+
-                '<div class="preview-rank font6pt"> <span style="color: #AEB2B3">冠军</span> 强势表达 / <span style="color: #AEB2B3"> 亚军</span> MIP / <span style="color: #AEB2B3"> 季军</span> 强势表达 </div>'+
+                '<div class="preview-roud font15pt">第二届</div>'+
+                '<div class="preview-rank font15pt"> <span style="color: #AEB2B3">冠军</span> 强势表达 / <span style="color: #AEB2B3"> 亚军</span> MIP / <span style="color: #AEB2B3"> 季军</span> 强势表达 </div>'+
                 '</li>'+
                 '</ul>'+
                 '</div>'+
             '<div class="famous-people hidden">'+
-                '<div class="famous-people-title font3pt">名人堂</div>'+
+                '<div class="famous-people-title font15pt">名人堂</div>'+
                 '<ul>'+
                 '<li class="each-round">'+
-                '<div class="preview-roud font3pt">第一届</div>'+
-                '<div class="preview-rank font6pt"> <span style="color: #AEB2B3">最佳射手</span> 陈帅 强势表达 / <span style="color: #AEB2B3"> 最佳球员</span> 邓建坤 MIP </div>'+
+                '<div class="preview-roud font15pt">第一届</div>'+
+                '<div class="preview-rank font15pt"> <span style="color: #AEB2B3">最佳射手</span> 陈帅 强势表达 / <span style="color: #AEB2B3"> 最佳球员</span> 邓建坤 MIP </div>'+
             '</li>'+
             '<li class="each-round">'+
-                '<div class="preview-roud font3pt">第二届</div>'+
-                '<div class="preview-rank font6pt"> <span style="color: #AEB2B3">最佳射手</span> 陈帅 强势表达 / <span style="color: #AEB2B3"> 最佳球员</span> 邓建坤 MIP </div>'+
+                '<div class="preview-roud font15pt">第二届</div>'+
+                '<div class="preview-rank font15pt"> <span style="color: #AEB2B3">最佳射手</span> 陈帅 强势表达 / <span style="color: #AEB2B3"> 最佳球员</span> 邓建坤 MIP </div>'+
             '</li>'+
             '</ul>'+
             '</div>'+
@@ -209,11 +211,11 @@ function AddMatchContent() {
                 var newroll=
                     '<li value="">'+
                         '<div class="round">'+
-                        '<p class="round-num">第'+key+'轮</p>'+
+                        '<p class="round-num">第'+rounds[key]+'轮</p>'+
                         '<img class="spreed" src="images/respreed.png" alt="" width="100%" height="100%">'+
                         '</div>'+
                         '<div class="match-date">'+
-                        '<p class="font3pt">'+each_round[0].datetime+'</p>'+
+                        '<p class="font14pt">'+each_round[0].datetime+'     '+GetWeekday(each_round[0].datetime)+'</p>'+
                         '</div>'+
                         '<div>'+
                         '<ul class="all-matchs">';
@@ -240,8 +242,8 @@ function AddMatchContent() {
                                 '<img class="team-aimg" src='+homephoto+'  alt="" width="100%" height="100%" >'+
                                 '</div>'+
                                 '<div class="result">'+
-                                '<span class="result-a background-grey93">'+score+'</span><br/>'+
-                                '<span class="result-b flag" value='+single.flag+'>'+state+'</span>'+
+                                '<div class="result-a background-grey93">'+score+'</div>'+
+                                '<div class="result-b flag" value='+single.flag+'>'+state+'</div>'+
                                 '</div>'+
                                 '<div class="team-b">'+
                                 '<img class="team-bimg" src='+awayphoto+' alt="" width="100%" height="100%">'+
@@ -301,22 +303,22 @@ function AddPointsContent(){
                 if(i==5){
                  newroll=
                      // '<tr class="single-tr Sperate-line">'+
-                     '<tr class="single-tr ">'+
+                     '<tr class="single-tr " style="color:#D0D5D6 ">'+
                          // '<td ><div class="up-grade"></div>'+
                      '<td >'+
                          '<a style="text-align:center; color: black;padding: 6px 0;" href="">'+rank+'</a>'+
-                         '</td ><td  style="font-weight: 700 overflow:hidden">'+single.team.name+'</td><td>'+total+'</td><td>'+single.won+'</td>'+
-                         '<td>'+single.even+'</td><td>'+single.beaten+'</td><td>'+single.goal+'</td><td>'+single.lost+'</td><td>'+realball+'</td><td style="font-weight: 800">'+single.point+'</td><td>'+single.red+'</td><td>'+single.yellow+'</td>'+
+                         '</td ><td  style="font-weight: 700;overflow:hidden ;color: black">'+single.team.name+'</td><td>'+total+'</td><td>'+single.won+'</td>'+
+                         '<td>'+single.even+'</td><td>'+single.beaten+'</td><td>'+single.goal+'</td><td>'+single.lost+'</td><td>'+realball+'</td><td style="font-weight: 800;color: black">'+single.point+'</td><td>'+single.red+'</td><td>'+single.yellow+'</td>'+
                      '</tr>';
                 }
                 else{
                     newroll=
-                        '<tr class="single-tr ">'+
+                        '<tr class="single-tr "style="color:#D0D5D6 ">'+
                         // '<td ><div class="up-grade"></div>'+
                         '<td >'+
                         '<a style="text-align:center; color: black;padding: 6px 0;" href="">'+rank+'</a>'+
-                        '</td ><td  style="font-weight: 700">'+single.team.name+'</td><td>'+total+'</td><td>'+single.won+'</td>'+
-                        '<td>'+single.even+'</td><td>'+single.beaten+'</td><td>'+single.goal+'</td><td>'+single.lost+'</td><td>'+realball+'</td><td style="font-weight: 800">'+single.point+'</td><td>'+single.red+'</td><td>'+single.yellow+'</td>'+
+                        '</td ><td  style="font-weight: 700;overflow: hidden;color: black">'+single.team.name+'</td><td>'+total+'</td><td>'+single.won+'</td>'+
+                        '<td>'+single.even+'</td><td>'+single.beaten+'</td><td>'+single.goal+'</td><td>'+single.lost+'</td><td>'+realball+'</td><td style="font-weight: 800 ;color: black">'+single.point+'</td><td>'+single.red+'</td><td>'+single.yellow+'</td>'+
                         '</tr>';
                 }
                 allcontents.append(newroll);
@@ -356,13 +358,13 @@ function AddBillboardContent() {
                 if(single.photo!="") photo=single.photo;
                 if(i==0){
                     var newroll=
-                        '<tr class="first-tr">'+
+                        '<tr class="first-tr font14pt">'+
                             '<td>'+rank+'</td>'+
                             '<td colspan="2">'+
                             '<img style="float: left;margin-left: 10px;" class="first-shooter" src='+photo+' alt="" width="100%" height="100%">'+
-                            '<div style="margin-left: 10px;float: left;margin-top: 22px;text-align: left">'+
-                            '<div>'+single.name+'</div>'+
-                            '<div >'+single.teamName+'</div>'+
+                            '<div style="float: left;text-align: left;height: 56px;">'+
+                            '<div style="height: 36px;line-height: 36px;margin-left: 5px">'+single.name+'</div>'+
+                            '<div class="text-grey" style="height: 20px;line-height: 20px;text-align: end;margin-left: 5px;">'+single.teamName+'</div>'+
                             '</div>'+
                             '</td>'+
                             '<td>'+single.num+'</td>'+
@@ -371,8 +373,8 @@ function AddBillboardContent() {
                 }
                 else{
                     var newroll=
-                        '<tr class="single-tr">'+
-                            '<td>'+rank+'</td><td>'+single.name+'</td><td ">'+single.teamName+'</td><td>'+single.num+'</td><td>'+single.number+'</td>'+
+                        '<tr class="single-tr font14pt">'+
+                            '<td>'+rank+'</td><td>'+single.name+'</td><td class="text-grey">'+single.teamName+'</td><td>'+single.num+'</td><td>'+single.number+'</td>'+
                         '</tr>';
                 }
                 allcontents.append(newroll);

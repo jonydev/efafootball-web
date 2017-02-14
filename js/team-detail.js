@@ -2,6 +2,8 @@
  * Created by 晴识明月 on 2016/12/16.
  */
 var team_id,login_id,match_id;
+var rounds=["零","一","二","三","四","五","六","七","八","九","十","十一","十二","十三","十四","十五","十六","十七","十八","十九","二十",
+    "二十一","二十二","二十三","二十四","二十五","二十六","二十七","二十八","二十九","三十","三十一","三十二","三十三","三十四","三十五","三十六","三十七","三十八","三十九","四十"];
 $(document).ready(function (){
     var Request=new Object();
     Request=GetRequest();
@@ -9,9 +11,9 @@ $(document).ready(function (){
     AddAllProfile();
 });
 $(".introduce a").click(function () {
-    $(".title-container").find(".text-green").removeClass("text-green").addClass("text-black");
+    $(".title-container").find(".text-green").removeClass("text-green").addClass("text-grey");
     $(".title-container div").find(".triangle-container").removeClass("shift-triangle");
-    $(this).addClass("text-green").removeClass("text-black");
+    $(this).addClass("text-green").removeClass("text-grey");
     $(".introduce").find(".triangle-container").addClass("shift-triangle");
     $(".all-profile").removeClass("hidden");
     $(".all-player").addClass("hidden");
@@ -19,9 +21,9 @@ $(".introduce a").click(function () {
 
 });
 $(".player a").click(function () {
-    $(".title-container").find(".text-green").removeClass("text-green").addClass("text-black");
+    $(".title-container").find(".text-green").removeClass("text-green").addClass("text-grey");
     $(".title-container div").find(".triangle-container").removeClass("shift-triangle");
-    $(this).addClass("text-green").removeClass("text-black");
+    $(this).addClass("text-green").removeClass("text-grey");
     $(".player").find(".triangle-container").addClass("shift-triangle");
     $(".all-player").removeClass("hidden");
     $(".all-profile").addClass("hidden");
@@ -29,9 +31,9 @@ $(".player a").click(function () {
     AddMemberContent();
 });
 $(".schedule a").click(function () {
-    $(".title-container").find(".text-green").removeClass("text-green").addClass("text-black");
+    $(".title-container").find(".text-green").removeClass("text-green").addClass("text-grey");
     $(".title-container div").find(".triangle-container").removeClass("shift-triangle");
-    $(this).addClass("text-green").removeClass("text-black");
+    $(this).addClass("text-green").removeClass("text-grey");
     $(".schedule").find(".triangle-container").addClass("shift-triangle");
     $(".all-match").removeClass("hidden");
     $(".all-profile").addClass("hidden");
@@ -114,11 +116,11 @@ function AddAllProfile() {
                 '<img  src= '+team_img+' alt="" width="145px" height="145px">'+
                 '</div>'+
                 '<div class="team-guide">'+
-                '<div class="guide-title font3pt">球队概况</div>'+
+                '<div class="guide-title font15pt">球队概况</div>'+
                 '<ul>'+
                 '<li class="each-item">'+
                 '<table width="100%">'+
-                '<tr class="font6pt">'+
+                '<tr class="font15pt">'+
                 '<td width="30%"><div class="attr-name">球队全称</div></td>'+
                 '<td width="70%"><div class="attr-txt ">'+obj.name+'</div></td>'+
                 '</tr>'+
@@ -126,7 +128,7 @@ function AddAllProfile() {
                 '</li>'+
                 '<li class="each-item">'+
                 '<table width="100%">'+
-                '<tr class="font6pt">'+
+                '<tr class="font15pt">'+
                 '<td width="30%"><div class="attr-name">简称  </div></td>'+
                 '<td width="70%"><div class="attr-txt ">---</div></td>'+
                 '</tr>'+
@@ -134,7 +136,7 @@ function AddAllProfile() {
                 '</li>'+
                 '<li class="each-item ">'+
                 '<table width="100%">'+
-                '<tr class="font6pt">'+
+                '<tr class="font15pt">'+
                 '<td width="30%"><div class="attr-name">赞助商 </div></td>'+
                 '<td width="70%"><div class="attr-txt ">---</div></td>'+
                 '</tr>'+
@@ -142,7 +144,7 @@ function AddAllProfile() {
                 '</li>'+
                 '<li class="each-item">'+
                 '<table width="100%">'+
-                '<tr class="font6pt">'+
+                '<tr class="font15pt">'+
                 '<td width="30%"><div class="cloth-name">球衣色彩</div></td>'+
                 '<td width="70%"><div class="cloth-txt "> <span class="home">主场</span> <div class="home-color" style="width: 23px;height: 23px;background: red;-moz-border-radius: 11px;-webkit-border-radius: 11px;border-radius: 11px;"></div> </div>'+
                 '<span class="rehome">客场</span> <div class="rehome-color" style="width: 23px;height: 23px;background: black;-moz-border-radius: 11px;-webkit-border-radius: 11px;border-radius: 11px;"></td>'+
@@ -151,7 +153,7 @@ function AddAllProfile() {
                 '</li>'+
                 '<li class="each-item">'+
                 '<table width="100%">'+
-                '<tr class="font6pt">'+
+                '<tr class="font15pt">'+
                 '<td width="30%"><div class="attr-name">球员数量</div></td>'+
                 '<td width="70%"><div class="attr-txt ">'+obj.num+'</div></td>'+
                 '</tr>'+
@@ -159,7 +161,7 @@ function AddAllProfile() {
                 '</li>'+
                 '<li class="each-item" id="team-notify">'+
                 '<table width="100%">'+
-                '<tr class="font6pt">'+
+                '<tr class="font15pt">'+
                 '<td width="30%"><div class="attr-name">球队消息</div></td>'+
                 '<td width="70%"><div class="attr-txt "><img src="images/goto_player.png" alt="" class="goto-img" width="100%" height="100%"></div></td>'+
                 '</tr>'+
@@ -168,11 +170,11 @@ function AddAllProfile() {
                 '</ul>'+
                 '</div>'+
                 '<div class="team-profile">'+
-                '<div class="team-profile-title font3pt">球队简介</div>'+
+                '<div class="team-profile-title font15pt">球队简介</div>'+
                 '<div class="team-profile-img hidden">'+
                 '<img src="images/swiper2.jpg" alt="" width="100%" height="100%">'+
                 '</div>'+
-                '<div style="background-color: white"><div class="team-introduce font6pt">'+obj.content+'</div></div>'+
+                '<div style="background-color: white"><div class="team-introduce font14pt">'+obj.content+'</div></div>'+
             '</div>';
             allcontents.append(newroll);
             $(".home-color").css("backgroundColor",obj.upper);
@@ -201,7 +203,7 @@ function AddMatchContent() {
                 if(single.flag==0){
                     var newroll=
                     '<div class="upgoing-game-title">下场比赛 </div>'+
-                    '<div class="upgoing-game-title">第'+single.turn+'轮 '+single.datetime+' '+weekday+'</div>'+
+                    '<div class="upgoing-game-title">第'+rounds[single.turn]+'轮 '+single.datetime+' '+weekday+'</div>'+
                     '<div>'+
                     '<ul>'+
                     '<li value='+single.id+'>'+
@@ -211,7 +213,7 @@ function AddMatchContent() {
                         '<img class="team-aimg" src='+homeTeamPhoto+'  alt="" width="100%" height="100%">'+
                         '</div>'+
                         '<div class="result">'+
-                        '<span class="result-a">'+single.time.substr(0,5)+'</span>'+
+                        '<div class="result-a ">'+single.time.substr(0,5)+'</div>'+
                     '</div>'+
                     '<div class="team-b">'+
                         '<img class="team-bimg" src='+awayTeamPhoto+' alt="" width="100%" height="100%">'+
@@ -227,7 +229,7 @@ function AddMatchContent() {
                     var newroll=
                         '<li class="" value='+single.id+'>'+
                         '<div class="history-game">'+
-                        '<div class="history-game-title">第'+single.turn+'轮 '+single.datetime+' '+weekday+'</div>'+
+                        '<div class="history-game-title">第'+rounds[single.turn]+'轮 '+single.datetime+' '+weekday+'</div>'+
                         '<div>'+
                         '<ul>'+
                         '<li>'+
@@ -237,7 +239,7 @@ function AddMatchContent() {
                         '<img class="team-aimg" src='+homeTeamPhoto+' width="100%" height="100%">'+
                         '</div>'+
                         '<div class="result">'+
-                        '<span class="result-b">'+single.homescore+':'+single.awayscore+'</span>'+
+                        '<div class="result-b">'+single.homescore+':'+single.awayscore+'</div>'+
                         '</div>'+
                         '<div class="team-b">'+
                         '<img class="team-bimg" src='+awayTeamPhoto+' width="100%" height="100%">'+
@@ -289,7 +291,7 @@ function AddMemberContent() {
                         '</div>'+
                         '<div class="shooter-other">'+
                         '<div class="name-goto"><a href="javascript:;" style="color: black" class="shooter-name">'+player.name+'</a> <img src="images/goto_player.png" class="goto_player" alt="" width="100%" height="100%"></div>'+
-                        '<div class="shooter-score"><span>国籍：</span>中国<span>&nbsp;&nbsp;&nbsp;&nbsp;年龄：</span>'+player.age+' <span>&nbsp;&nbsp;&nbsp;&nbsp;位置：</span>'+player.position+'</div>'+
+                        '<div class="shooter-score text-grey"><span>国籍：</span>中国<span>&nbsp;&nbsp;&nbsp;&nbsp;年龄：</span>'+player.age+' <span>&nbsp;&nbsp;&nbsp;&nbsp;位置：</span>'+player.position+'</div>'+
                         '</div>'+
                         '</li>';
                 }
