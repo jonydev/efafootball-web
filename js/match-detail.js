@@ -12,7 +12,26 @@ $(document).ready(function () {
     match_id=Request["match_id"];
     $(".introduce a").addClass("text-green").removeClass("text-grey");
     $(".introduce").find(".triangle-container").addClass("shift-triangle");
-    AddIntroduceContent();
+    var current_click=eval(localStorage.getItem("current_click"));
+    switch (current_click){
+        case 0:
+          click_introduce();
+          break;
+        case 1:
+            click_team();
+            break;
+        case 2:
+            click_schedule();
+            break;
+        case 3:
+            click_points();
+            break;
+        case 4:
+            click_billboard();
+            break;
+        default:
+            click_introduce();
+    }
 });
 $(document).on("click",".spreed",function () {
     $(this).closest("li").find(".match-date").toggleClass("hidden");
@@ -43,41 +62,61 @@ $(document).on("click",".team-ul li",function () {
     window.location.href="http://120.76.206.174:8080/efafootball-web/team-detail.html?team_id="+team_id;
 });
 $(".introduce a").click(function () {
+    localStorage.setItem("current_click",0);
+    click_introduce();
+});
+$(".team a").click(function () {
+    localStorage.setItem("current_click",1);
+    click_team();
+});
+$(".schedule a").click(function () {
+    localStorage.setItem("current_click",2);
+   click_schedule();
+});
+$(".points a").click(function () {
+    localStorage.setItem("current_click",3);
+    click_points();
+});
+$(".billboard a").click(function () {
+    localStorage.setItem("current_click",4);
+   click_billboard();
+});
+function click_introduce() {
     $(".title-container").find(".text-green").removeClass("text-green").addClass("text-grey");
     $(".title-container div").find(".triangle-container").removeClass("shift-triangle");
     $(this).addClass("text-green").removeClass("text-grey");
     $(".introduce").find(".triangle-container").addClass("shift-triangle");
     $(".all-profile").removeClass("hidden");
     AddIntroduceContent();
-});
-$(".team a").click(function () {
+}
+function click_team() {
     $(".title-container").find(".text-green").removeClass("text-green").addClass("text-grey");
     $(".title-container div").find(".triangle-container").removeClass("shift-triangle");
     $(this).addClass("text-green").removeClass("text-grey");
     $(".team").find(".triangle-container").addClass("shift-triangle");
     AddTeamContent();
-});
-$(".schedule a").click(function () {
+}
+function click_schedule() {
     $(".title-container").find(".text-green").removeClass("text-green").addClass("text-grey");
     $(".title-container div").find(".triangle-container").removeClass("shift-triangle");
     $(this).addClass("text-green").removeClass("text-grey");
     $(".schedule").find(".triangle-container").addClass("shift-triangle");
-   AddMatchContent();
-});
-$(".points a").click(function () {
+    AddMatchContent();
+}
+function click_points() {
     $(".title-container").find(".text-green").removeClass("text-green").addClass("text-grey");
     $(".title-container div").find(".triangle-container").removeClass("shift-triangle");
     $(this).addClass("text-green").removeClass("text-grey");
     $(".points").find(".triangle-container").addClass("shift-triangle");
     AddPointsContent();
-});
-$(".billboard a").click(function () {
+}
+function click_billboard() {
     $(".title-container").find(".text-green").removeClass("text-green").addClass("text-grey");
     $(".title-container div").find(".triangle-container").removeClass("shift-triangle");
     $(this).addClass("text-green").removeClass("text-grey");
     $(".billboard").find(".triangle-container").addClass("shift-triangle");
     AddBillboardContent();
-});
+}
 function searchTeambyName() {
     //添加商品搜索处理
     var search_content=$(".form-control").val();

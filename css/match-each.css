@@ -41,7 +41,7 @@ ul{margin: 0;padding: 0;list-style: none;margin-bottom: 0;}
 .percent-b{float: left;margin-left: 9px;color: black}
 .total-value-b{float: left;width: 107px;background-color: #F0F4F6;height: 10px;margin-top: 2px;position: relative;}
 .real-value-b{float: left;background-color: #289D26;height: 10px;}
-.abstract-match{margin-left: 5px;margin-top: 5px;margin-right: 5px;position: relative;background-color: #F1F5F6;overflow: scroll;zoom: 1;height: 140px;}
+.abstract-match{margin-left: 5px;margin-top: 5px;margin-right: 5px;position: relative;background-color: #F1F5F6;overflow: scroll;zoom: 1;height: 120px;}
 .single-li{margin-top:8px;margin-bottom:8px;overflow: hidden;zoom: 1}
 .team-a-abstract{float: left;width: 41%}
 .action-a-img{width: 15px;height: 15px;float: right;vertical-align: middle}
@@ -51,7 +51,7 @@ ul{margin: 0;padding: 0;list-style: none;margin-bottom: 0;}
 .action-b-img{width: 15px;height: 15px;float: left;vertical-align: middle}
 .action-b-who{margin-left: 22px;font-size: 6pt;float: left}
 .action-b-time{margin-left: 15px;font-size: 6pt;float: left;}
-.detail-match{margin-left: 5px;margin-top: 5px;margin-right: 5px;position: relative;background-color: #F1F5F6;overflow: scroll;zoom: 1;padding-top: 9px;height: 500px; }
+.detail-match{margin-left: 5px;margin-top: 5px;margin-right: 5px;position: relative;background-color: #F1F5F6;overflow: scroll;zoom: 1;padding-top: 9px;height: 420px; }
 .tab-real-schedule{height: 55%}
 .real-a{float: left;width: 46%}
 .real-axis{float: left;width: 8%}
