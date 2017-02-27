@@ -33,7 +33,7 @@ $(document).ready(function () {
             click_introduce();
     }
 });
-$(document).on("click",".spreed",function () {
+$(document).on("click"," .spreed",function () {
     $(this).closest("li").find(".match-date").toggleClass("hidden");
     $(this).closest("li").find("ul").toggleClass("hidden");
     if($(this).closest("li").find("ul").hasClass("hidden")){
@@ -145,13 +145,11 @@ function AddIntroduceContent() {
         dataType:"json",
         success:function (data) {
             var allcontents=$(".all-profile").empty();
-            debugger
             var obj=data[0];
-            console.log(obj)
             var newroll=
             '<div class="all-profile ">'+
                 '<div class="profile-img">'+
-                '<img src='+obj.photo+'  alt="" width="100%" height="100%">'+
+                '<img src='+obj.details+'  alt="" width="100%" height="100%">'+
                 '</div>'+
                 '<div class="match-profile-container">'+
                 '<div class="match-profile font15pt">赛事简介</div>'+
@@ -246,7 +244,6 @@ function AddMatchContent() {
         success:function (data) {
             var allcontents=$(".all-schedule ul").empty();
             var obj=eval(data);
-            console.log((obj));
             for(var key in obj){
                 var each_round=obj[key];
                 var newroll=
@@ -273,7 +270,8 @@ function AddMatchContent() {
                                 score=single.homescore+':'+single.awayscore;
                             }
                             else if(single.flag==0) {
-                                score=single.time.substr(0,5); //未开始的显示开始时间
+                                //score=single.time.substr(0,5); //未开始的显示开始时间
+                                score=single.time.split("-")[0]; //未开始的显示开始时间
                             }
                             var child=
                                 '<li value='+single.id+' >'+
