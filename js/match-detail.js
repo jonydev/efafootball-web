@@ -145,7 +145,9 @@ function AddIntroduceContent() {
         dataType:"json",
         success:function (data) {
             var allcontents=$(".all-profile").empty();
+            debugger
             var obj=data[0];
+            console.log(obj)
             var newroll=
             '<div class="all-profile ">'+
                 '<div class="profile-img">'+
