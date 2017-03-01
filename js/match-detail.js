@@ -33,7 +33,7 @@ $(document).ready(function () {
             click_introduce();
     }
 });
-$(document).on("click"," .spreed",function () {
+$(document).on("click",".round-num",function () {
     $(this).closest("li").find(".match-date").toggleClass("hidden");
     $(this).closest("li").find("ul").toggleClass("hidden");
     if($(this).closest("li").find("ul").hasClass("hidden")){
@@ -250,7 +250,7 @@ function AddMatchContent() {
                     '<li value="">'+
                         '<div class="round">'+
                         '<p class="round-num">第'+rounds[key]+'轮</p>'+
-                        '<img class="spreed" src="images/respreed.png" alt="" width="100%" height="100%">'+
+                        '<img class="spreed"  src="images/respreed.png" alt="" width="100%" height="100%" >'+
                         '</div>'+
                         '<div class="match-date">'+
                         '<p class="font14pt">'+each_round[0].datetime+'     '+GetWeekday(each_round[0].datetime)+'</p>'+
