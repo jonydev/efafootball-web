@@ -9,15 +9,16 @@ ul{margin: 0;padding: 0;list-style: none;margin-bottom: 0;}
 .time-div{margin-top: 0px;}
 .content{padding: 0 16px 8px;line-height: 22px;color: black;letter-spacing: 2px;}
 .img-box{max-width: 100%;padding: 0 16px 8px;}
+.img-box a{display: inline-block;margin-top: 5px;}
 .img-one{width:220px;height: 160px;}
 .img-two{width:120px;height: 120px; }
 .img-three{width: 80px;height: 80px;}
-.f-detail{padding: 5px 10px;border-width: 1px 0 0;border-style: solid;height: 38px;line-height: 38px; }
+.f-detail{padding: 0 10px;border-width: 1px 0 0;border-style: solid;height: 38px;line-height: 38px; }
 .mod-comments{padding: 0 10px 12px;}
 .icon-comment{background-image: url("../images/icon_comment.png");width: 20px;height: 20px;margin-right: 7px;display: inline-block;background-size:20px 20px;background-repeat: no-repeat;vertical-align:-6px;}
 .icon-praise{background-image: url("../images/icon_praise.png");width: 20px;height: 20px;margin-right: 7px;display: inline-block;background-size:20px 20px;background-repeat: no-repeat;vertical-align:-6px;}
-.comment-div{float: left;margin-left: 20%;}
-.praise-div{float: right;margin-right: 20%;}
+.comment-div{float: left;}
+.praise-div{float: right;}
 .input-div{width: 100%;position: relative;height: 40px;}
 .input-content{width: 100%}
 
@@ -26,7 +27,9 @@ ul{margin: 0;padding: 0;list-style: none;margin-bottom: 0;}
 .form-box .form-hd .item{padding: 0 15px;font-size: 16px;color: #287faf;}
 button{border: 0;background-color: transparent;}
 .J_title{ width:40%;text-align: center;  font-weight: 700;  font-size: 18px;  color: #000;  padding: 0;position: absolute;left: 50%;margin-left: -20%;padding: 0 15px;font-size: 16px;}
-.write-text {  border: 1;  margin: 0;  outline: 0;  width: 100%;  resize: none;  min-height: 160px;  font-size: 16px;padding: 12px 10px 0;overflow: scroll;background-color: white;}
+.write-text {  border: 1px;  margin: 0;  outline: 0;  width: 100%;  resize: none;  min-height: 160px;max-height:160px;  font-size: 14px;padding: 12px 10px;overflow: scroll;background-color: white;}
+.comment-text {  border: 1px;  margin: 0;  outline: 0;  width: 100%;  resize: none;  min-height: 60px;max-height:100px;  font-size: 14px;padding: 12px 10px;overflow: scroll;background-color: white;}
+.show-text {  border: 1px;  margin: 0;  outline: 0;  width: 100%;  resize: none; max-height:160px;  font-size: 14px;padding: 6px 16px;overflow: scroll;background-color: white;}
 .form-box .form-hd .item:last-child {  font-weight: 700;}
 .J_close{float: left;}
 .J_confirm{float: right;}
@@ -35,9 +38,12 @@ button{border: 0;background-color: transparent;}
         inline-block;background-size:24px 24px;background-repeat: no-repeat;vertical-align:-6px;margin-left: 20px;}
 .choose-img{background-image: url("../images/choose_img.png");width: 24px;height: 24px;margin-right: 7px;display:
         inline-block;background-size:24px 24px;background-repeat: no-repeat;vertical-align:-6px;margin-left: 20px;}
- .counter {  float: right;  color: #999;  line-height: 44px;  font-size: 14px;  padding: 0 10px 0 0;}
+ .delete-all { float: right;  color: #999;  line-height: 44px;  font-size: 14px;  padding: 0 10px 0 0;}
+ .delete-comment{float: right;  color: #999;  line-height: 44px;  font-size: 14px;  padding: 0 10px 0 0;}
+ .send-comment{float: left;  color: #999;  line-height: 44px;  font-size: 14px;  padding: 0 0 0 10px;}
  .write-plugin{height: 44px;line-height: 44px;position: relative;}
-
+.delete-photo{background-image: url(../images/delete_photo.png);width: 20px;height: 20px;display:
+        inline-block;background-size:20px 20px;background-repeat: no-repeat;padding-top: 45px;}
 .comment { width: 680px; margin: 20px auto; position: relative; background: #fff; padding: 20px 50px 50px; border: 1px solid #DDD; border-radius: 5px; }
 .comment h3 { height: 28px; line-height: 28px }
 .com_form { width: 100%; position: relative }
@@ -55,3 +61,5 @@ span.emotion:hover { background-position: 2px -28px }
 }
 .sub_btn:hover { background: #538018; background: -webkit-gradient(linear, left top, left bottom, from(#6b9d28), to(#436b0c)); background: -moz-linear-gradient(top, #6b9d28, #436b0c);  filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#6b9d28', endColorstr='#436b0c');
 }
+.comment-list{position: relative;margin: 6px 16px;background-color: rgba(0,0,0,.075);padding: 8px;}
+.comment-list li{margin-top: 5px; }

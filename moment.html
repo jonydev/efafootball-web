@@ -22,34 +22,42 @@
                      </div>
                 </div>
                 <div>
-                    <p class="content font14pt">回家前去校医院洁牙 回来喝了点白酒 昨天早上起来嘴里全是血 然后就停不下来了 随时吐出来就是一口血 估计都能献两次了 晚上折腾到两点 心累 闭着嘴就睡了 早上起来 终于好转 只能说 洁牙需谨慎 一定注意保养 别作</p>
+                    <!--<p class="content font14pt">回家前去校医院洁牙 回来喝了点白酒 昨天早上起来嘴里全是血 然后就停不下来了 随时吐出来就是一口血 估计都能献两次了 晚上折腾到两点 心累 闭着嘴就睡了 早上起来 终于好转 只能说 洁牙需谨慎 一定注意保养 别作</p>-->
+                    <div class="show-text"></div>
                     <div class="img-box">
-                        <a  href=""><img class="img-one" src="images/real_change.png" alt="" ></a>
-                    </div>
-                    <div class="img-box">
-                        <a  href=""><img class="img-two" src="images/real_change.png" alt="" ></a>
-                        <a  href=""><img class="img-two" src="images/real_change.png" alt="" ></a>
-                    </div>
-                    <div class="img-box">
-                        <a  href=""><img class="img-three" src="images/real_change.png" alt="" ></a>
-                        <a  href=""><img class="img-three" src="images/real_change.png" alt="" ></a>
-                        <a  href=""><img class="img-three" src="images/real_change.png" alt="" ></a>
                     </div>
                 </div>
+                <div class="comment-list">
+                    <ul>
+                        <li>
+                            <div class=" font12pt"><a href="javascript:;">Dawn</a>:我是个逗比啊</div>
+                        </li>
+                        <li>
+                            <div class=" font12pt"><a href="javascript:;">请示明月</a>:我是个逗比啊</div>
+                        </li>
+                    </ul>
+                </div>
                 <div>
-                    <p class="f-detail font12pt">
-                        <a href="javascript:;" class="comment-div"><i class="icon-comment"></i>评论（3）</a>
-                        <a href="javascript:;" class="praise-div"><i class="icon-praise"></i>赞（4）</a>
-                    </p>
-                    <div class="mod-comments">
-                        <div class="comment-list"></div>
-                        <div class="comment-input"></div>
+                    <div class="f-detail font12pt">
+                        <a href="javascript:;" class="comment-div" data-toggle="collapse" data-target="#comment-div"><i class="icon-comment"></i>评论（<span id="comment-num">3</span>）</a>
+                        <a href="javascript:;" class="praise-div"><i class="icon-praise"></i>赞（<span id="praise-num">4</span>）</a>
+                    </div>
+                </div>
+                <div id="comment-div" class="collapse">
+                    <div class="comment-text" id="commenttext" contenteditable="true" ></div>
+                    <div class="write-plugin" id="loadfile-container">
+                        <i class="item icon-emoji emotion"></i>
+                        <span class="delete-comment" data-toggle="collapse" data-target="#comment-div">发表</span>
                     </div>
                 </div>
             </li>
         </ul>
     </div>
 </body>
+<script src="//cdn.bootcss.com/tether/1.3.6/js/tether.min.js"></script>
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script  type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/browser.js"></script>
+<script type="text/javascript" src="third-plugin/qqFace/js/jquery.qqFace.js"></script>
+<script type="text/javascript" src="js/moment.js"></script>
 </html>

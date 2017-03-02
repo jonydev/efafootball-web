@@ -2,7 +2,7 @@
  * Created by 晴识明月 on 2017/2/27.
  */
 var token;
-var photo_num=0;
+var select_photo=[];
 $(document).ready(function (){
 	//从服务器获取domain和token
 	$.ajax({
@@ -63,7 +63,9 @@ $(document).ready(function (){
                             // // if(photo_num % 3==0 ){
                             // //     photo_content+='</br>';
                             // // }
-							$(".img-box img").attr("src",sourceLink);
+							select_photo.push(sourceLink);
+							InsertPhoto();
+							// $(".img-box img").attr("src",sourceLink);
 						},
 						'Error': function(up, err, errTip) {
 							//上传出错时,处理相关的事情
@@ -85,4 +87,49 @@ $(document).ready(function (){
 			}
 		}
 	});
+	//初始化emoji控件
+    $('.emotion').qqFace({
+
+        id : 'facebox',
+
+        assign:'saytext',
+
+        path:'third-plugin/qqFace/arclist/' //表情存放的路径
+
+    });
 });
+$(document).on("click","#delete-photo",function () {
+    var r=confirm("你确定删除这张照片吗？")
+    if (r==true) {
+        select_photo.splice($(this).closest('a').attr("id"),1);
+        InsertPhoto(select_photo);
+    }
+});
+$(document).on("click",".delete-all",function () {
+    var r=confirm("你确定删除所有照片吗？")
+    if (r==true) {
+        select_photo=[];
+        InsertPhoto(select_photo);
+    }
+});
+//发表
+$(".J_confirm").click(function(){
+    var text = $("#saytext").html();
+    var imgs=$(".img-box").html();
+    var r=confirm("你确定发表这篇帖子吗？")
+    if (r==true) {
+	debugger
+    }
+});
+function InsertPhoto() {
+	var old_conten=$(".img-box").empty();
+	var newphoto='';
+	for (var i=0;i<select_photo.length;i++){
+		console.log(select_photo);
+        newphoto+='<a  href="javascript:;" id='+i+'><img class="img-three" src='+select_photo[i]+' alt="" ><i class="delete-photo" id="delete-photo"></i></a>';
+        if((i+1) % 3==0 ){
+            newphoto+='</br>';
+        };
+	}
+	$(".img-box").html(newphoto);
+}

@@ -1,5 +1,6 @@
 // QQ表情插件
-(function($){  
+var assign;
+(function($){
 	$.fn.qqFace = function(options){
 		var defaults = {
 			id : 'facebox',
@@ -8,7 +9,8 @@
 			tip : 'em_'
 		};
 		var option = $.extend(defaults, options);
-		var assign = $('#'+option.assign);
+		// var assign = $('#'+option.assign);
+        assign = $('#'+option.assign);
 		var id = option.id;
 		var path = option.path;
 		var tip = option.tip;
@@ -105,7 +107,7 @@ jQuery.fn.extend({
 		// }
 		var content=textObj.html()+textFeildValue;
 		var new_content=replace_em((content))
-		$(".write-text").html(new_content);
+		$(assign).html(new_content);
 	} 
 });
 //查看结果
