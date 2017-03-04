@@ -91,6 +91,7 @@ $(".save-edit").click(function () {
     var name=$("#team_name").val();
     var content=$(".team-introduce").val();
     var photo=$("#team-img").attr("src");
+    photo=photo.replace("http://obxgaesml.bkt.clouddn.com/","");
     if(photo=="images/default_team.png") photo="";
     var home=$("#home").val();
     var captain=$("#captain").val();
