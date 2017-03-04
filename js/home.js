@@ -65,8 +65,8 @@ function SetSwiper() {
 }
 function SetContent() {
     //拉数据
-    var url="http://120.76.123.140/index.php?s=/mob/weibo/news";
-    // var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/newsData?id=1";
+    // var url="http://120.76.123.140/index.php?s=/mob/weibo/news";
+    var url="http://localhost:8080/efaleague-web/appPath/appData/newsData?id=1";
     $.ajax(
         {
             url: url,
@@ -103,13 +103,15 @@ function SetContent() {
 function SetContentOld() {
     //拉数据
     // var url="http://120.76.123.140/index.php?s=/mob/weibo/news";
-    var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/newsData?id=1";
+    // var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/newsData?id=1";
+    var url="http://localhost:8080/efaleague-web/appPath/appData/newsData?id=1";
     $.ajax(
         {
             url: url,
             success: function (data) {
                 // 解析json
                 var obj = (data);
+                console.log(obj);
                 var addcontent=$(".news_ul").empty();
                 for (var i = 0; i < obj.length; i++) {
                     var single=obj[i];
@@ -125,8 +127,8 @@ function SetContentOld() {
                         '<div class="time_icon">'+
                         '<img src="images/notice_time.png" alt="">'+
                         '</div>'+
-                        '<div class="real-time">2017.12.24 12:00</div>'+
-                        '<div class="read_count">阅读 '+3000+i+'</div>'+
+                        '<div class="real-time">'+single.createDate+'</div>'+
+                        '<div class="viewNum"><a class="read_count">阅读 '+single.viewNum+'</a></div>'+
                         '</div>'+
                         '</div>'+
                         '</div>'+

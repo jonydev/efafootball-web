@@ -142,6 +142,7 @@ $(".save-edit").click(function () {
         return;
     }
     var photo=$("#profile-img").attr("src"); //照片 上传七牛服务器返回图片名称传达给服务器
+    photo.replace("http://obxgaesml.bkt.clouddn.com/","");
     var telephone=$("#phone").val();//电话号码
     if(isNaN(telephone)&&telephone!=""){
         TIP_ERROR("电话号码格式不对");

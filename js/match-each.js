@@ -128,7 +128,7 @@ function AddRealScheduleContent() {
                             '<li class="single-li">'+
                             '<img class="action-a-img" src='+photo+' alt="" width="100%" height="100%">'+
                             '<span class="action-a-time"></span>'+
-                            '<span class="action-a-who">'+single.number+'号'+single.eventName+single.eventName+'</span>'+
+                            '<span class="action-a-who">'+single.number+'号'+single.name+single.eventName+'</span>'+
                             '</li>';
                         a_abstractcontent.append(newroll);
                     }else if(key==awayteamid&&i>=local_b_abstract_number){
