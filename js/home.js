@@ -66,7 +66,7 @@ function SetSwiper() {
 function SetContent() {
     //拉数据
     // var url="http://120.76.123.140/index.php?s=/mob/weibo/news";
-    var url="http://localhost:8080/efaleague-web/appPath/appData/newsData?id=1";
+    var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/newsData?id=1";
     $.ajax(
         {
             url: url,
@@ -103,8 +103,8 @@ function SetContent() {
 function SetContentOld() {
     //拉数据
     // var url="http://120.76.123.140/index.php?s=/mob/weibo/news";
-    // var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/newsData?id=1";
-    var url="http://localhost:8080/efaleague-web/appPath/appData/newsData?id=1";
+    var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/newsData?id=1";
+    // var url="http://localhost:8080/efaleague-web/appPath/appData/newsData?id=1";
     $.ajax(
         {
             url: url,

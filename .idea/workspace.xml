@@ -21,38 +21,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="match.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/match.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="589">
-              <caret line="31" column="42" lean-forward="false" selection-start-line="31" selection-start-column="42" selection-end-line="31" selection-end-column="42" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="mine-edit.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/mine-edit.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="95">
-              <caret line="145" column="42" lean-forward="true" selection-start-line="145" selection-start-column="42" selection-end-line="145" selection-end-column="42" />
+            <state relative-caret-position="2755">
+              <caret line="145" column="42" lean-forward="false" selection-start-line="145" selection-start-column="42" selection-end-line="145" selection-end-column="42" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="match-each.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/match-each.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4085">
-              <caret line="215" column="26" lean-forward="false" selection-start-line="215" selection-start-column="9" selection-end-line="215" selection-end-column="26" />
-              <folding>
-                <marker date="1488639505216" expanded="true" signature="14818:14829" ph="..." />
-                <marker date="1488639505216" expanded="true" signature="14939:14946" ph="..." />
-                <marker date="1488639505216" expanded="true" signature="15198:15209" ph="..." />
-                <marker date="1488639505216" expanded="true" signature="15300:15311" ph="..." />
-                <marker date="1488639505216" expanded="true" signature="15421:15428" ph="..." />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -115,8 +89,8 @@
       <file leaf-file-name="mine.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mine.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="57">
-              <caret line="56" column="29" lean-forward="true" selection-start-line="56" selection-start-column="29" selection-end-line="56" selection-end-column="29" />
+            <state relative-caret-position="1064">
+              <caret line="56" column="29" lean-forward="false" selection-start-line="56" selection-start-column="29" selection-end-line="56" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -138,8 +112,8 @@
       <file leaf-file-name="mine-sign.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/mine-sign.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="445">
-              <caret line="155" column="35" lean-forward="true" selection-start-line="155" selection-start-column="35" selection-end-line="155" selection-end-column="35" />
+            <state relative-caret-position="1577">
+              <caret line="155" column="35" lean-forward="false" selection-start-line="155" selection-start-column="35" selection-end-line="155" selection-end-column="35" />
               <folding>
                 <element signature="e#170#4193#0" expanded="false" />
               </folding>
@@ -147,14 +121,34 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="team-edit.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="team-edit.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/team-edit.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="241">
-              <caret line="94" column="50" lean-forward="true" selection-start-line="94" selection-start-column="50" selection-end-line="94" selection-end-column="50" />
+            <state relative-caret-position="76">
+              <caret line="97" column="33" lean-forward="true" selection-start-line="97" selection-start-column="33" selection-end-line="97" selection-end-column="33" />
               <folding>
                 <element signature="n#!!block;n#AddAllProfile#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="home.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/js/home.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="198">
+              <caret line="106" column="4" lean-forward="false" selection-start-line="106" selection-start-column="4" selection-end-line="106" selection-end-column="4" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="home.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/home.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="152">
+              <caret line="17" column="38" lean-forward="true" selection-start-line="17" selection-start-column="38" selection-end-line="17" selection-end-column="38" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -163,7 +157,7 @@
         <entry file="file://$PROJECT_DIR$/css/home.css">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1311">
-              <caret line="69" column="20" lean-forward="true" selection-start-line="69" selection-start-column="20" selection-end-line="69" selection-end-column="20" />
+              <caret line="69" column="20" lean-forward="false" selection-start-line="69" selection-start-column="20" selection-end-line="69" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -285,13 +279,13 @@
         <option value="$PROJECT_DIR$/js/moment.js" />
         <option value="$PROJECT_DIR$/moment.html" />
         <option value="$PROJECT_DIR$/css/moment.css" />
-        <option value="$PROJECT_DIR$/js/home.js" />
         <option value="$PROJECT_DIR$/css/home.css" />
         <option value="$PROJECT_DIR$/js/match-each.js" />
         <option value="$PROJECT_DIR$/js/match-detail.js" />
         <option value="$PROJECT_DIR$/js/mine-sign.js" />
         <option value="$PROJECT_DIR$/js/mine-edit.js" />
         <option value="$PROJECT_DIR$/js/team-edit.js" />
+        <option value="$PROJECT_DIR$/js/home.js" />
       </list>
     </option>
   </component>
@@ -322,6 +316,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -418,8 +414,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="PackagesPane" />
       <pane id="AndroidView" />
     </panes>
@@ -567,15 +561,16 @@
       <workItem from="1488503382260" duration="6500000" />
       <workItem from="1488638974290" duration="2918000" />
       <workItem from="1488642106659" duration="779000" />
-      <workItem from="1488643019022" duration="1208000" />
+      <workItem from="1488643019022" duration="1253000" />
+      <workItem from="1488672988522" duration="207000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="460075000" />
+    <option name="totallyTimeSpent" value="460327000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-10" y="6" width="1364" height="718" extended-state="0" />
+    <frame x="-10" y="6" width="1364" height="718" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21810089" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -916,25 +911,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/home.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="17" column="38" lean-forward="true" selection-start-line="17" selection-start-column="38" selection-end-line="17" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/moment-new.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="342">
           <caret line="18" column="14" lean-forward="false" selection-start-line="18" selection-start-column="14" selection-end-line="18" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/home.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2014">
-          <caret line="106" column="73" lean-forward="false" selection-start-line="106" selection-start-column="65" selection-end-line="106" selection-end-column="73" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1027,7 +1007,7 @@
     <entry file="file://$PROJECT_DIR$/css/home.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1311">
-          <caret line="69" column="20" lean-forward="true" selection-start-line="69" selection-start-column="20" selection-end-line="69" selection-end-column="20" />
+          <caret line="69" column="20" lean-forward="false" selection-start-line="69" selection-start-column="20" selection-end-line="69" selection-end-column="20" />
           <folding />
         </state>
       </provider>
@@ -1042,24 +1022,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mine.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="56" column="29" lean-forward="true" selection-start-line="56" selection-start-column="29" selection-end-line="56" selection-end-column="29" />
+        <state relative-caret-position="1064">
+          <caret line="56" column="29" lean-forward="false" selection-start-line="56" selection-start-column="29" selection-end-line="56" selection-end-column="29" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/mine-edit.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="145" column="42" lean-forward="true" selection-start-line="145" selection-start-column="42" selection-end-line="145" selection-end-column="42" />
+        <state relative-caret-position="2755">
+          <caret line="145" column="42" lean-forward="false" selection-start-line="145" selection-start-column="42" selection-end-line="145" selection-end-column="42" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/mine-sign.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="445">
-          <caret line="155" column="35" lean-forward="true" selection-start-line="155" selection-start-column="35" selection-end-line="155" selection-end-column="35" />
+        <state relative-caret-position="1577">
+          <caret line="155" column="35" lean-forward="false" selection-start-line="155" selection-start-column="35" selection-end-line="155" selection-end-column="35" />
           <folding>
             <element signature="e#170#4193#0" expanded="false" />
           </folding>
@@ -1068,11 +1048,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/team-edit.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="241">
-          <caret line="94" column="50" lean-forward="true" selection-start-line="94" selection-start-column="50" selection-end-line="94" selection-end-column="50" />
+        <state relative-caret-position="76">
+          <caret line="97" column="33" lean-forward="true" selection-start-line="97" selection-start-column="33" selection-end-line="97" selection-end-column="33" />
           <folding>
             <element signature="n#!!block;n#AddAllProfile#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/home.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="17" column="38" lean-forward="true" selection-start-line="17" selection-start-column="38" selection-end-line="17" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/home.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="106" column="4" lean-forward="false" selection-start-line="106" selection-start-column="4" selection-end-line="106" selection-end-column="4" />
+          <folding />
         </state>
       </provider>
     </entry>
