@@ -128,7 +128,7 @@ function SetContentOld() {
                         '<img src="images/notice_time.png" alt="">'+
                         '</div>'+
                         '<div class="real-time">'+single.createDate+'</div>'+
-                        '<div class="viewNum"><a class="read_count">阅读 '+single.viewNum+'</a></div>'+
+                        '<div class="viewNum"><a class="read_count">阅读 '+200+'</a></div>'+
                         '</div>'+
                         '</div>'+
                         '</div>'+
