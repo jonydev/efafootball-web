@@ -30,11 +30,11 @@ ul{margin: 0;padding: 0;list-style: none;margin-bottom: 0;}
 .member-info-detail{width: 15px;height: 15px;float: right;margin-right: 33px;margin-top: 10px;}
 .h40{height: 40px;}
 .statistic-info{background-color:white;padding-top: 8px;margin-left: 5px;margin-right: 5px;margin-top: 5px;height: 550px; }
-.statistic-info li{margin-top: 35px;}
+.statistic-info li{margin-top: 20px;}
 .team-a-statistic{width: 42%}
 .team-b-statistic{width: 42%}
 .statistic-name{width: 16%;text-align: center}
-.single-statistic{margin-top: 29px;height: 40px;}
+.single-statistic{margin-top: 29px;height: 30px;}
 .percent-a{float: right;margin-right: 9px;color: black}
 .total-value-a{float: right;width: 107px;background-color: #F0F4F6;height: 10px;margin-top: 2px;position: relative;}
 .real-value-a{float: right;background-color: #289D26;height: 10px;}
