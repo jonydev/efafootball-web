@@ -299,12 +299,11 @@ function AddStartFirstContent(teamId) {
     });
 }
 function AddStatisticContent() {
-    var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/getStatistical?id=9"+game_id+"&homeId="+hometeamid+"&awayId="+awayteamid;
+    var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/getStatistical?id="+game_id+"&homeId="+hometeamid+"&awayId="+awayteamid;
     var statisticcontent=$(".statistic-info").empty();
     $.ajax({
         url:url,
         success:function (data) {
-            console.log(data);
             var obj=JSON.parse(data);
             var hometeam=obj[hometeamid];
             var awayteam=obj[awayteamid];
