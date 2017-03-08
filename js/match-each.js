@@ -227,6 +227,10 @@ function SetContentStarted() {
         {
             $(".team-aimg").attr("src",single.homeTeamPhoto);
         }
+        if(single.awayTeamPhoto!="")
+        {
+            $(".team-bimg").attr("src",single.awayTeamPhoto);
+        }
         $(".team-atxt").text(single.homeTeamName);
         $(".team-btxt").text(single.awayTeamName);
         $(".score-result").text(single.homescore+':'+single.awayscore);

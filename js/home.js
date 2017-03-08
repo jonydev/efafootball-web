@@ -4,7 +4,6 @@
 
 $(document).ready(function (){
     SetSwiper();
-    // SetContent();
     SetContentOld();
 });
 $(document).on("click",".swiper-slide",function () {
@@ -12,6 +11,12 @@ $(document).on("click",".swiper-slide",function () {
 });
 $(document).on("click",".news_ul li",function () {
     console.log($(this).attr("url"));
+    var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/addViewNum?news_id="+$(this).attr("value");
+    $.ajax(
+        {
+            url: url,
+            success: function (data){}
+        });
     window.location.href=$(this).attr("url");
 });
 $(".join-team").click(function () {
@@ -73,7 +78,6 @@ function SetContentOld() {
             success: function (data) {
                 // 解析json
                 var obj = (data);
-                console.log(obj);
                 var addcontent=$(".news_ul").empty();
                 for (var i = 0; i < obj.length; i++) {
                     var single=obj[i];
@@ -89,8 +93,8 @@ function SetContentOld() {
                         '<div class="time_icon">'+
                         '<img src="images/notice_time.png" alt="">'+
                         '</div>'+
-                        '<div class="real-time">'+single.datetime+'</div>'+
-                        '<div class="viewNum"><a class="read_count">阅读 '+200+'</a></div>'+
+                        '<div class="real-time">'+single.date+'</div>'+
+                        '<div class="viewNum"><a class="read_count">阅读 '+single.viewNum+'</a></div>'+
                         '</div>'+
                         '</div>'+
                         '</div>'+
