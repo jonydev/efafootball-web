@@ -52,13 +52,16 @@ $(document).ready(function (){
                                 beforeSend:function(){
                                     xval=getBusyOverlay('viewport',{color:'gray', opacity:0.75, text:'viewport: loading...', style:'text-shadow: 0 0 3px black;font-size:12px;color:white'},{color:"#ffffff", size:80, type:'o'});
                                     if(xval) {
-                                        xval.settext("正在上传图片，请稍后。。。");
+                                        xval.settext("正在上传图片");
                                     }
                                 }
                             });
                             // 每个文件上传前,处理相关的事情
 						},
 						'UploadProgress': function(up, file) {
+                            if(xval) {
+                                xval.settext("正在上传图片,已完成  "+file.percent+ "%");
+                            }
 							// 每个文件上传时,处理相关的事情
 						},
 						'FileUploaded': function(up, file, info) {
@@ -154,7 +157,8 @@ $(".J_confirm").click(function(){
 			type:"post",
 			success:function (data) {
 				if(data.result=="success"){
-					window.location.href="http://120.76.206.174:8080/efafootball-web/moment.html?";
+					// window.location.href="http://120.76.206.174:8080/efafootball-web/moment.html?";
+					history.go(-1);
 				}
 			}
 		});
