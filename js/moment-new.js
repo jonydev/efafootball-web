@@ -3,7 +3,15 @@
  */
 var token;
 var select_photo=[];
+var login_id;
 $(document).ready(function (){
+    //根据localStorage缓存看是否登录
+    var have_logined=localStorage.getItem("have_logined");
+    if(have_logined==1){
+        login_id=localStorage.getItem("loginId");
+    }else{
+        // window.location.href="http://120.76.206.174:8080/efafootball-web/mine-login.html";
+    }
 	//从服务器获取domain和token
 	$.ajax({
 		url:"http://120.76.206.174:8080/efaleague-web/appPath/appData/getImageByToken",
@@ -105,6 +113,9 @@ $(document).on("click","#delete-photo",function () {
         InsertPhoto(select_photo);
     }
 });
+$(".J_close").click(function () {
+	history.go(-1);//返回上一条
+})
 $(document).on("click",".delete-all",function () {
     var r=confirm("你确定删除所有照片吗？")
     if (r==true) {
@@ -115,17 +126,31 @@ $(document).on("click",".delete-all",function () {
 //发表
 $(".J_confirm").click(function(){
     var text = $("#saytext").html();
-    var imgs=$(".img-box").html();
     var r=confirm("你确定发表这篇帖子吗？")
     if (r==true) {
-	debugger
+    	$("i").remove(".delete-photo");   //删除右上角的小图标
+		if($(".img-box a").length<=1){
+			$(".img-box img").removeClass("img-three").addClass("img-one");
+		}else if($(".img-box a").length==2){
+            $(".img-box img").removeClass("img-three").addClass("img-two");
+		}
+        var imgs=$(".img-box").html();
+		var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/Moment/save?user_id="+login_id+"&content="+text+"&photo="+imgs;
+		$.ajax({
+			url:url,
+			type:"post",
+			success:function (data) {
+				if(data.result=="success"){
+					window.location.href="http://120.76.206.174:8080/efafootball-web/moment.html?";
+				}
+			}
+		});
     }
 });
 function InsertPhoto() {
 	var old_conten=$(".img-box").empty();
 	var newphoto='';
 	for (var i=0;i<select_photo.length;i++){
-		console.log(select_photo);
         newphoto+='<a  href="javascript:;" id='+i+'><img class="img-three" src='+select_photo[i]+' alt="" ><i class="delete-photo" id="delete-photo"></i></a>';
         if((i+1) % 3==0 ){
             newphoto+='</br>';

@@ -207,7 +207,8 @@ function AddRealScheduleContent() {
                         '</li>';
                 }
                 realctcontent.append(newroll);
-                $('#match-detail')[0].scrollTop=$('#match-detail').height();
+                // $('#match-detail')[0].scrollTop=$('#match-detail').height();
+                $('#match-detail')[0].scrollTop=5000;
             }
         }
     });
