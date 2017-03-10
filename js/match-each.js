@@ -279,7 +279,7 @@ function AddStartFirstContent(teamId) {
                 for(var i=0;i<single.length;i++){
                     var player=single[i];
                     var photo="images/default_head.png";
-                    if(player.photo!="") photo=player.photo;
+                    if(player.photo!="") photo=player.photo+"?imageView2/1/w/60/h/60";
                     newroll+=
                         '<li class="each-person">'+
                         '<a class="number text-black" href="">'+player.number+'</a>'+

@@ -51,7 +51,7 @@ function SetSwiper() {
                 var singleobj=myobject[i];
                 content+=
                     '<div class="swiper-slide" id="swiper" value='+singleobj.url+'>'+
-                        '<img src='+singleobj.photo+' alt="" width="100%" height="100%">'+
+                        '<img src='+singleobj.photo+"?imageView2/1/w/360/h/174"+' alt="" width="100%" height="100%">'+
                     '</div>';
             }
             swipercontent.append(content);
@@ -85,7 +85,7 @@ function SetContentOld() {
                         '<li value='+single.id+' url='+single.url+'>'+
                         '<div class="single_new background-white">'+
                         '<div class="news_img">'+
-                        '<img  class="img-attr" src='+single.photo+' alt="" width="100%" height="100%">'+
+                        '<img  class="img-attr" src='+single.photo+"?imageView2/1/w/200/h/180"+' alt="" width="100%" height="100%">'+
                         '</div>'+
                         '<div class="news_info">'+
                         '<div class="news_title text-space">'+single.title+'</div>'+

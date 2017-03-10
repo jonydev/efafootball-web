@@ -214,7 +214,7 @@ function AddTeamContent() {
                 var single=obj[i];
                 var photo="images/default_team.png";
                 if(single.photo!=""){
-                    photo=single.photo;
+                    photo=single.photo+"?imageView2/1/w/100/h/100";
                 }
                 var newroll=
                     '<li class="single-team background-white" id='+single.id+'>'+
@@ -260,9 +260,9 @@ function AddMatchContent() {
                         for(var j=0;j<each_round.length;j++){
                             var single=each_round[j];
                             var homephoto="images/default_team.png";
-                            if(single.homeTeamPhoto!="") homephoto=single.homeTeamPhoto;
+                            if(single.homeTeamPhoto!="") homephoto=single.homeTeamPhoto+"?imageView2/1/w/60/h/60";
                             var awayphoto="images/default_team.png";
-                            if(single.awayTeamPhoto!="") awayphoto=single.awayTeamPhoto;
+                            if(single.awayTeamPhoto!="") awayphoto=single.awayTeamPhoto+"?imageView2/1/w/60/h/60";
                             var state,score;
                             state=all_states[single.flag];
                             if(single.flag!=0)

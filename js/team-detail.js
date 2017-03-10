@@ -197,8 +197,8 @@ function AddMatchContent() {
                 var single=obj[i];
                 var awayTeamPhoto="images/default_team.png";
                 var homeTeamPhoto="images/default_team.png";
-                if(single.awayTeamPhoto!="") awayTeamPhoto=single.awayTeamPhoto;
-                if(single.homeTeamPhoto!="") homeTeamPhoto=single.homeTeamPhoto;
+                if(single.awayTeamPhoto!="") awayTeamPhoto=single.awayTeamPhoto+"?imageView2/1/w/60/h/60"; //加载缩略图
+                if(single.homeTeamPhoto!="") homeTeamPhoto=single.homeTeamPhoto+"?imageView2/1/w/60/h/60";
                 var weekday=GetWeekday(single.datetime);
                 if(single.flag==0){
                     var newroll=
@@ -254,6 +254,10 @@ function AddMatchContent() {
                     allcontents.append(newroll);
                 }
             }
+            $("img").lazyload({
+                // threshold : 200
+                // event : "click"
+            });
         }
     });
 }
@@ -280,7 +284,7 @@ function AddMemberContent() {
                 for(var i=0;i<single.length;i++){
                     var player=single[i];
                     var photo="images/default_head.png";
-                    if(player.photo!="") photo=player.photo;
+                    if(player.photo!="") photo=player.photo+"?imageView2/1/w/80/h/80"; //缩略图
                    newroll+=
                         '<li class="shooter-info">'+
                         '<div class="shooter-num">'+
@@ -305,6 +309,10 @@ function AddMemberContent() {
                     forwardcontent.append(newroll);
                 }
             }
+            $("img").lazyload({
+                // threshold : 200
+                // event : "click"
+            });
         }
     });
 }
