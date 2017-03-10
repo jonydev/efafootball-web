@@ -2,7 +2,7 @@
  * Created by 晴识明月 on 2017/1/8.
  */
 var token,loginId,upper="#3bc83b",lower="#000000";
-var current_choose; //标记当前所设置的属性，0 表示设置性别 1表示设置位置
+var current_choose,xval; //标记当前所设置的属性，0 表示设置性别 1表示设置位置
 $(document).ready(function (){
     //根据localStorage缓存看是否登录
     var have_logined=localStorage.getItem("have_logined");
@@ -46,6 +46,14 @@ $(document).ready(function (){
                             });
                         },
                         'BeforeUpload': function(up, file) {
+                            $.ajax({
+                                beforeSend:function(){
+                                    xval=getBusyOverlay('viewport',{color:'gray', opacity:0.75, text:'viewport: loading...', style:'text-shadow: 0 0 3px black;font-size:12px;color:white'},{color:"#ffffff", size:80, type:'o'});
+                                    if(xval) {
+                                        xval.settext("正在上传图片，请稍后。。。");
+                                    }
+                                }
+                            });
                             // 每个文件上传前,处理相关的事情
                         },
                         'UploadProgress': function(up, file) {
@@ -59,7 +67,7 @@ $(document).ready(function (){
                             //    "key": "gogopher.jpg"
                             //  }
                             // 参考http://developer.qiniu.com/docs/v6/api/overview/up/response/simple-response.html
-
+                            xval.remove(); //删除进度框
                             var domain = up.getOption('domain');
                             var res = JSON.parse(info);
                             var sourceLink = domain + res.key;   //获取上传成功后的文件的Url
@@ -128,6 +136,9 @@ $(document).on("click",".home-color",function () {
     choose_color();
     current_choose=0;
 });
+$(document).on("click","#viewport",function () {
+    xval.remove(); //点击屏幕 进度条消失
+})
 $(document).on("click",".rehome-color",function () {
     choose_color();
     current_choose=1;

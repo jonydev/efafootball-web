@@ -4,6 +4,7 @@
 var token;
 var select_photo=[];
 var login_id;
+var xval;
 $(document).ready(function (){
     //根据localStorage缓存看是否登录
     var have_logined=localStorage.getItem("have_logined");
@@ -47,7 +48,15 @@ $(document).ready(function (){
 							});
 						},
 						'BeforeUpload': function(up, file) {
-							// 每个文件上传前,处理相关的事情
+                            $.ajax({
+                                beforeSend:function(){
+                                    xval=getBusyOverlay('viewport',{color:'gray', opacity:0.75, text:'viewport: loading...', style:'text-shadow: 0 0 3px black;font-size:12px;color:white'},{color:"#ffffff", size:80, type:'o'});
+                                    if(xval) {
+                                        xval.settext("正在上传图片，请稍后。。。");
+                                    }
+                                }
+                            });
+                            // 每个文件上传前,处理相关的事情
 						},
 						'UploadProgress': function(up, file) {
 							// 每个文件上传时,处理相关的事情
@@ -60,6 +69,7 @@ $(document).ready(function (){
 							//    "key": "gogopher.jpg"
 							//  }
 							// 参考http://developer.qiniu.com/docs/v6/api/overview/up/response/simple-response.html
+                            xval.remove(); //删除进度框
 							var domain = up.getOption('domain');
 							var res = JSON.parse(info);
 							var sourceLink = domain + res.key;   //获取上传成功后的文件的Url
@@ -113,6 +123,9 @@ $(document).on("click","#delete-photo",function () {
         InsertPhoto(select_photo);
     }
 });
+$(document).on("click","#viewport",function () {
+    xval.remove(); //点击屏幕 进度条消失
+})
 $(".J_close").click(function () {
 	history.go(-1);//返回上一条
 })
