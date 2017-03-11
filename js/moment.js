@@ -4,6 +4,7 @@
 var login_id,mine_info;
 var current_moment_id;
 var current_moment,have_logined;
+var startpage=0,numberperpage=5,owner_id;
 $(document).ready(function (){
     //根据localStorage缓存看是否登录
     have_logined=localStorage.getItem("have_logined");
@@ -11,6 +12,7 @@ $(document).ready(function (){
         mine_info=JSON.parse(localStorage.getItem("mine_info"));
         loginId=localStorage.getItem("loginId");
     }
+    owner_id=GetRequest()["owner_id"];
     SetContent_new();
     //初始化emoji控件
     $('.emotion').qqFace({
@@ -35,6 +37,44 @@ $(document).on("click",".moment-ul .comment-div",function () {
     current_moment=$(this).closest("li");
     $("#myModal").css("top",X);
 });
+$(document).on("click",".delete-moment",function () {
+    var r=confirm("你确定删除这条动态吗？")
+    if (r==true) {
+        var moment_id=$(this).closest("li").attr("id");
+        var mythis=$(this).closest("li");
+        var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/Moment/delete?id="+moment_id;
+        $.ajax({
+            url:url,
+            success:function (data) {
+                if(data.result=="success"){
+                   mythis.remove();
+                }else TIP_ERROR("删除失败！");
+
+            }
+        })
+    }
+});
+$(document).on("click",".delete-comment",function () {
+    var r=confirm("你确定删除这条评论吗？")
+    if (r==true) {
+        var comment_id=$(this).closest("li").attr("id");
+        var mythis=$(this).closest("li");
+        var moment_id=$(this).closest(".each-moment").attr("id");
+        var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/Moment/delete-comment?id="+comment_id+"&moment_id="+moment_id;
+        $.ajax({
+            url:url,
+            success:function (data) {
+                if(data.result=="success"){
+                    mythis.closest("#moment-ul").find("#comment-num").text(eval(mythis.closest("#moment-ul").find("#comment-num").text())-1);
+                    mythis.remove();
+                }else TIP_ERROR("删除失败！");
+            }
+        })
+    }
+});
+$(document).on("click",".loadmore",function () {
+    SetContent_new();
+});
 $(document).on("click",".comment-confirm",function () {
     var r=confirm("你确定发表评论吗？")
     if (r==true) {
@@ -46,7 +86,8 @@ $(document).on("click",".comment-confirm",function () {
                 if(data.result=="success"){
                     var neeroll=
                         '<li>'+
-                        '<div class=" font12pt"><a href="javascript:;">'+mine_info.name+'</a>:'+content+'</div>'+
+                        '<div class=" font12pt"><a href="javascript:;">'+mine_info.name+'</a>:'+content+'<a href="javascript:;" class="delete-comment"><i class="icon-delete-com"></i></a>'+
+                        '</div>' +
                         '</li>';
                     current_moment.find(".comment-ul").append(neeroll);
                     current_moment.find("#comment-num").text(eval(current_moment.find("#comment-num").text())+1); //评论数量加1
@@ -63,12 +104,15 @@ $(document).on("click","#praise",function () {
             TIP_ERROR("未登录，不能操作")
             return;
         }
+        if($(this).hasClass("on")) return;
+        $(this).addClass("on");
         var moment_id=$(this).closest("li").attr("id");
         var mythis=$(this);
         var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/Moment/praise?user_id="+loginId+"&moment_id="+moment_id;
         $.ajax({
             url:url,
             success:function (data) {
+                mythis.removeClass("on");
                 if(data.result=="praise success"){ //点赞成功
                     // mythis.find("i").removeClass("icon-praise").addClass("icon-comment");
                     mythis.find("#praise-num").text(eval(mythis.find("#praise-num").text())+1);
@@ -85,19 +129,28 @@ $(document).on("click","#praise",function () {
         })
 });
 function SetContent_new() {
-    var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/Moment/getallmoment";
-    var allcontent=$(".moment-ul").empty();
+    var url;
+    if(typeof(owner_id)=="undefined"){
+        url="http://120.76.206.174:8080/efaleague-web/appPath/appData/Moment/getallmomentbypage?startpage="+startpage+"&numberperpage="+numberperpage;
+    }else
+        url="http://120.76.206.174:8080/efaleague-web/appPath/appData/Moment/getonemomentbypage?owner_id="+owner_id+"&startpage="+startpage+"&numberperpage="+numberperpage;
+    var allcontent=$(".moment-ul");
     $.ajax({
         url:url,
         success:function (data) {
             var all_moment=eval(data["moment"]);
             var all_comment=eval(data["comment"]);
+            if(all_moment.length==0){
+                TIP_ERROR("没有更多了呢");
+                return;
+            }
+            startpage+=all_moment.length; //分页请求页面加上实际返回的数量
             for (var i=0;i<all_moment.length;i++){
                 var single=all_moment[i];
                 var head_photo="images/default_head.png";
                 if(single.user.photo!="") head_photo=single.user.photo;
                 var newroll=
-                    '<li class="each-comment" id='+single.id+'>'+
+                    '<li class="each-moment" id='+single.id+'>'+
                     '<div class="co-head">'+
                     '<div class="img-div">'+
                     '<img src='+head_photo+' alt="" class="head-img">'+
@@ -105,7 +158,11 @@ function SetContent_new() {
                     '<div class="info-div">'+
                     '<div class="name-div font14pt"><a href="javascript:;">'+single.user.name+'</a></div>'+
                     '<div class="time-div font12pt"><span>'+single.date+'</span></div>'+
-                    '</div>'+
+                    '</div>';
+                if(single.user.id==loginId){
+                    newroll+= '<div class="delete-moment"><i class="icon-delete"></i></div>';
+                }
+                    newroll+=
                     '</div>'+
                     '<div>'+
                     '<div class="show-text">'+single.content+'</div>'+
@@ -122,8 +179,13 @@ function SetContent_new() {
                     for(var j=0;j<all_comment[i].length;j++){
                         var single_comment=all_comment[i][j];
                         newroll+=
-                            '<li>'+
-                            '<div class=" font12pt"><a href="javascript:;">'+single_comment.user.name+'</a>:'+single_comment.content+'</div>'+
+                            '<li id='+single_comment.id+'>'+
+                            '<div class=" font12pt"><a href="javascript:;">'+single_comment.user.name+'</a>:'+single_comment.content+ ' ';
+                        if(single_comment.user.id==loginId){
+                            newroll+= '<a href="javascript:;" class="delete-comment"><i class="icon-delete-com"></i></a>';
+                        }
+                          newroll+=
+                            '</div>'+
                             '</li>';
                     }
                 }
