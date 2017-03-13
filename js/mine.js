@@ -55,7 +55,8 @@ function SetContent(loginId) {
                 var photo="images/default_head.png";
                 var team_name="暂无球队";
                 if(obj.team.id!="") team_name=obj.team.name;
-                if(obj.photo!="") photo=obj.photo;
+                // if(obj.photo!="") photo=obj.photo;
+                photo="efaleague-web/userfiles/d7c539020a384970816522d0fbefb8ff/images/photo/2017/03/wxid_32n5qt47uqmv21_1488638971414_74.png"
                 var newroll =
                 '<div class="player-img"> <img src='+photo+' alt="" class="player-head" width="100%" height="100%"> </div>'+
                     '<div class="team-guide">'+
