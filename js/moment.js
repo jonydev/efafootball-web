@@ -3,7 +3,7 @@
  */
 var login_id,mine_info;
 var current_moment_id;
-var current_moment,have_logined;
+var current_moment,have_logined,loginId;
 var startpage=0,numberperpage=5,owner_id;
 $(document).ready(function (){
     //根据localStorage缓存看是否登录
