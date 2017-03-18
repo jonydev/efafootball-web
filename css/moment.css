@@ -65,6 +65,6 @@ span.emotion:hover { background-position: 2px -28px }
 .comment-list{position: relative;margin: 6px 16px;background-color: rgba(0,0,0,.075);padding: 8px;}
 .comment-list li{margin-top: 5px; }
 .model-margin{margin: 0 5px 0  5px;}
-.icon-delete{background-image: url("../images/icon_comment.png");width: 30px;height: 30px;margin-right: 7px;display: inline-block;background-size:30px 30px;background-repeat: no-repeat;vertical-align:-6px;}
-.icon-delete-com{background-image: url("../images/icon_comment.png");width: 20px;height: 20px;display: inline-block;background-size:20px 20px;background-repeat: no-repeat;vertical-align:-6px;margin-left: 10px;}
+.icon-delete{background-image: url("../images/icon_delete.png");width: 30px;height: 30px;margin-right: 7px;display: inline-block;background-size:30px 30px;background-repeat: no-repeat;vertical-align:-6px;}
+.icon-delete-com{background-image: url("../images/icon_delete.png");width: 20px;height: 20px;display: inline-block;background-size:20px 20px;background-repeat: no-repeat;vertical-align:-6px;margin-left: 10px;}
 .loadmore{text-align: center;font-size: 14px;color: blanchedalmond;background-color: white;width: 100%;height: 40px;line-height: 40px;}

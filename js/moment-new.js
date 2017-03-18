@@ -97,7 +97,7 @@ $(document).ready(function (){
 						'Key': function(up, file) {
 							// 若想在前端对每个文件的key进行个性化处理，可以配置该函数
 							// 该配置必须要在 unique_names: false , save_key: false 时才生效
-							var key = file.id+".jpg";
+							var key = file.id+".jpg?imageView2/1/w/420/h/230"; //保存缩略图
 							return key;
 							// do something with key here
 						}
