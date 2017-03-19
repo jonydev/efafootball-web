@@ -84,7 +84,7 @@ $(document).ready(function (){
                             // // if(photo_num % 3==0 ){
                             // //     photo_content+='</br>';
                             // // }
-							select_photo.push(sourceLink);
+							select_photo.push(sourceLink); //保存缩略图
 							InsertPhoto();
 							// $(".img-box img").attr("src",sourceLink);
 						},
@@ -97,7 +97,7 @@ $(document).ready(function (){
 						'Key': function(up, file) {
 							// 若想在前端对每个文件的key进行个性化处理，可以配置该函数
 							// 该配置必须要在 unique_names: false , save_key: false 时才生效
-							var key = file.id+".jpg?imageView2/1/w/420/h/230"; //保存缩略图
+							var key = file.id+".jpg";
 							return key;
 							// do something with key here
 						}
@@ -168,7 +168,7 @@ function InsertPhoto() {
 	var old_conten=$(".img-box").empty();
 	var newphoto='';
 	for (var i=0;i<select_photo.length;i++){
-        newphoto+='<a  href="javascript:;" id='+i+'><img class="img-three" src='+select_photo[i]+' alt="" ><i class="delete-photo" id="delete-photo"></i></a>';
+        newphoto+='<a  href="javascript:;" id='+i+'><img class="img-three lazy" src='+select_photo[i]+' alt="" ><i class="delete-photo" id="delete-photo"></i></a>';
         if((i+1) % 3==0 ){
             newphoto+='</br>';
         };

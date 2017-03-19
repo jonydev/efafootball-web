@@ -211,6 +211,7 @@ function SetContent_new() {
 
                 allcontent.append(newroll);
             }
+            $("img.lazy").lazyload();
         }
     })
 }
