@@ -11,7 +11,8 @@ $(document).ready(function (){
     if(have_logined==1){
         login_id=localStorage.getItem("loginId");
     }else{
-        // window.location.href="http://120.76.206.174:8080/efafootball-web/mine-login.html";
+    	TIP_ERROR("不能新建,必须先登录！");
+       history.go(-1);
     }
 	//从服务器获取domain和token
 	$.ajax({
