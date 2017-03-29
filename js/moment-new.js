@@ -6,14 +6,6 @@ var select_photo=[];
 var login_id;
 var xval;
 $(document).ready(function (){
-    //根据localStorage缓存看是否登录
-    var have_logined=localStorage.getItem("have_logined");
-    if(have_logined==1){
-        login_id=localStorage.getItem("loginId");
-    }else{
-    	TIP_ERROR("不能新建,必须先登录！");
-       history.go(-1);
-    }
 	//从服务器获取domain和token
 	$.ajax({
 		url:"http://120.76.206.174:8080/efaleague-web/appPath/appData/getImageByToken",
@@ -142,6 +134,14 @@ $(document).on("click",".delete-all",function () {
 });
 //发表
 $(".J_confirm").click(function(){
+    //根据localStorage缓存看是否登录
+    var have_logined=localStorage.getItem("have_logined");
+    if(have_logined==1){
+        login_id=localStorage.getItem("loginId");
+    }else{
+        TIP_ERROR("不能新建,必须先登录！");
+        return;
+    }
     var text = $("#saytext").html();
     var r=confirm("你确定发表这篇帖子吗？")
     if (r==true) {
