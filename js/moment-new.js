@@ -131,7 +131,9 @@ $(document).on("click","#viewport",function () {
     xval.remove(); //点击屏幕 进度条消失
 })
 $(".J_close").click(function () {
-	history.go(-1);//返回上一条
+	// window.history.go(-1);//返回上一条
+	window.history.back();
+
 })
 $(document).on("click",".delete-all",function () {
     var r=confirm("你确定删除所有照片吗？")
