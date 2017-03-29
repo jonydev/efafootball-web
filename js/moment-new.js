@@ -131,9 +131,7 @@ $(document).on("click","#viewport",function () {
     xval.remove(); //点击屏幕 进度条消失
 })
 $(".J_close").click(function () {
-	// window.history.go(-1);//返回上一条
-	window.history.back();
-
+	window.history.back();//返回上一条
 })
 $(document).on("click",".delete-all",function () {
     var r=confirm("你确定删除所有照片吗？")
@@ -160,8 +158,7 @@ $(".J_confirm").click(function(){
 			type:"post",
 			success:function (data) {
 				if(data.result=="success"){
-					// window.location.href="http://120.76.206.174:8080/efafootball-web/moment.html?";
-					history.go(-1);
+                    window.history.back();//返回上一条
 				}
 			}
 		});
