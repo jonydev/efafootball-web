@@ -1,7 +1,7 @@
 /**
  * Created by 晴识明月 on 2017/3/2.
  */
-var login_id,mine_info;
+var mine_info;
 var current_moment_id;
 var current_moment,have_logined,loginId;
 var startpage=0,numberperpage=5,owner_id;

@@ -13,6 +13,9 @@ $(document).ready(function (){
     }else{
         window.location.href="http://120.76.206.174:8080/efafootball-web/mine-login.html";
     }
+    $(".edit_profile").click(function () {
+        window.location.href="http://120.76.206.174:8080/efafootball-web/mine-edit.html";
+    })
 
 });
 $(".login").click(function () {
@@ -35,9 +38,9 @@ $(document).on("click",".logout",function () {
     localStorage.clear();
     window.location.href="http://120.76.206.174:8080/efafootball-web/mine-login.html";
 });
-$(document).on("click",".edit_info",function () {
-    window.location.href="http://120.76.206.174:8080/efafootball-web/mine-edit.html";
-});
+// $(document).on("click",".edit_info",function () {
+//     window.location.href="http://120.76.206.174:8080/efafootball-web/mine-edit.html";
+// });
 //向后台请求数据刷新缓存信息
 function SetContent(loginId) {
     // var loginId=mine_info["id"];
