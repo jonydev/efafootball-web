@@ -52,7 +52,6 @@ function SetContent(loginId) {
             success: function (data) {
                 // 解析json
                 var obj = eval(data.rows[0]);
-                console.log(obj);
                 localStorage.setItem("mine_info",JSON.stringify(data.rows[0]));
                 var addcontent=$(".edit_profile").empty();
                 var photo="images/default_head.png";

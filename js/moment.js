@@ -65,7 +65,7 @@ $(document).on("click",".delete-comment",function () {
             url:url,
             success:function (data) {
                 if(data.result=="success"){
-                    mythis.closest("#moment-ul").find("#comment-num").text(eval(mythis.closest("#moment-ul").find("#comment-num").text())-1);
+                    mythis.closest(".each-moment").find("#comment-num").text(eval(mythis.closest(".each-moment").find("#comment-num").text())-1);
                     mythis.remove();
                 }else TIP_ERROR("删除失败！");
             }
@@ -211,6 +211,7 @@ function SetContent_new() {
 
                 allcontent.append(newroll);
             }
+            $("img.lazy").lazyload();
         }
     })
 }

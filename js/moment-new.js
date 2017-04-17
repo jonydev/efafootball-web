@@ -6,13 +6,6 @@ var select_photo=[];
 var login_id;
 var xval;
 $(document).ready(function (){
-    //根据localStorage缓存看是否登录
-    var have_logined=localStorage.getItem("have_logined");
-    if(have_logined==1){
-        login_id=localStorage.getItem("loginId");
-    }else{
-        // window.location.href="http://120.76.206.174:8080/efafootball-web/mine-login.html";
-    }
 	//从服务器获取domain和token
 	$.ajax({
 		url:"http://120.76.206.174:8080/efaleague-web/appPath/appData/getImageByToken",
@@ -84,7 +77,7 @@ $(document).ready(function (){
                             // // if(photo_num % 3==0 ){
                             // //     photo_content+='</br>';
                             // // }
-							select_photo.push(sourceLink);
+							select_photo.push(sourceLink); //保存缩略图
 							InsertPhoto();
 							// $(".img-box img").attr("src",sourceLink);
 						},
@@ -130,7 +123,7 @@ $(document).on("click","#viewport",function () {
     xval.remove(); //点击屏幕 进度条消失
 })
 $(".J_close").click(function () {
-	history.go(-1);//返回上一条
+	window.history.back();//返回上一条
 })
 $(document).on("click",".delete-all",function () {
     var r=confirm("你确定删除所有照片吗？")
@@ -141,6 +134,14 @@ $(document).on("click",".delete-all",function () {
 });
 //发表
 $(".J_confirm").click(function(){
+    //根据localStorage缓存看是否登录
+    var have_logined=localStorage.getItem("have_logined");
+    if(have_logined==1){
+        login_id=localStorage.getItem("loginId");
+    }else{
+        TIP_ERROR("不能新建,必须先登录！");
+        return;
+    }
     var text = $("#saytext").html();
     var r=confirm("你确定发表这篇帖子吗？")
     if (r==true) {
@@ -157,8 +158,7 @@ $(".J_confirm").click(function(){
 			type:"post",
 			success:function (data) {
 				if(data.result=="success"){
-					// window.location.href="http://120.76.206.174:8080/efafootball-web/moment.html?";
-					history.go(-1);
+                    window.history.back();//返回上一条
 				}
 			}
 		});
@@ -168,7 +168,7 @@ function InsertPhoto() {
 	var old_conten=$(".img-box").empty();
 	var newphoto='';
 	for (var i=0;i<select_photo.length;i++){
-        newphoto+='<a  href="javascript:;" id='+i+'><img class="img-three" src='+select_photo[i]+' alt="" ><i class="delete-photo" id="delete-photo"></i></a>';
+        newphoto+='<a  href="javascript:;" id='+i+'><img class="img-three lazy" src='+select_photo[i]+' alt="" ><i class="delete-photo" id="delete-photo"></i></a>';
         if((i+1) % 3==0 ){
             newphoto+='</br>';
         };
