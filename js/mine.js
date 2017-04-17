@@ -13,7 +13,7 @@ $(document).ready(function (){
     }else{
         window.location.href="http://120.76.206.174:8080/efafootball-web/mine-login.html";
     }
-    $(".edit_info").on("click",function () {
+    $("#edit_info").on("click",function () {
         alert("this is test!!!");
         window.location.href="http://120.76.206.174:8080/efafootball-web/mine-edit.html";
      });
@@ -161,7 +161,7 @@ function SetContent(loginId) {
                     '</tr>'+
                     '</table>'+
                     '</li>'+
-                '<li class="each-item edit_info">'+
+                '<li class="each-item edit_info" id="edit_info">'+
                 '<table width="100%">'+
                 '<tr class="font15pt">'+
                 '<td width="100%"><div class="" style="text-align: center;cursor:pointer">修改信息</div></td>'+
