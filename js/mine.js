@@ -13,9 +13,9 @@ $(document).ready(function (){
     }else{
         window.location.href="http://120.76.206.174:8080/efafootball-web/mine-login.html";
     }
-    $(".edit_profile").click(function () {
+    $(document).on("click",".edit_info",function () {
         window.location.href="http://120.76.206.174:8080/efafootball-web/mine-edit.html";
-    })
+     });
 
 });
 $(".login").click(function () {
