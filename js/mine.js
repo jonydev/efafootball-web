@@ -164,7 +164,7 @@ function SetContent(loginId) {
                 '<li class="each-item edit_info">'+
                 '<table width="100%">'+
                 '<tr class="font15pt">'+
-                '<td width="100%"><div class="" style="text-align: center">修改信息</div></td>'+
+                '<td width="100%"><div class="" style="text-align: center;cursor:pointer">修改信息</div></td>'+
                 '</tr>'+
                 '</table>'+
                 '</li>'+
