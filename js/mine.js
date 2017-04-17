@@ -13,11 +13,6 @@ $(document).ready(function (){
     }else{
         window.location.href="http://120.76.206.174:8080/efafootball-web/mine-login.html";
     }
-    $("#edit_info").on("click",function () {
-        alert("this is test!!!");
-        window.location.href="http://120.76.206.174:8080/efafootball-web/mine-edit.html";
-     });
-
 });
 $(".login").click(function () {
     $(this).addClass("background-green ").removeClass("light-white");
@@ -39,10 +34,9 @@ $(document).on("click",".logout",function () {
     localStorage.clear();
     window.location.href="http://120.76.206.174:8080/efafootball-web/mine-login.html";
 });
-// $(document).on("click",".edit_info",function () {
-//     alert("this is test!!!");
-//     window.location.href="http://120.76.206.174:8080/efafootball-web/mine-edit.html";
-// });
+$(document).on("click",".edit_info",function () {
+    window.location.href="http://120.76.206.174:8080/efafootball-web/mine-edit.html";
+});
 //向后台请求数据刷新缓存信息
 function SetContent(loginId) {
     // var loginId=mine_info["id"];
@@ -161,7 +155,7 @@ function SetContent(loginId) {
                     '</tr>'+
                     '</table>'+
                     '</li>'+
-                '<li class="each-item edit_info" id="edit_info">'+
+                '<li class="each-item edit_info">'+
                 '<table width="100%">'+
                 '<tr class="font15pt">'+
                 '<td width="100%"><div class="" style="text-align: center;cursor:pointer">修改信息</div></td>'+
@@ -208,7 +202,7 @@ function SetContent(loginId) {
                 '<li class="each-item logout">'+
                     '<table width="100%">'+
                     '<tr class="font15pt">'+
-                    '<td width="100%"><div class="" style="text-align: center">退出登录</div></td>'+
+                    '<td width="100%"><div class="" style="text-align: center;cursor:pointer">退出登录</div></td>'+
                     '</tr>'+
                     '</table>'+
                 '</li>'+
