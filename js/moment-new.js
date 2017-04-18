@@ -136,7 +136,9 @@ $(document).on("click",".delete-all",function () {
 $(".J_confirm").click(function(){
     //根据localStorage缓存看是否登录
     var have_logined=localStorage.getItem("have_logined");
-    alert("AAAA");
+    alert(1);
+    alert(have_logined);
+    alert(eval(have_logined));
     // if(have_logined==1){
     //     login_id=localStorage.getItem("loginId");
     // }else{
