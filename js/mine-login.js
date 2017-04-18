@@ -22,7 +22,7 @@ $(".login-btn").click(function () {
                     localStorage.setItem("loginId",data.rows[0].id);
                     window.location.href="http://120.76.206.174:8080/efafootball-web/mine.html";
                 }
-                catch (e){
+                catch (err){
                     TIP_ERROR("无法写localstorage...");
                 }
             }else{                       //login failed
