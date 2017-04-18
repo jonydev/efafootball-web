@@ -139,33 +139,33 @@ $(".J_confirm").click(function(){
     alert(1);
     alert(have_logined);
     alert(eval(have_logined));
-    // if(have_logined==1){
-    //     login_id=localStorage.getItem("loginId");
-    // }else{
-    //     TIP_ERROR("不能新建,必须先登录！");
-    //     return;
-    // }
-    // var text = $("#saytext").html();
-    // var r=confirm("你确定发表这篇帖子吗？")
-    // if (r==true) {
-    // 	$("i").remove(".delete-photo");   //删除右上角的小图标
-		// if($(".img-box a").length<=1){
-		// 	$(".img-box img").removeClass("img-three").addClass("img-one");
-		// }else if($(".img-box a").length==2){
-    //         $(".img-box img").removeClass("img-three").addClass("img-two");
-		// }
-    //     var imgs=$(".img-box").html();
-		// var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/Moment/save?user_id="+login_id+"&content="+text+"&photo="+imgs;
-		// $.ajax({
-		// 	url:url,
-		// 	type:"post",
-		// 	success:function (data) {
-		// 		if(data.result=="success"){
-    //                 window.history.back();//返回上一条
-		// 		}
-		// 	}
-		// });
-    // }
+    if(have_logined==1){
+        login_id=localStorage.getItem("loginId");
+    }else{
+        TIP_ERROR("不能新建,必须先登录！");
+        return;
+    }
+    var text = $("#saytext").html();
+    var r=confirm("你确定发表这篇帖子吗？")
+    if (r==true) {
+    	$("i").remove(".delete-photo");   //删除右上角的小图标
+		if($(".img-box a").length<=1){
+			$(".img-box img").removeClass("img-three").addClass("img-one");
+		}else if($(".img-box a").length==2){
+            $(".img-box img").removeClass("img-three").addClass("img-two");
+		}
+        var imgs=$(".img-box").html();
+		var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/Moment/save?user_id="+login_id+"&content="+text+"&photo="+imgs;
+		$.ajax({
+			url:url,
+			type:"post",
+			success:function (data) {
+				if(data.result=="success"){
+                    window.history.back();//返回上一条
+				}
+			}
+		});
+    }
 });
 function InsertPhoto() {
 	var old_conten=$(".img-box").empty();
