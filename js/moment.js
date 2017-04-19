@@ -140,6 +140,8 @@ function SetContent_new() {
         success:function (data) {
             var all_moment=eval(data["moment"]);
             var all_comment=eval(data["comment"]);
+            console.log(all_moment);
+            console.log(all_comment);
             if(all_moment.length==0){
                 TIP_ERROR("没有更多了呢");
                 return;
