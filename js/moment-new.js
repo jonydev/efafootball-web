@@ -159,7 +159,7 @@ $(".J_confirm").click(function(){
 			success:function (data) {
 				if(data.result=="success"){
                     window.history.go(-1);//返回上一条
-                    window.location.reload();//刷新页面
+                    //window.location.reload();//刷新页面
 				}
 			}
 		});
