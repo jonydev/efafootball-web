@@ -182,8 +182,8 @@ $(".save-edit").click(function () {
             success:function (data) {
                 TIP_ERROR(data.message);
                 if(data.result=="success"){
-                    history.go(-1);
-                    location.reload();//刷新页面
+                    window.history.back();//返回上一条
+                    window.location.reload();//刷新页面
                 }
             }
         })
