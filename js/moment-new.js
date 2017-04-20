@@ -6,6 +6,7 @@ var select_photo=[];
 var login_id;
 var xval;
 $(document).ready(function (){
+    localStorage.setItem("reload_momment","true"); //使得返回显示所有帖子的页面的时候能够reload
 	//从服务器获取domain和token
 	$.ajax({
 		url:"http://120.76.206.174:8080/efaleague-web/appPath/appData/getImageByToken",
@@ -158,8 +159,7 @@ $(".J_confirm").click(function(){
 			type:"post",
 			success:function (data) {
 				if(data.result=="success"){
-                     // window.history.go(-1);//返回上一条
-                    window.location.href=document.referrer; //返回并且刷新  这样写是为了兼容苹果设备
+                     window.history.go(-1);//返回上一条
 				}
 			}
 		});

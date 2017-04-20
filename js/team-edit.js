@@ -114,7 +114,6 @@ $(".save-edit").click(function () {
                 setTimeout('$(".Tip").addClass("hidden")',1500);
                 if(result=="success"){
                     window.history.go(-1);
-                    window.location.reload();
                 }
             }
         })

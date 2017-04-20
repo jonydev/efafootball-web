@@ -4,6 +4,7 @@
 var current_choose; //标记当前所设置的属性，0 表示设置性别 1表示设置位置
 var token,loginId,id,xval;
 $(document).ready(function (){
+    localStorage.setItem("reload_mine","true"); //使得返回显示所有帖子的页面的时候能够reload
     //根据localStorage缓存看是否登录
     var have_logined=localStorage.getItem("have_logined");
     if(have_logined==1){
@@ -182,8 +183,7 @@ $(".save-edit").click(function () {
             success:function (data) {
                 TIP_ERROR(data.message);
                 if(data.result=="success"){
-                    window.history.back();//返回上一条
-                    window.location.reload();//刷新页面
+                    window.history.go(-1);//返回上一条
                 }
             }
         })

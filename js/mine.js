@@ -2,6 +2,12 @@
  * Created by 晴识明月 on 2016/12/20.
  */
 $(document).ready(function (){
+    //为了兼容苹果设备由新建帖子返回该页面之后不能刷新特 因此专门在这个地方强制刷新一次
+    var reaload_mine=localStorage.getItem("reload_mine");
+    if(reaload_mine=="true"){
+        location.reload();
+        localStorage.setItem("reload_mine","false"); //清空false
+    }
     $('#search').bind('input propertychange', function() {searchTeambyName();});
     //根据localStorage缓存看是否登录
     var have_logined=localStorage.getItem("have_logined");
