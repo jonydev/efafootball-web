@@ -11,7 +11,7 @@ $(document).ready(function (){
     alert(reaload_moment);
     if(reaload_moment=="true"){
         location.reload();
-        localStorage.setItem("reload_momment","false"); //清空false
+        localStorage.setItem("reload_moment","false"); //清空false
     }
     //根据localStorage缓存看是否登录
     have_logined=localStorage.getItem("have_logined");
