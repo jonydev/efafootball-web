@@ -169,7 +169,7 @@ function InsertPhoto() {
 	var old_conten=$(".img-box").empty();
 	var newphoto='';
 	for (var i=0;i<select_photo.length;i++){
-        newphoto+='<a  href="javascript:;" id='+i+'><img class="img-three lazy" src='+select_photo[i]+' alt="" ><i class="delete-photo" id="delete-photo"></i></a>';
+        newphoto+='<a  href="javascript:;" id='+i+'><img class="img-three lazy" src='+select_photo[i]+'?imageView2/1/w/360/h/174'+' alt="" ><i class="delete-photo" id="delete-photo"></i></a>';
         if((i+1) % 3==0 ){
             newphoto+='</br>';
         };

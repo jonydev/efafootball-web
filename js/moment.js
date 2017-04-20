@@ -8,6 +8,7 @@ var startpage=0,numberperpage=5,owner_id;
 $(document).ready(function (){
     //为了兼容苹果设备由新建帖子返回该页面之后不能刷新特 因此专门在这个地方强制刷新一次
     var reaload_moment=localStorage.getItem("reload_moment");
+    alert(reaload_moment);
     if(reaload_moment=="true"){
         location.reload();
         localStorage.setItem("reload_momment","false"); //清空false
