@@ -7,7 +7,6 @@ var login_id;
 var xval;
 $(document).ready(function (){
     localStorage.setItem("reload_moment","true"); //使得返回显示所有帖子的页面的时候能够reload
-    alert(reaload_moment);
 	//从服务器获取domain和token
 	$.ajax({
 		url:"http://120.76.206.174:8080/efaleague-web/appPath/appData/getImageByToken",
