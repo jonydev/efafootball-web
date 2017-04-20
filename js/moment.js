@@ -150,7 +150,9 @@ function SetContent_new() {
             for (var i=0;i<all_moment.length;i++){
                 var single=all_moment[i];
                 var head_photo="images/default_head.png";
+                var name="匿名用户";
                 if(single.user.photo!="") head_photo=single.user.photo;
+                if(single.user.name!="") name=single.user.name;
                 var newroll=
                     '<li class="each-moment" id='+single.id+'>'+
                     '<div class="co-head">'+
@@ -158,7 +160,7 @@ function SetContent_new() {
                     '<img src='+head_photo+' alt="" class="head-img">'+
                     '</div>'+
                     '<div class="info-div">'+
-                    '<div class="name-div font14pt"><a href="javascript:;">'+single.user.name+'</a></div>'+
+                    '<div class="name-div font14pt"><a href="javascript:;">'+name+'</a></div>'+
                     '<div class="time-div font12pt"><span>'+single.date+'</span></div>'+
                     '</div>';
                 if(single.user.id==loginId){
@@ -180,9 +182,11 @@ function SetContent_new() {
                 }else {
                     for(var j=0;j<all_comment[i].length;j++){
                         var single_comment=all_comment[i][j];
+                        var comment_name="匿名用户";
+                        if(single_comment.user.name!="") comment_name=single_comment.user.name;
                         newroll+=
                             '<li id='+single_comment.id+'>'+
-                            '<div class=" font12pt"><a href="javascript:;">'+single_comment.user.name+'</a>:'+single_comment.content+ ' ';
+                            '<div class=" font12pt"><a href="javascript:;">'+comment_name+'</a>:'+single_comment.content+ ' ';
                         if(single_comment.user.id==loginId){
                             newroll+= '<a href="javascript:;" class="delete-comment"><i class="icon-delete-com"></i></a>';
                         }

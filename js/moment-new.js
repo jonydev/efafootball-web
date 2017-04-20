@@ -158,8 +158,8 @@ $(".J_confirm").click(function(){
 			type:"post",
 			success:function (data) {
 				if(data.result=="success"){
-                    window.history.go(-1);//返回上一条
-                    //window.location.reload();//刷新页面
+                     // window.history.go(-1);//返回上一条
+                    window.location.href=document.referrer; //返回并且刷新  这样写是为了兼容苹果设备
 				}
 			}
 		});
