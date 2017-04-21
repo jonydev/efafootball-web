@@ -28,10 +28,20 @@ $(document).ready(function (){
 });
 //为了兼容苹果设备由新建帖子返回该页面之后不能刷新特 因此专门在这个地方强制刷新一次
 window.addEventListener('pageshow', function( e ){
+    alert("reload1");
     if (e.persisted) {
-        alert("reload");
+
         window.location.reload()
     }
+});
+window.addEventListener('pagehide', function(e) {
+    var $body = $(document.body);
+    $body.children().remove();
+    alert("reload2");
+    // 要等到回调函数完成，用户按返回才执行script标签的代码
+    setTimeout(function() {
+        $body.append("<script type='text/javascript'>window.location.reload();<\/script>");
+    });
 });
 $(document).on("click",".moment-ul .comment-div",function () {
     if(have_logined!=1){
