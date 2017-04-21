@@ -113,7 +113,10 @@ $(".save-edit").click(function () {
                 $(".Tip").removeClass("hidden");
                 setTimeout('$(".Tip").addClass("hidden")',1500);
                 if(result=="success"){
-                    window.history.go(-1);
+                    if (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)) {
+                        webkit.messageHandlers.callbackHandler.postMessage({functionToRun: "loadView"});
+                    }
+                    window.history.go(-1);//返回上一条
                 }
             }
         })
