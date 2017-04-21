@@ -9,6 +9,7 @@ $(document).ready(function (){
     //为了兼容苹果设备由新建帖子返回该页面之后不能刷新特 因此专门在这个地方强制刷新一次
     window.addEventListener('pageshow', function( e ){
         if (e.persisted) {
+            alert("reload");
             window.location.reload()
         }
     });
