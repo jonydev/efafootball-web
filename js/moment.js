@@ -93,7 +93,7 @@ $(document).on("click",".comment-confirm",function () {
                     current_moment.find("#comment-num").text(eval(current_moment.find("#comment-num").text())+1); //评论数量加1
                     current_moment.find(".no-comment").remove();
                 }else TIP_ERROR("评论失败！");
-
+                $("#commenttext").empty();
             }
         })
     }

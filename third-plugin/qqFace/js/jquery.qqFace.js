@@ -117,7 +117,7 @@ function replace_em(str){
     //
     // str = str.replace(/\>/g,'&gt;');
     str = str.replace(/\n/g,'<br/>');
-    str = str.replace(/\[em_([0-9]*)\]/g,'<img src="third-plugin/qqFace/arclist/$1.gif" border="0" />');
+    str = str.replace(/\[em_([0-9]*)\]/g,'<img contentEditable="true" src="third-plugin/qqFace/arclist/$1.gif" border="0" />');
     return str;
 
 }
