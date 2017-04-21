@@ -160,7 +160,6 @@ $(".J_confirm").click(function(){
 				//
 				if(data.result=="success"){
                     if (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)) {
-                    	alert("callback");
                         webkit.messageHandlers.callbackHandler.postMessage({functionToRun: "loadView"});
                     }
                     window.history.go(-1);//返回上一条
