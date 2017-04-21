@@ -157,8 +157,13 @@ $(".J_confirm").click(function(){
 			url:url,
 			type:"post",
 			success:function (data) {
+				//
 				if(data.result=="success"){
-                     window.history.go(-1);//返回上一条
+                    if (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)) {
+                    	alert("callback");
+                        webkit.messageHandlers.callbackHandler.postMessage({functionToRun: "loadView"});
+                    }
+                    window.history.go(-1);//返回上一条
 				}
 			}
 		});

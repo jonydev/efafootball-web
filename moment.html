@@ -33,22 +33,23 @@
     </div>
 </body>
 <script src="//cdn.bootcss.com/tether/1.3.6/js/tether.min.js"></script>
-<script type="text/javascript" src="jquery-all/jquery-2.0.3.min.js"></script>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<!--<script type="text/javascript" src="jquery-all/jquery-2.0.3.min.js"></script>-->
 <script  type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/browser.js"></script>
 <script type="text/javascript" src="third-plugin/qqFace/js/jquery.qqFace.js"></script>
 <script type="text/javascript" src="js/global.js"></script>
 <script type="text/javascript" src="js/lazyload.js"></script>
 <script type="text/javascript" src="js/moment.js"></script>
-<script>
-    //为了兼容苹果设备由新建帖子返回该页面之后不能刷新特 因此专门在这个地方强制刷新一次
-    $(document).ready(function() {
-        window.addEventListener('pageshow', function (e) {
-            alert("sssss");
-            if (e.persisted) {
-                window.location.reload()
-            }
-        })
-    })
-</script>
+<!--<script>-->
+    <!--//为了兼容苹果设备由新建帖子返回该页面之后不能刷新特 因此专门在这个地方强制刷新一次-->
+    <!--$(document).ready(function() {-->
+        <!--window.addEventListener('pageshow', function (e) {-->
+            <!--alert("pageshow");-->
+            <!--if (e.persisted) {-->
+                <!--window.location.reload()-->
+            <!--}-->
+        <!--})-->
+    <!--});-->
+<!--</script>-->
 </html>
