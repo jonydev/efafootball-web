@@ -6,13 +6,6 @@ var current_moment_id;
 var current_moment,have_logined,loginId;
 var startpage=0,numberperpage=5,owner_id;
 $(document).ready(function (){
-    //为了兼容苹果设备由新建帖子返回该页面之后不能刷新特 因此专门在这个地方强制刷新一次
-    window.addEventListener('pageshow', function( e ){
-        if (e.persisted) {
-            alert("reload");
-            window.location.reload()
-        }
-    });
 
     //根据localStorage缓存看是否登录
     have_logined=localStorage.getItem("have_logined");
@@ -32,6 +25,13 @@ $(document).ready(function (){
         path:'third-plugin/qqFace/arclist/' //表情存放的路径
 
     });
+});
+//为了兼容苹果设备由新建帖子返回该页面之后不能刷新特 因此专门在这个地方强制刷新一次
+window.addEventListener('pageshow', function( e ){
+    if (e.persisted) {
+        alert("reload");
+        window.location.reload()
+    }
 });
 $(document).on("click",".moment-ul .comment-div",function () {
     if(have_logined!=1){
