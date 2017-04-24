@@ -30,6 +30,7 @@ $(document).on("click",".moment-ul .comment-div",function () {
         TIP_ERROR("未登录，不能操作")
         return;
     }
+    $("#myModal").modal("show");
     var commenttext=$(this).closest("li").find(".comment-text").attr("id");
     // var X = $(this).offset().top+38; //当前点击控件的位置 动态设置modal的位置
     var X=100;
@@ -99,6 +100,10 @@ $(document).on("click",".comment-confirm",function () {
     }
     $("#myModal").modal("hide");
 });
+$(document).on("click",".close_modal",function () {//关闭模态框
+    $("#commenttext").empty();
+    $("#myModal").modal("hide");
+})
 $(document).on("click","#praise",function () {
         if(have_logined!=1){
             TIP_ERROR("未登录，不能操作")
@@ -200,7 +205,7 @@ function SetContent_new() {
                     '</div>'+
                     '<div>'+
                     '<div class="f-detail font12pt">'+
-                    '<a href="javascript:;" class="comment-div" data-toggle="modal" data-target="#myModal"><i class="icon-comment"></i>评论（<span id="comment-num">'+single.commentNum+'</span>）</a>';
+                    '<a href="javascript:;" class="comment-div" data-toggle="modal" data-target="#myModal2"><i class="icon-comment"></i>评论（<span id="comment-num">'+single.commentNum+'</span>）</a>';
                 if(single.praiseList.indexOf(loginId)==-1){
                      newroll+=
                          '<a href="javascript:;" class="praise-div" id="praise"><i class="icon-praise"></i><span class="praise-status">赞</span>（<span id="praise-num">'+single.praiseNum+'</span>）</a>'+
