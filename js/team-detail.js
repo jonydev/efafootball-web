@@ -41,7 +41,7 @@ $(".schedule a").click(function () {
     AddMatchContent();
 });
 $(document).on("click",".edit-team",function () {
-    if(!CheckLeader()==true) return;
+    if(CheckLeader()==false) return;
     window.location.href="http://120.76.206.174:8080/efafootball-web/team-edit.html?team_id="+team_id;
 });
 $(document).on("click",".teammatch_ul li",function () {
@@ -53,7 +53,7 @@ $(document).on("click",".upgoing-game li",function () {
     window.location.href="http://120.76.206.174:8080/efafootball-web/match-each.html?match_id="+match_id+"&game_id="+game_id+"&flag=0";
 });
 $(document).on("click","#team-notify",function () {
-    if(!CheckLeader()==true) return;
+    if(CheckLeader()==false) return;
     window.location.href="http://120.76.206.174:8080/efafootball-web/team-notify.html";
 });
 $(document).on("click",".join-team",function () {
@@ -63,7 +63,7 @@ $(document).on("click",".join-team",function () {
         login_id=localStorage.getItem("loginId");
         var mine_info=localStorage.getItem("mine_info");
         if(mine_info.team!=""){
-            TIP_ERROR("你已经加入了球队，不能重复加入！")
+            TIP_ERROR("你已经加入了球队，不能重复加入！");
             return;
         }
         var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/joinTeam ?teamId="+team_id+"&loginId="+login_id;
