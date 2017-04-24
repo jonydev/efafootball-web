@@ -257,46 +257,58 @@ function AddMatchContent() {
                         '</div>'+
                         '<div>'+
                         '<ul class="all-matchs">';
-                        for(var j=0;j<each_round.length;j++){
-                            var single=each_round[j];
-                            var homephoto="images/default_team.png";
-                            if(single.homeTeamPhoto!="") homephoto=single.homeTeamPhoto+"?imageView2/1/w/60/h/60";
-                            var awayphoto="images/default_team.png";
-                            if(single.awayTeamPhoto!="") awayphoto=single.awayTeamPhoto+"?imageView2/1/w/60/h/60";
-                            var state,score;
-                            state=all_states[single.flag];
-                            if(single.flag!=0)
-                            {
-                                score=single.homescore+':'+single.awayscore;
-                            }
-                            else if(single.flag==0) {
-                                //score=single.time.substr(0,5); //未开始的显示开始时间
-                                score=single.time.split("-")[0]; //未开始的显示开始时间
-                            }
-                            var child=
-                                '<li value='+single.id+' >'+
-                                '<div class="team-results">'+
-                                '<div class="team-a">'+
-                                '<a class="team-atxt text-black" href="javascript:;">'+single.homeTeamName+'</a>'+
-                                '<img class="team-aimg" src='+homephoto+'  alt="" width="100%" height="100%" >'+
-                                '</div>'+
-                                '<div class="result">'+
-                                '<div class="result-a background-grey93">'+score+'</div>'+
-                                '<div class="result-b flag" value='+single.flag+'>'+state+'</div>'+
-                                '</div>'+
-                                '<div class="team-b">'+
-                                '<img class="team-bimg" src='+awayphoto+' alt="" width="100%" height="100%">'+
-                                '<a class="team-btxt text-black" href="javascript:;">'+single.awayTeamName+'</a>'+
-                                '</div>'+
-                                '</div>'+
-                                '</li>';
-                            newroll+=child;
-                        }
+                var pre_datetime=each_round[0].datetime;//由于某一轮次的比赛可能会遇到延期举行的 所以同一轮次的时间就会显示不同
+                for(var j=0;j<each_round.length;j++){
+                    if(pre_datetime!=each_round[j].datetime){  //当同一轮的比赛日期跟前面的不一样的时候 ，添加一栏新的日期和星期
                         newroll+=
-                        '</ul>'+
+                            '</ul>'+
+                            '</div>'+
+                            '<div class="match-date">'+
+                            '<p class="font14pt">'+each_round[j].datetime+'     '+GetWeekday(each_round[j].datetime)+'</p>'+
+                            '</div>'+
+                            '<div>'+
+                            '<ul class="all-matchs">';
+                    }
+                    var single=each_round[j];
+                    var homephoto="images/default_team.png";
+                    if(single.homeTeamPhoto!="") homephoto=single.homeTeamPhoto+"?imageView2/1/w/60/h/60";
+                    var awayphoto="images/default_team.png";
+                    if(single.awayTeamPhoto!="") awayphoto=single.awayTeamPhoto+"?imageView2/1/w/60/h/60";
+                    var state,score;
+                    state=all_states[single.flag];
+                    if(single.flag!=0)
+                    {
+                        score=single.homescore+':'+single.awayscore;
+                    }
+                    else if(single.flag==0) {
+                        //score=single.time.substr(0,5); //未开始的显示开始时间
+                        score=single.time.split("-")[0]; //未开始的显示开始时间
+                    }
+                    var child=
+                        '<li value='+single.id+' >'+
+                        '<div class="team-results">'+
+                        '<div class="team-a">'+
+                        '<a class="team-atxt text-black" href="javascript:;">'+single.homeTeamName+'</a>'+
+                        '<img class="team-aimg" src='+homephoto+'  alt="" width="100%" height="100%" >'+
                         '</div>'+
-                    '</li>';
-                allcontents.append(newroll);
+                        '<div class="result">'+
+                        '<div class="result-a background-grey93">'+score+'</div>'+
+                        '<div class="result-b flag" value='+single.flag+'>'+state+'</div>'+
+                        '</div>'+
+                        '<div class="team-b">'+
+                        '<img class="team-bimg" src='+awayphoto+' alt="" width="100%" height="100%">'+
+                        '<a class="team-btxt text-black" href="javascript:;">'+single.awayTeamName+'</a>'+
+                        '</div>'+
+                        '</div>'+
+                        '</li>';
+                    newroll+=child;
+                    pre_datetime=each_round[j].datetime;
+                    }
+                    newroll+=
+                    '</ul>'+
+                    '</div>'+
+                '</li>';
+            allcontents.append(newroll);
             }
         }
     });
