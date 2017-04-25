@@ -41,8 +41,8 @@ $(".schedule a").click(function () {
     AddMatchContent();
 });
 $(document).on("click",".edit-team",function () {
-    if(CheckLeader()==false) return;
-    window.location.href="http://120.76.206.174:8080/efafootball-web/team-edit.html?team_id="+team_id;
+    var redirect_url="http://120.76.206.174:8080/efafootball-web/team-edit.html?team_id="+team_id;
+    CheckLeader(redirect_url);
 });
 $(document).on("click",".teammatch_ul li",function () {
     var game_id=$(this).attr("value");
@@ -53,8 +53,8 @@ $(document).on("click",".upgoing-game li",function () {
     window.location.href="http://120.76.206.174:8080/efafootball-web/match-each.html?match_id="+match_id+"&game_id="+game_id+"&flag=0";
 });
 $(document).on("click","#team-notify",function () {
-    if(CheckLeader()==false) return;
-    window.location.href="http://120.76.206.174:8080/efafootball-web/team-notify.html";
+    var redirect_url="http://120.76.206.174:8080/efafootball-web/team-notify.html";
+    CheckLeader(redirect_url);
 });
 $(document).on("click",".join-team",function () {
     //根据localStorage缓存看是否登录
@@ -316,7 +316,7 @@ function AddMemberContent() {
         }
     });
 }
-function CheckLeader() {
+function CheckLeader(redirect_url) {
     //根据localStorage缓存看是否登录
     var have_logined=localStorage.getItem("have_logined");
     if(have_logined==1){
@@ -332,6 +332,7 @@ function CheckLeader() {
                     setTimeout('$(".Tip").addClass("hidden")',1500);
                     return false;
                 }else if(result=="success"){
+                    window.location.href=redirect_url;
                     return true;
                 }
             }
