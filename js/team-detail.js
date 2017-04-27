@@ -83,6 +83,10 @@ $(document).on("click",".join-team",function () {
         TIP_ERROR("未登陆,不能加入球队");
     }
 });
+$(document).on("click",".all-player li",function () {
+    var player_id=$(this).attr("id");
+    window.location.href="http://120.76.206.174:8080/efafootball-web/player-profile.html?player_id="+player_id;
+});
 function checkFile(){
     var file = document.getElementById("loadfile").value;
     console.log(file);
@@ -286,7 +290,7 @@ function AddMemberContent() {
                     var photo="images/default_head.png";
                     if(player.photo!="") photo=player.photo+"?imageView2/1/w/80/h/80"; //缩略图
                    newroll+=
-                        '<li class="shooter-info">'+
+                        '<li class="shooter-info" id='+player.id+'>'+
                         '<div class="shooter-num">'+
                         '<a href="javascript:;" style="color: black" >'+player.number+'</a>'+
                         '</div>'+
