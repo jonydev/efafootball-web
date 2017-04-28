@@ -11,7 +11,7 @@ $(document).ready(function () {
 })
 //向后台请求数据刷新缓存信息
 function SetContent(id) {
-    // var loginId=mine_info["id"];
+    var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/viewMemberById?id="+id;
     //拉数据
     $.ajax(
         {
