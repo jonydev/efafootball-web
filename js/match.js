@@ -8,7 +8,11 @@ $(document).ready(function (){
 });
 $(document).on("click",".single-match",function () {
     var match_id=$(this).attr("value");
-    window.location.href="http://120.76.206.174:8080/efafootball-web/match-detail.html?match_id="+match_id;
+    var click_id=$(this).index();
+    var choose_match=g_matchs[click_id];
+    var office_type=choose_match.office_type; //联赛类型
+    var office_group=choose_match.office_group;
+    window.location.href="http://120.76.206.174:8080/efafootball-web/match-detail.html?match_id="+match_id+'&office_type='+office_type+'&office_group='+office_group;
 });
 $(".search-div").click(function () {
     // $(".search-top").addClass("hidden");

@@ -11,23 +11,29 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
 <body class=" web-size">
-<div class="">
-    <div class="player-img">
-        <img src="images/default_head.png" alt="" class="player-head" width="100%" height="100%">
+    <div class="">
+        <div class="player-img">
+            <img src="images/default_head.png" alt="" class="player-head" width="100%" height="100%">
+        </div>
+        <div class="user-input"><input type="text" style="width: 100%;height: 45px; " placeholder="用户名 / 手机号" id="loginName" value=""></div>
+        <div class="password-input"><input type="password" style="width: 100%;height: 45px;" placeholder="密码" id="password" value=""></div>
+        <div class="font2pt login-btn background-green text-white"> 登录 </div>
+        <div class="font2pt sign-btn background-greyf2 ">注册</div>
+        <div class="font2pt forget-btn  "><a href="javascript:;" class="forget-password">忘记密码</a></div>
     </div>
-    <div class="user-input"><input type="text" style="width: 100%;height: 50px; " placeholder="用户名 / 手机号" id="loginName" value=""></div>
-    <div class="password-input"><input type="password" style="width: 100%;height: 50px;" placeholder="密码" id="password" value=""></div>
-    <div class="font6pt login-btn background-green text-white"> 登录 </div>
-    <div class="font6pt sign-btn background-greyf2 ">注册</div>
-    <div class="font6pt forget-btn  "><a href="javascript:;" class="forget-passeord">忘记密码</a></div>
-</div>
-<div class="Tip hidden" style="background:#ea8282;position:absolute;z-Index:10;width:300px;height:40px;line-height:40px;left:50%;margin-Left:-150px;text-align:center;top:200px;;font-size:18px;">
-<span style="color: white;">登录失败,用户名或者密码错误!</span>
-</div>
-<script src="//cdn.bootcss.com/tether/1.3.6/js/tether.min.js"></script>
-<script type="text/javascript" src="js/jquery.min.js"></script>
-<script  type="text/javascript" src="js/bootstrap.min.js"></script>
-<script  type="text/javascript" src="js/global.js"></script>
-<script  type="text/javascript" src="js/mine-login.js"></script>
+    <div class="Tip hidden" style="background:#ea8282;position:absolute;z-Index:10;width:300px;height:40px;line-height:40px;left:50%;margin-Left:-150px;text-align:center;top:200px;;font-size:18px;">
+        <span style="color: white;">登录失败,用户名或者密码错误!</span>
+    </div>
+    <div class="getBackPassword-container font2pt hidden">
+        <div class="userName-input"><input type="text" style="width: 100%;height: 40px; " placeholder="用户名" id="userName" value=""></div>
+        <div class="telephone-input"><input type="password" style="width: 100%;height: 40px;" placeholder="手机号" id="telephone" value=""></div>
+        <div class="reset-btn background-green text-white"> 重置密码 </div>
+        <div class="close-reset background-green text-white"> 放弃重置 </div>
+    </div>
+    <script src="//cdn.bootcss.com/tether/1.3.6/js/tether.min.js"></script>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script  type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script  type="text/javascript" src="js/global.js"></script>
+    <script  type="text/javascript" src="js/mine-login.js"></script>
 </body>
 </html>

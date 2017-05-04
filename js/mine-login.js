@@ -4,6 +4,32 @@
 $(document).ready(function (){
 
 });
+$(".forget-password").click(function () {
+    $(".getBackPassword-container").removeClass("hidden");
+});
+$(".close-reset").click(function () {
+    $("#userName").val("");
+    $("#telephone").val("");
+    $(".getBackPassword-container").addClass("hidden");
+})
+$(".reset-btn").click(function () {
+    if(confirm("密码重置后将会发送到手机号上，是否确定重置？")){
+        var loginName=$("#userName").val();
+        var phone=$("#telephone").val();
+        var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/getBackPassword?loginName="+loginName+"&phone="+phone;
+        $.ajax({
+            url:url,
+            success:function (data) {
+                TIP_ERROR(data.message);
+                if(data.result=="success"){
+                    $("#userName").val("");
+                    $("#telephone").val("");
+                    $(".getBackPassword-container").addClass("hidden");
+                }
+            }
+        })
+    }
+})
 $(".login-btn").click(function () {
     $(this).addClass("background-green text-white");
     $(".sign-btn").removeClass("background-green text-white").addClass("background-greyf2");

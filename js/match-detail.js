@@ -2,14 +2,17 @@
  * Created by cnm on 2016/11/12.
  */
 var match_id;
-var g_team;
+var g_team,office_type,office_group,current_group=0;
 var all_states=["未开始","已结束","上半场","下半场"];
+var group_name=["A组","B组","C组","D组","E组","F组","G组","H组","I组","J组"];
 var rounds=["零","一","二","三","四","五","六","七","八","九","十","十一","十二","十三","十四","十五","十六","十七","十八","十九","二十",
     "二十一","二十二","二十三","二十四","二十五","二十六","二十七","二十八","二十九","三十","三十一","三十二","三十三","三十四","三十五","三十六","三十七","三十八","三十九","四十"];
 $(document).ready(function () {
     var Request=new Object();
     Request=GetRequest();
     match_id=Request["match_id"];
+    office_type=Request["office_type"];
+    office_group=Request["office_group"];
     $(".introduce a").addClass("text-green").removeClass("text-grey");
     $(".introduce").find(".triangle-container").addClass("shift-triangle");
     var current_click=eval(localStorage.getItem("current_click"));
@@ -61,6 +64,11 @@ $(document).on("click",".team-ul li",function () {
     var team_id=$(this).attr("id");
     window.location.href="http://120.76.206.174:8080/efafootball-web/team-detail.html?team_id="+team_id;
 });
+$(document).on("click",".group_ul li",function () {
+    current_group=$(this).index();
+    $(".group_ul").find(".background-green").removeClass("background-green").addClass("text-grey");
+    $(this).addClass("background-green").removeClass("text-grey");
+})
 $(".introduce a").click(function () {
     localStorage.setItem("current_click",0);
     click_introduce();
@@ -321,6 +329,25 @@ function AddPointsContent(){
     $(".all-profile").addClass("hidden");
     $(".all-team").addClass("hidden");
     var allcontents=$("table").empty();
+    if(office_type==1){
+        $(".group-container").removeClass("hidden");
+        var group_title=$(".group_ul").empty();
+        var new_group="";
+        for(var i=0;i<office_group;i++){
+            if(i==0){
+                new_group+=
+                    '<li class="background-green">'+
+                    '<a class="text-black "  href="javascript:;">'+group_name[i]+'</a>'+
+                    '</li>';
+            }else{
+                new_group+=
+                    '<li class="text-grey">'+
+                    '<a class="text-black "  href="javascript:;">'+group_name[i]+'</a>'+
+                    '</li>';
+            }
+        }
+        group_title.append(new_group);
+    }
     var tablehead=
         '<tr class="table-head">'+
         '<th style="width: 10%;text-align: center">排名</th>'+
@@ -351,6 +378,7 @@ function AddPointsContent(){
                 var realball=eval(single.goal)-eval(single.lost);
                 var rank=i+1;
                 var newroll="";
+                if(office_type==1 && single.team.group_id!==current_group) break; //当前赛事为杯赛的时候 如果该队伍的分组不是选定的分组 则不展示出来
                 if(i==5){
                  newroll=
                      // '<tr class="single-tr Sperate-line">'+
