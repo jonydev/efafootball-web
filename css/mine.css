@@ -41,7 +41,7 @@ input::-webkit-input-placeholder{text-align: center;}
 .save-item{margin-bottom: 5px;background-color: white;height: 35px;line-height: 35px;text-align: center;margin-top: 80px;}
 .cancel-item{margin-bottom: 5px;background-color: white;height: 35px;line-height: 35px;text-align: center;}
 
-.editPassword-container{position: absolute;top:20% ;z-index: 4;background-color:darkgray;width: 80%;height: 30%;left: 50%;margin-left: -40% }
+.editPassword-container{position: absolute;top:20% ;z-index: 4;background-color:darkgray;width: 80%;height: 200px;left: 50%;margin-left: -40% }
 .editpassword-btn{text-align: center;margin-top: 5px;height: 30px;line-height: 30px;}
 .close-edit{text-align: center;margin-top: 5px;height: 30px;line-height: 30px;}
 .password1-input {margin-top: 5px;}
