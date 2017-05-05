@@ -73,9 +73,7 @@ $(document).on("click",".join-team",function () {
                 console.log(data);
                 var result=data.result;
                 if(result=="fail"){
-                    $(".Tip").removeClass("hidden");
-                    $(".Tip span").text(data.message);
-                    setTimeout('$(".Tip").addClass("hidden")',1500);
+                    TIP_ERROR(data.message);
                 }
             }
         })
