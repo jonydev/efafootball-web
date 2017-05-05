@@ -257,8 +257,8 @@ function SetContentNoStarted() {
             }
             $(".team-atxt").text(single.homeTeamName);
             $(".team-btxt").text(single.awayTeamName);
-            // $(".result-going").text(single.time.substr(0,5));
-            $(".result-going").text(single.time.split("-")[0]);
+            $(".result-going").text(single.time);
+            // $(".result-going").text(single.time.split("-")[0]);
             $(".match-place").text(single.place);
         }
     })

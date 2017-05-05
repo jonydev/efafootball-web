@@ -83,7 +83,7 @@ $(document).on("click",".join-team",function () {
 });
 $(document).on("click",".all-player li",function () {
     var player_id=$(this).attr("id");
-    window.location.href="http://120.76.206.174:8080/efafootball-web/player-profile.html?player_id="+player_id;
+    window.location.href="http://120.76.206.174:8080/efafootball-web/player-profile.html?player_id="+player_id+"&team_id="+team_id;
 });
 function checkFile(){
     var file = document.getElementById("loadfile").value;
