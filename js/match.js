@@ -10,8 +10,8 @@ $(document).on("click",".single-match",function () {
     var match_id=$(this).attr("value");
     var click_id=$(this).index();
     var choose_match=g_matchs[click_id];
-    var office_type=choose_match.office_type; //联赛类型
-    var office_group=choose_match.office_group;
+    var office_type=choose_match.officeType; //联赛类型
+    var office_group=choose_match.officeGroup;
     window.location.href="http://120.76.206.174:8080/efafootball-web/match-detail.html?match_id="+match_id+'&office_type='+office_type+'&office_group='+office_group;
 });
 $(".search-div").click(function () {
@@ -83,7 +83,7 @@ function reset_icon() {
     }
 }
 function ShowAllMatchs() {
-    var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/officeData ";
+    var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/officeData";
     $.ajax({
         url:url,
         success:function (data) {

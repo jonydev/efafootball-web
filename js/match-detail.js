@@ -2,7 +2,7 @@
  * Created by cnm on 2016/11/12.
  */
 var match_id;
-var g_team,office_type,office_group,current_group=0;
+var g_team,office_type,office_group,current_group=0,g_points;
 var all_states=["未开始","已结束","上半场","下半场"];
 var group_name=["A组","B组","C组","D组","E组","F组","G组","H组","I组","J组"];
 var rounds=["零","一","二","三","四","五","六","七","八","九","十","十一","十二","十三","十四","十五","十六","十七","十八","十九","二十",
@@ -68,6 +68,7 @@ $(document).on("click",".group_ul li",function () {
     current_group=$(this).index();
     $(".group_ul").find(".background-green").removeClass("background-green").addClass("text-grey");
     $(this).addClass("background-green").removeClass("text-grey");
+    showPoinits(g_points);
 })
 $(".introduce a").click(function () {
     localStorage.setItem("current_click",0);
@@ -371,37 +372,9 @@ function AddPointsContent(){
         dataType:"json",
         success:function (data) {
             console.log(data);
-            var obj=eval(data.rows)
-            for(var i=0;i<obj.length;i++){
-                var single=obj[i];
-                var total=eval(single.won)+eval(single.even)+eval(single.beaten);
-                var realball=eval(single.goal)-eval(single.lost);
-                var rank=i+1;
-                var newroll="";
-                if(office_type==1 && single.team.group_id!==current_group) break; //当前赛事为杯赛的时候 如果该队伍的分组不是选定的分组 则不展示出来
-                if(i==5){
-                 newroll=
-                     // '<tr class="single-tr Sperate-line">'+
-                     '<tr class="single-tr " style="color:#D0D5D6 ">'+
-                         // '<td ><div class="up-grade"></div>'+
-                     '<td >'+
-                         '<a style="text-align:center; color: black;padding: 6px 0;" href="">'+rank+'</a>'+
-                         '</td ><td  style="font-weight: 700;overflow:hidden ;color: black">'+single.team.name+'</td><td>'+total+'</td><td>'+single.won+'</td>'+
-                         '<td>'+single.even+'</td><td>'+single.beaten+'</td><td>'+single.goal+'</td><td>'+single.lost+'</td><td>'+realball+'</td><td style="font-weight: 800;color: black">'+single.point+'</td><td>'+single.red+'</td><td>'+single.yellow+'</td>'+
-                     '</tr>';
-                }
-                else{
-                    newroll=
-                        '<tr class="single-tr "style="color:#D0D5D6 ">'+
-                        // '<td ><div class="up-grade"></div>'+
-                        '<td >'+
-                        '<a style="text-align:center; color: black;padding: 6px 0;" href="">'+rank+'</a>'+
-                        '</td ><td  style="font-weight: 700;overflow: hidden;color: black">'+single.team.name+'</td><td>'+total+'</td><td>'+single.won+'</td>'+
-                        '<td>'+single.even+'</td><td>'+single.beaten+'</td><td>'+single.goal+'</td><td>'+single.lost+'</td><td>'+realball+'</td><td style="font-weight: 800 ;color: black">'+single.point+'</td><td>'+single.red+'</td><td>'+single.yellow+'</td>'+
-                        '</tr>';
-                }
-                allcontents.append(newroll);
-                }
+            var obj=eval(data.rows);
+            g_points=obj;
+            showPoinits(obj); //显示积分榜
         }
     });
 }
@@ -521,4 +494,37 @@ function SpreedMatch() {
 }
 function hidden_icon() {
     $(".search-top").addClass("hidden");
+}
+function showPoinits(obj) {
+    var allcontents=$("table");
+    for(var i=0;i<obj.length;i++){
+        var single=obj[i];
+        var total=eval(single.won)+eval(single.even)+eval(single.beaten);
+        var realball=eval(single.goal)-eval(single.lost);
+        var rank=i+1;
+        var newroll="";
+        if(office_type==1 && single.team.groupId!==current_group) continue; //当前赛事为杯赛的时候 如果该队伍的分组不是选定的分组 则不展示出来
+        if(i==5){
+            newroll=
+                // '<tr class="single-tr Sperate-line">'+
+                '<tr class="single-tr " style="color:#D0D5D6 ">'+
+                // '<td ><div class="up-grade"></div>'+
+                '<td >'+
+                '<a style="text-align:center; color: black;padding: 6px 0;" href="">'+rank+'</a>'+
+                '</td ><td  style="font-weight: 700;overflow:hidden ;color: black">'+single.team.name+'</td><td>'+total+'</td><td>'+single.won+'</td>'+
+                '<td>'+single.even+'</td><td>'+single.beaten+'</td><td>'+single.goal+'</td><td>'+single.lost+'</td><td>'+realball+'</td><td style="font-weight: 800;color: black">'+single.point+'</td><td>'+single.red+'</td><td>'+single.yellow+'</td>'+
+                '</tr>';
+        }
+        else{
+            newroll=
+                '<tr class="single-tr "style="color:#D0D5D6 ">'+
+                // '<td ><div class="up-grade"></div>'+
+                '<td >'+
+                '<a style="text-align:center; color: black;padding: 6px 0;" href="">'+rank+'</a>'+
+                '</td ><td  style="font-weight: 700;overflow: hidden;color: black">'+single.team.name+'</td><td>'+total+'</td><td>'+single.won+'</td>'+
+                '<td>'+single.even+'</td><td>'+single.beaten+'</td><td>'+single.goal+'</td><td>'+single.lost+'</td><td>'+realball+'</td><td style="font-weight: 800 ;color: black">'+single.point+'</td><td>'+single.red+'</td><td>'+single.yellow+'</td>'+
+                '</tr>';
+        }
+        allcontents.append(newroll);
+    }
 }
