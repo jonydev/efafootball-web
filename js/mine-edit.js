@@ -209,12 +209,6 @@ function choose_position() {
 function choose_city() {
     //to do
 }
-function TIP_ERROR(error_message) {
-    $(".Tip").removeClass("hidden");
-    $(".Tip span").html(error_message);
-    setTimeout('$(".Tip").addClass("hidden")',1500);
-    return;
-}
 function SetContent(mine_info) {
     console.log(mine_info);
     id=mine_info.id;

@@ -331,9 +331,7 @@ function CheckLeader(redirect_url) {
             success:function (data) {
                 var result=data.result;
                 if(result=="fail"){
-                    $(".Tip").removeClass("hidden");
-                    $(".Tip span").text(data.message);
-                    setTimeout('$(".Tip").addClass("hidden")',1500);
+                    TIP_ERROR(data.message);
                     return false;
                 }else if(result=="success"){
                     window.location.href=redirect_url;
@@ -345,10 +343,4 @@ function CheckLeader(redirect_url) {
         TIP_ERROR("未登陆,无法操作");
         return false;
     }
-}
-function TIP_ERROR(error_message) {
-    $(".Tip").removeClass("hidden");
-    $(".Tip span").html(error_message);
-    setTimeout('$(".Tip").addClass("hidden")',1500);
-    return;
 }
