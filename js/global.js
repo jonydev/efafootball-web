@@ -29,6 +29,7 @@ function GetWeekday(time_str) {
 function TIP_ERROR(error_message) {
     $(".Tip").removeClass("hidden");
     $(".Tip span").html(error_message);
+    $(".Tip").css("top",$(document).scrollTop()+250);
     setTimeout('$(".Tip").addClass("hidden")',1500);
     return;
 }

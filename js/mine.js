@@ -45,13 +45,13 @@ $(document).on("click",".edit_info",function () {
 });
 $(document).on("click",".edit_password",function () {
     var X=100;
-    $(".editPassword-container").css("top",X);
-    $(".editPassword-container").removeClass("hidden");
+    $("#myModal").modal("show");
+    $("#myModal").css("top",X);
 });
 $(".close-edit").click(function(){
     $("#password1").val("");
     $("#password2").val("");
-    $(".editPassword-container").addClass("hidden");
+    $("#myModal").modal("hide");
 });
 $(".editpassword-btn").click(function () {
     var password1=$("#password1").val();
@@ -74,7 +74,7 @@ $(".editpassword-btn").click(function () {
                 if(data.result=="success"){
                     $("#password1").val("");
                     $("#password2").val("");
-                    $(".editPassword-container").addClass("hidden");
+                    $("#myModal").modal("hide");
                 }
             }
         })
