@@ -14,8 +14,8 @@
 .team-results{position: relative;width: 100%;background-color: white;height: 52px;border-bottom: 1px solid #f2f5f6;}
 .team-a{float: left;width: 41%;padding-left: 15px;padding-top: 7px;}
 .result{float: left;text-align: center;width: 18%;padding-top: 7px;}
-.result-a{height: 25px;font-size: 17px;line-height: 25px;}
-.result-b{height: 13px;font-size: 13px;line-height: 13px;margin-top: 3px;}
+.result-a{height: 25px;font-size: 8px;line-height: 25px;}
+.result-b{height: 13px;font-size: 8px;line-height: 13px;margin-top: 3px;}
 .team-b{float: right;width: 41%;padding-right: 15px;padding-top: 7px;}
 .team-atxt{float: left;height: 38px;line-height: 38px;width: 55%;overflow: hidden;text-align:left;}
 .team-aimg{width: 35px;height: 35px;margin-right: 10px;float: right}
