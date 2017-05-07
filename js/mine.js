@@ -43,6 +43,43 @@ $(document).on("click",".logout",function () {
 $(document).on("click",".edit_info",function () {
     window.location.href="http://120.76.206.174:8080/efafootball-web/mine-edit.html";
 });
+$(document).on("click",".edit_password",function () {
+    var X=100;
+    $("#myModal").modal("show");
+    $("#myModal").css("top",X);
+});
+$(".close-edit").click(function(){
+    $("#password1").val("");
+    $("#password2").val("");
+    $("#myModal").modal("hide");
+});
+$(".editpassword-btn").click(function () {
+    var password1=$("#password1").val();
+    var password2=$("#password2").val();
+    if(password1==""){
+        TIP_ERROR("密码不能为空!");
+        return;
+    }
+    if(password1!=password2){
+        TIP_ERROR("两次输入的密码不一样!");
+        return;
+    }
+    if(confirm("是否确认修改密码？")){
+        var loginId=localStorage.getItem("loginId");
+        var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/editPassword?password="+password1+"&loginId="+loginId;
+        $.ajax({
+            url:url,
+            success:function (data) {
+                TIP_ERROR(data.message);
+                if(data.result=="success"){
+                    $("#password1").val("");
+                    $("#password2").val("");
+                    $("#myModal").modal("hide");
+                }
+            }
+        })
+    }
+})
 //向后台请求数据刷新缓存信息
 function SetContent(loginId) {
     // var loginId=mine_info["id"];
@@ -91,6 +128,14 @@ function SetContent(loginId) {
                     '<tr class="font15pt">'+
                     '<td width="30%"><div class="attr-name">身份证</div></td>'+
                     '<td width="70%"><div class="attr-txt ">'+obj.cards+'</div></td>'+
+                    '</tr>'+
+                    '</table>'+
+                    '</li>'+
+                    '<li class="each-item">'+
+                    '<table width="100%">'+
+                    '<tr class="font15pt">'+
+                    '<td width="30%"><div class="attr-name">保单号</div></td>'+
+                    '<td width="70%"><div class="attr-txt ">'+obj.policyno+'</div></td>'+
                     '</tr>'+
                     '</table>'+
                     '</li>'+
@@ -165,6 +210,13 @@ function SetContent(loginId) {
                 '<table width="100%">'+
                 '<tr class="font15pt">'+
                 '<td width="100%"><div class="" style="text-align: center;cursor:pointer">修改信息</div></td>'+
+                '</tr>'+
+                '</table>'+
+                '</li>'+
+                '<li class="each-item edit_password">'+
+                '<table width="100%">'+
+                '<tr class="font15pt">'+
+                '<td width="100%"><div class="" style="text-align: center;cursor:pointer">修改密码</div></td>'+
                 '</tr>'+
                 '</table>'+
                 '</li>'+

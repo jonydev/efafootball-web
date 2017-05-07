@@ -101,6 +101,10 @@ $(document).on("click",".leave",function () {
     $(".signup").removeClass("background-green").addClass("light-white");
     $(".signup").find(".signup-Txt").removeClass("text-white").addClass("text-green");
 });
+$(document).on("click",".each-position li",function () {
+    var player_id=$(this).attr("id");
+    window.location.href="http://120.76.206.174:8080/efafootball-web/player-profile.html?player_id="+player_id;
+});
 function AddRealScheduleContent() {
     var a_abstractcontent=$(".a-abstract_ul");
     var b_abstractcontent=$(".b-abstract_ul");
@@ -164,6 +168,7 @@ function AddRealScheduleContent() {
         url:url,
         success:function (data) {
             var obj=eval(data.rows);
+            if(obj==undefined) return;
             console.log(obj);
             for (var i=0;i< obj.length;i++){
                 var single=obj[i];
@@ -252,8 +257,8 @@ function SetContentNoStarted() {
             }
             $(".team-atxt").text(single.homeTeamName);
             $(".team-btxt").text(single.awayTeamName);
-            // $(".result-going").text(single.time.substr(0,5));
-            $(".result-going").text(single.time.split("-")[0]);
+            $(".result-going").text(single.time);
+            // $(".result-going").text(single.time.split("-")[0]);
             $(".match-place").text(single.place);
         }
     })
@@ -281,7 +286,7 @@ function AddStartFirstContent(teamId) {
                     var photo="images/default_head.png";
                     if(player.photo!="") photo=player.photo+"?imageView2/1/w/60/h/60";
                     newroll+=
-                        '<li class="each-person">'+
+                        '<li class="each-person" id='+player.id+'>'+
                         '<a class="number text-black" href="">'+player.number+'</a>'+
                         '<div class="member-info">'+
                         '<img class="person-img" src='+photo+'  alt="" width="1005" height="100%">'+
