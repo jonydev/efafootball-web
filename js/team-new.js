@@ -1,16 +1,9 @@
 /**
  * Created by 晴识明月 on 2017/1/8.
  */
-var token,loginId,upper="#3bc83b",lower="#000000";
+var token,loginId,upper="3bc83b",lower="000000",mine_info;
 var current_choose,xval; //标记当前所设置的属性，0 表示设置性别 1表示设置位置
 $(document).ready(function (){
-    //根据localStorage缓存看是否登录
-    var have_logined=localStorage.getItem("have_logined");
-    if(have_logined==1){
-        loginId=localStorage.getItem("loginId");
-    }else{
-        TIP_ERROR("未登陆，请先到个人中心登陆");
-    }
     //从服务器获取domain和token
     $.ajax({
         url:"http://120.76.206.174:8080/efaleague-web/appPath/appData/getImageByToken",
@@ -95,6 +88,15 @@ $(document).ready(function (){
     });
 });
 $(".save-edit").click(function () {
+    //根据localStorage缓存看是否登录
+    var have_logined=localStorage.getItem("have_logined");
+    if(have_logined==1){
+        loginId=localStorage.getItem("loginId");
+        mine_info=  JSON.parse(localStorage.getItem("mine_info"));
+    }else{
+        TIP_ERROR("未登陆，请先到个人中心登陆");
+        return;
+    }
     //发送保存修改的信息
     $(this).addClass("background-green text-white").removeClass("light-white text-green");
     $(".show-team").removeClass("background-green text-white").addClass("light-white text-green");
@@ -108,8 +110,10 @@ $(".save-edit").click(function () {
     if(photo=="images/default_team.png") photo="";
     var home=$("#City").text();
     var captain=$("#captain").val();
-    if(confirm("是否保存修改？")==true){
-        var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/createTeam?leader="+loginId+"&companyId=1&name="+name+"&photo="+photo+"&content="+content+"&home="+home+"&upper="+upper+"&lower="+lower+"&captain="+captain;
+    var shortName=$("#short-name").val();
+    var sponsorName=$("#sponsor_name").val();
+    if(confirm("是否新建球队？")==true){
+        var url="http://:8080/efaleague-web/appPath/appData/createTeam?leader="+mine_info.name+"&companyId=1&name="+name+"&photo="+photo+"&content="+content+"&home="+home+"&upper="+upper+"&lower="+lower+"&captain="+captain+"&shortName="+shortName+"&sponsorName="+sponsorName;
         $.ajax({
             url:url,
             success:function (data) {
@@ -160,11 +164,11 @@ $(".save-item").click(function () {
     if(current_choose==0){
         $(".home-color").css({"backgroundColor":getcolor});
         $(".choose-color").addClass("hidden");
-        upper=getcolor;
+        upper=rgb2hex(getcolor);
     }else if(current_choose==1){
         $(".rehome-color").css({"backgroundColor":getcolor});
         $(".choose-color").addClass("hidden");
-        lower=getcolor;
+        lower=rgb2hex(getcolor);
     }
 });
 $(".cancel-item").click(function () {
