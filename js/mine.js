@@ -84,7 +84,7 @@ $(".editpassword-btn").click(function () {
 function SetContent(loginId) {
     // var loginId=mine_info["id"];
     //拉数据
-    var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/viewMember?loginId="+loginId;
+    var url="http://localhost:8080/efaleague-web/appPath/appData/viewMember?loginId="+loginId;
     $.ajax(
         {
             url: url,
@@ -97,6 +97,8 @@ function SetContent(loginId) {
                 var team_name="暂无球队";
                 if(obj.team.id!="") team_name=obj.team.name;
                 if(obj.photo!="") photo=obj.photo;
+                var team_photo="images/default_head.png";
+                if(obj.team.photo!="") team_photo=obj.team.photo;
                 var newroll =
                 '<div class="player-img"> <img src='+photo+' alt="" class="player-head" width="100%" height="100%"> </div>'+
                     '<div class="team-guide">'+
@@ -105,7 +107,7 @@ function SetContent(loginId) {
                     '<li class="team-item">'+
                     '<table width="100%">'+
                     '<tr class="font15pt">'+
-                    '<td width="30%"><div class="attr-name own-team-img"><img src="images/default_team.png"  alt="" width="100%" height="100%"></div></td>'+
+                    '<td width="30%"><div class="attr-name own-team-img"><img src='+team_photo+'  alt="" width="100%" height="100%"></div></td>'+
                     '<td width="70%"><div class="attr-txt ">'+team_name+'</div></td>'+
                     '</tr>'+
                     '</table>'+

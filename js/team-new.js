@@ -113,7 +113,7 @@ $(".save-edit").click(function () {
     var shortName=$("#short-name").val();
     var sponsorName=$("#sponsor_name").val();
     if(confirm("是否新建球队？")==true){
-        var url="http://:8080/efaleague-web/appPath/appData/createTeam?leader="+mine_info.name+"&companyId=1&name="+name+"&photo="+photo+"&content="+content+"&home="+home+"&upper="+upper+"&lower="+lower+"&captain="+captain+"&shortName="+shortName+"&sponsorName="+sponsorName;
+        var url="http://localhost:8080/efaleague-web/appPath/appData/createTeam?leader="+loginId+"&companyId=1&name="+name+"&photo="+photo+"&content="+content+"&home="+home+"&upper="+upper+"&lower="+lower+"&captain="+captain+"&shortName="+shortName+"&sponsorName="+sponsorName;
         $.ajax({
             url:url,
             success:function (data) {

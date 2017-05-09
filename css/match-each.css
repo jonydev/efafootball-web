@@ -113,5 +113,10 @@ ul{margin: 0;padding: 0;list-style: none;margin-bottom: 0;}
 .rehome{float: left;margin-left: 20px;}
 .rehome-color{float: left;margin-left: 12px;margin-top: 7px;}
 .position-title{height: 20px;line-height: 20px;text-align: center;}
-.leave-member,.leave-member{margin-left: 5px;margin-top: 5px;margin-right: 5px;background-color:white;padding-bottom: 5px;}
+.signup-member,.leave-member{margin-left: 5px;margin-top: 5px;margin-right: 5px;background-color:white;padding-bottom: 5px;}
 .signup-member-title,.leave-member-title{height: 45px;line-height: 45px;text-align: center;background-color:#2e992e;color: white;font-size: 14px; }
+.showhome{ width: 50%;  height: 100%;  float: left;  }
+.showaway{width: 50%;  float: left;  }
+.showhome-Txt{display:block;    height:38px;  line-height:38px;    font-size: 14px; text-align: center}
+.showaway-Txt{display:block;    height:38px;  line-height:38px;    font-size: 14px; text-align: center}
+.chooseStartFirst{height: 35px;margin-left: 5px;margin-right: 5px;margin-top: 5px;line-height: 35px;text-align: center;}
