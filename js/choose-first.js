@@ -44,6 +44,7 @@ function SetMember() { //展示报名球员 根据新版的报名功能
                 for(var i=0;i<obj.length;i++) {
                     var player = obj[i].member;
                     g_signup=player;
+                    if(player.flag==0) continue;
                     var photo="images/default_head.png";
                     if(player.photo!="") photo=player.photo
                     newroll +=
