@@ -16,7 +16,6 @@ $("#create-team").click(function () {
     $(this).addClass("background-green text-white").removeClass("text-green light-white");
     $("#choose-team").removeClass("background-green text-white").addClass("text-green light-white");
     //根据localStorage缓存看是否登录
-    debugger
     var have_logined=localStorage.getItem("have_logined");
     if(have_logined==1) {
         var mine_info = JSON.parse(localStorage.getItem("mine_info"));
