@@ -49,9 +49,12 @@ $(document).on("click",".edit_password",function () {
     $("#myModal").css("top",X);
 });
 $(document).on("click",".goto-team",function () {
-    if($(this).attr("id")=="") return;
-    var team_id=$(this).attr("id");
-    window.location.href="http://120.76.206.174:8080/efafootball-web/team-detail.html?team_id="+team_id;
+    if($(this).attr("id")==""){
+        window.location.href="http://120.76.206.174:8080/efafootball-web/team.html?";
+    }else{
+        var team_id=$(this).attr("id");
+        window.location.href="http://120.76.206.174:8080/efafootball-web/team-detail.html?team_id="+team_id;
+    }
 })
 $(".close-edit").click(function(){
     $("#password1").val("");
@@ -103,7 +106,8 @@ function SetContent(loginId) {
                 var team_id="";
                 if(obj.team!=null){
                     team_id=obj.team.id;
-                } team_name=obj.team.name;
+                    team_name=obj.team.name;
+                }
                 if(obj.photo!="") photo=obj.photo;
                 var team_photo="images/default_head.png";
                 if(obj.team.photo!="") team_photo=obj.team.photo;
