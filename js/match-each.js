@@ -91,7 +91,7 @@ $("#away-team-shape").click(function () {
 });
 $(".chooseStartFirst").click(function () {
     var team_id=CheckMember();//检查主队或者客队球员
-    if(team_id!=false) window.location.href="http://localhost:63343/efafootball-web/choose-first.html?match_id="+game_id+"&team_id="+team_id;
+    if(team_id!=false) window.location.href="http://120.76.206.174:8080/efafootball-web/choose-first.html?match_id="+game_id+"&team_id="+team_id;
 })
 $(document).on("click",".showhome",function () {
     $(this).addClass("background-green").removeClass("light-white");
