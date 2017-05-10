@@ -116,7 +116,7 @@ $(document).on("click",".signup",function () {
     $(this).find(".signup-Txt").addClass("text-white").removeClass("text-green");
     $(".leave").removeClass("background-green").addClass("light-white");
     $(".leave").find(".leave-Txt").removeClass("text-white").addClass("text-green");
-    var url="http://localhost:8080/efaleague-web/appPath/appData/signUpMatch?memberId="+mine_info.id+"&&matchId="+game_id+"&&teamId="+teamId;
+    var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/signUpMatch?memberId="+mine_info.id+"&&matchId="+game_id+"&&teamId="+teamId;
     $.ajax({
         url:url,
         success:function (data) {
@@ -160,7 +160,7 @@ $(document).on("click",".leave",function () {
     $(this).find(".leave-Txt").addClass("text-white").removeClass("text-green");
     $(".signup").removeClass("background-green").addClass("light-white");
     $(".signup").find(".signup-Txt").removeClass("text-white").addClass("text-green");
-    var url="http://localhost:8080/efaleague-web/appPath/appData/askForLeave?memberId="+mine_info.id+"&&matchId="+game_id+"&&teamId="+teamId;
+    var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/askForLeave?memberId="+mine_info.id+"&&matchId="+game_id+"&&teamId="+teamId;
     $.ajax({
         url:url,
         success:function (data) {
