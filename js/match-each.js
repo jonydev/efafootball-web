@@ -93,7 +93,7 @@ $(".chooseStartFirst").click(function () {
     var team_id=CheckMember();//检查主队或者客队球员
     if(team_id!=false) window.location.href="http://120.76.206.174:8080/efafootball-web/choose-first.html?match_id="+game_id+"&team_id="+team_id;
 })
-$(document).on("click",".showhome",function () {
+$(".showhome").click(function () {
     $(this).addClass("background-green").removeClass("light-white");
     $(this).find(".showhome-Txt").addClass("text-white").removeClass("text-green");
     $(".showaway").removeClass("background-green").addClass("light-white");
@@ -101,7 +101,7 @@ $(document).on("click",".showhome",function () {
     showSignUp(hometeamid);
     showLeave(hometeamid);
 });
-$(document).on("click",".showaway",function () {
+$(".showaway").click(function () {
     $(this).addClass("background-green").removeClass("light-white");
     $(this).find(".showaway-Txt").addClass("text-white").removeClass("text-green");
     $(".showhome").removeClass("background-green").addClass("light-white");
@@ -109,7 +109,7 @@ $(document).on("click",".showaway",function () {
     showSignUp(awayteamid);
     showLeave(awayteamid);
 });
-$(document).on("click",".signup",function () {
+$(".signup").click(function () {
     var teamId=CheckMember();
     if(teamId==false) return; //判断是否是当前两只球队的成员
     $(this).addClass("background-green").removeClass("light-white");
@@ -153,7 +153,7 @@ $(document).on("click",".signup",function () {
         }
     })
 });
-$(document).on("click",".leave",function () {
+$(".leave").click(function () {
     var teamId=CheckMember();
     if(teamId==false) return; //判断是否是当前两只球队的成员
     $(this).addClass("background-green").removeClass("light-white");
