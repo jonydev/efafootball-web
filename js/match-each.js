@@ -380,7 +380,7 @@ function SetContentNoStarted() {
 function AddStartFirstContent(teamId) {
     $("#home-team").text(match_info.homeTeamName);
     $("#away-team").text(match_info.awayTeamName);
-    var url="http://localhost:8080/efaleague-web/appPath/appData/getScheduleByMember?teamId="+teamId+"&scheduleId="+game_id;
+    var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/getScheduleByMember?teamId="+teamId+"&scheduleId="+game_id;
     $.ajax({
         url:url,
         success:function (data) {
@@ -487,7 +487,7 @@ function CheckMember() {
 }
 
 function showSignUp(teamId) { //展示报名球员
-    var url="http://localhost:8080/efaleague-web/appPath/appData/viewSignUp?matchId="+game_id+"&&teamId="+teamId;
+    var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/viewSignUp?matchId="+game_id+"&&teamId="+teamId;
     $.ajax({
         url:url,
         success:function (data) {
@@ -521,7 +521,7 @@ function showSignUp(teamId) { //展示报名球员
 }
 
 function showLeave(teamId) { //展示请假球员
-    var url="http://localhost:8080/efaleague-web/appPath/appData/viewLeave?matchId="+game_id+"&&teamId="+teamId;
+    var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/viewLeave?matchId="+game_id+"&&teamId="+teamId;
     $.ajax({
         url:url,
         success:function (data) {

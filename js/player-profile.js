@@ -29,7 +29,7 @@ $(".editpassword-btn").click(function () {
     }
     if(confirm("是否确认修改号码？")){
         var loginId=localStorage.getItem("loginId");
-        var url="http://localhost:8080/efaleague-web/appPath/appData/updateMemberNumber?member_id="+player_id+"&number="+number;
+        var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/updateMemberNumber?member_id="+player_id+"&number="+number;
         $.ajax({
             url:url,
             success:function (data) {

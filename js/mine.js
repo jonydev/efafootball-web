@@ -84,7 +84,7 @@ $(".editpassword-btn").click(function () {
 function SetContent(loginId) {
     // var loginId=mine_info["id"];
     //拉数据
-    var url="http://localhost:8080/efaleague-web/appPath/appData/viewMember?loginId="+loginId;
+    var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/viewMember?loginId="+loginId;
     $.ajax(
         {
             url: url,

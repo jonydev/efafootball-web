@@ -323,7 +323,7 @@ function CheckLeader(redirect_url) {
     var have_logined=localStorage.getItem("have_logined");
     if(have_logined==1){
         login_id=localStorage.getItem("loginId");
-        var url="http://localhost:8080/efaleague-web/appPath/appData/checkLeader?teamId="+team_id+"&loginId="+login_id;
+        var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/checkLeader?teamId="+team_id+"&loginId="+login_id;
         $.ajax({
             url:url,
             success:function (data) {

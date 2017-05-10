@@ -100,7 +100,7 @@ function SetMemberNew() { //暂时该球队的所有球员
     });
 }
 function SetCheckbox() { //根据数据库查询当前比赛已经设置的首发球员 来填充选择的首发球员复选框
-    var url="http://localhost:8080/efaleague-web/appPath/appData/viewStarting?matchId="+match_id+"&&teamId="+team_id;
+    var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/viewStarting?matchId="+match_id+"&&teamId="+team_id;
     $.ajax({
         url:url,
         success:function (data) {
