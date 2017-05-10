@@ -48,6 +48,11 @@ $(document).on("click",".edit_password",function () {
     $("#myModal").modal("show");
     $("#myModal").css("top",X);
 });
+$(document).on("click",".goto-team",function () {
+    if($(this).attr("id")=="") return;
+    var team_id=$(this).attr("id");
+    window.location.href="http://120.76.206.174:8080/efafootball-web/team-detail.html?team_id="+team_id;
+})
 $(".close-edit").click(function(){
     $("#password1").val("");
     $("#password2").val("");
@@ -95,7 +100,10 @@ function SetContent(loginId) {
                 var addcontent=$(".edit_profile").empty();
                 var photo="images/default_head.png";
                 var team_name="暂无球队";
-                if(obj.team.id!="") team_name=obj.team.name;
+                var team_id="";
+                if(obj.team!=null){
+                    team_id=obj.team.id;
+                } team_name=obj.team.name;
                 if(obj.photo!="") photo=obj.photo;
                 var team_photo="images/default_head.png";
                 if(obj.team.photo!="") team_photo=obj.team.photo;
@@ -104,7 +112,7 @@ function SetContent(loginId) {
                     '<div class="team-guide">'+
                     '<div class="team-guide-title font15pt">所属球队</div>'+
                     '<ul>'+
-                    '<li class="team-item">'+
+                    '<li class="team-item goto-team" id='+team_id+'>'+
                     '<table width="100%">'+
                     '<tr class="font15pt">'+
                     '<td width="30%"><div class="attr-name own-team-img"><img src='+team_photo+'  alt="" width="100%" height="100%"></div></td>'+

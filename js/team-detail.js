@@ -132,7 +132,7 @@ function AddAllProfile() {
                 '<table width="100%">'+
                 '<tr class="font15pt">'+
                 '<td width="30%"><div class="attr-name">简称  </div></td>'+
-                '<td width="70%"><div class="attr-txt ">---</div></td>'+
+                '<td width="70%"><div class="attr-txt ">'+obj.shortName+'</div></td>'+
                 '</tr>'+
                 '</table>'+
                 '</li>'+
@@ -140,7 +140,7 @@ function AddAllProfile() {
                 '<table width="100%">'+
                 '<tr class="font15pt">'+
                 '<td width="30%"><div class="attr-name">赞助商 </div></td>'+
-                '<td width="70%"><div class="attr-txt ">---</div></td>'+
+                '<td width="70%"><div class="attr-txt ">'+obj.sponsorName+'</div></td>'+
                 '</tr>'+
                 '</table>'+
                 '</li>'+
