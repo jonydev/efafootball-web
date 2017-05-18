@@ -353,7 +353,7 @@ function SetContentNoStarted() {
     $.ajax({
         url:url,
         success:function (data) {
-            console.log(data.rows);
+            console.log(data);
             var single=(data.rows)[0];
             hometeamid=single.homeTeamId;
             awayteamid=single.awayTeamId;
