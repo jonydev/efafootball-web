@@ -361,6 +361,10 @@ function SetContentNoStarted() {
             {
                 $(".team-aimg").attr("src",single.homeTeamPhoto);
             }
+            if(single.awayTeamPhoto!="")
+            {
+                $(".team-bimg").attr("src",single.awayTeamPhoto);
+            }
             $(".team-atxt").text(single.homeTeamName);
             $(".team-btxt").text(single.awayTeamName);
             $(".result-going").text(single.time);
