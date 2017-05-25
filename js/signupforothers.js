@@ -1,5 +1,5 @@
 /**
- * Created by 晴识明月 on 2017/5/9.
+ * Created by 晴识明月 on 2017/5/25.
  */
 var team_id,match_id,g_signup;
 $(document).ready(function () {
@@ -7,8 +7,8 @@ $(document).ready(function () {
     Request=GetRequest();
     team_id=Request["team_id"];
     match_id=Request["match_id"];
-    SetMember();
-    //SetMemberNew();
+    // SetMember();
+    SetMemberNew();
 });
 $(".chooseStartFirst").click(function () {
     var obj = document.getElementsByName("member");
@@ -18,10 +18,10 @@ $(".chooseStartFirst").click(function () {
             memberIds+=(obj[k].value)+";";
     }
     if(memberIds==""){
-        TIP_ERROR("选择的首发球员不能为空");
+        TIP_ERROR("选择的报名球员不能为空");
         return;
     }
-    var url="http://120.76.206.174:8080//efaleague-web/appPath/appData/asignStarting?matchId="+match_id+"&&teamId="+team_id+"&&memberIds="+memberIds;
+    var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/signUpMatchForOther?matchId="+match_id+"&&teamId="+team_id+"&&memberIds="+memberIds;
     $.ajax({
         url:url,
         success:function (data) {
@@ -31,41 +31,8 @@ $(".chooseStartFirst").click(function () {
         }
     });
 })
-function SetMember() { //展示报名球员 根据新版的报名功能
-    var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/viewSignUp?matchId="+match_id+"&&teamId="+team_id;
-    $.ajax({
-        url:url,
-        success:function (data) {
-            if(data.result=="success"){
-                var obj=(data.rows);
-                if(data.rows==null) return;
-                var signup_members=$(".member-ul").empty();
-                var newroll="";
-                for(var i=0;i<obj.length;i++) {
-                    var player = obj[i].member;
-                    g_signup=player;
-                    if(player.flag==0) continue;
-                    var photo="images/default_head.png";
-                    if(player.photo!="") photo=player.photo
-                    newroll +=
-                        '<li class="each-member" id=' + player.id + '>' +
-                        '<a class="number text-black" href="javascript:;">' + player.number + '</a>' +
-                        '<div class="member-info">' +
-                        '<img class="person-img" src=' + photo + '  alt="" width="1005" height="100%">' +
-                        '<a class="name font10pt text-black" href="javascript:;">' + player.name + '</a>' +
-                        '<input  type="checkbox" name="member" value=' + player.id + ' style="width: 15px;height: 15px;float: right;margin-right: 33px;margin-top: 10px;" />' +
-                        '</div>' +
-                        '</li>';
-                }
-                signup_members.append(newroll);
-            }
-            SetCheckbox();
-        }
-    });
-}
-
 function SetMemberNew() { //暂时该球队的所有球员
-    var url="http://120.76.206.174:8080//efaleague-web/appPath/appData/memberList?teamId="+team_id;
+    var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/memberListNotLeave?teamId="+team_id+"&matchId="+match_id;
     $.ajax({
         url:url,
         success:function (data) {
@@ -82,6 +49,7 @@ function SetMemberNew() { //暂时该球队的所有球员
                 for(var i=0;i<obj.length;i++) {
                     var player = obj[i];
                     g_signup=player;
+                    if(player.flag==0) continue;
                     var photo="images/default_head.png";
                     if(player.photo!="") photo=player.photo
                     var newroll=
@@ -100,8 +68,8 @@ function SetMemberNew() { //暂时该球队的所有球员
         }
     });
 }
-function SetCheckbox() { //根据数据库查询当前比赛已经设置的首发球员 来填充选择的首发球员复选框
-    var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/viewStarting?matchId="+match_id+"&&teamId="+team_id;
+function SetCheckbox() { //根据数据库查询当前比赛已经报名的球员 来填充选择的复选框
+    var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/viewSignUp?matchId="+match_id+"&&teamId="+team_id;
     $.ajax({
         url:url,
         success:function (data) {

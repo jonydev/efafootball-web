@@ -92,7 +92,11 @@ $("#away-team-shape").click(function () {
 $(".chooseStartFirst").click(function () {
     var team_id=CheckMember();//检查主队或者客队球员
     if(team_id!=false) window.location.href="http://120.76.206.174:8080/efafootball-web/choose-first.html?match_id="+game_id+"&team_id="+team_id;
-})
+});
+$(".signUpForOthers").click(function () {
+    var team_id=CheckMember();//检查主队或者客队球员
+    if(team_id!=false) window.location.href="http://120.76.206.174:8080/efafootball-web/signupforothers.html?match_id="+game_id+"&team_id="+team_id;
+});
 $(".showhome").click(function () {
     $(this).addClass("background-green").removeClass("light-white");
     $(this).find(".showhome-Txt").addClass("text-white").removeClass("text-green");
@@ -517,8 +521,8 @@ function showSignUp(teamId) { //展示报名球员
                         '<img class="member-info-detail" src="images/goto_player.png" alt="" width="100%" height="100%">' +
                         '</div>' +
                         '</li>';
-                    signup_members.append(newroll);
                 }
+                signup_members.append(newroll);
             }
         }
     })
@@ -551,8 +555,8 @@ function showLeave(teamId) { //展示请假球员
                         '<img class="member-info-detail" src="images/goto_player.png" alt="" width="100%" height="100%">' +
                         '</div>' +
                         '</li>';
-                    leave_members.append(newroll);
                 }
+                leave_members.append(newroll);
             }
         }
     })
