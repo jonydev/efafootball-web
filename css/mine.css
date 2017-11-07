@@ -26,8 +26,13 @@ input::-webkit-input-placeholder{text-align: center;}
 .login-btn{height: 38px;margin: 5px 5px 0 5px;line-height: 38px;text-align: center}
 .sign-btn{height: 38px;margin: 5px 5px 0 5px;line-height: 38px;text-align: center}
 .user-input,.password-input{height: 50px;margin: 5px 5px 0 5px;line-height: 50px;position: relative;font-size: 18px}
-.forget-passeord{margin-right: 20px;float: right}
+.forget-password{margin-right: 20px;float: right}
 .forget-btn{height: 30px;line-height: 30px;margin: 5px 5px 0 5px;}
+.getBackPassword-container{position: absolute;top:20% ;z-index: 4;background-color:darkgray;width: 80%;height: 160px;left: 50%;margin-left: -40% }
+.reset-btn{text-align: center;margin-top: 5px;height: 30px;line-height: 30px;}
+.close-reset{text-align: center;margin-top: 5px;height: 30px;line-height: 30px;}
+.telephone-input {margin-top: 2px;}
+.userName-input{margin-top: 3px;}
 
 /*浮动层*/
 .top-div{width: 80%;height: 60%;z-index: 5;position: absolute;top: 20%;left: 50%;margin-left:-40%;padding-left: 5px;padding-top: 5px;padding-right: 5px;background-color: #4bc74d}
@@ -35,3 +40,11 @@ input::-webkit-input-placeholder{text-align: center;}
 .sex-item{margin-bottom: 5px;background-color: white;height: 35px;line-height: 35px;text-align: center}
 .save-item{margin-bottom: 5px;background-color: white;height: 35px;line-height: 35px;text-align: center;margin-top: 80px;}
 .cancel-item{margin-bottom: 5px;background-color: white;height: 35px;line-height: 35px;text-align: center;}
+
+.editPassword-container{position: absolute;top:20% ;z-index: 4;background-color:darkgray;width: 80%;height: 200px;left: 50%;margin-left: -40% }
+.editpassword-btn{text-align: center;margin-top: 5px;height: 30px;line-height: 30px;}
+.close-edit{text-align: center;margin-top: 5px;height: 30px;line-height: 30px;}
+.password1-input {margin-top: 5px;background-color: #FFFFFF}
+.password2-input{margin-top: 5px;background-color: #FFFFFF}
+
+.modal-margin{margin: 0 5px 0  5px;}

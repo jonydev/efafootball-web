@@ -4,7 +4,6 @@
 
 $(document).ready(function (){
     SetSwiper();
-    // SetContent();
     SetContentOld();
 });
 $(document).on("click",".swiper-slide",function () {
@@ -12,6 +11,12 @@ $(document).on("click",".swiper-slide",function () {
 });
 $(document).on("click",".news_ul li",function () {
     console.log($(this).attr("url"));
+    var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/addViewNum?news_id="+$(this).attr("value");
+    $.ajax(
+        {
+            url: url,
+            success: function (data){}
+        });
     window.location.href=$(this).attr("url");
 });
 $(".join-team").click(function () {
@@ -46,7 +51,7 @@ function SetSwiper() {
                 var singleobj=myobject[i];
                 content+=
                     '<div class="swiper-slide" id="swiper" value='+singleobj.url+'>'+
-                        '<img src='+singleobj.photo+' alt="" width="100%" height="100%">'+
+                        '<img src='+singleobj.photo+"?imageView2/1/w/360/h/174"+' alt="" width="100%" height="100%">'+
                     '</div>';
             }
             swipercontent.append(content);
@@ -63,47 +68,10 @@ function SetSwiper() {
         }
     })
 }
-function SetContent() {
-    //拉数据
-    var url="http://120.76.123.140/index.php?s=/mob/weibo/news";
-    // var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/newsData?id=1";
-    $.ajax(
-        {
-            url: url,
-            success: function (data) {
-                // 解析json
-                var obj = (data);
-                var addcontent=$(".news_ul").empty();
-                for (var i = 0; i < obj.length; i++) {
-                    var single=obj[i];
-                    var newroll =
-                        '<li value='+single.id+'>'+
-                            '<div class="single_new background-white">'+
-                                '<div class="news_img">'+
-                                '<img  class="img-attr" src='+single.pic+' alt="" width="100%" height="100%">'+
-                                '</div>'+
-                                '<div class="news_info">'+
-                                '<div class="news_title text-space">'+single.profile+'</div>'+
-                            '<div class="news_time">'+
-                                '<div class="time_icon">'+
-                                '<img src="images/notice_time.png" alt="">'+
-                                '</div>'+
-                                '<div class="real-time">'+single.date+'</div>'+
-                            '<div class="read_count">阅读 '+single.view_count+'</div>'+
-                            '</div>'+
-                            '</div>'+
-                            '</div>'+
-                        '</li>'
-                    addcontent.append(newroll);
-                }
-            }
-        }
-    )
-}
 function SetContentOld() {
     //拉数据
-    // var url="http://120.76.123.140/index.php?s=/mob/weibo/news";
     var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/newsData?id=1";
+    // var url="http://localhost:8080/efaleague-web/appPath/appData/newsData?id=1";
     $.ajax(
         {
             url: url,
@@ -117,7 +85,7 @@ function SetContentOld() {
                         '<li value='+single.id+' url='+single.url+'>'+
                         '<div class="single_new background-white">'+
                         '<div class="news_img">'+
-                        '<img  class="img-attr" src='+single.photo+' alt="" width="100%" height="100%">'+
+                        '<img  class="img-attr" src='+single.photo+"?imageView2/1/w/200/h/180"+' alt="" width="100%" height="100%">'+
                         '</div>'+
                         '<div class="news_info">'+
                         '<div class="news_title text-space">'+single.title+'</div>'+
@@ -125,8 +93,8 @@ function SetContentOld() {
                         '<div class="time_icon">'+
                         '<img src="images/notice_time.png" alt="">'+
                         '</div>'+
-                        '<div class="real-time">2017.12.24 12:00</div>'+
-                        '<div class="read_count">阅读 '+3000+i+'</div>'+
+                        '<div class="real-time">'+single.date+'</div>'+
+                        '<div class="viewNum"><a class="read_count">阅读 '+single.viewNum+'</a></div>'+
                         '</div>'+
                         '</div>'+
                         '</div>'+

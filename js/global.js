@@ -25,7 +25,14 @@ function GetWeekday(time_str) {
     var week = weekArray[ssdate.getDay()];// 这个就是你想要的结果吧
     return  week; //就是你要的星期几
 }
-
+//弹出消息提示框
+function TIP_ERROR(error_message) {
+    $(".Tip").removeClass("hidden");
+    $(".Tip span").html(error_message);
+    $(".Tip").css("top",$(document).scrollTop()+250);
+    setTimeout('$(".Tip").addClass("hidden")',1500);
+    return;
+}
 //弹出提示框
 function ShowTip(Tip_Info) {
     var layer=document.createElement("div");
@@ -43,4 +50,21 @@ function ShowTip(Tip_Info) {
         //setTimeout("document.body.removeChild(layer)",2000)
     }
 
+}
+
+//颜色值从rgb转换成16进制
+function zero_fill_hex(num, digits) {
+    var s = num.toString(16);
+    while (s.length < digits)
+        s = "0" + s;
+    return s;
+}
+function rgb2hex(rgb) {
+
+    if (rgb.charAt(0) == '#')
+        return rgb;
+
+    var ds = rgb.split(/\D+/);
+    var decimal = Number(ds[1]) * 65536 + Number(ds[2]) * 256 + Number(ds[3]);
+    return zero_fill_hex(decimal, 6);
 }

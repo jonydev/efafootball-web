@@ -2,14 +2,17 @@
  * Created by cnm on 2016/11/12.
  */
 var match_id;
-var g_team;
-var all_states=["未开始","上半场","下半场","已结束"];
+var g_team,office_type,office_group,current_group=0,g_points;
+var all_states=["未开始","已结束","上半场","下半场"];
+var group_name=["A组","B组","C组","D组","E组","F组","G组","H组","I组","J组"];
 var rounds=["零","一","二","三","四","五","六","七","八","九","十","十一","十二","十三","十四","十五","十六","十七","十八","十九","二十",
     "二十一","二十二","二十三","二十四","二十五","二十六","二十七","二十八","二十九","三十","三十一","三十二","三十三","三十四","三十五","三十六","三十七","三十八","三十九","四十"];
 $(document).ready(function () {
     var Request=new Object();
     Request=GetRequest();
     match_id=Request["match_id"];
+    office_type=Request["office_type"];
+    office_group=Request["office_group"];
     $(".introduce a").addClass("text-green").removeClass("text-grey");
     $(".introduce").find(".triangle-container").addClass("shift-triangle");
     var current_click=eval(localStorage.getItem("current_click"));
@@ -33,7 +36,7 @@ $(document).ready(function () {
             click_introduce();
     }
 });
-$(document).on("click",".spreed",function () {
+$(document).on("click",".round-num",function () {
     $(this).closest("li").find(".match-date").toggleClass("hidden");
     $(this).closest("li").find("ul").toggleClass("hidden");
     if($(this).closest("li").find("ul").hasClass("hidden")){
@@ -61,6 +64,12 @@ $(document).on("click",".team-ul li",function () {
     var team_id=$(this).attr("id");
     window.location.href="http://120.76.206.174:8080/efafootball-web/team-detail.html?team_id="+team_id;
 });
+$(document).on("click",".group_ul li",function () {
+    current_group=$(this).index();
+    $(".group_ul").find(".background-green").removeClass("background-green").addClass("text-grey");
+    $(this).addClass("background-green").removeClass("text-grey");
+    showPoinits(g_points);
+})
 $(".introduce a").click(function () {
     localStorage.setItem("current_click",0);
     click_introduce();
@@ -149,7 +158,7 @@ function AddIntroduceContent() {
             var newroll=
             '<div class="all-profile ">'+
                 '<div class="profile-img">'+
-                '<img src='+obj.photo+'  alt="" width="100%" height="100%">'+
+                '<img src='+obj.details+'  alt="" width="100%" height="100%">'+
                 '</div>'+
                 '<div class="match-profile-container">'+
                 '<div class="match-profile font15pt">赛事简介</div>'+
@@ -214,7 +223,7 @@ function AddTeamContent() {
                 var single=obj[i];
                 var photo="images/default_team.png";
                 if(single.photo!=""){
-                    photo=single.photo;
+                    photo=single.photo+"?imageView2/1/w/100/h/100";
                 }
                 var newroll=
                     '<li class="single-team background-white" id='+single.id+'>'+
@@ -244,59 +253,71 @@ function AddMatchContent() {
         success:function (data) {
             var allcontents=$(".all-schedule ul").empty();
             var obj=eval(data);
-            console.log((obj));
             for(var key in obj){
                 var each_round=obj[key];
                 var newroll=
                     '<li value="">'+
                         '<div class="round">'+
                         '<p class="round-num">第'+rounds[key]+'轮</p>'+
-                        '<img class="spreed" src="images/respreed.png" alt="" width="100%" height="100%">'+
+                        '<img class="spreed"  src="images/respreed.png" alt="" width="100%" height="100%" >'+
                         '</div>'+
                         '<div class="match-date">'+
                         '<p class="font14pt">'+each_round[0].datetime+'     '+GetWeekday(each_round[0].datetime)+'</p>'+
                         '</div>'+
                         '<div>'+
                         '<ul class="all-matchs">';
-                        for(var j=0;j<each_round.length;j++){
-                            var single=each_round[j];
-                            var homephoto="images/default_team.png";
-                            if(single.homeTeamPhoto!="") homephoto=single.homeTeamPhoto;
-                            var awayphoto="images/default_team.png";
-                            if(single.awayTeamPhoto!="") awayphoto=single.awayTeamPhoto;
-                            var state,score;
-                            state=all_states[single.flag];
-                            if(single.flag!=0)
-                            {
-                                score=single.homescore+':'+single.awayscore;
-                            }
-                            else if(single.flag==0) {
-                                score=single.time.substr(0,5); //未开始的显示开始时间
-                            }
-                            var child=
-                                '<li value='+single.id+' >'+
-                                '<div class="team-results">'+
-                                '<div class="team-a">'+
-                                '<a class="team-atxt text-black" href="javascript:;">'+single.homeTeamName+'</a>'+
-                                '<img class="team-aimg" src='+homephoto+'  alt="" width="100%" height="100%" >'+
-                                '</div>'+
-                                '<div class="result">'+
-                                '<div class="result-a background-grey93">'+score+'</div>'+
-                                '<div class="result-b flag" value='+single.flag+'>'+state+'</div>'+
-                                '</div>'+
-                                '<div class="team-b">'+
-                                '<img class="team-bimg" src='+awayphoto+' alt="" width="100%" height="100%">'+
-                                '<a class="team-btxt text-black" href="javascript:;">'+single.awayTeamName+'</a>'+
-                                '</div>'+
-                                '</div>'+
-                                '</li>';
-                            newroll+=child;
-                        }
+                var pre_datetime=each_round[0].datetime;//由于某一轮次的比赛可能会遇到延期举行的 所以同一轮次的时间就会显示不同
+                for(var j=0;j<each_round.length;j++){
+                    if(pre_datetime!=each_round[j].datetime){  //当同一轮的比赛日期跟前面的不一样的时候 ，添加一栏新的日期和星期
                         newroll+=
-                        '</ul>'+
+                            '</ul>'+
+                            '</div>'+
+                            '<div class="match-date">'+
+                            '<p class="font14pt">'+each_round[j].datetime+'     '+GetWeekday(each_round[j].datetime)+'</p>'+
+                            '</div>'+
+                            '<div>'+
+                            '<ul class="all-matchs">';
+                    }
+                    var single=each_round[j];
+                    var homephoto="images/default_team.png";
+                    if(single.homeTeamPhoto!="") homephoto=single.homeTeamPhoto+"?imageView2/1/w/60/h/60";
+                    var awayphoto="images/default_team.png";
+                    if(single.awayTeamPhoto!="") awayphoto=single.awayTeamPhoto+"?imageView2/1/w/60/h/60";
+                    var state,score;
+                    state=all_states[single.flag];
+                    if(single.flag!=0)
+                    {
+                        score=single.homescore+':'+single.awayscore;
+                    }
+                    else if(single.flag==0) {
+                        //score=single.time.substr(0,5); //未开始的显示开始时间
+                        score=single.time.split("-")[0]; //未开始的显示开始时间
+                    }
+                    var child=
+                        '<li value='+single.id+' >'+
+                        '<div class="team-results">'+
+                        '<div class="team-a">'+
+                        '<a class="team-atxt text-black" href="javascript:;">'+single.homeTeamName+'</a>'+
+                        '<img class="team-aimg" src='+homephoto+'  alt="" width="100%" height="100%" >'+
                         '</div>'+
-                    '</li>';
-                allcontents.append(newroll);
+                        '<div class="result">'+
+                        '<div class="result-a background-grey93">'+score+'</div>'+
+                        '<div class="result-b flag" value='+single.flag+'>'+state+'</div>'+
+                        '</div>'+
+                        '<div class="team-b">'+
+                        '<img class="team-bimg" src='+awayphoto+' alt="" width="100%" height="100%">'+
+                        '<a class="team-btxt text-black" href="javascript:;">'+single.awayTeamName+'</a>'+
+                        '</div>'+
+                        '</div>'+
+                        '</li>';
+                    newroll+=child;
+                    pre_datetime=each_round[j].datetime;
+                    }
+                    newroll+=
+                    '</ul>'+
+                    '</div>'+
+                '</li>';
+            allcontents.append(newroll);
             }
         }
     });
@@ -309,6 +330,25 @@ function AddPointsContent(){
     $(".all-profile").addClass("hidden");
     $(".all-team").addClass("hidden");
     var allcontents=$("table").empty();
+    if(office_type==1){
+        $(".group-container").removeClass("hidden");
+        var group_title=$(".group_ul").empty();
+        var new_group="";
+        for(var i=0;i<office_group;i++){
+            if(i==0){
+                new_group+=
+                    '<li class="background-green">'+
+                    '<a class="text-black "  href="javascript:;">'+group_name[i]+'</a>'+
+                    '</li>';
+            }else{
+                new_group+=
+                    '<li class="text-grey">'+
+                    '<a class="text-black "  href="javascript:;">'+group_name[i]+'</a>'+
+                    '</li>';
+            }
+        }
+        group_title.append(new_group);
+    }
     var tablehead=
         '<tr class="table-head">'+
         '<th style="width: 10%;text-align: center">排名</th>'+
@@ -332,36 +372,9 @@ function AddPointsContent(){
         dataType:"json",
         success:function (data) {
             console.log(data);
-            var obj=eval(data.rows)
-            for(var i=0;i<obj.length;i++){
-                var single=obj[i];
-                var total=eval(single.won)+eval(single.even)+eval(single.beaten);
-                var realball=eval(single.goal)-eval(single.lost);
-                var rank=i+1;
-                var newroll="";
-                if(i==5){
-                 newroll=
-                     // '<tr class="single-tr Sperate-line">'+
-                     '<tr class="single-tr " style="color:#D0D5D6 ">'+
-                         // '<td ><div class="up-grade"></div>'+
-                     '<td >'+
-                         '<a style="text-align:center; color: black;padding: 6px 0;" href="">'+rank+'</a>'+
-                         '</td ><td  style="font-weight: 700;overflow:hidden ;color: black">'+single.team.name+'</td><td>'+total+'</td><td>'+single.won+'</td>'+
-                         '<td>'+single.even+'</td><td>'+single.beaten+'</td><td>'+single.goal+'</td><td>'+single.lost+'</td><td>'+realball+'</td><td style="font-weight: 800;color: black">'+single.point+'</td><td>'+single.red+'</td><td>'+single.yellow+'</td>'+
-                     '</tr>';
-                }
-                else{
-                    newroll=
-                        '<tr class="single-tr "style="color:#D0D5D6 ">'+
-                        // '<td ><div class="up-grade"></div>'+
-                        '<td >'+
-                        '<a style="text-align:center; color: black;padding: 6px 0;" href="">'+rank+'</a>'+
-                        '</td ><td  style="font-weight: 700;overflow: hidden;color: black">'+single.team.name+'</td><td>'+total+'</td><td>'+single.won+'</td>'+
-                        '<td>'+single.even+'</td><td>'+single.beaten+'</td><td>'+single.goal+'</td><td>'+single.lost+'</td><td>'+realball+'</td><td style="font-weight: 800 ;color: black">'+single.point+'</td><td>'+single.red+'</td><td>'+single.yellow+'</td>'+
-                        '</tr>';
-                }
-                allcontents.append(newroll);
-                }
+            var obj=eval(data.rows);
+            g_points=obj;
+            showPoinits(obj); //显示积分榜
         }
     });
 }
@@ -407,13 +420,13 @@ function AddBillboardContent() {
                             '</div>'+
                             '</td>'+
                             '<td>'+single.num+'</td>'+
-                            '<td>'+single.number+'</td>'+
+                            '<td>'+0+'</td>'+
                         '</tr>';
                 }
                 else{
                     var newroll=
                         '<tr class="single-tr font14pt">'+
-                            '<td>'+rank+'</td><td>'+single.name+'</td><td class="text-grey">'+single.teamName+'</td><td>'+single.num+'</td><td>'+single.number+'</td>'+
+                            '<td>'+rank+'</td><td>'+single.name+'</td><td class="text-grey">'+single.teamName+'</td><td>'+single.num+'</td><td>'+0+'</td>'+
                         '</tr>';
                 }
                 allcontents.append(newroll);
@@ -481,4 +494,37 @@ function SpreedMatch() {
 }
 function hidden_icon() {
     $(".search-top").addClass("hidden");
+}
+function showPoinits(obj) {
+    var allcontents=$("table");
+    for(var i=0;i<obj.length;i++){
+        var single=obj[i];
+        var total=eval(single.won)+eval(single.even)+eval(single.beaten);
+        var realball=eval(single.goal)-eval(single.lost);
+        var rank=i+1;
+        var newroll="";
+        if(office_type==1 && single.team.groupId!==current_group) continue; //当前赛事为杯赛的时候 如果该队伍的分组不是选定的分组 则不展示出来
+        if(i==5){
+            newroll=
+                // '<tr class="single-tr Sperate-line">'+
+                '<tr class="single-tr " style="color:#D0D5D6 ">'+
+                // '<td ><div class="up-grade"></div>'+
+                '<td >'+
+                '<a style="text-align:center; color: black;padding: 6px 0;" href="">'+rank+'</a>'+
+                '</td ><td  style="font-weight: 700;overflow:hidden ;color: black">'+single.team.name+'</td><td>'+total+'</td><td>'+single.won+'</td>'+
+                '<td>'+single.even+'</td><td>'+single.beaten+'</td><td>'+single.goal+'</td><td>'+single.lost+'</td><td>'+realball+'</td><td style="font-weight: 800;color: black">'+single.point+'</td><td>'+single.red+'</td><td>'+single.yellow+'</td>'+
+                '</tr>';
+        }
+        else{
+            newroll=
+                '<tr class="single-tr "style="color:#D0D5D6 ">'+
+                // '<td ><div class="up-grade"></div>'+
+                '<td >'+
+                '<a style="text-align:center; color: black;padding: 6px 0;" href="">'+rank+'</a>'+
+                '</td ><td  style="font-weight: 700;overflow: hidden;color: black">'+single.team.name+'</td><td>'+total+'</td><td>'+single.won+'</td>'+
+                '<td>'+single.even+'</td><td>'+single.beaten+'</td><td>'+single.goal+'</td><td>'+single.lost+'</td><td>'+realball+'</td><td style="font-weight: 800 ;color: black">'+single.point+'</td><td>'+single.red+'</td><td>'+single.yellow+'</td>'+
+                '</tr>';
+        }
+        allcontents.append(newroll);
+    }
 }

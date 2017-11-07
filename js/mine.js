@@ -2,6 +2,12 @@
  * Created by 晴识明月 on 2016/12/20.
  */
 $(document).ready(function (){
+    //为了兼容苹果设备由新建帖子返回该页面之后不能刷新特 因此专门在这个地方强制刷新一次
+    var reaload_mine=localStorage.getItem("reload_mine");
+    if(reaload_mine=="true"){
+        location.reload();
+        localStorage.setItem("reload_mine","false"); //清空false
+    }
     $('#search').bind('input propertychange', function() {searchTeambyName();});
     //根据localStorage缓存看是否登录
     var have_logined=localStorage.getItem("have_logined");
@@ -13,7 +19,6 @@ $(document).ready(function (){
     }else{
         window.location.href="http://120.76.206.174:8080/efafootball-web/mine-login.html";
     }
-
 });
 $(".login").click(function () {
     $(this).addClass("background-green ").removeClass("light-white");
@@ -38,6 +43,51 @@ $(document).on("click",".logout",function () {
 $(document).on("click",".edit_info",function () {
     window.location.href="http://120.76.206.174:8080/efafootball-web/mine-edit.html";
 });
+$(document).on("click",".edit_password",function () {
+    var X=100;
+    $("#myModal").modal("show");
+    $("#myModal").css("top",X);
+});
+$(document).on("click",".goto-team",function () {
+    if($(this).attr("id")==""){
+        window.location.href="http://120.76.206.174:8080/efafootball-web/team.html?";
+    }else{
+        var team_id=$(this).attr("id");
+        window.location.href="http://120.76.206.174:8080/efafootball-web/team-detail.html?team_id="+team_id;
+    }
+})
+$(".close-edit").click(function(){
+    $("#password1").val("");
+    $("#password2").val("");
+    $("#myModal").modal("hide");
+});
+$(".editpassword-btn").click(function () {
+    var password1=$("#password1").val();
+    var password2=$("#password2").val();
+    if(password1==""){
+        TIP_ERROR("密码不能为空!");
+        return;
+    }
+    if(password1!=password2){
+        TIP_ERROR("两次输入的密码不一样!");
+        return;
+    }
+    if(confirm("是否确认修改密码？")){
+        var loginId=localStorage.getItem("loginId");
+        var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/editPassword?password="+password1+"&loginId="+loginId;
+        $.ajax({
+            url:url,
+            success:function (data) {
+                TIP_ERROR(data.message);
+                if(data.result=="success"){
+                    $("#password1").val("");
+                    $("#password2").val("");
+                    $("#myModal").modal("hide");
+                }
+            }
+        })
+    }
+})
 //向后台请求数据刷新缓存信息
 function SetContent(loginId) {
     // var loginId=mine_info["id"];
@@ -49,22 +99,27 @@ function SetContent(loginId) {
             success: function (data) {
                 // 解析json
                 var obj = eval(data.rows[0]);
-                console.log(obj);
                 localStorage.setItem("mine_info",JSON.stringify(data.rows[0]));
                 var addcontent=$(".edit_profile").empty();
                 var photo="images/default_head.png";
                 var team_name="暂无球队";
-                if(obj.team.id!="") team_name=obj.team.name;
+                var team_id="";
+                if(obj.team!=null){
+                    team_id=obj.team.id;
+                    team_name=obj.team.name;
+                }
                 if(obj.photo!="") photo=obj.photo;
+                var team_photo="images/default_head.png";
+                if(obj.team.photo!="") team_photo=obj.team.photo;
                 var newroll =
                 '<div class="player-img"> <img src='+photo+' alt="" class="player-head" width="100%" height="100%"> </div>'+
                     '<div class="team-guide">'+
                     '<div class="team-guide-title font15pt">所属球队</div>'+
                     '<ul>'+
-                    '<li class="team-item">'+
+                    '<li class="team-item goto-team" id='+team_id+'>'+
                     '<table width="100%">'+
                     '<tr class="font15pt">'+
-                    '<td width="30%"><div class="attr-name own-team-img"><img src="images/default_team.png"  alt="" width="100%" height="100%"></div></td>'+
+                    '<td width="30%"><div class="attr-name own-team-img"><img src='+team_photo+'  alt="" width="100%" height="100%"></div></td>'+
                     '<td width="70%"><div class="attr-txt ">'+team_name+'</div></td>'+
                     '</tr>'+
                     '</table>'+
@@ -87,6 +142,14 @@ function SetContent(loginId) {
                     '<tr class="font15pt">'+
                     '<td width="30%"><div class="attr-name">身份证</div></td>'+
                     '<td width="70%"><div class="attr-txt ">'+obj.cards+'</div></td>'+
+                    '</tr>'+
+                    '</table>'+
+                    '</li>'+
+                    '<li class="each-item">'+
+                    '<table width="100%">'+
+                    '<tr class="font15pt">'+
+                    '<td width="30%"><div class="attr-name">保单号</div></td>'+
+                    '<td width="70%"><div class="attr-txt ">'+obj.policyno+'</div></td>'+
                     '</tr>'+
                     '</table>'+
                     '</li>'+
@@ -160,7 +223,14 @@ function SetContent(loginId) {
                 '<li class="each-item edit_info">'+
                 '<table width="100%">'+
                 '<tr class="font15pt">'+
-                '<td width="100%"><div class="" style="text-align: center">修改信息</div></td>'+
+                '<td width="100%"><div class="" style="text-align: center;cursor:pointer">修改信息</div></td>'+
+                '</tr>'+
+                '</table>'+
+                '</li>'+
+                '<li class="each-item edit_password">'+
+                '<table width="100%">'+
+                '<tr class="font15pt">'+
+                '<td width="100%"><div class="" style="text-align: center;cursor:pointer">修改密码</div></td>'+
                 '</tr>'+
                 '</table>'+
                 '</li>'+
@@ -204,7 +274,7 @@ function SetContent(loginId) {
                 '<li class="each-item logout">'+
                     '<table width="100%">'+
                     '<tr class="font15pt">'+
-                    '<td width="100%"><div class="" style="text-align: center">退出登录</div></td>'+
+                    '<td width="100%"><div class="" style="text-align: center;cursor:pointer">退出登录</div></td>'+
                     '</tr>'+
                     '</table>'+
                 '</li>'+

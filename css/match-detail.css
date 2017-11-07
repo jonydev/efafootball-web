@@ -1,5 +1,6 @@
  ul{margin: 0;padding: 0;list-style: none;}
 .title-container{position: relative;margin-top: 5px;margin-left: 5px;margin-right: 5px;height: 35px;}
+.group-container{position: relative;margin-bottom:5px;height: 35px;overflow: auto;}
 .introduce{width: 20%;float: left;text-align: center;height: 35px;line-height:35px;position: relative}
 .team{width: 20%;float: left;text-align: center;height: 35px;line-height:35px;position: relative}
 .schedule{width: 20%;float: left;text-align: center;height: 35px;line-height:35px;position: relative}
@@ -83,3 +84,5 @@
  .search-top{position: absolute;z-index: 999999;margin-left: 45%;margin-top: 17px;}
  .search-icon{width: 20px;height: 20px;}
  .search-text{color: #cacccb;font-size: 15px}
+ .group_ul{white-space:nowrap}
+ .group_ul li{width: 80px;text-align: center;height: 35px;line-height:35px;position: relative;display: inline-block}

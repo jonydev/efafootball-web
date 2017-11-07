@@ -2,7 +2,7 @@
  * Created by 晴识明月 on 2016/12/26.
  */
 var team_id,token,upper,lower;
-var current_choose,officeid; //标记当前所设置的属性，0 表示设置性别 1表示设置位置
+var current_choose,officeid,xval; //标记当前所设置的属性，0 表示设置性别 1表示设置位置
 $(document).ready(function (){
     var Request=new Object();
     Request=GetRequest();
@@ -44,6 +44,14 @@ $(document).ready(function (){
                             });
                         },
                         'BeforeUpload': function(up, file) {
+                            $.ajax({
+                                beforeSend:function(){
+                                    xval=getBusyOverlay('viewport',{color:'gray', opacity:0.75, text:'viewport: loading...', style:'text-shadow: 0 0 3px black;font-size:12px;color:white'},{color:"#ffffff", size:80, type:'o'});
+                                    if(xval) {
+                                        xval.settext("正在上传图片，请稍后。。。");
+                                    }
+                                }
+                            });
                             // 每个文件上传前,处理相关的事情
                         },
                         'UploadProgress': function(up, file) {
@@ -57,7 +65,7 @@ $(document).ready(function (){
                             //    "key": "gogopher.jpg"
                             //  }
                             // 参考http://developer.qiniu.com/docs/v6/api/overview/up/response/simple-response.html
-
+                            xval.remove(); //删除进度框
                             var domain = up.getOption('domain');
                             var res = JSON.parse(info);
                             var sourceLink = domain + res.key;   //获取上传成功后的文件的Url
@@ -72,7 +80,7 @@ $(document).ready(function (){
                         'Key': function(up, file) {
                             // 若想在前端对每个文件的key进行个性化处理，可以配置该函数
                             // 该配置必须要在 unique_names: false , save_key: false 时才生效
-                            var key = file.id+".jpg";
+                            var key =file.id+".jpg";
                             return key;
                             // do something with key here
                         }
@@ -92,10 +100,12 @@ $(".save-edit").click(function () {
     var content=$(".team-introduce").val();
     var photo=$("#team-img").attr("src");
     if(photo=="images/default_team.png") photo="";
-    var home=$("#home").val();
+    var home=$("#City").html();
+    var shortName=$("#short_name").val();
+    var sponsorName=$("#sponsor_name").val();
     var captain=$("#captain").val();
     if(confirm("是否保存修改？")==true){
-        var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/updateTeam?id="+team_id+"&name="+name+"&photo="+photo+"&content="+content+"&home="+home+"&upper="+upper+"&lower="+lower+"&captain="+captain;
+        var url="http://120.76.206.174:8080/efaleague-web/appPath/appData/updateTeam?id="+team_id+"&name="+name+"&photo="+photo+"&content="+content+"&home="+home+"&upper="+upper+"&lower="+lower+"&captain="+captain+"&shortName="+shortName+"&sponsorName="+sponsorName;
         $.ajax({
             url:url,
             success:function (data) {
@@ -104,8 +114,10 @@ $(".save-edit").click(function () {
                 $(".Tip").removeClass("hidden");
                 setTimeout('$(".Tip").addClass("hidden")',1500);
                 if(result=="success"){
-                    window.history.go(-1);
-                    window.location.reload();
+                    if (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)) {
+                        webkit.messageHandlers.callbackHandler.postMessage({functionToRun: "loadView"});
+                    }
+                    window.history.go(-1);//返回上一条
                 }
             }
         })
@@ -122,6 +134,9 @@ $(document).on("click",".home-color",function () {
     choose_color();
     current_choose=0;
 });
+$(document).on("click","#viewport",function () {
+    xval.remove(); //点击屏幕 进度条消失
+})
 $(document).on("click",".rehome-color",function () {
     choose_color();
     current_choose=1;
@@ -143,11 +158,11 @@ $(".save-item").click(function () {
     if(current_choose==0){
         $(".home-color").css({"backgroundColor":getcolor});
         $(".choose-color").addClass("hidden");
-        upper=getcolor;
+        upper=rgb2hex(getcolor);
     }else if(current_choose==1){
         $(".rehome-color").css({"backgroundColor":getcolor});
         $(".choose-color").addClass("hidden");
-        lower=getcolor;
+        lower=rgb2hex(getcolor);
     }
 });
 $(".cancel-item").click(function () {
@@ -179,105 +194,24 @@ function AddAllProfile() {
         url:url,
         dataType:"json",
         success:function (data) {
-            var allcontents=$(".all-profile").empty();
             console.log(data.rows[0]);
             var obj=eval(data.rows[0]);
             if(obj.office!=undefined) officeid=obj.office.id;
-            var team_img="images/default_team.png";
             if(obj.photo!=""){
-                team_img=obj.photo;
+                $("#team-img").attr("src",obj.photo);
             }
-            var newroll=
-                '<div class="team-guide">'+
-                '<div class="guide-title font15pt">球队概况</div>'+
-                '<ul>'+
-                '<li class="each-item">'+
-                '<table width="100%">'+
-                '<tr class="font15pt">'+
-                '<td width="30%"><div class="attr-name">球队名称</div></td>'+
-                '<td width="70%"><div class="attr-txt "><input type="text" style="height: 30px;line-height: 30px;border: none;width: 100%;" placeholder="未填写" id="team_name" value='+obj.name+' ></div></td>'+
-                '</tr>'+
-                '</table>'+
-                '</li>'+
-                '<li class="each-item">'+
-                '<table width="100%">'+
-                '<tr class="font15pt">'+
-                '<td width="30%"><div class="attr-name">简称  </div></td>'+
-                '<td width="70%"><div class="attr-txt "><input type="text" style="height: 30px;line-height: 30px;border: none;width: 100%;" placeholder="未填写" id="short_name" value=""></div></td>'+
-                '</tr>'+
-                '</table>'+
-                '</li>'+
-                '<li class="each-item">'+
-                '<table width="100%">'+
-                '<tr class="font15pt">'+
-                '<td width="30%"><div class="attr-name">队长 </div></td>'+
-                '<td width="70%"><div class="attr-txt "><input type="text" style="height: 30px;line-height: 30px;border: none;width: 100%;" placeholder="未填写" id="captain" value='+obj.captain+'></div></td>'+
-                '</tr>'+
-                '</table>'+
-                '</li>'+
-                '<li class="each-item ">'+
-                '<table width="100%">'+
-                '<tr class="font15pt">'+
-                '<td width="30%"><div class="attr-name">赞助商 </div></td>'+
-                '<td width="70%"><div class="attr-txt "><input type="text" style="height: 30px;line-height: 30px;border: none;width: 100%;" placeholder="未填写" id="sponsor-name" value=""></div></td>'+
-                '</tr>'+
-                '</table>'+
-                '</li>'+
-                '<li class="each-item">'+
-                '<table width="100%">'+
-                '<tr class="font15pt">'+
-                '<td width="30%"><div class="cloth-name">秋衣色彩</div></td>'+
-                '<td width="70%"><div class="cloth-txt "> <span class="home">秋衣</span> <div class="home-color" style="width: 23px;height: 23px;background-color: red;-moz-border-radius: 11px;-webkit-border-radius: 11px;border-radius: 11px;" id="upper"></div> </div>'+
-                '<span class="rehome">球裤</span> <div class="rehome-color" style="width: 23px;height: 23px;background-color: black;-moz-border-radius: 11px;-webkit-border-radius: 11px;border-radius: 11px;" id="lower"></td>'+
-                '</tr>'+
-                '</table>'+
-                '</li>'+
-                '<li class="each-item">'+
-                '<table width="100%">'+
-                '<tr class="font15pt">'+
-                '<td width="30%"><div class="attr-name">球员数量</div></td>'+
-                '<td width="70%"><div class="attr-txt ">'+obj.num+'</div></td>'+
-                '</tr>'+
-                '</table>'+
-                '</li>'+
-                '<li class="each-item">'+
-                '<table width="100%">'+
-                '<tr class="font15pt">'+
-                '<td width="30%">'+
-                    '<ul id="list1">'+
-                    '<li id="summary-stock">'+
-                    '<div class="dt attr-name">城市</div>'+
-                    '<div class="dd">'+
-                    '<div id="store-selector">'+
-                    '<div class="text"><div></div><b></b></div>'+
-                    '<div onclick="'+
-                '$("#store-selector").removeClass("hover")'+
-                'class="close"></div>'+
-                    '</div><!--store-selector end-->'+
-                    '<div id="store-prompt"><strong></strong></div>'+
-                    '</div>'+
-                    '</li>'+
-                    '</ul>'+
-                '</td>'+
-                '<td width="70%"><div class="attr-txt " id="City" cityid="" provinceid=""></div></td> '+
-                 '</tr>'+
-                '</table>'+
-                '</li>'+
-                '</ul>'+
-                '</div>'+
-                '<div class="team-profile">'+
-                '<div class="team-profile-title font15pt">球队简介</div>'+
-                '<div class="team-profile-img hidden">'+
-                '<img src="images/swiper2.jpg" alt="" width="100%" height="100%">'+
-                '</div>'+
-                '<div style="background-color: white"><textarea class="team-introduce font15pt">'+obj.content+'</textarea></div>'+
-                '</div>';
-            allcontents.append(newroll);
+            $("#team_name").val(obj.name);
+            $("#short_name").val(obj.shortName)
+            $("#captain").val(obj.captain);
+            $("#sponsor_name").val(obj.sponsorName);
             $(".home-color").css("backgroundColor",obj.upper);
             $(".rehome-color").css("backgroundColor",obj.lower);
             $("#city").text(obj.city);
-            upper=obj.upper;
-            lower=obj.lower;
+            upper=rgb2hex($(".home-color").css("backgroundColor"))+"";
+            lower=rgb2hex($(".rehome-color").css("backgroundColor"))+"";
+            $(".player_number").html(obj.num);
+            $("#City").html(obj.home);
+            $(".team-introduce").html(obj.content);
         }
     });
 }

@@ -1,0 +1,19 @@
+ul{margin: 0;padding: 0;list-style: none;}
+input::-webkit-input-placeholder{text-align: center;}
+.player-img{position: relative;height: 203px;padding-bottom: 33px;padding-top: 33px; background-color: #f2f5f6;margin: 5px 5px 0px 5px;text-align: center;}
+.player-head{width: 145px;height: 145px; border-radius:145px; }
+.team-guide,.person-guide{margin: 5px 5px 0px 5px; }
+.team-guide-title,.person-title{height: 25px;line-height: 25px;background-color: #12283D;text-align: center;color: white}
+.each-item{margin-bottom: 5px;background-color: white;height: 45px;line-height: 45px;}
+.attr-name{margin-left: 14px;}
+.attr-txt{margin-left:10px;}
+.own-team-img{width: 57px;height: 57px;text-align: center;margin-bottom: 20px;}
+.own-match-img{width: 57px;height: 57px;text-align: center;margin-bottom: 20px;}
+.team-item{margin-bottom: 5px;background-color: white;height: 77px;line-height: 77px;}
+.goto-img{width:20px;height: 20px;text-align: center;margin-right: 20px;float: right;margin-top: 12px; }
+.modal-margin{margin: 0 5px 0  5px;}
+.editPassword-container{position: absolute;top:20% ;z-index: 4;background-color:darkgray;width: 80%;height: 200px;left: 50%;margin-left: -40% }
+.editpassword-btn{text-align: center;margin-top: 5px;height: 30px;line-height: 30px;}
+.close-edit{text-align: center;margin-top: 5px;height: 30px;line-height: 30px;}
+.password1-input {margin-top: 5px;background-color: #FFFFFF}
+.password2-input{margin-top: 5px;background-color: #FFFFFF}

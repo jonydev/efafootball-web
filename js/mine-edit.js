@@ -2,8 +2,9 @@
  * Created by 晴识明月 on 2017/1/5.
  */
 var current_choose; //标记当前所设置的属性，0 表示设置性别 1表示设置位置
-var token,loginId,id;
+var token,loginId,id,xval;
 $(document).ready(function (){
+    localStorage.setItem("reload_mine","true"); //使得返回显示所有帖子的页面的时候能够reload
     //根据localStorage缓存看是否登录
     var have_logined=localStorage.getItem("have_logined");
     if(have_logined==1){
@@ -49,6 +50,14 @@ $(document).ready(function (){
                             });
                         },
                         'BeforeUpload': function(up, file) {
+                            $.ajax({
+                                beforeSend:function(){
+                                    xval=getBusyOverlay('viewport',{color:'gray', opacity:0.75, text:'viewport: loading...', style:'text-shadow: 0 0 3px black;font-size:12px;color:white'},{color:"#ffffff", size:80, type:'o'});
+                                    if(xval) {
+                                        xval.settext("正在上传图片，请稍后。。。");
+                                    }
+                                }
+                            });
                             // 每个文件上传前,处理相关的事情
                         },
                         'UploadProgress': function(up, file) {
@@ -62,7 +71,7 @@ $(document).ready(function (){
                             //    "key": "gogopher.jpg"
                             //  }
                             // 参考http://developer.qiniu.com/docs/v6/api/overview/up/response/simple-response.html
-
+                            xval.remove(); //点击屏幕 进度条消失
                             var domain = up.getOption('domain');
                             var res = JSON.parse(info);
                             var sourceLink = domain + res.key;   //获取上传成功后的文件的Url
@@ -123,6 +132,9 @@ $(".cancel-item").click(function () {
     $(".position-ul").addClass("hidden");
     current_choose=-1;
 });
+$(document).on("click","#viewport",function () {
+    xval.remove(); //点击屏幕 进度条消失
+})
 $(".save-edit").click(function () {
     var name=$("#Name").val(); //球员名称
     var number=$("#cloth_number").val(); // 球衣号码
@@ -142,6 +154,7 @@ $(".save-edit").click(function () {
         return;
     }
     var photo=$("#profile-img").attr("src"); //照片 上传七牛服务器返回图片名称传达给服务器
+    photo=photo.replace("http://obxgaesml.bkt.clouddn.com/","");
     var telephone=$("#phone").val();//电话号码
     if(isNaN(telephone)&&telephone!=""){
         TIP_ERROR("电话号码格式不对");
@@ -170,8 +183,10 @@ $(".save-edit").click(function () {
             success:function (data) {
                 TIP_ERROR(data.message);
                 if(data.result=="success"){
-                    window.history.back();
-                    window.location.reload();
+                    if (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)) {
+                        webkit.messageHandlers.callbackHandler.postMessage({functionToRun: "loadView"});
+                    }
+                    window.history.go(-1);//返回上一条
                 }
             }
         })
@@ -193,12 +208,6 @@ function choose_position() {
 
 function choose_city() {
     //to do
-}
-function TIP_ERROR(error_message) {
-    $(".Tip").removeClass("hidden");
-    $(".Tip span").html(error_message);
-    setTimeout('$(".Tip").addClass("hidden")',1500);
-    return;
 }
 function SetContent(mine_info) {
     console.log(mine_info);
